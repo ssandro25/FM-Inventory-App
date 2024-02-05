@@ -11,13 +11,13 @@ const routes = [
   },
 
   {
-    path: '/',
+    path: '/tax-card',
     name: 'tax-card',
     component: TaxCard
   },
 
   {
-    path: '/',
+    path: '/options',
     name: 'options',
     component: Options
   },

@@ -69,7 +69,7 @@ export default {
 
     mounted() {
         this.data = this.getTaxCard
-        console.log(this.data)
+        console.log(this.getTaxCard)
     }
 }
 </script>
