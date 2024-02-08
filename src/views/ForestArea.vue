@@ -26,9 +26,12 @@
                 :key="item.id"
                 class="col"
             >
-                <div class="item rounded d-flex align-items-center justify-content-center p-3">
+                <router-link
+                    :to="/forest-district/+item.id"
+                    class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
+                >
                     {{ item.title }}
-                </div>
+                </router-link>
             </div>
         </div>
     </div>
@@ -87,7 +90,7 @@ import AddNewForestArea from "@/components/modals/AddNewForestArea.vue";
 import { mapGetters } from "vuex";
 
 export default {
-    name: "FMIndex",
+    name: "ForestArea",
 
     components: {
         AddNewForestArea,

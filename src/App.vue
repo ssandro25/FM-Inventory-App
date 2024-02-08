@@ -4,7 +4,7 @@
             <div class="d-flex flex-column justify-content-between h-100">
                 <div class="d-flex flex-column justify-content-between gap-3">
                     <router-link
-                        :to="{ name: 'index' }"
+                        :to="{ name: 'forest-district' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center active"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">

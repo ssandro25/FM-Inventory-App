@@ -1,13 +1,20 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Index from "@/views/Index.vue"
+import ForestArea from "@/views/ForestArea.vue"
+import Forestry from "@/views/Forestry.vue";
 import TaxCard from "@/views/TaxCard.vue";
 import Options from "@/views/Options.vue";
 
 const routes = [
   {
     path: '/',
-    name: 'index',
-    component: Index
+    name: 'forest-district',
+    component: ForestArea
+  },
+
+  {
+    path: '/forest-district/:id',
+    name: 'forestry',
+    component: Forestry
   },
 
   {
