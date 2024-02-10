@@ -4,6 +4,8 @@
     <AddNewForestArea />
 
     <div class="container-fluid p-5">
+        <h1 class="text-white mb-3">სატყეო უბანი</h1>
+
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div

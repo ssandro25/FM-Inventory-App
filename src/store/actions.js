@@ -16,4 +16,11 @@ export default {
         localStorage.setItem('ForestArea', JSON.stringify(state.forestArea))
     },
 
+    setForestAreaID({state}, id) {
+        state.forestAreaID = id
+    }
+    // setNewQuarter({state}, value) {
+    //
+    // }
+
 }

@@ -19,7 +19,7 @@ const routes = [
   },
 
   {
-    path: '/forest-district/forestry/:id',
+    path: '/forest-district/:id/forestry/:id',
     name: 'quarter',
     component: Quarter
   },

@@ -1,10 +1,14 @@
 <template>
+    <AddNewQuarter :params="params"/>
+
     <div class="container-fluid p-5">
+        <h1 class="text-white mb-3">კვარტალი</h1>
+
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewForestAreaModal"
+                    data-bs-target="#addNewQuarter"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -26,7 +30,7 @@
                     :to="/forest-district/+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
-                    {{ item.title }}
+                    {{ item }}
                 </router-link>
             </div>
         </div>
@@ -34,16 +38,45 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+import AddNewQuarter from "@/components/modals/AddNewQuarter.vue";
+
 export default {
     name: "FMQuarter",
 
+    components: {
+        AddNewQuarter
+    },
+
     data() {
         return {
-            quarters: []
+            quarters: [],
         }
     },
 
+    computed: {
+        ...mapGetters([
+            'getForestAreaID',
+            'getForestArea'
+        ]),
 
+        params() {
+            return {
+                forestAreaID: this.getForestAreaID,
+                quarterID: this.$route.params.id
+            }
+        }
+    },
+
+    mounted() {
+        this.quarters = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+
+        console.log(this.quarters)
+        // console.log(this.$route.params.id, 'route params')
+        // console.log(this.getForestAreaID, 'getForestAreaID')
+    }
 }
 </script>
 

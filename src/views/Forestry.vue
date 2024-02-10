@@ -2,6 +2,7 @@
     <AddNewForestry />
 
     <div class="container-fluid p-5">
+        <h1 class="text-white mb-3">სატყეო</h1>
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
@@ -25,7 +26,7 @@
                 class="col"
             >
                 <router-link
-                    :to="'/forest-district/forestry/'+item.id"
+                    :to="'/forest-district/'+this.$route.params.id+'/forestry/'+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}
@@ -52,6 +53,12 @@ export default {
         }
     },
 
+    methods: {
+        setForestAreaID() {
+            this.$store.dispatch('setForestAreaID', this.$route.params.id)
+        }
+    },
+
     computed: {
         ...mapGetters([
             'getForestArea'
@@ -59,12 +66,14 @@ export default {
     },
 
     mounted() {
+        this.setForestAreaID()
+
         // this.forestry = this.getForestArea.filter(item => item.id === parseInt(this.$route.params.id))[0].items;
         this.forestry = this.getForestArea
             .filter(item => item.id === parseInt(this.$route.params.id))
             .map(item => item.forestry)[0]
 
-        console.log(this.forestry)
+        // console.log(this.forestry)
     }
 }
 </script>
