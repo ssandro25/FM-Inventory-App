@@ -38,7 +38,7 @@
                         :disabled="!new_quarter"
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
-                        @click="add"
+                        @click="add()"
                     >
                         დამატება
                     </button>
@@ -58,7 +58,7 @@ export default {
     data() {
         return {
             new_quarter: '',
-            arr: []
+            arr: null
         }
     },
 
@@ -73,13 +73,13 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterID))
 
             if(!this.arr.quarters) {
-                this.arr.quarters = []
+                this.arr.quarters = [this.new_quarter];
             } else {
                 this.arr.quarters.push(this.new_quarter)
             }
 
             this.new_quarter = ''
-            // console.log(typeof this.arr, this.arr)
+            console.log(typeof this.arr, this.arr)
         }
     },
 
@@ -89,9 +89,9 @@ export default {
         ])
     },
 
-    mounted() {
-        this.add()
-    }
+    // mounted() {
+    //     this.add()
+    // }
 
 }
 </script>

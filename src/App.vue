@@ -5,6 +5,13 @@
                 <div class="d-flex flex-column justify-content-between gap-3">
                     <router-link
                         :to="{ name: 'forest-district' }"
+                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                    >
+                        <img src="@/assets/images/house-solid.svg" width="15" alt="">
+                    </router-link>
+
+                    <router-link
+                        :to="{ name: 'forest-district' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center active"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
