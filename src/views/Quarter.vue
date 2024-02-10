@@ -1,12 +1,10 @@
 <template>
-    <AddNewForestry />
-
     <div class="container-fluid p-5">
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewForestryModal"
+                    data-bs-target="#addNewForestAreaModal"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -20,12 +18,12 @@
             </div>
 
             <div
-                v-for="item in forestry"
+                v-for="item in quarters"
                 :key="item.id"
                 class="col"
             >
                 <router-link
-                    :to="'/forest-district/forestry/'+item.id"
+                    :to="/forest-district/+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}
@@ -36,36 +34,16 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
-import AddNewForestry from "@/components/modals/AddNewForestry.vue";
-
 export default {
-    name: "FMForestry",
-
-    components: {
-        AddNewForestry
-    },
+    name: "FMQuarter",
 
     data() {
         return {
-            forestry: []
+            quarters: []
         }
     },
 
-    computed: {
-        ...mapGetters([
-            'getForestArea'
-        ])
-    },
 
-    mounted() {
-        // this.forestry = this.getForestArea.filter(item => item.id === parseInt(this.$route.params.id))[0].items;
-        this.forestry = this.getForestArea
-            .filter(item => item.id === parseInt(this.$route.params.id))
-            .map(item => item.forestry)[0]
-
-        console.log(this.forestry)
-    }
 }
 </script>
 

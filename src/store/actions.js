@@ -10,9 +10,10 @@ export default {
         localStorage.setItem('foresterName', JSON.stringify(state.foresterName))
     },
 
-    setForestArea({state}, value) {
+    setNewForestArea({state}, value) {
         state.forestArea.push(value)
 
         localStorage.setItem('ForestArea', JSON.stringify(state.forestArea))
-    }
+    },
+
 }
