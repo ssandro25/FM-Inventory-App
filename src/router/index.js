@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router'
 import ForestArea from "@/views/ForestArea.vue"
 import Forestry from "@/views/Forestry.vue";
 import Quarter from "@/views/Quarter.vue";
+import Liter from "@/views/Liter.vue";
 import TaxCard from "@/views/TaxCard.vue";
 import Options from "@/views/Options.vue";
 
@@ -22,6 +23,12 @@ const routes = [
     path: '/forest-district/:id/forestry/:id',
     name: 'quarter',
     component: Quarter
+  },
+
+  {
+    path: '/forest-district/:id/forestry/:id/quarter/:id',
+    name: 'liter',
+    component: Liter
   },
 
   {

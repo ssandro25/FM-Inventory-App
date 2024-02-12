@@ -18,9 +18,9 @@ export default {
 
     setForestAreaID({state}, id) {
         state.forestAreaID = id
-    }
-    // setNewQuarter({state}, value) {
-    //
-    // }
+    },
 
+    setQuarterID({state}, id) {
+        state.quarterID = id
+    }
 }

@@ -46,5 +46,7 @@ export default {
         },
     ],
 
-    forestAreaID: null
+    forestAreaID: null,
+
+    quarterID: null,
 }

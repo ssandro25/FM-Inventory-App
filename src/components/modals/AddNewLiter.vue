@@ -1,16 +1,16 @@
 <template>
     <div
         class="modal fade"
-        id="addNewQuarter"
+        id="addNewLiter"
         tabindex="-1"
-        aria-labelledby="addNewQuarterLabel"
+        aria-labelledby="addNewLiterLabel"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="addNewQuarterLabel">
-                        ახალი კვარტლის დამატება
+                    <h1 class="modal-title fs-5" id="addNewLiterLabel">
+                        ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
@@ -18,24 +18,24 @@
                 <div class="modal-body">
                     <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2">
                         <label
-                            for="new_quarter"
+                            for="new_liter"
                             class="form-label modal__label"
                         >
-                            კვარტალი:
+                            ლიტერი:
                         </label>
 
                         <input
-                            v-model="new_quarter"
+                            v-model="new_liter"
                             type="text"
                             class="form-control"
-                            id="new_quarter"
+                            id="new_liter"
                         >
                     </div>
                 </div>
 
                 <div class="modal-footer border-0 justify-content-center">
                     <button
-                        :disabled="!new_quarter"
+                        :disabled="!new_liter"
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
                         @click="add()"
@@ -53,11 +53,11 @@
 import { mapGetters } from "vuex";
 
 export default {
-    name: "AddNewQuarter",
+    name: "AddNewLiter",
 
     data() {
         return {
-            new_quarter: '',
+            new_liter: '',
             arr: null
         }
     },
@@ -70,21 +70,23 @@ export default {
         add() {
             this.arr = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID))
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID))
 
-            let quarterObj = {
-                id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
-                title: this.new_quarter
+
+            let literObj = {
+                id: this.arr.liters && this.arr.liters.length ? this.arr.liters.length + 1 : 1,
+                title: this.new_liter
             }
 
-            if (!this.arr.quarters) {
-                this.arr.quarters = [quarterObj];
+            if (!this.arr.liters) {
+                this.arr.liters = [literObj];
             } else {
-                this.arr.quarters.push(quarterObj)
+                this.arr.liters.push(literObj)
             }
 
-            this.new_quarter = ''
-            // console.log(typeof this.arr, this.arr.quarters)
+            this.new_liter = ''
+            console.log(typeof this.arr, this.arr)
         }
     },
 

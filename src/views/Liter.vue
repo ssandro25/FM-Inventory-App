@@ -1,14 +1,18 @@
 <template>
-    <AddNewQuarter :params="params"/>
+    <AddNewLiter :params="params"/>
 
     <div class="container-fluid p-5">
-        <h1 class="text-white mb-3">კვარტალი</h1>
+        <h1 class="text-white mb-3">ლიტერი</h1>
+
+        <p class="text-white">
+            {{ this.$route.params.id }}
+        </p>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewQuarter"
+                    data-bs-target="#addNewLiter"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -22,7 +26,7 @@
             </div>
 
             <div
-                v-for="item in quarters"
+                v-for="item in liters"
                 :key="item.id"
                 class="col"
             >
@@ -39,50 +43,47 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AddNewQuarter from "@/components/modals/AddNewQuarter.vue";
+import AddNewLiter from "@/components/modals/AddNewLiter.vue";
 
 export default {
-    name: "FMQuarter",
+    name: "FMLiter",
 
     components: {
-        AddNewQuarter
+        AddNewLiter
     },
 
     data() {
         return {
-            quarters: [],
-        }
-    },
-
-    methods: {
-        setQuarterID() {
-            this.$store.dispatch('setQuarterID', this.$route.params.id)
+            liters: []
         }
     },
 
     computed: {
         ...mapGetters([
             'getForestAreaID',
+            'getQuarterID',
             'getForestArea'
         ]),
 
         params() {
             return {
                 forestAreaID: this.getForestAreaID,
-                quarterID: this.$route.params.id
+                quarterID: this.getQuarterID,
+                literID: this.$route.params.id
             }
         }
     },
 
     mounted() {
-        this.setQuarterID()
-
-        this.quarters = this.getForestArea
+        this.liters = this.getForestArea
             .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
             .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+        // console.log(this.getForestArea)
     }
 }
 </script>
+
 
 <style scoped lang="scss">
 .add_new__btn {
