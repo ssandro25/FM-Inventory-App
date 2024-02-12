@@ -3,6 +3,7 @@ import ForestArea from "@/views/ForestArea.vue"
 import Forestry from "@/views/Forestry.vue";
 import Quarter from "@/views/Quarter.vue";
 import Liter from "@/views/Liter.vue";
+import Mackets from "@/views/Mackets.vue";
 import TaxCard from "@/views/TaxCard.vue";
 import Options from "@/views/Options.vue";
 
@@ -29,6 +30,12 @@ const routes = [
     path: '/forest-district/:id/forestry/:id/quarter/:id',
     name: 'liter',
     component: Liter
+  },
+
+  {
+    path: '/forest-district/:id/forestry/:id/quarter/:id/macket/:id',
+    name: 'macket',
+    component: Mackets
   },
 
   {

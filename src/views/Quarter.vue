@@ -50,7 +50,7 @@ export default {
 
     data() {
         return {
-            quarters: [],
+            // quarters: [],
         }
     },
 
@@ -66,6 +66,12 @@ export default {
             'getForestArea'
         ]),
 
+        quarters() {
+          return  this.getForestArea
+              .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+              .find(item => item.id === parseInt(this.params.quarterID)).quarters
+        },
+
         params() {
             return {
                 forestAreaID: this.getForestAreaID,
@@ -77,9 +83,9 @@ export default {
     mounted() {
         this.setQuarterID()
 
-        this.quarters = this.getForestArea
-            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+        // this.quarters = this.getForestArea
+        //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+        //     .find(item => item.id === parseInt(this.params.quarterID)).quarters
     }
 }
 </script>

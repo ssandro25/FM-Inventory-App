@@ -31,7 +31,7 @@
                 class="col"
             >
                 <router-link
-                    :to="'/forest-district/'+this.$route.params.id+'/forestry/'+this.$route.params.id+'/quarter/'+item.id"
+                    :to="'/forest-district/'+this.$route.params.id+'/forestry/'+this.$route.params.id+'/quarter/'+this.$route.params.id+'/macket/'+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}
@@ -54,7 +54,7 @@ export default {
 
     data() {
         return {
-            liters: []
+            // liters: []
         }
     },
 
@@ -65,6 +65,13 @@ export default {
             'getForestArea'
         ]),
 
+        liters() {
+            return  this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+        },
+
         params() {
             return {
                 forestAreaID: this.getForestAreaID,
@@ -74,13 +81,13 @@ export default {
         }
     },
 
-    mounted() {
-        this.liters = this.getForestArea
-            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-            .find(item => item.id === parseInt(this.params.quarterID)).quarters
-            .find(item => item.id === parseInt(this.params.literID)).liters
-        // console.log(this.getForestArea)
-    }
+    // mounted() {
+    //     this.liters = this.getForestArea
+    //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+    //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
+    //         .find(item => item.id === parseInt(this.params.literID)).liters
+    //     // console.log(this.getForestArea)
+    // }
 }
 </script>
 
