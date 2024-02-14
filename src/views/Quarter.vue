@@ -39,7 +39,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AddNewQuarter from "@/components/modals/AddNewQuarter.vue";
+import AddNewQuarter from "@/components/modals/add-new-modals/AddNewQuarter.vue";
 
 export default {
     name: "FMQuarter",

@@ -4,10 +4,6 @@
     <div class="container-fluid p-5">
         <h1 class="text-white mb-3">ლიტერი</h1>
 
-        <p class="text-white">
-            {{ this.$route.params.id }}
-        </p>
-
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
@@ -43,7 +39,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AddNewLiter from "@/components/modals/AddNewLiter.vue";
+import AddNewLiter from "@/components/modals/add-new-modals/AddNewLiter.vue";
 
 export default {
     name: "FMLiter",

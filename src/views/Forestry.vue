@@ -38,7 +38,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import AddNewForestry from "@/components/modals/AddNewForestry.vue";
+import AddNewForestry from "@/components/modals/add-new-modals/AddNewForestry.vue";
 
 export default {
     name: "FMForestry",

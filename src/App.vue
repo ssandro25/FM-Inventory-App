@@ -18,14 +18,14 @@
                     </router-link>
 
                     <router-link
-                        :to="{ name: 'tax-card' }"
+                        to="/"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
                     </router-link>
 
                     <router-link
-                        :to="{ name: 'tax-card' }"
+                        to="/"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
