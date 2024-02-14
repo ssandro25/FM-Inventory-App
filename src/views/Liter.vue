@@ -62,7 +62,7 @@ export default {
         ]),
 
         liters() {
-            return  this.getForestArea
+            return this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
@@ -77,13 +77,16 @@ export default {
         }
     },
 
-    // mounted() {
-    //     this.liters = this.getForestArea
-    //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-    //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
-    //         .find(item => item.id === parseInt(this.params.literID)).liters
-    //     // console.log(this.getForestArea)
-    // }
+
+    mounted() {
+        this.$store.dispatch('setLiterID', this.$route.params.id)
+
+        // this.liters = this.getForestArea
+        //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+        //     .find(item => item.id === parseInt(this.params.quarterID)).quarters
+        //     .find(item => item.id === parseInt(this.params.literID)).liters
+        // console.log(this.getForestArea)
+    }
 }
 </script>
 

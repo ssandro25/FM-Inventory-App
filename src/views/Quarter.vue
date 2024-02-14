@@ -38,7 +38,7 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 import AddNewQuarter from "@/components/modals/add-new-modals/AddNewQuarter.vue";
 
 export default {
@@ -54,11 +54,11 @@ export default {
         }
     },
 
-    methods: {
-        setQuarterID() {
-            this.$store.dispatch('setQuarterID', this.$route.params.id)
-        }
-    },
+    // methods: {
+    //     setQuarterID() {
+    //         this.$store.dispatch('setQuarterID', this.$route.params.id)
+    //     }
+    // },
 
     computed: {
         ...mapGetters([
@@ -67,9 +67,9 @@ export default {
         ]),
 
         quarters() {
-          return  this.getForestArea
-              .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-              .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
         },
 
         params() {
@@ -81,7 +81,7 @@ export default {
     },
 
     mounted() {
-        this.setQuarterID()
+        this.$store.dispatch('setQuarterID', this.$route.params.id)
 
         // this.quarters = this.getForestArea
         //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry

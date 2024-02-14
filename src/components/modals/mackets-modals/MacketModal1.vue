@@ -12,7 +12,8 @@
                     <h1 class="modal-title fs-5" id="macket1Label">
                         ახალი ლიტერის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -64,6 +65,7 @@
                     <button
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
+                        @click="add()"
                     >
                         დამატება
                     </button>
@@ -74,24 +76,53 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
     name: "MacketModal1",
 
     data() {
         return {
+            arr: null,
             soil_category: '',
             long_term_use_lease: ''
         }
     },
 
+    props: {
+        params: Object
+    },
+
     computed: {
         ...mapGetters([
+            'getForestArea',
             'getSoilCategory',
             'getLongTermUseLease'
         ])
-    }
+    },
+
+    methods: {
+        add() {
+            this.arr = this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+                .find(item => item.id === parseInt(this.params.macketID))
+
+            let macketObj = {
+                id: 1,
+                soil_category: this.soil_category,
+                long_term_use_lease: this.long_term_use_lease
+            }
+
+            if (!this.arr.mackets) {
+                this.arr.mackets = [macketObj];
+            } else {
+                this.arr.mackets[0] = macketObj
+            }
+        }
+    },
+
 }
 </script>
 

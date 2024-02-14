@@ -86,7 +86,6 @@ export default {
             }
 
             this.new_liter = ''
-            console.log(typeof this.arr, this.arr)
         }
     },
 

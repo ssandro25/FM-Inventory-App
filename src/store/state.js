@@ -54,6 +54,8 @@ export default {
 
     quarterID: null,
 
+    literID: null,
+
     // Mackets information
     soilCategory: [
         {id: '3', name: '3 - კორომი ბუნებრივი წარმოშობის'},

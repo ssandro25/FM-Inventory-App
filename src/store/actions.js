@@ -17,5 +17,9 @@ export default {
 
     setQuarterID({state}, id) {
         state.quarterID = id
+    },
+
+    setLiterID({state}, id) {
+        state.literID = id
     }
 }
