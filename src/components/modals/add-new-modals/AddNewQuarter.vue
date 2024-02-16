@@ -59,7 +59,7 @@ export default {
     data() {
         return {
             new_quarter: '',
-            arr: null
+            arr: null,
         }
     },
 
@@ -93,38 +93,25 @@ export default {
         add() {
             let forestArea = JSON.parse(localStorage.getItem('forestArea'));
 
-            let forestly = forestArea.find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            this.arr = forestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID));
 
             let newQuarter = {
-                id: forestly.quarters && forestly.quarters.length ? forestly.quarters.length + 1 : 1,
+                id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
                 title: this.new_quarter
             };
 
-            if (!forestly.quarters) {
-                forestly.quarters = [newQuarter];
+            if (!this.arr.quarters) {
+                this.arr.quarters = [newQuarter];
             } else {
-                forestly.quarters.push(newQuarter);
+                this.arr.quarters.push(newQuarter);
             }
 
-            // Обновляем данные в localStorage
             localStorage.setItem('forestArea', JSON.stringify(forestArea));
 
-            // Очищаем поле ввода
             this.new_quarter = '';
-
-            // Обновляем список кварталов
-            this.updateQuarters();
         },
-
-
-        updateQuarters() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
-            let forestly = forestArea.find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID));
-
-            this.quartersList = forestly?.quarters || [];
-        }
     },
 
     computed: {

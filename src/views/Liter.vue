@@ -62,10 +62,17 @@ export default {
         ]),
 
         liters() {
-            return this.getForestArea
+            let forestArea = JSON.parse(localStorage.getItem('forestArea')) || [];
+
+            return forestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
+
+            // return this.getForestArea
+            //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            //     .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            //     .find(item => item.id === parseInt(this.params.literID)).liters
         },
 
         params() {
@@ -80,6 +87,8 @@ export default {
 
     mounted() {
         this.$store.dispatch('setLiterID', this.$route.params.id)
+
+        console.log(this.liters)
 
         // this.liters = this.getForestArea
         //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry

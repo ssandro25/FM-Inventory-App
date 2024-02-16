@@ -89,6 +89,7 @@ body {
 
         &:hover {
             background-color: rgb(57 145 112);
+            transform: scale(1.03);
         }
     }
 }
@@ -108,8 +109,9 @@ body {
         transition: .3s;
 
         &:hover {
-            transform: scale(1.03);
-            box-shadow: 5px 5px 5px 2px black;
+            //transform: scale(1.03);
+            //box-shadow: 5px 5px 5px 2px black;
+            background: radial-gradient(circle,#15182d 5%,#1a2537 80%,#1c383f 100%);
         }
     }
 }

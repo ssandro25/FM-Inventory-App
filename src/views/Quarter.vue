@@ -73,12 +73,7 @@ export default {
         // },
 
         quarters() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
-
-            if (!forestArea) {
-                // Если данных в localStorage нет, возвращаем пустой массив
-                return [];
-            }
+            let forestArea = JSON.parse(localStorage.getItem('forestArea')) || [];
 
             let quarter = forestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID))?.forestry
