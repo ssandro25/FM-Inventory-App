@@ -66,10 +66,25 @@ export default {
             'getForestArea'
         ]),
 
+        // quarters() {
+        //     return this.getForestArea
+        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+        //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
+        // },
+
         quarters() {
-            return this.getForestArea
-                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
+
+            if (!forestArea) {
+                // Если данных в localStorage нет, возвращаем пустой массив
+                return [];
+            }
+
+            let quarter = forestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID))?.forestry
+                .find(item => item.id === parseInt(this.params.quarterID));
+
+            return quarter?.quarters || [];
         },
 
         params() {

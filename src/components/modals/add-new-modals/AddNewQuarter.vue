@@ -12,7 +12,8 @@
                     <h1 class="modal-title fs-5" id="addNewQuarterLabel">
                         ახალი კვარტლის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -50,7 +51,7 @@
 
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
     name: "AddNewQuarter",
@@ -67,24 +68,62 @@ export default {
     },
 
     methods: {
+        // add() {
+        //     this.arr = this.getForestArea
+        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+        //         .find(item => item.id === parseInt(this.params.quarterID))
+        //
+        //     let quarterObj = {
+        //         id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
+        //         title: this.new_quarter
+        //     }
+        //
+        //     if (!this.arr.quarters) {
+        //         this.arr.quarters = [quarterObj];
+        //     } else {
+        //         this.arr.quarters.push(quarterObj)
+        //     }
+        //
+        //     this.$store.dispatch('setForestArea', this.getForestArea)
+        //     this.new_quarter = ''
+        //     // console.log(typeof this.arr, this.arr.quarters)
+        // },
+
+
         add() {
-            this.arr = this.getForestArea
-                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID))
+            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
 
-            let quarterObj = {
-                id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
+            let forestly = forestArea.find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID));
+
+            let newQuarter = {
+                id: forestly.quarters && forestly.quarters.length ? forestly.quarters.length + 1 : 1,
                 title: this.new_quarter
-            }
+            };
 
-            if (!this.arr.quarters) {
-                this.arr.quarters = [quarterObj];
+            if (!forestly.quarters) {
+                forestly.quarters = [newQuarter];
             } else {
-                this.arr.quarters.push(quarterObj)
+                forestly.quarters.push(newQuarter);
             }
 
-            this.new_quarter = ''
-            // console.log(typeof this.arr, this.arr.quarters)
+            // Обновляем данные в localStorage
+            localStorage.setItem('forestArea', JSON.stringify(forestArea));
+
+            // Очищаем поле ввода
+            this.new_quarter = '';
+
+            // Обновляем список кварталов
+            this.updateQuarters();
+        },
+
+
+        updateQuarters() {
+            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
+            let forestly = forestArea.find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID));
+
+            this.quartersList = forestly?.quarters || [];
         }
     },
 

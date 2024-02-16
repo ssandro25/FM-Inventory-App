@@ -77,14 +77,3 @@ export default {
     }
 }
 </script>
-
-<style scoped lang="scss">
-.add_new__btn {
-    border: 1px dashed #cecece;
-    background-color: rgba(68, 74, 90, 0.4);
-}
-
-.item {
-    background-color: #444A5A;
-}
-</style>

@@ -8,7 +8,7 @@ export default {
     setNewForestArea({state}, value) {
         state.forestArea.push(value)
 
-        localStorage.setItem('ForestArea', JSON.stringify(state.forestArea))
+        // localStorage.setItem('ForestArea', JSON.stringify(state.forestArea))
     },
 
     setForestAreaID({state}, id) {
@@ -21,5 +21,12 @@ export default {
 
     setLiterID({state}, id) {
         state.literID = id
+    },
+
+    setForestArea({state}, value) {
+        state.forestArea = value
+
+        localStorage.setItem('forestArea', JSON.stringify(state.forestArea))
     }
+
 }

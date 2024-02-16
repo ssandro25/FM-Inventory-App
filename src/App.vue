@@ -1,6 +1,6 @@
 <template>
     <div class="d-flex">
-        <div class="side__bar border-end p-2">
+        <div class="side__bar border-end p-2" style="border-color: #5e6873 !important">
             <div class="d-flex flex-column justify-content-between h-100">
                 <div class="d-flex flex-column justify-content-between gap-3">
                     <router-link
@@ -67,7 +67,8 @@ body {
 .side__bar {
     width: 50px;
     height: 100vh;
-    background-color: #0C0E15;
+    //border-color: #5e6873 !important;
+    background: linear-gradient(78deg, rgba(16,20,43,1) 15%, rgba(22,48,39,1) 78%);
     //background-color: #153449;
     //background-color: #112232;
     //background-image: linear-gradient(to bottom, #112232, #16454A);
@@ -93,12 +94,18 @@ body {
 
 .content__container {
     width: calc(100% - 49px);
-    background-color: #151822;
+    //background-color: #151822;
+    background: linear-gradient(to bottom left, rgba(16,20,43,1) 45%, rgba(22,48,39,1) 100%);
+}
 
-    //background: rgb(5,18,34);
-    //background: linear-gradient(90deg, rgba(5,18,34,1) 0%, rgba(24,77,96,0.9948354341736695) 35%, rgba(2,32,57,1) 100%)
-
-    //background-color: #06192a;
-    //background-image: linear-gradient(to bottom, #06192a, #16454A)
+.add_new__btn {
+    border: 1px dashed #cecece;
+    //background-color: rgba(68, 74, 90, 0.4);
+    background: radial-gradient(circle, rgba(16,20,43,1) 5%, rgba(17,26,42,1) 75%, rgb(13 38 45) 100%);
+}
+.item {
+    //background-color: #444A5A;
+    background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
+    border: 1px solid #5e6873;
 }
 </style>
