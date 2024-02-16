@@ -78,16 +78,17 @@ body {
     &_btn {
         width: 33px;
         height: 33px;
-        background-color: #444A5A;
+        background-color: #1e393f;
+        //border: 1px solid #5e6873;
         //background-color: #080822;
         transition: .3s;
 
         &.active {
-            background-color: #2c2c76;
+            background-color: rgb(57 145 112);
         }
 
         &:hover {
-            background-color: #2c2c76;
+            background-color: rgb(57 145 112);
         }
     }
 }
@@ -96,16 +97,22 @@ body {
     width: calc(100% - 49px);
     //background-color: #151822;
     background: linear-gradient(to bottom left, rgba(16,20,43,1) 45%, rgba(22,48,39,1) 100%);
+
+    .add_new__btn {
+        border: 1px dashed #cecece;
+        background: radial-gradient(circle, rgba(16,20,43,1) 5%, rgba(17,26,42,1) 75%, rgb(13 38 45) 100%);
+    }
+    .item {
+        background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
+        border: 1px solid #5e6873;
+        transition: .3s;
+
+        &:hover {
+            transform: scale(1.03);
+            box-shadow: 5px 5px 5px 2px black;
+        }
+    }
 }
 
-.add_new__btn {
-    border: 1px dashed #cecece;
-    //background-color: rgba(68, 74, 90, 0.4);
-    background: radial-gradient(circle, rgba(16,20,43,1) 5%, rgba(17,26,42,1) 75%, rgb(13 38 45) 100%);
-}
-.item {
-    //background-color: #444A5A;
-    background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
-    border: 1px solid #5e6873;
-}
+
 </style>
