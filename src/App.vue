@@ -167,10 +167,10 @@ body {
         background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
         border: 1px solid #5e6873;
         transition: .3s;
+        box-shadow: 5px 5px 5px 2px black;
 
         &:hover {
             //transform: scale(1.03);
-            //box-shadow: 5px 5px 5px 2px black;
             background: radial-gradient(circle, #15182d 5%, #1a2537 80%, #1c383f 100%);
         }
     }
