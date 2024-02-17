@@ -117,10 +117,18 @@ export default {
         ]),
     },
 
+    // created() {
+    //     localStorage.setItem('forestArea', JSON.stringify(this.forest_area))
+    // },
+
     mounted() {
         this.getForestArea = this.forest_area
 
-        this.$store.dispatch('setForestArea', this.getForestArea)
+        if (JSON.parse(localStorage.getItem('forestArea', JSON.stringify(this.forest_area)))) {
+            this.$store.dispatch('setForestArea', this.getForestArea)
+        } else {
+            this.$store.dispatch('setForestArea', this.forest_area)
+        }
 
         // this.$store.dispatch('setForestArea', this.forest_area)
     }
