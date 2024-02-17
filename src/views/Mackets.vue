@@ -1,5 +1,11 @@
 <template>
     <div class="container-fluid p-5">
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <GoBackBtn />
+
+            <h1 class="text-white mb-0"> {{ macketTitle }}</h1>
+        </div>
+
         <div class="row gy-4">
             <div class="col-6">
                 <Macket1 />
@@ -57,11 +63,43 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import Macket1 from "@/components/modals/mackets/Macket1.vue";
+import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
     name: "FMMackets",
-    components: {Macket1},
+
+    components: {
+        GoBackBtn,
+        Macket1
+    },
+
+    computed: {
+        ...mapGetters([
+            'getForestAreaID',
+            'getQuarterID',
+            'getForestArea',
+            'getLiterID'
+        ]),
+
+        macketTitle() {
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+                .find(item => item.id === parseInt(this.$route.params.id)).title
+        },
+
+        params() {
+            return {
+                forestAreaID: this.getForestAreaID,
+                quarterID: this.getQuarterID,
+                literID: this.getLiterID,
+                macketID: this.$route.params.id
+            }
+        }
+    }
 
 }
 </script>

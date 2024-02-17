@@ -6,7 +6,7 @@
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white mb-0">კვარტალი</h1>
+            <h1 class="text-white mb-0">კვარტალები</h1>
         </div>
 
 

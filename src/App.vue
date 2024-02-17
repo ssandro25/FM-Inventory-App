@@ -118,9 +118,11 @@ export default {
     },
 
     mounted() {
-        // this.getForestArea = this.forest_area
+        this.getForestArea = this.forest_area
 
-        this.$store.dispatch('setForestArea', this.forest_area)
+        this.$store.dispatch('setForestArea', this.getForestArea)
+
+        // this.$store.dispatch('setForestArea', this.forest_area)
     }
 }
 </script>

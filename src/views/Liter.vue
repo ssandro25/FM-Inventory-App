@@ -5,7 +5,7 @@
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white mb-0">ლიტერი</h1>
+            <h1 class="text-white mb-0">ლიტერები</h1>
         </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">

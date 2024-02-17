@@ -59,7 +59,7 @@ export default {
 
     mounted() {
         // console.log(this.getForestArea)
-        // console.log(this.macket)
+        console.log(this.macket)
     }
 }
 </script>
