@@ -13,7 +13,7 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="border rounded-bottom p-3 border-top-0"
+        class="item border rounded-bottom p-3 border-top-0"
     >
         <p class="mb-0">
             1.1 მიწის კატეგორია - {{ item.soil_category }}
