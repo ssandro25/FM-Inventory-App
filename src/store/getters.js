@@ -4,7 +4,10 @@ export default {
     getQuarterID: state => state.quarterID,
     getLiterID: state => state.literID,
 
-    // Mackets information
+    // 1 Macket
     getSoilCategory: state => state.soilCategory,
     getLongTermUseLease: state => state.longTermUseLease,
+    getExposition: state => state.exposition,
+    getInclination: state => state.inclination,
+    getElevation: state => state.elevation
 }

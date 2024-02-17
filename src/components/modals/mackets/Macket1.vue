@@ -13,8 +13,29 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
+        class="border rounded p-3 border-top-0"
     >
-        {{ item }}
+        <p class="mb-0">
+            1.1 მიწის კატეგორია - {{ item.soil_category }}
+        </p>
+
+        <p class="mb-0">
+            1.2 ხს - {{ item.long_term_use_lease }}
+        </p>
+
+        <p class="mb-0">
+            1.4 ექსპოზიცია - {{ item.exposition }}
+        </p>
+
+        <p class="mb-0">
+            1.5 დაქანება - {{ item.inclination }}
+        </p>
+
+        <p class="mb-0">
+            1.6 ს.ზ.დ. - {{ item.elevation }}
+        </p>
+
+<!--        {{ item }}-->
     </div>
 
 </template>
@@ -56,11 +77,6 @@ export default {
             }
         }
     },
-
-    mounted() {
-        // console.log(this.getForestArea)
-        console.log(this.macket)
-    }
 }
 </script>
 

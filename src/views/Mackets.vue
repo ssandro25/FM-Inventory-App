@@ -1,9 +1,34 @@
 <template>
     <div class="container-fluid p-5">
-        <div class="d-flex align-items-center gap-3 mb-4">
-            <GoBackBtn />
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <div class="d-flex align-items-center gap-3 ">
+                <GoBackBtn />
 
-            <h1 class="text-white mb-0"> {{ macketTitle }}</h1>
+                <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
+            </div>
+
+            <div
+                v-for="(item,index) in macket"
+                :key="index"
+            >
+                <p class="mb-0">
+                    <strong>ექსპოზიცია:</strong> {{ item.exposition ? item.exposition : '-' }}
+                </p>
+
+
+                <p class="mb-0">
+                    <strong>ს.ზ.დ:</strong> {{ item.elevation ? item.elevation : '-' }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>დაქანება:</strong> {{ item.inclination ? item.inclination : '-' }}
+                </p>
+
+                <p class="mb-0">
+                    <strong>K:</strong> 1
+                </p>
+
+            </div>
         </div>
 
         <div class="row gy-4">
@@ -84,11 +109,33 @@ export default {
         ]),
 
         macketTitle() {
-            return this.getForestArea
+            let forestArea = this.getForestArea.find(item => item.id === parseInt(this.params.forestAreaID)).title
+
+            let forestry = this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).title
+
+            let quarter = this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).title
+
+            let macket = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
                 .find(item => item.id === parseInt(this.$route.params.id)).title
+
+            return forestArea + ' / ' + forestry + ' / ' + quarter + ' / ' + macket
+        },
+
+        macket() {
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+                .find(item => item.id === parseInt(this.$route.params.id)).mackets
+
         },
 
         params() {
@@ -99,8 +146,7 @@ export default {
                 macketID: this.$route.params.id
             }
         }
-    }
-
+    },
 }
 </script>
 

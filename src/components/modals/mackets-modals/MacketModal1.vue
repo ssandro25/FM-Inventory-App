@@ -57,6 +57,66 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="exposition">
+                                1.4 ექსპოზიცია
+                            </label>
+
+                            <select
+                                v-model="exposition"
+                                class="form-select" id="soil_category"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getExposition"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="exposition">
+                                1.5 დაქანება
+                            </label>
+
+                            <select
+                                v-model="inclination"
+                                class="form-select" id="soil_category"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getInclination"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="exposition">
+                                1.6 ს.ზ.დ.
+                            </label>
+
+                            <select
+                                v-model="elevation"
+                                class="form-select" id="soil_category"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getElevation"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
@@ -85,7 +145,10 @@ export default {
         return {
             arr: null,
             soil_category: '',
-            long_term_use_lease: ''
+            long_term_use_lease: '',
+            exposition: '',
+            inclination: '',
+            elevation: ''
         }
     },
 
@@ -97,7 +160,10 @@ export default {
         ...mapGetters([
             'getForestArea',
             'getSoilCategory',
-            'getLongTermUseLease'
+            'getLongTermUseLease',
+            'getExposition',
+            'getInclination',
+            'getElevation',
         ])
     },
 
@@ -112,7 +178,10 @@ export default {
             let macketObj = {
                 id: 1,
                 soil_category: this.soil_category,
-                long_term_use_lease: this.long_term_use_lease
+                long_term_use_lease: this.long_term_use_lease,
+                exposition : this.exposition,
+                inclination: this.inclination,
+                elevation: this.elevation
             }
 
             if (!this.arr.mackets) {
