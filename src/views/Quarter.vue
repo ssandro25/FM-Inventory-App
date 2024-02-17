@@ -2,7 +2,13 @@
     <AddNewQuarter :params="params"/>
 
     <div class="container-fluid p-5">
-        <h1 class="text-white mb-3">კვარტალი</h1>
+
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <GoBackBtn />
+
+            <h1 class="text-white mb-0">კვარტალი</h1>
+        </div>
+
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
@@ -40,11 +46,13 @@
 <script>
 import {mapGetters} from "vuex";
 import AddNewQuarter from "@/components/modals/add-new-modals/AddNewQuarter.vue";
+import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
     name: "FMQuarter",
 
     components: {
+        GoBackBtn,
         AddNewQuarter
     },
 
