@@ -120,6 +120,8 @@ export default {
             } else {
                 this.arr.mackets[0] = macketObj
             }
+
+            this.$store.dispatch('setForestArea', this.getForestArea)
         }
     },
 

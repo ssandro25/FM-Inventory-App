@@ -57,21 +57,83 @@
 </template>
 
 <script>
+import {mapGetters} from "vuex";
 
+export default {
+    data() {
+        return {
+            forest_area: [
+                {
+                    id: 1, title: 'თიანეთი', forestry: [
+                        {id: 1, title: 'არტაანი'},
+                        {id: 2, title: 'ახალსოფელი'},
+                        {id: 3, title: 'ზარიძეები'},
+                        {id: 4, title: 'თიანეთი'},
+                        {id: 5, title: 'სიონი'},
+                        {id: 6, title: 'სიმონიანთხევი'},
+                        {id: 7, title: 'ბოჭორმა'},
+                        {id: 8, title: 'ღულელები'},
+                    ]
+                },
+
+                {
+                    id: 2, title: 'მცხეთა', forestry: [
+                        {id: 1, title: 'ძეგვი'},
+                        {id: 2, title: 'დიდგორის ლისი'},
+                        {id: 3, title: 'თბილისის ლისი'},
+                        {id: 4, title: 'ჯვარი'},
+                        {id: 5, title: 'ბევრეთი'},
+                        {id: 6, title: 'დიღომი'},
+                    ]
+                },
+
+                {
+                    id: 3, title: 'ფასანაური', forestry: [
+                        {id: 1, title: 'მჭადიჯვარი'},
+                        {id: 2, title: 'დუშეთი'},
+                        {id: 3, title: 'ჟინვალი'},
+                        {id: 4, title: 'ანანური'},
+                        {id: 5, title: 'ფასანაური'},
+                    ]
+                },
+
+                {
+                    id: 4, title: 'ბარისახო', forestry: [
+                        {id: 1, title: 'გალავანი'},
+                        {id: 2, title: 'ჭოპორტი'},
+                        {id: 3, title: 'ბულაჩაური'},
+                        {id: 4, title: 'თვალივი'},
+                        {id: 5, title: 'მაღაროსკარი'},
+                        {id: 6, title: 'ბარისახო'},
+                    ]
+                },
+            ]
+        }
+    },
+
+    computed: {
+        ...mapGetters([
+            'getForestArea'
+        ]),
+    },
+
+    mounted() {
+        this.getForestArea = this.forest_area
+
+        this.$store.dispatch('setForestArea', this.getForestArea)
+    }
+}
 </script>
 
 <style lang="scss">
 body {
     color: #fff !important;
 }
+
 .side__bar {
     width: 50px;
     height: 100vh;
-    //border-color: #5e6873 !important;
-    background: linear-gradient(78deg, rgba(16,20,43,1) 15%, rgba(22,48,39,1) 78%);
-    //background-color: #153449;
-    //background-color: #112232;
-    //background-image: linear-gradient(to bottom, #112232, #16454A);
+    background: linear-gradient(78deg, rgba(16, 20, 43, 1) 15%, rgba(22, 48, 39, 1) 78%);
     position: sticky;
     z-index: 10;
 
@@ -79,8 +141,6 @@ body {
         width: 33px;
         height: 33px;
         background-color: #1e393f;
-        //border: 1px solid #5e6873;
-        //background-color: #080822;
         transition: .3s;
 
         &.active {
@@ -96,13 +156,13 @@ body {
 
 .content__container {
     width: calc(100% - 49px);
-    //background-color: #151822;
-    background: linear-gradient(to bottom left, rgba(16,20,43,1) 45%, rgba(22,48,39,1) 100%);
+    background: linear-gradient(to bottom left, rgba(16, 20, 43, 1) 45%, rgba(22, 48, 39, 1) 100%);
 
     .add_new__btn {
         border: 1px dashed #cecece;
-        background: radial-gradient(circle, rgba(16,20,43,1) 5%, rgba(17,26,42,1) 75%, rgb(13 38 45) 100%);
+        background: radial-gradient(circle, rgba(16, 20, 43, 1) 5%, rgba(17, 26, 42, 1) 75%, rgb(13 38 45) 100%);
     }
+
     .item {
         background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
         border: 1px solid #5e6873;
@@ -111,7 +171,7 @@ body {
         &:hover {
             //transform: scale(1.03);
             //box-shadow: 5px 5px 5px 2px black;
-            background: radial-gradient(circle,#15182d 5%,#1a2537 80%,#1c383f 100%);
+            background: radial-gradient(circle, #15182d 5%, #1a2537 80%, #1c383f 100%);
         }
     }
 }

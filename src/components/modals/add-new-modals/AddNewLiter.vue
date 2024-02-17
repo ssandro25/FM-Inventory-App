@@ -68,9 +68,7 @@ export default {
 
     methods: {
         add() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
-
-            this.arr = forestArea
+            this.arr = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID))
@@ -87,7 +85,7 @@ export default {
                 this.arr.liters.push(literObj)
             }
 
-            localStorage.setItem('forestArea', JSON.stringify(forestArea));
+            this.$store.dispatch('setForestArea', this.getForestArea)
 
             this.new_liter = ''
         }

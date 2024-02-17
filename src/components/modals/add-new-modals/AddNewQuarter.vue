@@ -68,50 +68,50 @@ export default {
     },
 
     methods: {
-        // add() {
-        //     this.arr = this.getForestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID))
-        //
-        //     let quarterObj = {
-        //         id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
-        //         title: this.new_quarter
-        //     }
-        //
-        //     if (!this.arr.quarters) {
-        //         this.arr.quarters = [quarterObj];
-        //     } else {
-        //         this.arr.quarters.push(quarterObj)
-        //     }
-        //
-        //     this.$store.dispatch('setForestArea', this.getForestArea)
-        //     this.new_quarter = ''
-        //     // console.log(typeof this.arr, this.arr.quarters)
-        // },
-
-
         add() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea'));
-
-            this.arr = forestArea
+            this.arr = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID));
+                .find(item => item.id === parseInt(this.params.quarterID))
 
-            let newQuarter = {
+            let quarterObj = {
                 id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
                 title: this.new_quarter
-            };
-
-            if (!this.arr.quarters) {
-                this.arr.quarters = [newQuarter];
-            } else {
-                this.arr.quarters.push(newQuarter);
             }
 
-            localStorage.setItem('forestArea', JSON.stringify(forestArea));
+            if (!this.arr.quarters) {
+                this.arr.quarters = [quarterObj];
+            } else {
+                this.arr.quarters.push(quarterObj)
+            }
 
-            this.new_quarter = '';
+            this.$store.dispatch('setForestArea', this.getForestArea)
+            this.new_quarter = ''
+            // console.log(typeof this.arr, this.arr.quarters)
         },
+
+
+        // add() {
+        //     let forestArea = JSON.parse(localStorage.getItem('forestArea'));
+        //
+        //     this.arr = forestArea
+        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+        //         .find(item => item.id === parseInt(this.params.quarterID));
+        //
+        //     let newQuarter = {
+        //         id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
+        //         title: this.new_quarter
+        //     };
+        //
+        //     if (!this.arr.quarters) {
+        //         this.arr.quarters = [newQuarter];
+        //     } else {
+        //         this.arr.quarters.push(newQuarter);
+        //     }
+        //
+        //     localStorage.setItem('forestArea', JSON.stringify(forestArea));
+        //
+        //     this.new_quarter = '';
+        // },
     },
 
     computed: {

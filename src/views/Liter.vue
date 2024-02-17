@@ -62,17 +62,17 @@ export default {
         ]),
 
         liters() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea')) || [];
-
-            return forestArea
-                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-                .find(item => item.id === parseInt(this.params.quarterID)).quarters
-                .find(item => item.id === parseInt(this.params.literID)).liters
-
-            // return this.getForestArea
+            // let forestArea = JSON.parse(localStorage.getItem('forestArea')) || [];
+            //
+            // return forestArea
             //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
             //     .find(item => item.id === parseInt(this.params.quarterID)).quarters
             //     .find(item => item.id === parseInt(this.params.literID)).liters
+
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
         },
 
         params() {

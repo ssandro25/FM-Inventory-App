@@ -66,20 +66,21 @@ export default {
             'getForestArea'
         ]),
 
-        // quarters() {
-        //     return this.getForestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
-        // },
+        quarters1() {
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+        },
 
         quarters() {
-            let forestArea = JSON.parse(localStorage.getItem('forestArea')) || [];
+            const forestAreaID = parseInt(this.params.forestAreaID);
+            const quarterID = parseInt(this.params.quarterID);
 
-            let quarter = forestArea
-                .find(item => item.id === parseInt(this.params.forestAreaID))?.forestry
-                .find(item => item.id === parseInt(this.params.quarterID));
+            const forestArea = this.getForestArea.find(item => item.id === forestAreaID);
+            const forestry = forestArea ? forestArea.forestry : [];
+            const quarter = forestry.find(item => item.id === quarterID);
 
-            return quarter?.quarters || [];
+            return quarter ? quarter.quarters : [];
         },
 
         params() {
@@ -92,21 +93,6 @@ export default {
 
     mounted() {
         this.$store.dispatch('setQuarterID', this.$route.params.id)
-
-        // this.quarters = this.getForestArea
-        //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //     .find(item => item.id === parseInt(this.params.quarterID)).quarters
     }
 }
 </script>
-
-<style scoped lang="scss">
-.add_new__btn {
-    border: 1px dashed #cecece;
-    background-color: rgba(68, 74, 90, 0.4);
-}
-
-.item {
-    background-color: #444A5A;
-}
-</style>
