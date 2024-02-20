@@ -13,7 +13,7 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item border rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
     >
         <p class="mb-0">
             1.1 მიწის კატეგორია - {{ item.soil_category }}
@@ -21,6 +21,10 @@
 
         <p class="mb-0">
             1.2 ხს - {{ item.long_term_use_lease }}
+        </p>
+
+        <p class="mb-0">
+            1.3 გ.ფ.დ.უ. - {{ item.gfdu }}
         </p>
 
         <p class="mb-0">
@@ -33,6 +37,18 @@
 
         <p class="mb-0">
             1.6 ს.ზ.დ. - {{ item.elevation }}
+        </p>
+
+        <p class="mb-0">
+            1.7 ეროზიის სახე - {{ item.erosion_type }}
+        </p>
+
+        <p class="mb-0">
+            1.8 ეროზიის ხარისხი - {{ item.erosion_degree }}
+        </p>
+
+        <p class="mb-0">
+            1.9 ფართობი - {{ item.area }}
         </p>
 
 <!--        {{ item }}-->

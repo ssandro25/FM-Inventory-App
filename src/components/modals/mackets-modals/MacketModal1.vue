@@ -59,6 +59,26 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="gfdu">
+                                1.3 გ.ფ.დ.უ.
+                            </label>
+
+                            <select
+                                v-model="gfdu"
+                                class="form-select" id="gfdu"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getGfdu"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
                             <label class="form-label text-truncate w-100 mb-0" for="exposition">
                                 1.4 ექსპოზიცია
                             </label>
@@ -117,6 +137,59 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="erosion_type">
+                                1.7 ეროზიის სახე
+                            </label>
+
+                            <select
+                                v-model="erosion_type"
+                                class="form-select" id="erosion_type"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getErosionType"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="erosion_degree">
+                                1.8 ეროზიის ხარისხი
+                            </label>
+
+                            <select
+                                v-model="erosion_degree"
+                                class="form-select" id="erosion_type"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getErosionDegree"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="area">
+                                1.9 ფართობი
+                            </label>
+
+                            <input
+                                v-model="area"
+                                type="number"
+                                class="form-control"
+                                id="area"
+                            >
+                        </div>
                     </div>
 
                 </div>
@@ -146,9 +219,13 @@ export default {
             arr: null,
             soil_category: '',
             long_term_use_lease: '',
+            gfdu: '',
             exposition: '',
             inclination: '',
-            elevation: ''
+            elevation: '',
+            erosion_type: '',
+            erosion_degree: '',
+            area: ''
         }
     },
 
@@ -161,9 +238,12 @@ export default {
             'getForestArea',
             'getSoilCategory',
             'getLongTermUseLease',
+            'getGfdu',
             'getExposition',
             'getInclination',
             'getElevation',
+            'getErosionType',
+            'getErosionDegree'
         ])
     },
 
@@ -181,7 +261,11 @@ export default {
                 long_term_use_lease: this.long_term_use_lease,
                 exposition : this.exposition,
                 inclination: this.inclination,
-                elevation: this.elevation
+                elevation: this.elevation,
+                gfdu: this.gfdu,
+                erosion_type: this.erosion_type,
+                erosion_degree: this.erosion_degree,
+                area: this.area
             }
 
             if (!this.arr.mackets) {
