@@ -145,6 +145,7 @@ body {
     height: 100vh;
     background: linear-gradient(78deg, rgba(16, 20, 43, 1) 15%, rgba(22, 48, 39, 1) 78%);
     position: sticky;
+    top: 0;
     z-index: 10;
 
     &_btn {

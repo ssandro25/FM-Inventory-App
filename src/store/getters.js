@@ -17,4 +17,11 @@ export default {
     // 2 Macket
     getActivity: state => state.activity,
     getTargetSpecies: state => state.targetSpecies,
+
+    // 3 Macket
+    getDominantSpecies: state => state.dominantSpecies,
+    getSiteIndex: state => state.siteIndex,
+    getSiteIndexType: state => state.siteIndexType,
+    getForestType: state => state.forestType,
+    getLocationType: state => state.locationType,
 }

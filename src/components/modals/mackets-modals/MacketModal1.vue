@@ -268,7 +268,7 @@ export default {
                 area: this.area
             }
 
-            if (!this.arr.mackets) {
+            if (!this.arr.mackets[0]) {
                 this.arr.mackets[0] = [macketObj];
             } else {
                 this.arr.mackets[0] = [macketObj]
