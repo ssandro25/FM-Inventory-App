@@ -48,7 +48,7 @@
         </p>
 
         <p class="mb-0">
-            1.9 ფართობი - {{ item.area }}
+            1.9 ფართობი - {{ item.area }} ჰა
         </p>
 
 <!--        {{ item }}-->
@@ -76,13 +76,28 @@ export default {
         ]),
 
         macket() {
-            return this.getForestArea
+           return this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
-                .find(item => item.id === parseInt(this.$route.params.id)).mackets
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[0] || []
+
 
         },
+
+        // macket() {
+        //     const forestAreaID = parseInt(this.params.forestAreaID);
+        //     const quarterID = parseInt(this.params.quarterID);
+        //     const literID = parseInt(this.params.literID);
+        //     const id = parseInt(this.$route.params.id);
+        //
+        //     return this.getForestArea
+        //         .find(item => item.id === forestAreaID)?.forestry
+        //         .find(item => item.id === quarterID)?.quarters
+        //         .find(item => item.id === literID)?.liters
+        //         .find(item => item.id === id)?.mackets?.[0] || [];
+        // },
+
 
         params() {
             return {

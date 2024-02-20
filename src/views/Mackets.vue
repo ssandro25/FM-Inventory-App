@@ -37,9 +37,7 @@
             </div>
 
             <div class="col-6">
-                <button class="btn btn-light w-100">
-                    2. დაპროექტებული ღონისძიებები
-                </button>
+               <Macket2 />
             </div>
 
             <div class="col-4">
@@ -89,7 +87,8 @@
 
 <script>
 import { mapGetters } from "vuex";
-import Macket1 from "@/components/modals/mackets/Macket1.vue";
+import Macket1 from "@/components/mackets/Macket1.vue";
+import Macket2 from "@/components/mackets/Macket2.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
@@ -97,7 +96,8 @@ export default {
 
     components: {
         GoBackBtn,
-        Macket1
+        Macket1,
+        Macket2
     },
 
     computed: {
@@ -134,7 +134,7 @@ export default {
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
-                .find(item => item.id === parseInt(this.$route.params.id)).mackets
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[0] || []
 
         },
 

@@ -13,4 +13,8 @@ export default {
     getGfdu: state => state.gfdu,
     getErosionType: state => state.erosionType,
     getErosionDegree: state => state.erosionDegree,
+
+    // 2 Macket
+    getActivity: state => state.activity,
+    getTargetSpecies: state => state.targetSpecies,
 }

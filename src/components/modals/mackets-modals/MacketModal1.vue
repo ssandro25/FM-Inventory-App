@@ -269,9 +269,9 @@ export default {
             }
 
             if (!this.arr.mackets) {
-                this.arr.mackets = [macketObj];
+                this.arr.mackets[0] = [macketObj];
             } else {
-                this.arr.mackets[0] = macketObj
+                this.arr.mackets[0] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
