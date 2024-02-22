@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket4"
+        id="macket5"
         tabindex="-1"
-        aria-labelledby="macket4Label"
+        aria-labelledby="macket5Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket4Label">
+                    <h1 class="modal-title fs-5" id="macket5Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,41 +19,15 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="deed_wood">
-                                4.1 ჩახერგილობა საერთო
+                            <label class="form-label text-truncate w-100 mb-0" for="yield_percent">
+                                5.1 გამოსავლიანობის პროცენტი
                             </label>
 
                             <input
-                                v-model="deed_wood"
+                                v-model="yield_percent"
                                 type="number"
                                 class="form-control"
-                                id="deed_wood"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="deed_wood_liquid">
-                                4.2 ჩახერგილობა ლიკვიდი
-                            </label>
-
-                            <input
-                                v-model="deed_wood_liquid"
-                                type="number"
-                                class="form-control"
-                                id="deed_wood_liquid"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="old_deadwood">
-                                4.3 ძველი ზეხმელის ჩახერგილობა
-                            </label>
-
-                            <input
-                                v-model="old_deadwood"
-                                type="number"
-                                class="form-control"
-                                id="old_deadwood"
+                                id="yield_percent"
                             >
                         </div>
                     </div>
@@ -78,14 +52,12 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal4",
+    name: "MacketModal5",
 
     data() {
         return {
             arr: null,
-            deed_wood: null,
-            deed_wood_liquid: null,
-            old_deadwood: null
+            yield_percent: null
         }
     },
 
@@ -109,16 +81,14 @@ export default {
 
             let macketObj = {
                 id: 4,
-                deed_wood: this.deed_wood,
-                deed_wood_liquid: this.deed_wood_liquid,
-                old_deadwood: this.old_deadwood
+                yield_percent: this.yield_percent
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[3]) {
+            if (!this.arr.mackets || !this.arr.mackets[4]) {
                 this.arr.mackets = [[], [], [], [], []]
-                this.arr.mackets[3] = [macketObj]
+                this.arr.mackets[4] = [macketObj]
             } else {
-                this.arr.mackets[3] = [macketObj]
+                this.arr.mackets[4] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)

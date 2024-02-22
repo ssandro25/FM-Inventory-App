@@ -49,9 +49,7 @@
             </div>
 
             <div class="col-4">
-                <button class="btn btn-light w-100">
-                    5. გამოსავლიანობის პროცენტი
-                </button>
+                <Macket5 />
             </div>
 
             <div class="col-12">
@@ -87,6 +85,7 @@ import Macket1 from "@/components/mackets/Macket1.vue";
 import Macket2 from "@/components/mackets/Macket2.vue";
 import Macket3 from "@/components/mackets/Macket3.vue";
 import Macket4 from "@/components/mackets/Macket4.vue";
+import Macket5 from "@/components/mackets/Macket5.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
@@ -97,7 +96,8 @@ export default {
         Macket1,
         Macket2,
         Macket3,
-        Macket4
+        Macket4,
+        Macket5
     },
 
     computed: {
