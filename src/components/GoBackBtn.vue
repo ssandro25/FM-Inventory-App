@@ -28,4 +28,11 @@ export default {
         background-color: #D9D8E0;
     }
 }
+
+@media screen and (max-width: 600px){
+    .home__btn_arrow {
+        position: fixed;
+        top: 20px;
+    }
+}
 </style>

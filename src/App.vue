@@ -14,7 +14,7 @@
                         :to="{ name: 'forest-district' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                         :class="{
-                            'active' : $route.name === 'forest-district'
+                            'active' : $route.name === 'forest-district' || 'forestry' || 'quarter' || 'liter' || 'macket'
                         }"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">

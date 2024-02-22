@@ -1,6 +1,6 @@
 <template>
-    <div class="container-fluid p-5">
-        <div class="d-flex align-items-center justify-content-between mb-4">
+    <div class="container-fluid p-md-5 p-3">
+        <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
             <div class="d-flex align-items-center gap-3 ">
                 <GoBackBtn />
 
@@ -32,37 +32,37 @@
         </div>
 
         <div class="row gy-4">
-            <div class="col-6">
+            <div class="col-md-6">
                 <Macket1 />
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
                <Macket2 />
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <Macket3 />
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <Macket4 />
             </div>
 
-            <div class="col-4">
+            <div class="col-md-4">
                 <Macket5 />
             </div>
 
-            <div class="col-12">
+            <div class="col-md-12">
                 <button class="btn btn-light w-100">
                     10. ტაქსაციური დახასიათება
                 </button>
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
                 <Macket31_6 />
             </div>
 
-            <div class="col-6">
+            <div class="col-md-6">
                 <button class="btn btn-light w-100">
                     32. ქვეტყე
                 </button>
