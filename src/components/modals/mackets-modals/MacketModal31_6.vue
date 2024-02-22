@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket2"
+        id="macket31_6"
         tabindex="-1"
-        aria-labelledby="macket2Label"
+        aria-labelledby="macket31_6Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket2Label">
+                    <h1 class="modal-title fs-5" id="macket31_6Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,53 +19,32 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity1">
-                                2.1 ღონისძიება I
-                            </label>
-
-                            <select
-                                v-model="activity1"
-                                class="form-select"
-                                id="activity1"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getActivity"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity_percent">
-                                2.2 %
+                            <label class="form-label text-truncate w-100 mb-0" for="quantity">
+                                31.1 რაოდენობა
                             </label>
 
                             <input
-                                v-model="activity_percent"
+                                v-model="quantity"
                                 type="number"
                                 class="form-control"
-                                id="activity_percent"
+                                id="quantity"
                             >
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity2">
-                                2.3 ღონისძიება II
+                            <label class="form-label text-truncate w-100 mb-0" for="height">
+                                31.2 სიმაღლე
                             </label>
 
                             <select
-                                v-model="activity2"
+                                v-model="height"
                                 class="form-select"
-                                id="activity2"
+                                id="height"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
+                                    v-for="item in getHeight"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -74,19 +53,19 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity3">
-                                2.3 ღონისძიება III
+                            <label class="form-label text-truncate w-100 mb-0" for="age">
+                                31.3 ასაკი
                             </label>
 
                             <select
-                                v-model="activity3"
+                                v-model="age"
                                 class="form-select"
-                                id="activity3"
+                                id="age"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
+                                    v-for="item in getAge"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -95,19 +74,32 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="target_species">
-                                2.5 მიზნობრივი სახეობა
+                            <label class="form-label text-truncate w-100 mb-0" for="coefficient1">
+                                კოეფ. 1
+                            </label>
+
+                            <input
+                                v-model="coefficient1"
+                                type="number"
+                                class="form-control"
+                                id="coefficient1"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="growing_trees_species">
+                                სახეობა 1
                             </label>
 
                             <select
-                                v-model="target_species"
+                                v-model="growing_trees_species"
                                 class="form-select"
-                                id="target_species"
+                                id="growing_trees_species"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getTargetSpecies"
+                                    v-for="item in getGrowingTreesSpecies"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -136,16 +128,16 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal2",
+    name: "MacketModal31_6",
 
     data() {
         return {
             arr: null,
-            activity1: '',
-            activity2: '',
-            activity3: '',
-            activity_percent: null,
-            target_species: ''
+            quantity: null,
+            height: '',
+            age: '',
+            coefficient1: null,
+            growing_trees_species: ''
         }
     },
 
@@ -156,8 +148,9 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getActivity',
-            'getTargetSpecies'
+            'getHeight',
+            'getAge',
+            'getGrowingTreesSpecies'
         ])
     },
 
@@ -170,23 +163,23 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 2,
-                activity1: this.activity1,
-                activity2: this.activity2,
-                activity3: this.activity3,
-                activity_percent: this.activity_percent,
-                target_species: this.target_species
+                id: 4,
+                quantity: this.quantity,
+                height: this.height,
+                age: this.age,
+                coefficient1: this.coefficient1,
+                growing_trees_species: this.growing_trees_species
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[1]) {
+            if (!this.arr.mackets || !this.arr.mackets[5]) {
                 this.arr.mackets = [[], [], [], [], [], []]
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[5] = [macketObj]
             } else {
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[5] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
-        }
+        },
     },
 
 }

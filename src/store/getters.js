@@ -24,4 +24,9 @@ export default {
     getSiteIndexType: state => state.siteIndexType,
     getForestType: state => state.forestType,
     getLocationType: state => state.locationType,
+
+    // 31_6 Macket
+    getHeight: state => state.height,
+    getAge: state => state.age,
+    getGrowingTreesSpecies: state => state.growingTreesSpecies,
 }

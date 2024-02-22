@@ -59,9 +59,7 @@
             </div>
 
             <div class="col-6">
-                <button class="btn btn-light w-100">
-                    31. მოზარდი
-                </button>
+                <Macket31_6 />
             </div>
 
             <div class="col-6">
@@ -86,6 +84,7 @@ import Macket2 from "@/components/mackets/Macket2.vue";
 import Macket3 from "@/components/mackets/Macket3.vue";
 import Macket4 from "@/components/mackets/Macket4.vue";
 import Macket5 from "@/components/mackets/Macket5.vue";
+import Macket31_6 from "@/components/mackets/Macket31_6.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
@@ -97,7 +96,8 @@ export default {
         Macket2,
         Macket3,
         Macket4,
-        Macket5
+        Macket5,
+        Macket31_6
     },
 
     computed: {
