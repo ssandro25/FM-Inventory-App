@@ -1,31 +1,36 @@
 <template>
     <div class="container-fluid">
-        <GoBackBtn />
-
         <div class="container mt-5">
-            <div class="col-lg-3 col-12 mx-auto d-flex flex-column gap-3">
-                <label
-                    for="forester_name"
-                    class="form-label modal__label"
-                >
-                    მეტყევეს სახელი და გვარი
-                </label>
+            <div class="col-lg-3 col-12 mx-auto">
+                <div class="d-flex flex-column gap-3">
+                    <label
+                        for="forester_name"
+                        class="form-label modal__label"
+                    >
+                        მეტყევეს სახელი და გვარი
+                    </label>
 
-                <input
-                    v-model="name"
-                    type="text"
-                    class="form-control"
-                    id="forester_name"
-                >
+                    <input
+                        v-model="name"
+                        type="text"
+                        class="form-control"
+                        id="forester_name"
+                    >
 
-                <button
-                    :disabled="!this.name"
-                    type="button"
-                    class="btn btn-success"
-                    @click="saveName"
-                >
-                    Save
-                </button>
+                    <button
+                        :disabled="!this.name"
+                        type="button"
+                        class="btn btn-success w-100"
+                        @click="saveName"
+                    >
+                        Save
+                    </button>
+                </div>
+
+                <div class="mt-5">
+                   <ClearCache />
+                </div>
+
             </div>
 
         </div>
@@ -33,14 +38,11 @@
 </template>
 
 <script>
-import GoBackBtn from "@/components/GoBackBtn.vue";
+import ClearCache from "@/components/ClearCache.vue";
 
 export default {
     name: "FMOptions",
-
-    components: {
-        GoBackBtn
-    },
+    components: {ClearCache},
 
     data() {
         return {
