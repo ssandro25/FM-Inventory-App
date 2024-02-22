@@ -12,7 +12,10 @@
 
                     <router-link
                         :to="{ name: 'forest-district' }"
-                        class="side__bar_btn rounded d-flex align-items-center justify-content-center active"
+                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                            'active' : $route.name === 'forest-district'
+                        }"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
                     </router-link>
@@ -36,6 +39,9 @@
                     <router-link
                         :to="{ name: 'profile' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                            'active' : $route.name === 'profile'
+                        }"
                     >
                         <img src="@/assets/images/user.svg" width="12" alt="">
                     </router-link>
@@ -43,6 +49,9 @@
                     <router-link
                         :to="{ name: 'options' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                            'active' : $route.name === 'options'
+                        }"
                     >
                         <img src="@/assets/images/settings.svg" width="12" alt="">
                     </router-link>
@@ -160,7 +169,7 @@ body {
 
         &:hover {
             background-color: rgb(57 145 112);
-            transform: scale(1.03);
+            //transform: scale(1.03);
         }
     }
 }
