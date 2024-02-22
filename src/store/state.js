@@ -241,7 +241,11 @@ export default {
     ],
 
     // 3 Macket
-    dominantSpecies: [],
+    dominantSpecies: [
+        {id: '1', name: 'test1'},
+        {id: '2', name: 'test2'},
+        {id: '3', name: 'test3'},
+    ],
 
     siteIndex: [
         {id: '1', name: 'I'},
@@ -253,7 +257,11 @@ export default {
         {id: '7', name: 'Vა'},
     ],
 
-    siteIndexType: [],
+    siteIndexType: [
+        {id: '1', name: 'test1'},
+        {id: '2', name: 'test2'},
+        {id: '3', name: 'test3'},
+    ],
 
     forestType: [
         {id: '1', name: '1 - წივ'},

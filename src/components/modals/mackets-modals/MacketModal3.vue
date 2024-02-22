@@ -204,8 +204,9 @@ export default {
                 cutting_year: this.cutting_year
             }
 
-            if (!this.arr.mackets[2]) {
-                this.arr.mackets[2] = [macketObj];
+            if (!this.arr.mackets || !this.arr.mackets[2]) {
+                this.arr.mackets = [[], [], []]
+                this.arr.mackets[2] = [macketObj]
             } else {
                 this.arr.mackets[2] = [macketObj]
             }
@@ -230,14 +231,18 @@ export default {
         //         site_index: this.site_index,
         //         site_index_type: this.site_index_type,
         //         forest_type: this.forest_type,
-        //         location_type: this.location_type
+        //         location_type: this.location_type,
+        //         cutting_year: this.cutting_year
         //     };
         //
-        //     if (!liters.mackets || liters.mackets.length < 3) {
-        //         liters.mackets = [[], [], []];
+        //     // if (!liters.mackets || liters.mackets.length < 3) {
+        //     //     liters.mackets = [[], [], []];
+        //     // }
+        //     if (!liters.mackets) {
+        //         liters.mackets = [];
         //     }
         //
-        //     liters.mackets[2].push(macketObj);
+        //     liters.mackets[2] = macketObj;
         //
         //     this.$store.dispatch('setForestArea', this.getForestArea);
         // }

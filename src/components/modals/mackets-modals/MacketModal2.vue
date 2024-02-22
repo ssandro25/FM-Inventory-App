@@ -178,8 +178,9 @@ export default {
                 target_species: this.target_species
             }
 
-            if (!this.arr.mackets[1]) {
-                this.arr.mackets[1] = [macketObj];
+            if (!this.arr.mackets || !this.arr.mackets[1]) {
+                this.arr.mackets = [[], [], []]
+                this.arr.mackets[1] = [macketObj]
             } else {
                 this.arr.mackets[1] = [macketObj]
             }

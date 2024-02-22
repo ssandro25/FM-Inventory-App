@@ -147,6 +147,26 @@ export default {
             }
         }
     },
+
+    // mounted() {
+    //     let checkMacket = this.getForestArea
+    //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+    //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
+    //         .find(item => item.id === parseInt(this.params.literID)).liters
+    //         .find(item => item.id === parseInt(this.$route.params.id)).mackets || []
+    //
+    //     // console.log(Array.isArray(checkMacket), checkMacket)
+    //
+    //     if (checkMacket.length < 3) {
+    //         console.log(false)
+    //         checkMacket.push([], [], []);
+    //         console.log(checkMacket)
+    //
+    //         this.$store.dispatch('setForestArea', this.getForestArea)
+    //     } else {
+    //         console.log(true)
+    //     }
+    // }
 }
 </script>
 

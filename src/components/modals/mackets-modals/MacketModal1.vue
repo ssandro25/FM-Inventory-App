@@ -268,14 +268,45 @@ export default {
                 area: this.area
             }
 
-            if (!this.arr.mackets[0]) {
-                this.arr.mackets[0] = [macketObj];
+            if (!this.arr.mackets || !this.arr.mackets[0]) {
+                this.arr.mackets = [[], [], []]
+                this.arr.mackets[0] = [macketObj]
             } else {
                 this.arr.mackets[0] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
+        },
+
+        add1() {
+            this.arr = this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+                .find(item => item.id === parseInt(this.params.macketID));
+
+            let macketObj = {
+                id: 1,
+                soil_category: this.soil_category,
+                long_term_use_lease: this.long_term_use_lease,
+                exposition: this.exposition,
+                inclination: this.inclination,
+                elevation: this.elevation,
+                gfdu: this.gfdu,
+                erosion_type: this.erosion_type,
+                erosion_degree: this.erosion_degree,
+                area: this.area
+            };
+
+            if (!this.arr.mackets[0]) {
+                this.arr.mackets[0] = [];
+            }
+
+            this.arr.mackets[0].push(macketObj);
+
+            this.$store.dispatch('setForestArea', this.getForestArea);
         }
+
     },
 
 }

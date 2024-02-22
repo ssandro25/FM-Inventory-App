@@ -92,6 +92,20 @@ export default {
             }
         }
     },
+
+    // mounted() {
+    //     let checkMacket = this.getForestArea
+    //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+    //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
+    //         .find(item => item.id === parseInt(this.params.literID)).liters
+    //         .find(item => item.id === parseInt(this.$route.params.id)).mackets || false
+    //
+    //     console.log(Array.isArray(checkMacket), checkMacket)
+    //
+    //     if (Array.isArray(checkMacket)) {
+    //         checkMacket.mackets[0] = []
+    //     }
+    // }
 }
 </script>
 
