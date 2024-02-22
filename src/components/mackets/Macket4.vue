@@ -1,13 +1,12 @@
 <template>
-    <MacketModal3 :params="params"/>
-
+    <MacketModal4 :params="params"/>
     <button
         type="button"
         class="btn rounded-0 rounded-top btn-light w-100"
         data-bs-toggle="modal"
-        data-bs-target="#macket3"
+        data-bs-target="#macket4"
     >
-        3. ტყის ზოგადი მახასიათებლები
+        4. ჩახერგილობა
     </button>
 
     <div
@@ -16,27 +15,15 @@
         class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
     >
         <p class="mb-0">
-            3.1 გაბატონებული სახეობა - {{ item.dominant_species }}
+            4.1 ჩახერგილობა საერთოა - {{ item.deed_wood }}
         </p>
 
         <p class="mb-0">
-            3.2 ბონიტეტი - {{ item.site_index }}
+            4.2 ჩახერგილობა ლიკვიდი - {{ item.deed_wood_liquid }}
         </p>
 
         <p class="mb-0">
-            3.3 ბონიტეტის სახეობა - {{ item.site_index_type }}
-        </p>
-
-        <p class="mb-0">
-            3.4 ტყის ტიპი - {{ item.forest_type }}
-        </p>
-
-        <p class="mb-0">
-            3.5 ადგილსამყოფელის ტიპი - {{ item.location_type }}
-        </p>
-
-        <p class="mb-0">
-            3.6 ჭრის წელი - {{ item.cutting_year }}
+            4.3 ძველი ზეხმელის ჩახერგილობა - {{ item.old_deadwood }}
         </p>
     </div>
 
@@ -44,13 +31,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MacketModal3 from "@/components/modals/mackets-modals/MacketModal3.vue";
-
+import MacketModal4 from "@/components/modals/mackets-modals/MacketModal4.vue";
 export default {
-    name: "FMMacket3",
+    name: "FMMacket4",
 
     components: {
-        MacketModal3
+        MacketModal4
     },
 
     computed: {
@@ -62,11 +48,11 @@ export default {
         ]),
 
         macket() {
-            return this.getForestArea
+           return this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
                 .find(item => item.id === parseInt(this.params.quarterID)).quarters
                 .find(item => item.id === parseInt(this.params.literID)).liters
-                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[2] || []
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[3] || []
         },
 
         params() {
