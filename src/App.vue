@@ -34,7 +34,7 @@
 
                 <div class="d-flex flex-column justify-content-between gap-3">
                     <router-link
-                        :to="{ name: 'options' }"
+                        :to="{ name: 'profile' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                     >
                         <img src="@/assets/images/user.svg" width="12" alt="">
