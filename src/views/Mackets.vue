@@ -63,14 +63,20 @@
             </div>
 
             <div class="col-md-6">
-                <button class="btn btn-light w-100">
-                    32. ქვეტყე
-                </button>
+                <Macket32_7 />
             </div>
 
             <div class="col-12">
                 <button class="btn btn-light w-100">
                     23. უბნის თავისებურება (დამატებითი ინფორმაცია)
+                </button>
+            </div>
+        </div>
+
+        <div class="row row-cols-6 gy-4 mt-5">
+            <div v-for="n in 12" :key="n" class="col">
+                <button class="btn btn-light w-100">
+                    23. უბნის თავისებურება
                 </button>
             </div>
         </div>
@@ -85,7 +91,9 @@ import Macket3 from "@/components/mackets/Macket3.vue";
 import Macket4 from "@/components/mackets/Macket4.vue";
 import Macket5 from "@/components/mackets/Macket5.vue";
 import Macket31_6 from "@/components/mackets/Macket31_6.vue";
+import Macket32_7 from "@/components/mackets/Macket32_7.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
+
 
 export default {
     name: "FMMackets",
@@ -97,7 +105,8 @@ export default {
         Macket3,
         Macket4,
         Macket5,
-        Macket31_6
+        Macket31_6,
+        Macket32_7
     },
 
     computed: {

@@ -29,4 +29,9 @@ export default {
     getHeight: state => state.height,
     getAge: state => state.age,
     getGrowingTreesSpecies: state => state.growingTreesSpecies,
+
+    // 32_7 Macket
+    getDistribution: state => state.distribution,
+    getDistributionPercent: state => state.distributionPercent,
+    getTreeType: state => state.treeType
 }

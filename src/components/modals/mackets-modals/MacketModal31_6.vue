@@ -163,7 +163,7 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 4,
+                id: 31,
                 quantity: this.quantity,
                 height: this.height,
                 age: this.age,
@@ -172,7 +172,7 @@ export default {
             }
 
             if (!this.arr.mackets || !this.arr.mackets[5]) {
-                this.arr.mackets = [[], [], [], [], [], []]
+                this.arr.mackets = [[], [], [], [], [], [], []]
                 this.arr.mackets[5] = [macketObj]
             } else {
                 this.arr.mackets[5] = [macketObj]

@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket2"
+        id="macket32_7"
         tabindex="-1"
-        aria-labelledby="macket2Label"
+        aria-labelledby="macket32_7Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket2Label">
+                    <h1 class="modal-title fs-5" id="macket32_7Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,19 +19,19 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity1">
-                                2.1 ღონისძიება I
+                            <label class="form-label text-truncate w-100 mb-0" for="distribution">
+                                განფენილობა
                             </label>
 
                             <select
-                                v-model="activity1"
+                                v-model="distribution"
                                 class="form-select"
-                                id="activity1"
+                                id="distribution"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
+                                    v-for="item in getDistribution"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -40,32 +40,19 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity_percent">
-                                2.2 %
-                            </label>
-
-                            <input
-                                v-model="activity_percent"
-                                type="number"
-                                class="form-control"
-                                id="activity_percent"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity2">
-                                2.3 ღონისძიება II
+                            <label class="form-label text-truncate w-100 mb-0" for="distribution_percent">
+                                დაფ. %
                             </label>
 
                             <select
-                                v-model="activity2"
+                                v-model="distribution_percent"
                                 class="form-select"
-                                id="activity2"
+                                id="distribution_percent"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
+                                    v-for="item in getDistributionPercent"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -74,40 +61,19 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity3">
-                                2.3 ღონისძიება III
+                            <label class="form-label text-truncate w-100 mb-0" for="tree_type1">
+                                სახეობა 1
                             </label>
 
                             <select
-                                v-model="activity3"
+                                v-model="tree_type1"
                                 class="form-select"
-                                id="activity3"
+                                id="tree_type1"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="target_species">
-                                2.5 მიზნობრივი სახეობა
-                            </label>
-
-                            <select
-                                v-model="target_species"
-                                class="form-select"
-                                id="target_species"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getTargetSpecies"
+                                    v-for="item in getTreeType"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -136,16 +102,14 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal2",
+    name: "MacketModal32_7",
 
     data() {
         return {
             arr: null,
-            activity1: '',
-            activity2: '',
-            activity3: '',
-            activity_percent: null,
-            target_species: ''
+            distribution: '',
+            distribution_percent: '',
+            tree_type1: ''
         }
     },
 
@@ -156,8 +120,9 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getActivity',
-            'getTargetSpecies'
+            'getDistribution',
+            'getDistributionPercent',
+            'getTreeType'
         ])
     },
 
@@ -170,23 +135,21 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 2,
-                activity1: this.activity1,
-                activity2: this.activity2,
-                activity3: this.activity3,
-                activity_percent: this.activity_percent,
-                target_species: this.target_species
+                id: 32,
+                distribution: this.distribution,
+                distribution_percent: this.distribution_percent,
+                tree_type1: this.tree_type1
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[1]) {
+            if (!this.arr.mackets || !this.arr.mackets[6]) {
                 this.arr.mackets = [[], [], [], [], [], [], []]
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[6] = [macketObj]
             } else {
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[6] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
-        }
+        },
     },
 
 }
