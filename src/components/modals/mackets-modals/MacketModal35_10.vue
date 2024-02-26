@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket5"
+        id="macket35_10"
         tabindex="-1"
-        aria-labelledby="macket5Label"
+        aria-labelledby="macket35_10Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket5Label">
+                    <h1 class="modal-title fs-5" id="macket35_10Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,15 +19,28 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="yield_percent">
-                                5.1 გამოსავლიანობის პროცენტი
+                            <label class="form-label text-truncate w-100 mb-0" for="latitude_x">
+                                35.1. გრძედი (X)
                             </label>
 
                             <input
-                                v-model="yield_percent"
+                                v-model="latitude_x"
                                 type="number"
                                 class="form-control"
-                                id="yield_percent"
+                                id="latitude_x"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="latitude_y">
+                                35.2. განედი (Y)
+                            </label>
+
+                            <input
+                                v-model="latitude_y"
+                                type="number"
+                                class="form-control"
+                                id="latitude_y"
                             >
                         </div>
                     </div>
@@ -52,12 +65,13 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal5",
+    name: "MacketModal35_10",
 
     data() {
         return {
             arr: null,
-            yield_percent: null
+            latitude_x: null,
+            latitude_y: null
         }
     },
 
@@ -80,15 +94,16 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 4,
-                yield_percent: this.yield_percent
+                id: 35,
+                latitude_x: this.latitude_x,
+                latitude_y: this.latitude_y
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[4]) {
+            if (!this.arr.mackets || !this.arr.mackets[9]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[4] = [macketObj]
+                this.arr.mackets[9] = [macketObj]
             } else {
-                this.arr.mackets[4] = [macketObj]
+                this.arr.mackets[9] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
