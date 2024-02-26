@@ -46,4 +46,8 @@ export default {
     // 37_10 Macket
     getAnthropogenicTransformationType: state => state.anthropogenicTransformationType,
     getAnthropogenicTransformationQuality: state => state.anthropogenicTransformationQuality,
+
+    // 28_12 Macket
+    getAccessibilityCategory: state => state.accessibilityCategory,
+    getTransportType: state => state.transportType,
 }

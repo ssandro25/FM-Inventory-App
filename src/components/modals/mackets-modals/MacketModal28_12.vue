@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket31_6"
+        id="macket28_12"
         tabindex="-1"
-        aria-labelledby="macket31_6Label"
+        aria-labelledby="macket28_12Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket31_6Label">
+                    <h1 class="modal-title fs-5" id="macket28_12Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,92 +19,58 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="quantity">
-                                31.1 რაოდენობა
+                            <label class="form-label text-truncate w-100 mb-0" for="accessibility_category">
+                                28.1. მისადგომლობის კატეგორია
+                            </label>
+
+                            <select
+                                v-model="accessibility_category"
+                                class="form-select"
+                                id="accessibility_category"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getAccessibilityCategory"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="transport_type">
+                                28.2. ტრანსპორტის სახე
+                            </label>
+
+                            <select
+                                v-model="transport_type"
+                                class="form-select"
+                                id="transport_type"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getTransportType"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="road_away">
+                                28.3. გზიდან დაშორება
                             </label>
 
                             <input
-                                v-model="quantity"
+                                v-model="road_away"
                                 type="number"
                                 class="form-control"
-                                id="quantity"
+                                id="road_away"
                             >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="height">
-                                31.2 სიმაღლე
-                            </label>
-
-                            <select
-                                v-model="height"
-                                class="form-select"
-                                id="height"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getHeight"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="age">
-                                31.3 ასაკი
-                            </label>
-
-                            <select
-                                v-model="age"
-                                class="form-select"
-                                id="age"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getAge"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="coefficient1">
-                                კოეფ. 1
-                            </label>
-
-                            <input
-                                v-model="coefficient1"
-                                type="number"
-                                class="form-control"
-                                id="coefficient1"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="growing_trees_species">
-                                სახეობა 1
-                            </label>
-
-                            <select
-                                v-model="growing_trees_species"
-                                class="form-select"
-                                id="growing_trees_species"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getGrowingTreesSpecies"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
                         </div>
                     </div>
 
@@ -128,16 +94,14 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal31_6",
+    name: "MacketModal28_12",
 
     data() {
         return {
             arr: null,
-            quantity: null,
-            height: '',
-            age: '',
-            coefficient1: null,
-            growing_trees_species: ''
+            accessibility_category: '',
+            transport_type: '',
+            road_away: null
         }
     },
 
@@ -148,9 +112,8 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getHeight',
-            'getAge',
-            'getGrowingTreesSpecies'
+            'getAccessibilityCategory',
+            'getTransportType'
         ])
     },
 
@@ -163,19 +126,17 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 31,
-                quantity: this.quantity,
-                height: this.height,
-                age: this.age,
-                coefficient1: this.coefficient1,
-                growing_trees_species: this.growing_trees_species
+                id: 28,
+                accessibility_category: this.accessibility_category,
+                transport_type: this.transport_type,
+                road_away: this.road_away
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[5]) {
+            if (!this.arr.mackets || !this.arr.mackets[11]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[5] = [macketObj]
+                this.arr.mackets[11] = [macketObj]
             } else {
-                this.arr.mackets[5] = [macketObj]
+                this.arr.mackets[11] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
