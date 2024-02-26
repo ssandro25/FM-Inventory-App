@@ -26,6 +26,18 @@
         <p class="mb-0">
             სახეობა 1 - {{ item.tree_type1 }}
         </p>
+
+        <p class="mb-0">
+            სახეობა 2 - {{ item.tree_type2 }}
+        </p>
+
+        <p class="mb-0">
+            სახეობა 3 - {{ item.tree_type3 }}
+        </p>
+
+        <p class="mb-0">
+            სიმაღლე - {{ item.tree_height }}
+        </p>
     </div>
 
 </template>

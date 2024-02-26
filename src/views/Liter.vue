@@ -8,6 +8,13 @@
             <h1 class="text-white mb-0">ლიტერები</h1>
         </div>
 
+        <button
+            class="btn btn-primary btn-lg"
+            @click="downloadCSV"
+        >
+
+        </button>
+
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
@@ -90,11 +97,77 @@ export default {
         }
     },
 
+    methods: {
+        downloadCSV1() {
+            // Sample data
+            // const data = [
+            //     { name: 'John', age: 30, city: 'New York' },
+            //     { name: 'Jane', age: 25, city: 'Los Angeles' },
+            //     { name: 'Doe', age: 40, city: 'Chicago' }
+            // ];
+
+            // Convert data to CSV format
+            const csvContent = this.convertToCSV(this.liters);
+
+            // Create a Blob object
+            const blob = new Blob([csvContent], { type: 'text/csv' });
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = window.URL.createObjectURL(blob);
+            a.download = 'data.csv';
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            window.URL.revokeObjectURL(a.href);
+            document.body.removeChild(a);
+        },
+        convertToCSV1(data) {
+            const header = Object.keys(data[0]).join(',') + '\n';
+            const rows = data.map(obj => Object.values(obj).join(','));
+            return header + rows.join('\n');
+        },
+
+
+
+        downloadCSV() {
+            // Sample data
+            const data = [
+                { name: 'John', age: 30, city: 'New York' },
+                { name: 'Jane', age: 25, city: 'Los Angeles' },
+                { name: 'Doe', age: 40, city: 'Chicago' }
+            ];
+
+            // Convert data to CSV format
+            const csvContent = this.convertToCSV(data);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = 'data.csv';
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV(data) {
+            const header = Object.keys(data[0]).join(',') + '\n';
+            const rows = data.map(obj => Object.values(obj).join(','));
+            return header + rows.join('\n');
+        }
+    },
+
 
     mounted() {
         this.$store.dispatch('setLiterID', this.$route.params.id)
 
-        // console.log(this.liters)
+        console.log(Array.isArray(this.liters), this.liters)
 
         // this.liters = this.getForestArea
         //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry

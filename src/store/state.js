@@ -433,4 +433,10 @@ export default {
         {id: '197', name: 'სურო ჩვეულებრივი'},
         {id: '198', name: 'სურო კოლხური'},
     ],
+
+    treeHeight: [
+        {id: '1', name: 'A'},
+        {id: '2', name: 'B'},
+        {id: '3', name: 'C'},
+    ],
 }

@@ -73,10 +73,76 @@
             </div>
         </div>
 
-        <div class="row row-cols-6 gy-4 mt-5">
-            <div v-for="n in 12" :key="n" class="col">
-                <button class="btn btn-light w-100">
-                    23. უბნის თავისებურება
+        <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    24. ნიადაგის დახასიათება
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    35. კოორდინატები
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    37. ანთროპოგენული ტრანსფორმაციის ტიპი
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    22. ბაღები,პლანტაციები
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    36. წყლები
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    28. გზით უზრუნველყოფა
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    40. შეფასება
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    33. ბიომრავალფეროვნება
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    42. ცხოველთა სამყარო
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    16. არამერქნული ნედლელი
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    17. სასოფლო-სამეურნეო სავარგულები
+                </button>
+            </div>
+
+            <div class="col">
+                <button class="btn btn-light w-100 text-truncate">
+                    14. ბალახეული მცენარეები და კენკროვნები
                 </button>
             </div>
         </div>

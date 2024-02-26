@@ -80,6 +80,69 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="tree_type2">
+                                სახეობა 2
+                            </label>
+
+                            <select
+                                v-model="tree_type2"
+                                class="form-select"
+                                id="tree_type2"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getTreeType"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="tree_type2">
+                                სახეობა 3
+                            </label>
+
+                            <select
+                                v-model="tree_type2"
+                                class="form-select"
+                                id="tree_type2"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getTreeType"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="tree_height">
+                                სიმაღლე 3
+                            </label>
+
+                            <select
+                                v-model="tree_height"
+                                class="form-select"
+                                id="tree_height"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getTreeHeight"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
                     </div>
 
                 </div>
@@ -109,7 +172,10 @@ export default {
             arr: null,
             distribution: '',
             distribution_percent: '',
-            tree_type1: ''
+            tree_type1: '',
+            tree_type2: '',
+            tree_type3: '',
+            tree_height: ''
         }
     },
 
@@ -122,7 +188,8 @@ export default {
             'getForestArea',
             'getDistribution',
             'getDistributionPercent',
-            'getTreeType'
+            'getTreeType',
+            'getTreeHeight'
         ])
     },
 
@@ -138,7 +205,10 @@ export default {
                 id: 32,
                 distribution: this.distribution,
                 distribution_percent: this.distribution_percent,
-                tree_type1: this.tree_type1
+                tree_type1: this.tree_type1,
+                tree_type2: this.tree_type2,
+                tree_type3: this.tree_type3,
+                tree_height: this.tree_height
             }
 
             if (!this.arr.mackets || !this.arr.mackets[6]) {

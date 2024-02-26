@@ -10,6 +10,13 @@
         31. მოზარდი
     </button>
 
+    <button
+        class="btn btn-primary btn-lg"
+        @click="downloadCSV"
+    >
+        გადმოწერა
+    </button>
+
     <div
         v-for="(item, index) in macket"
         :key="index"
@@ -74,6 +81,37 @@ export default {
             }
         }
     },
+
+    methods: {
+        downloadCSV() {
+            // Sample data
+            // const data = [
+            //     { name: 'John', age: 30, city: 'New York' },
+            //     { name: 'Jane', age: 25, city: 'Los Angeles' },
+            //     { name: 'Doe', age: 40, city: 'Chicago' }
+            // ];
+
+            // Convert data to CSV format
+            const csvContent = this.convertToCSV(this.macket);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = 'data.csv';
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV(data) {
+            const header = Object.keys(data[0]).join(',') + '\n';
+            const rows = data.map(obj => Object.values(obj).join(','));
+            return header + rows.join('\n');
+        }
+    }
 }
 </script>
 

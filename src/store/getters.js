@@ -33,5 +33,6 @@ export default {
     // 32_7 Macket
     getDistribution: state => state.distribution,
     getDistributionPercent: state => state.distributionPercent,
-    getTreeType: state => state.treeType
+    getTreeType: state => state.treeType,
+    getTreeHeight: state => state.treeHeight
 }
