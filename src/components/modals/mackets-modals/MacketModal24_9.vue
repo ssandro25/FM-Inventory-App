@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket2"
+        id="macket24_9"
         tabindex="-1"
-        aria-labelledby="macket2Label"
+        aria-labelledby="macket24_9Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket2Label">
+                    <h1 class="modal-title fs-5" id="macket24_9Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,19 +19,19 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity1">
-                                2.1 ღონისძიება I
+                            <label class="form-label text-truncate w-100 mb-0" for="soil_character">
+                                24.1. ნიადაგის ჯგუფი
                             </label>
 
                             <select
-                                v-model="activity1"
+                                v-model="soil_character"
                                 class="form-select"
-                                id="activity1"
+                                id="soil_character"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getActivity"
+                                    v-for="item in getSoilCharacter"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
@@ -40,79 +40,100 @@
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity_percent">
-                                2.2 %
+                            <label class="form-label text-truncate w-100 mb-0" for="soil_mechanical_composition">
+                                24.2. ნიადაგის მექანიკური შემადგენლობა
+                            </label>
+
+                            <select
+                                v-model="soil_mechanical_composition"
+                                class="form-select"
+                                id="soil_mechanical_composition"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getSoilMechanicalComposition"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="moisture_degree">
+                                24.3. სინესტის ხარისხი
+                            </label>
+
+                            <select
+                                v-model="moisture_degree"
+                                class="form-select"
+                                id="moisture_degree"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getMoistureDegree"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="chords_quality">
+                                24.4. დაკორდების ხარისხი
+                            </label>
+
+                            <select
+                                v-model="chords_quality"
+                                class="form-select"
+                                id="chords_quality"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getChordsQuality"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="soil_density">
+                                24.5. ნიადაგის სიმკვრივე
+                            </label>
+
+                            <select
+                                v-model="soil_density"
+                                class="form-select"
+                                id="soil_density"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getSoilDensity"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="mother_rock_coverage">
+                                24.6. დედაქანის დაფარულობის %
                             </label>
 
                             <input
-                                v-model="activity_percent"
+                                v-model="mother_rock_coverage"
                                 type="number"
                                 class="form-control"
-                                id="activity_percent"
+                                id="mother_rock_coverage"
                             >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity2">
-                                2.3 ღონისძიება II
-                            </label>
-
-                            <select
-                                v-model="activity2"
-                                class="form-select"
-                                id="activity2"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getActivity"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="activity3">
-                                2.3 ღონისძიება III
-                            </label>
-
-                            <select
-                                v-model="activity3"
-                                class="form-select"
-                                id="activity3"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getActivity"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="target_species">
-                                2.5 მიზნობრივი სახეობა
-                            </label>
-
-                            <select
-                                v-model="target_species"
-                                class="form-select"
-                                id="target_species"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getTargetSpecies"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
                         </div>
                     </div>
 
@@ -136,16 +157,17 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal2",
+    name: "MacketModal24_9",
 
     data() {
         return {
             arr: null,
-            activity1: '',
-            activity2: '',
-            activity3: '',
-            activity_percent: null,
-            target_species: ''
+            soil_character: '',
+            soil_mechanical_composition: '',
+            moisture_degree: '',
+            chords_quality: '',
+            soil_density: '',
+            mother_rock_coverage: ''
         }
     },
 
@@ -156,8 +178,11 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getActivity',
-            'getTargetSpecies'
+            'getSoilCharacter',
+            'getSoilMechanicalComposition',
+            'getMoistureDegree',
+            'getChordsQuality',
+            'getSoilDensity'
         ])
     },
 
@@ -170,23 +195,24 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 2,
-                activity1: this.activity1,
-                activity2: this.activity2,
-                activity3: this.activity3,
-                activity_percent: this.activity_percent,
-                target_species: this.target_species
+                id: 24,
+                soil_character: this.soil_character,
+                soil_mechanical_composition: this.soil_mechanical_composition,
+                moisture_degree: this.moisture_degree,
+                chords_quality: this.chords_quality,
+                soil_density: this.soil_density,
+                mother_rock_coverage: this.mother_rock_coverage
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[1]) {
+            if (!this.arr.mackets || !this.arr.mackets[8]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], []]
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[8] = [macketObj]
             } else {
-                this.arr.mackets[1] = [macketObj]
+                this.arr.mackets[8] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
-        }
+        },
     },
 
 }

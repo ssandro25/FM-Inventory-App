@@ -34,5 +34,12 @@ export default {
     getDistribution: state => state.distribution,
     getDistributionPercent: state => state.distributionPercent,
     getTreeType: state => state.treeType,
-    getTreeHeight: state => state.treeHeight
+    getTreeHeight: state => state.treeHeight,
+
+    // 24_9 Macket
+    getSoilCharacter: state => state.soilCharacter,
+    getSoilMechanicalComposition: state => state.soilMechanicalComposition,
+    getMoistureDegree: state => state.moistureDegree,
+    getChordsQuality: state => state.chordsQuality,
+    getSoilDensity: state => state.soilDensity,
 }

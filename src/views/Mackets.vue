@@ -73,9 +73,7 @@
 
         <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
             <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    24. ნიადაგის დახასიათება
-                </button>
+                <Macket24_9 />
             </div>
 
             <div class="col">
@@ -157,7 +155,9 @@ import Macket5 from "@/components/mackets/Macket5.vue";
 import Macket31_6 from "@/components/mackets/Macket31_6.vue";
 import Macket32_7 from "@/components/mackets/Macket32_7.vue";
 import Macket23_8 from "@/components/mackets/Macket23_8.vue";
+import Macket24_9 from "@/components/mackets/Macket24_9.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
+
 
 
 export default {
@@ -172,7 +172,8 @@ export default {
         Macket5,
         Macket31_6,
         Macket32_7,
-        Macket23_8
+        Macket23_8,
+        Macket24_9
     },
 
     computed: {

@@ -439,4 +439,41 @@ export default {
         {id: '2', name: 'B'},
         {id: '3', name: 'C'},
     ],
+
+    // 24_9 Macket
+    soilCharacter: [
+        {id: '1', name: 'A'},
+        {id: '2', name: 'B'},
+        {id: '3', name: 'C'},
+    ],
+
+    soilMechanicalComposition  : [
+        {id: '1', name: '1 - ქვიშნარი'},
+        {id: '2', name: '2 - თიხნარი'},
+        {id: '3', name: '3 - მსუბუქ.თიხნ.'},
+        {id: '4', name: '4 - საშ.თიხნარი'},
+        {id: '5', name: '5 - ძლიერი თიხნ'},
+        {id: '6', name: '6 - თიხა'},
+    ],
+
+    moistureDegree: [
+        {id: '1', name: '1 - ძლიერ მშრალი'},
+        {id: '2', name: '2 - მშრალი'},
+        {id: '3', name: '3 - გრილი'},
+        {id: '4', name: '4 - ტენიანი'},
+        {id: '5', name: '5 - ჭარბტენიანი'},
+    ],
+
+    chordsQuality: [
+        {id: '1', name: '1 - სუსტი'},
+        {id: '2', name: '2 - საშუალო'},
+        {id: '3', name: '3 - ძლიერი'},
+        {id: '4', name: '4 - დაკორდება არ არის'},
+    ],
+
+    soilDensity: [
+        {id: '1', name: '1 - სუსტი'},
+        {id: '2', name: '2 - საშუალო'},
+        {id: '3', name: '3 - ძლიერი'},
+    ]
 }
