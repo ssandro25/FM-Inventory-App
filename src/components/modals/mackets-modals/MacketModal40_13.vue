@@ -86,6 +86,7 @@
                             >
                         </div>
                     </div>
+
                 </div>
 
                 <div class="modal-footer border-0 justify-content-center">
@@ -147,7 +148,7 @@ export default {
             }
 
             if (!this.arr.mackets || !this.arr.mackets[12]) {
-                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], []]
+                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], []]
                 this.arr.mackets[12] = [macketObj]
             } else {
                 this.arr.mackets[12] = [macketObj]

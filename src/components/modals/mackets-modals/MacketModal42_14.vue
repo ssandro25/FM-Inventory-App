@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket35_10"
+        id="macket42_14"
         tabindex="-1"
-        aria-labelledby="macket35_10Label"
+        aria-labelledby="macket42_14Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket35_10Label">
+                    <h1 class="modal-title fs-5" id="macket42_14Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,28 +19,54 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="latitude_x">
-                                35.1. გრძედი (X)
+                            <label class="form-label text-truncate w-100 mb-0" for="nests">
+                                40.1. დაზიანების კლასი
                             </label>
 
                             <input
-                                v-model="latitude_x"
+                                v-model="nests"
                                 type="number"
                                 class="form-control"
-                                id="latitude_x"
+                                id="nests"
                             >
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="latitude_y">
-                                35.2. განედი (Y)
+                            <label class="form-label text-truncate w-100 mb-0" for="overgrown_trees">
+                                42.2. გადაბერებული ხეები ფუღუროთი
                             </label>
 
                             <input
-                                v-model="latitude_y"
+                                v-model="overgrown_trees"
                                 type="number"
                                 class="form-control"
-                                id="latitude_y"
+                                id="overgrown_trees"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="ant_nests">
+                                42.3. ჭიანჭველების ბუდეები -
+                            </label>
+
+                            <input
+                                v-model="ant_nests"
+                                type="number"
+                                class="form-control"
+                                id="ant_nests"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="location">
+                                42.4. ადგილსამყოფელი
+                            </label>
+
+                            <input
+                                v-model="location"
+                                type="number"
+                                class="form-control"
+                                id="location"
                             >
                         </div>
                     </div>
@@ -65,13 +91,15 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal35_10",
+    name: "MacketModal42_14",
 
     data() {
         return {
             arr: null,
-            latitude_x: null,
-            latitude_y: null
+            nests: null,
+            overgrown_trees: null,
+            ant_nests: null,
+            location: null
         }
     },
 
@@ -94,16 +122,18 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 35,
-                latitude_x: this.latitude_x,
-                latitude_y: this.latitude_y
+                id: 42,
+                nests: this.nests,
+                overgrown_trees: this.overgrown_trees,
+                ant_nests: this.ant_nests,
+                location: this.location
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[9]) {
+            if (!this.arr.mackets || !this.arr.mackets[13]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[9] = [macketObj]
+                this.arr.mackets[13] = [macketObj]
             } else {
-                this.arr.mackets[9] = [macketObj]
+                this.arr.mackets[13] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
