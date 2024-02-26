@@ -42,4 +42,8 @@ export default {
     getMoistureDegree: state => state.moistureDegree,
     getChordsQuality: state => state.chordsQuality,
     getSoilDensity: state => state.soilDensity,
+
+    // 37_10 Macket
+    getAnthropogenicTransformationType: state => state.anthropogenicTransformationType,
+    getAnthropogenicTransformationQuality: state => state.anthropogenicTransformationQuality,
 }

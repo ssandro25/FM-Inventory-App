@@ -81,9 +81,7 @@
             </div>
 
             <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    37. ანთროპოგენული ტრანსფორმაციის ტიპი
-                </button>
+               <Macket37_11 />
             </div>
 
             <div class="col">
@@ -155,6 +153,7 @@ import Macket32_7 from "@/components/mackets/Macket32_7.vue";
 import Macket23_8 from "@/components/mackets/Macket23_8.vue";
 import Macket24_9 from "@/components/mackets/Macket24_9.vue";
 import Macket35_10 from "@/components/mackets/Macket35_10.vue";
+import Macket37_11 from "@/components/mackets/Macket37_11.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 
@@ -173,7 +172,8 @@ export default {
         Macket32_7,
         Macket23_8,
         Macket24_9,
-        Macket35_10
+        Macket35_10,
+        Macket37_11
     },
 
     computed: {

@@ -475,5 +475,20 @@ export default {
         {id: '1', name: '1 - სუსტი'},
         {id: '2', name: '2 - საშუალო'},
         {id: '3', name: '3 - ძლიერი'},
+    ],
+
+    // 37_10 Macket
+    anthropogenicTransformationType: [
+        {id: '1', name: '1 - კორომი გავლითი ჭრით'},
+        {id: '2', name: '2 - წარმოებს ძოვება ან თიბვა'},
+        {id: '3', name: '3 - გამოიყენება რეკრეაციული მიზნებით'},
+        {id: '4', name: '4 - ხელუხლებელი ტყეები'},
+    ],
+
+    anthropogenicTransformationQuality: [
+        {id: '1', name: '1 - ძალიან ძლიერი'},
+        {id: '2', name: '2 - ძლიერი'},
+        {id: '3', name: '3 - საშუალო'},
+        {id: '4', name: '4 - სუსტი'},
     ]
 }
