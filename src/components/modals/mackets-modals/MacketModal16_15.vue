@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket28_12"
+        id="macket16_15"
         tabindex="-1"
-        aria-labelledby="macket28_12Label"
+        aria-labelledby="macket16_15Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket28_12Label">
+                    <h1 class="modal-title fs-5" id="macket16_15Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,58 +19,24 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="accessibility_category">
-                                28.1. მისადგომლობის კატეგორია
+                            <label class="form-label text-truncate w-100 mb-0" for="raw_material_category">
+                                ნედლეულის კატეგორია
                             </label>
 
                             <select
-                                v-model="accessibility_category"
+                                v-model="raw_material_category"
                                 class="form-select"
-                                id="accessibility_category"
+                                id="raw_material_category"
                             >
                                 <option>აირჩიეთ</option>
 
                                 <option
-                                    v-for="item in getAccessibilityCategory"
+                                    v-for="item in getRawMaterialCategory"
                                     :key="item.id"
                                 >
                                     {{ item.name }}
                                 </option>
                             </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="transport_type">
-                                28.2. ტრანსპორტის სახე
-                            </label>
-
-                            <select
-                                v-model="transport_type"
-                                class="form-select"
-                                id="transport_type"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getTransportType"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="road_away">
-                                28.3. გზიდან დაშორება
-                            </label>
-
-                            <input
-                                v-model="road_away"
-                                type="number"
-                                class="form-control"
-                                id="road_away"
-                            >
                         </div>
                     </div>
 
@@ -94,14 +60,12 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal28_12",
+    name: "MacketModal16_15",
 
     data() {
         return {
             arr: null,
-            accessibility_category: '',
-            transport_type: '',
-            road_away: null
+            raw_material_category: ''
         }
     },
 
@@ -112,8 +76,7 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getAccessibilityCategory',
-            'getTransportType'
+            'getRawMaterialCategory'
         ])
     },
 
@@ -126,17 +89,15 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 28,
-                accessibility_category: this.accessibility_category,
-                transport_type: this.transport_type,
-                road_away: this.road_away
+                id: 16,
+                raw_material_category: this.raw_material_category
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[11]) {
+            if (!this.arr.mackets || !this.arr.mackets[14]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[11] = [macketObj]
+                this.arr.mackets[14] = [macketObj]
             } else {
-                this.arr.mackets[11] = [macketObj]
+                this.arr.mackets[14] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)

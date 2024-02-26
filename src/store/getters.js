@@ -54,4 +54,7 @@ export default {
     // 40_13 Macket
     getDisasterType: state => state.disasterType,
     getSustainability: state => state.sustainability,
+
+    // 16_15 Macket
+    getRawMaterialCategory: state => state.rawMaterialCategory,
 }

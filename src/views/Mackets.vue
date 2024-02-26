@@ -115,9 +115,7 @@
             </div>
 
             <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    16. არამერქნული ნედლელი
-                </button>
+               <Macket16_15 />
             </div>
 
             <div class="col">
@@ -151,6 +149,7 @@ import Macket37_11 from "@/components/mackets/Macket37_11.vue";
 import Macket28_12 from "@/components/mackets/Macket28_12.vue";
 import Macket40_13 from "@/components/mackets/Macket40_13.vue";
 import Macket42_14 from "@/components/mackets/Macket42_14.vue";
+import Macket16_15 from "@/components/mackets/Macket16_15.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 
@@ -173,7 +172,8 @@ export default {
         Macket37_11,
         Macket28_12,
         Macket40_13,
-        Macket42_14
+        Macket42_14,
+        Macket16_15
     },
 
     computed: {
