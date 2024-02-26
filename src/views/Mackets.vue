@@ -67,9 +67,7 @@
             </div>
 
             <div class="col-12">
-                <button class="btn btn-light w-100">
-                    23. უბნის თავისებურება (დამატებითი ინფორმაცია)
-                </button>
+               <Macket23_8 />
             </div>
         </div>
 
@@ -158,6 +156,7 @@ import Macket4 from "@/components/mackets/Macket4.vue";
 import Macket5 from "@/components/mackets/Macket5.vue";
 import Macket31_6 from "@/components/mackets/Macket31_6.vue";
 import Macket32_7 from "@/components/mackets/Macket32_7.vue";
+import Macket23_8 from "@/components/mackets/Macket23_8.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
 
@@ -172,7 +171,8 @@ export default {
         Macket4,
         Macket5,
         Macket31_6,
-        Macket32_7
+        Macket32_7,
+        Macket23_8
     },
 
     computed: {

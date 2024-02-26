@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket5"
+        id="macket23_8"
         tabindex="-1"
-        aria-labelledby="macket5Label"
+        aria-labelledby="macket23_8Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket5Label">
+                    <h1 class="modal-title fs-5" id="macket23_8Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -18,17 +18,17 @@
 
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
+
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="yield_percent">
-                                5.1 გამოსავლიანობის პროცენტი
+                            <label class="form-label text-truncate w-100 mb-0" for="comment">
+                                კომენტარი
                             </label>
 
-                            <input
-                                v-model="yield_percent"
-                                type="number"
-                                class="form-control"
-                                id="yield_percent"
-                            >
+                           <textarea
+                               v-model="comment"
+                               id="comment"
+                               class="form-control"
+                           ></textarea>
                         </div>
                     </div>
 
@@ -52,12 +52,12 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal5",
+    name: "MacketModal23_8",
 
     data() {
         return {
             arr: null,
-            yield_percent: null
+            comment: '',
         }
     },
 
@@ -80,15 +80,15 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 4,
-                yield_percent: this.yield_percent
+                id: 23,
+                comment: this.comment,
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[4]) {
+            if (!this.arr.mackets || !this.arr.mackets[7]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], []]
-                this.arr.mackets[4] = [macketObj]
+                this.arr.mackets[7] = [macketObj]
             } else {
-                this.arr.mackets[4] = [macketObj]
+                this.arr.mackets[7] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
