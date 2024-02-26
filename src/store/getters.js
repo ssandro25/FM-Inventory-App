@@ -50,4 +50,8 @@ export default {
     // 28_12 Macket
     getAccessibilityCategory: state => state.accessibilityCategory,
     getTransportType: state => state.transportType,
+
+    // 40_13 Macket
+    getDisasterType: state => state.disasterType,
+    getSustainability: state => state.sustainability,
 }

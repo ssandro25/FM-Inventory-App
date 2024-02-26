@@ -1,15 +1,15 @@
 <template>
     <div
         class="modal fade"
-        id="macket31_6"
+        id="macket40_13"
         tabindex="-1"
-        aria-labelledby="macket31_6Label"
+        aria-labelledby="macket40_13Label"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket31_6Label">
+                    <h1 class="modal-title fs-5" id="macket40_13Label">
                         ახალი ლიტერის დამატება
                     </h1>
                     <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
@@ -19,95 +19,73 @@
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="quantity">
-                                31.1 რაოდენობა
+                            <label class="form-label text-truncate w-100 mb-0" for="disaster_type">
+                                40.1. ტიპი
+                            </label>
+
+                            <select
+                                v-model="disaster_type"
+                                class="form-select"
+                                id="disaster_type"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getDisasterType"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="sustainability">
+                                40.1. მდგრადობა
+                            </label>
+
+                            <select
+                                v-model="sustainability"
+                                class="form-select"
+                                id="sustainability"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getSustainability"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="fire_hazard_class">
+                                40.3. ხანძრის საშიშროების კლასი
                             </label>
 
                             <input
-                                v-model="quantity"
+                                v-model="fire_hazard_class"
                                 type="number"
                                 class="form-control"
-                                id="quantity"
+                                id="fire_hazard_class"
                             >
                         </div>
 
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="height">
-                                31.2 სიმაღლე
-                            </label>
-
-                            <select
-                                v-model="height"
-                                class="form-select"
-                                id="height"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getHeight"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="age">
-                                31.3 ასაკი
-                            </label>
-
-                            <select
-                                v-model="age"
-                                class="form-select"
-                                id="age"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getAge"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="coefficient1">
-                                კოეფ. 1
+                            <label class="form-label text-truncate w-100 mb-0" for="damage_class">
+                                40.4. დაზიანების კლასი
                             </label>
 
                             <input
-                                v-model="coefficient1"
+                                v-model="damage_class"
                                 type="number"
                                 class="form-control"
-                                id="coefficient1"
+                                id="damage_class"
                             >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="growing_trees_species">
-                                სახეობა 1
-                            </label>
-
-                            <select
-                                v-model="growing_trees_species"
-                                class="form-select"
-                                id="growing_trees_species"
-                            >
-                                <option>აირჩიეთ</option>
-
-                                <option
-                                    v-for="item in getGrowingTreesSpecies"
-                                    :key="item.id"
-                                >
-                                    {{ item.name }}
-                                </option>
-                            </select>
                         </div>
                     </div>
-
                 </div>
 
                 <div class="modal-footer border-0 justify-content-center">
@@ -128,16 +106,15 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal31_6",
+    name: "MacketModal40_13",
 
     data() {
         return {
             arr: null,
-            quantity: null,
-            height: '',
-            age: '',
-            coefficient1: null,
-            growing_trees_species: ''
+            disaster_type: '',
+            sustainability: '',
+            fire_hazard_class: null,
+            damage_class: null
         }
     },
 
@@ -148,9 +125,8 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getHeight',
-            'getAge',
-            'getGrowingTreesSpecies'
+            'getDisasterType',
+            'getSustainability'
         ])
     },
 
@@ -163,19 +139,18 @@ export default {
                 .find(item => item.id === parseInt(this.params.macketID))
 
             let macketObj = {
-                id: 31,
-                quantity: this.quantity,
-                height: this.height,
-                age: this.age,
-                coefficient1: this.coefficient1,
-                growing_trees_species: this.growing_trees_species
+                id: 40,
+                disaster_type: this.disaster_type,
+                sustainability: this.sustainability,
+                fire_hazard_class: this.fire_hazard_class,
+                damage_class: this.damage_class
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[5]) {
+            if (!this.arr.mackets || !this.arr.mackets[12]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[5] = [macketObj]
+                this.arr.mackets[12] = [macketObj]
             } else {
-                this.arr.mackets[5] = [macketObj]
+                this.arr.mackets[12] = [macketObj]
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
