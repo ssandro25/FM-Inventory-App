@@ -18,6 +18,30 @@
         <p class="mb-0">
             ნედლეულის კატეგორია - {{ item.raw_material_category }}
         </p>
+
+        <p class="mb-0">
+            მერქნიანი სახეობა - {{ item.woody_species }}
+        </p>
+
+        <p class="mb-0">
+            ხნოვანება, წელი - {{ item.year }}
+        </p>
+
+        <p class="mb-0">
+            სიმაღლე, 0,1მ სიზუსტით - {{ item.height }}
+        </p>
+
+        <p class="mb-0">
+            ზომის ერთეული - {{ item.unit }}
+        </p>
+
+        <p class="mb-0">
+            მოსავლიანობა 1 ჰა-ზე სიზუსტით 0,1-მდე - {{ item.yield_accuracy }}
+        </p>
+
+        <p class="mb-0">
+            მისადგომი შეგროვებისათვის - {{ item.accessible }}
+        </p>
     </div>
 
 </template>

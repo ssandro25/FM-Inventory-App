@@ -38,6 +38,109 @@
                                 </option>
                             </select>
                         </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="woody_species">
+                                ნედლეულის კატეგორია
+                            </label>
+
+                            <select
+                                v-model="woody_species"
+                                class="form-select"
+                                id="woody_species"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getWoodySpecies"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="year">
+                                ხნოვანება, წელი
+                            </label>
+
+                            <input
+                                v-model="year"
+                                type="number"
+                                class="form-control"
+                                id="year"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="height">
+                                სიმაღლე, 0,1მ სიზუსტით
+                            </label>
+
+                            <input
+                                v-model="height"
+                                type="number"
+                                class="form-control"
+                                id="height"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="unit">
+                                ზომის ერთეული
+                            </label>
+
+                            <select
+                                v-model="unit"
+                                class="form-select"
+                                id="unit"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getUnit"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="yield">
+                                მოსავლიანობა 1 ჰა-ზე სიზუსტით 0,1-მდე
+                            </label>
+
+                            <input
+                                v-model="yield_accuracy"
+                                type="number"
+                                class="form-control"
+                                id="yield"
+                            >
+                        </div>
+
+                        <div class="d-flex align-items-center gap-2">
+                            <label class="form-label text-truncate w-100 mb-0" for="accessible">
+                                მისადგომი შეგროვებისათვის
+                            </label>
+
+                            <select
+                                v-model="accessible"
+                                class="form-select"
+                                id="accessible"
+                            >
+                                <option>აირჩიეთ</option>
+
+                                <option
+                                    v-for="item in getAccessible"
+                                    :key="item.id"
+                                >
+                                    {{ item.name }}
+                                </option>
+                            </select>
+                        </div>
+
                     </div>
 
                 </div>
@@ -65,7 +168,13 @@ export default {
     data() {
         return {
             arr: null,
-            raw_material_category: ''
+            raw_material_category: '',
+            woody_species: '',
+            year: null,
+            height: null,
+            unit: '',
+            yield_accuracy: null,
+            accessible: ''
         }
     },
 
@@ -76,7 +185,10 @@ export default {
     computed: {
         ...mapGetters([
             'getForestArea',
-            'getRawMaterialCategory'
+            'getRawMaterialCategory',
+            'getWoodySpecies',
+            'getUnit',
+            'getAccessible'
         ])
     },
 
@@ -90,7 +202,13 @@ export default {
 
             let macketObj = {
                 id: 16,
-                raw_material_category: this.raw_material_category
+                raw_material_category: this.raw_material_category,
+                woody_species: this.woody_species,
+                year: this.year,
+                height: this.height,
+                unit: this.unit,
+                yield_accuracy: this.yield_accuracy,
+                accessible: this.accessible
             }
 
             if (!this.arr.mackets || !this.arr.mackets[14]) {

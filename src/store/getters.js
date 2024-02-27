@@ -57,4 +57,7 @@ export default {
 
     // 16_15 Macket
     getRawMaterialCategory: state => state.rawMaterialCategory,
+    getWoodySpecies: state => state.woodySpecies,
+    getUnit: state => state.unit,
+    getAccessible: state => state.accessible,
 }
