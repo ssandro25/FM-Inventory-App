@@ -212,7 +212,7 @@ export default {
             }
 
             if (!this.arr.mackets || !this.arr.mackets[14]) {
-                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
                 this.arr.mackets[14] = [macketObj]
             } else {
                 this.arr.mackets[14] = [macketObj]

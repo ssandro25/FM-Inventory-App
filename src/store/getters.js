@@ -60,4 +60,8 @@ export default {
     getWoodySpecies: state => state.woodySpecies,
     getUnit: state => state.unit,
     getAccessible: state => state.accessible,
+
+    // 14_16 Macket
+    getAccountingCategory: state => state.accountingCategory,
+    getPlantsType: state => state.plantsType,
 }
