@@ -33,6 +33,7 @@
 
         <div class="d-flex gap-5 mb-5">
             <button
+                :disabled="!dataCSV.length"
                 class="btn btn-primary btn-lg"
                 @click="downloadCSV"
             >
@@ -40,6 +41,7 @@
             </button>
 
             <button
+                :disabled="!dataCSV.length"
                 class="btn btn-primary btn-lg"
                 @click="downloadCSV1"
             >
