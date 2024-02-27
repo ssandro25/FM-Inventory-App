@@ -12,7 +12,7 @@
             class="btn btn-primary btn-lg"
             @click="downloadCSV"
         >
-
+            გადმოწერა
         </button>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
@@ -98,7 +98,7 @@ export default {
     },
 
     methods: {
-        downloadCSV1() {
+        downloadCSV() {
             // Sample data
             // const data = [
             //     { name: 'John', age: 30, city: 'New York' },
@@ -125,42 +125,42 @@ export default {
             window.URL.revokeObjectURL(a.href);
             document.body.removeChild(a);
         },
-        convertToCSV1(data) {
-            const header = Object.keys(data[0]).join(',') + '\n';
-            const rows = data.map(obj => Object.values(obj).join(','));
-            return header + rows.join('\n');
-        },
-
-
-
-        downloadCSV() {
-            // Sample data
-            const data = [
-                { name: 'John', age: 30, city: 'New York' },
-                { name: 'Jane', age: 25, city: 'Los Angeles' },
-                { name: 'Doe', age: 40, city: 'Chicago' }
-            ];
-
-            // Convert data to CSV format
-            const csvContent = this.convertToCSV(data);
-
-            // Create a temporary anchor element
-            const a = document.createElement('a');
-            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            a.download = 'data.csv';
-
-            // Append anchor to body and click it to trigger download
-            document.body.appendChild(a);
-            a.click();
-
-            // Cleanup
-            document.body.removeChild(a);
-        },
         convertToCSV(data) {
             const header = Object.keys(data[0]).join(',') + '\n';
             const rows = data.map(obj => Object.values(obj).join(','));
             return header + rows.join('\n');
-        }
+        },
+
+
+
+        // downloadCSV() {
+        //     // Sample data
+        //     const data = [
+        //         { name: 'John', age: 30, city: 'New York' },
+        //         { name: 'Jane', age: 25, city: 'Los Angeles' },
+        //         { name: 'Doe', age: 40, city: 'Chicago' }
+        //     ];
+        //
+        //     // Convert data to CSV format
+        //     const csvContent = this.convertToCSV(data);
+        //
+        //     // Create a temporary anchor element
+        //     const a = document.createElement('a');
+        //     a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+        //     a.download = 'data.csv';
+        //
+        //     // Append anchor to body and click it to trigger download
+        //     document.body.appendChild(a);
+        //     a.click();
+        //
+        //     // Cleanup
+        //     document.body.removeChild(a);
+        // },
+        // convertToCSV(data) {
+        //     const header = Object.keys(data[0]).join(',') + '\n';
+        //     const rows = data.map(obj => Object.values(obj).join(','));
+        //     return header + rows.join('\n');
+        // }
     },
 
 

@@ -7,6 +7,13 @@
                 <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
             </div>
 
+            <button
+                class="btn btn-primary btn-lg"
+                @click="downloadCSV"
+            >
+                გადმოწერა
+            </button>
+
             <div
                 v-for="(item,index) in macket"
                 :key="index"
@@ -214,6 +221,14 @@ export default {
 
         },
 
+        dataCSV() {
+            return this.getForestArea
+                .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+                .find(item => item.id === parseInt(this.params.quarterID)).quarters
+                .find(item => item.id === parseInt(this.params.literID)).liters
+                .find(item => item.id === parseInt(this.$route.params.id)).mackets || []
+        },
+
         params() {
             return {
                 forestAreaID: this.getForestAreaID,
@@ -224,6 +239,41 @@ export default {
         }
     },
 
+    methods: {
+        downloadCSV() {
+            // Convert data to CSV format
+            const csvContent = this.convertToCSV(this.dataCSV);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = 'data.csv';
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV(dataArray) {
+            let csvContent = '';
+
+            // Loop through the dataArray
+            dataArray.forEach(innerArray => {
+                // Convert each inner array of objects to CSV format
+                const rows = innerArray.map(obj => Object.values(obj).join(','));
+                // Add the rows to the CSV content
+                csvContent += rows.join('\n') + '\n';
+            });
+
+            return csvContent;
+        }
+    },
+
+    // mounted() {
+    //     console.log(this.dataCSV)
+    // }
     // mounted() {
     //     let checkMacket = this.getForestArea
     //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry

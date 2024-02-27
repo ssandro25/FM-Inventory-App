@@ -84,13 +84,6 @@ export default {
 
     methods: {
         downloadCSV() {
-            // Sample data
-            // const data = [
-            //     { name: 'John', age: 30, city: 'New York' },
-            //     { name: 'Jane', age: 25, city: 'Los Angeles' },
-            //     { name: 'Doe', age: 40, city: 'Chicago' }
-            // ];
-
             // Convert data to CSV format
             const csvContent = this.convertToCSV(this.macket);
 
