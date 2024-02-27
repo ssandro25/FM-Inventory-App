@@ -7,13 +7,6 @@
                 <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
             </div>
 
-            <button
-                class="btn btn-primary btn-lg"
-                @click="downloadCSV"
-            >
-                გადმოწერა
-            </button>
-
             <div
                 v-for="(item,index) in macket"
                 :key="index"
@@ -36,6 +29,22 @@
                 </p>
 
             </div>
+        </div>
+
+        <div class="d-flex gap-5 mb-5">
+            <button
+                class="btn btn-primary btn-lg"
+                @click="downloadCSV"
+            >
+                გადმოწერა
+            </button>
+
+            <button
+                class="btn btn-primary btn-lg"
+                @click="downloadCSV1"
+            >
+                გადმოწერა (ერთ ხაზზში)
+            </button>
         </div>
 
         <div class="row gy-4">
@@ -268,6 +277,31 @@ export default {
             });
 
             return csvContent;
+        },
+
+        downloadCSV1() {
+            // Flatten the dataArray into a single array
+            const flattenedArray = this.dataCSV.reduce((acc, curr) => acc.concat(curr), []);
+
+            // Convert flattened array to CSV format
+            const csvContent = this.convertToCSV1(flattenedArray);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = 'data.csv';
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV1(dataArray) {
+            const header = Object.keys(dataArray[0]).join(',') + '\n';
+            const rows = dataArray.map(obj => Object.values(obj).join(','));
+            return header + rows.join(',');
         }
     },
 

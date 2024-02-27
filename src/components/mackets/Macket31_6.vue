@@ -10,12 +10,12 @@
         31. მოზარდი
     </button>
 
-    <button
-        class="btn btn-primary btn-lg"
-        @click="downloadCSV"
-    >
-        გადმოწერა
-    </button>
+<!--    <button-->
+<!--        class="btn btn-primary btn-lg"-->
+<!--        @click="downloadCSV"-->
+<!--    >-->
+<!--        გადმოწერა-->
+<!--    </button>-->
 
     <div
         v-for="(item, index) in macket"
