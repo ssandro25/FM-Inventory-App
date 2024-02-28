@@ -14,7 +14,11 @@
                         :to="{ name: 'forest-district' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                         :class="{
-                            'active' : $route.name === 'forest-district' || 'forestry' || 'quarter' || 'liter' || 'macket'
+                            'active' :  $route.name === 'forest-district' ||
+                                        $route.name === 'forestry' ||
+                                        $route.name === 'quarter' ||
+                                        $route.name === 'liter' ||
+                                        $route.name === 'macket'
                         }"
                     >
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
@@ -187,6 +191,8 @@ body {
     .add_new__btn {
         border: 1px dashed #cecece;
         background: radial-gradient(circle, rgba(16, 20, 43, 1) 5%, rgba(17, 26, 42, 1) 75%, rgb(13 38 45) 100%);
+        cursor: pointer;
+        transition: .3s;
     }
 
     .item {

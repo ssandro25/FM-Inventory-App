@@ -1,151 +1,171 @@
 <template>
-    <div class="container-fluid p-md-5 p-3">
-        <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
-            <div class="d-flex align-items-center gap-3 ">
-                <GoBackBtn />
+    <div class="container-fluid  p-3 h-100">
+        <div class="row h-100">
+            <div class="col-lg-9">
+                <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
+                    <div class="d-flex align-items-center gap-3 ">
+                        <GoBackBtn />
 
-                <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
+                        <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
+                    </div>
+
+                    <div
+                        v-for="(item,index) in macket"
+                        :key="index"
+                    >
+                        <p class="mb-0">
+                            <strong>ექსპოზიცია:</strong> {{ item.exposition ? item.exposition : '-' }}
+                        </p>
+
+
+                        <p class="mb-0">
+                            <strong>ს.ზ.დ:</strong> {{ item.elevation ? item.elevation : '-' }}
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>დაქანება:</strong> {{ item.inclination ? item.inclination : '-' }}
+                        </p>
+
+                        <p class="mb-0">
+                            <strong>K:</strong> 1
+                        </p>
+
+                    </div>
+                </div>
+
+                <div class="row gy-4">
+                    <div class="col-md-6">
+                        <Macket1 />
+                    </div>
+
+                    <div class="col-md-6">
+                        <Macket2 />
+                    </div>
+
+                    <div class="col-md-4">
+                        <Macket3 />
+                    </div>
+
+                    <div class="col-md-4">
+                        <Macket4 />
+                    </div>
+
+                    <div class="col-md-4">
+                        <Macket5 />
+                    </div>
+
+                    <div class="col-md-12">
+                        <button class="btn btn-light w-100">
+                            10. ტაქსაციური დახასიათება
+                        </button>
+                    </div>
+
+                    <div class="col-md-6">
+                        <Macket31_6 />
+                    </div>
+
+                    <div class="col-md-6">
+                        <Macket32_7 />
+                    </div>
+
+                    <div class="col-12">
+                        <Macket23_8 />
+                    </div>
+                </div>
+
+                <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
+                    <div class="col">
+                        <Macket24_9 />
+                    </div>
+
+                    <div class="col">
+                        <Macket35_10 />
+                    </div>
+
+                    <div class="col">
+                        <Macket37_11 />
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-light w-100 text-truncate">
+                            22. ბაღები,პლანტაციები
+                        </button>
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-light w-100 text-truncate">
+                            36. წყლები
+                        </button>
+                    </div>
+
+                    <div class="col">
+                        <Macket28_12 />
+                    </div>
+
+                    <div class="col">
+                        <Macket40_13 />
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-light w-100 text-truncate">
+                            33. ბიომრავალფეროვნება
+                        </button>
+                    </div>
+
+                    <div class="col">
+                        <Macket42_14 />
+                    </div>
+
+                    <div class="col">
+                        <Macket16_15 />
+                    </div>
+
+                    <div class="col">
+                        <button class="btn btn-light w-100 text-truncate">
+                            17. სასოფლო-სამეურნეო სავარგულები
+                        </button>
+                    </div>
+
+                    <div class="col">
+                        <Macket14_16 />
+                    </div>
+                </div>
             </div>
+            
+            <div class="col-lg-3 border-sm-top border-start border-start-sm-0 mt-lg-0 mt-4 pt-lg-0 pt-4">
+                <div class="d-flex flex-column justify-content-between gap-4 h-100">
+                    <div>
+                        <p class="text-forest mb-0">
+                            <strong>მეტყევე : </strong>
 
-            <div
-                v-for="(item,index) in macket"
-                :key="index"
-            >
-                <p class="mb-0">
-                    <strong>ექსპოზიცია:</strong> {{ item.exposition ? item.exposition : '-' }}
-                </p>
+                            <router-link to="/options" class="text-forest">
+                                {{ foresterName ? foresterName : 'შეიყვანეთ სახელი' }}
+                            </router-link>
 
+                        </p>
+                    </div>
 
-                <p class="mb-0">
-                    <strong>ს.ზ.დ:</strong> {{ item.elevation ? item.elevation : '-' }}
-                </p>
+                    <div class="d-flex flex-column gap-3 w-100">
+                        <button
+                            :disabled="!dataCSV.length"
+                            class="btn btn-primary w-100"
+                            @click="downloadCSV"
+                        >
+                            გადმოწერა
+                        </button>
 
-                <p class="mb-0">
-                    <strong>დაქანება:</strong> {{ item.inclination ? item.inclination : '-' }}
-                </p>
-
-                <p class="mb-0">
-                    <strong>K:</strong> 1
-                </p>
-
+                        <button
+                            :disabled="!dataCSV.length"
+                            class="btn btn-primary w-100"
+                            @click="downloadCSV1"
+                        >
+                            გადმოწერა (ერთ ხაზზში)
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <div class="d-flex flex-md-row flex-column gap-5 mb-5">
-            <button
-                :disabled="!dataCSV.length"
-                class="btn btn-primary"
-                @click="downloadCSV"
-            >
-                გადმოწერა
-            </button>
-
-            <button
-                :disabled="!dataCSV.length"
-                class="btn btn-primary"
-                @click="downloadCSV1"
-            >
-                გადმოწერა (ერთ ხაზზში)
-            </button>
-        </div>
-
-        <div class="row gy-4">
-            <div class="col-md-6">
-                <Macket1 />
-            </div>
-
-            <div class="col-md-6">
-               <Macket2 />
-            </div>
-
-            <div class="col-md-4">
-                <Macket3 />
-            </div>
-
-            <div class="col-md-4">
-                <Macket4 />
-            </div>
-
-            <div class="col-md-4">
-                <Macket5 />
-            </div>
-
-            <div class="col-md-12">
-                <button class="btn btn-light w-100">
-                    10. ტაქსაციური დახასიათება
-                </button>
-            </div>
-
-            <div class="col-md-6">
-                <Macket31_6 />
-            </div>
-
-            <div class="col-md-6">
-                <Macket32_7 />
-            </div>
-
-            <div class="col-12">
-               <Macket23_8 />
-            </div>
-        </div>
-
-        <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
-            <div class="col">
-                <Macket24_9 />
-            </div>
-
-            <div class="col">
-               <Macket35_10 />
-            </div>
-
-            <div class="col">
-               <Macket37_11 />
-            </div>
-
-            <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    22. ბაღები,პლანტაციები
-                </button>
-            </div>
-
-            <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    36. წყლები
-                </button>
-            </div>
-
-            <div class="col">
-                <Macket28_12 />
-            </div>
-
-            <div class="col">
-                <Macket40_13 />
-            </div>
-
-            <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    33. ბიომრავალფეროვნება
-                </button>
-            </div>
-
-            <div class="col">
-                <Macket42_14 />
-            </div>
-
-            <div class="col">
-               <Macket16_15 />
-            </div>
-
-            <div class="col">
-                <button class="btn btn-light w-100 text-truncate">
-                    17. სასოფლო-სამეურნეო სავარგულები
-                </button>
-            </div>
-
-            <div class="col">
-                <Macket14_16 />
-            </div>
-        </div>
     </div>
 </template>
 
@@ -194,12 +214,19 @@ export default {
         Macket14_16
     },
 
+    data() {
+        return {
+            foresterName: ''
+        }
+    },
+
     computed: {
         ...mapGetters([
             'getForestAreaID',
             'getQuarterID',
             'getForestArea',
-            'getLiterID'
+            'getLiterID',
+            'getForesterName'
         ]),
 
         macketTitle() {
@@ -307,32 +334,26 @@ export default {
         }
     },
 
-    // mounted() {
-    //     console.log(this.dataCSV)
-    // }
-    // mounted() {
-    //     let checkMacket = this.getForestArea
-    //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-    //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
-    //         .find(item => item.id === parseInt(this.params.literID)).liters
-    //         .find(item => item.id === parseInt(this.$route.params.id)).mackets || []
-    //
-    //     // console.log(Array.isArray(checkMacket), checkMacket)
-    //
-    //     if (checkMacket.length < 3) {
-    //         console.log(false)
-    //         checkMacket.push([], [], []);
-    //         console.log(checkMacket)
-    //
-    //         this.$store.dispatch('setForestArea', this.getForestArea)
-    //     } else {
-    //         console.log(true)
-    //     }
-    // }
+    mounted() {
+        this.foresterName = this.getForesterName
+    }
+
 }
 </script>
 
 
 <style scoped lang="scss">
+.text-forest {
+    color: rgb(57 145 112);
+}
 
+@media screen and (max-width: 991px){
+    .border-start-sm-0 {
+        border-left: unset !important;
+    }
+
+    .border-sm-top {
+        border-top: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
+    }
+}
 </style>

@@ -62,11 +62,11 @@ export default {
 
     methods: {
         add() {
-            let obj = {
-                id: this.getForestArea.length + 1,
-                title: this.new_forestry
-            }
-            this.$store.dispatch('setForestArea', obj)
+            // let obj = {
+            //     id: this.getForestArea.length + 1,
+            //     title: this.new_forestry
+            // }
+            // this.$store.dispatch('setForestArea', obj)
         }
     },
 

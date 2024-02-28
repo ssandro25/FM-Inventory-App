@@ -12,7 +12,7 @@
                     <h1 class="modal-title fs-5" id="addNewQuarterLabel">
                         ახალი კვარტლის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" id="close-btn-quarter" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
 
@@ -86,32 +86,11 @@ export default {
 
             this.$store.dispatch('setForestArea', this.getForestArea)
             this.new_quarter = ''
+
+            document.querySelector('#close-btn-quarter').click()
+
             // console.log(typeof this.arr, this.arr.quarters)
         },
-
-
-        // add() {
-        //     let forestArea = JSON.parse(localStorage.getItem('forestArea'));
-        //
-        //     this.arr = forestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID));
-        //
-        //     let newQuarter = {
-        //         id: this.arr.quarters && this.arr.quarters.length ? this.arr.quarters.length + 1 : 1,
-        //         title: this.new_quarter
-        //     };
-        //
-        //     if (!this.arr.quarters) {
-        //         this.arr.quarters = [newQuarter];
-        //     } else {
-        //         this.arr.quarters.push(newQuarter);
-        //     }
-        //
-        //     localStorage.setItem('forestArea', JSON.stringify(forestArea));
-        //
-        //     this.new_quarter = '';
-        // },
     },
 
     computed: {

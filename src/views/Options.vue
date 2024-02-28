@@ -15,6 +15,7 @@
                         type="text"
                         class="form-control"
                         id="forester_name"
+                        placeholder="შეიყვანეთ სახელი"
                     >
 
                     <button
@@ -32,7 +33,6 @@
                 </div>
 
             </div>
-
         </div>
     </div>
 </template>
