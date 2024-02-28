@@ -130,16 +130,22 @@ export default {
     //     localStorage.setItem('forestArea', JSON.stringify(this.forest_area))
     // },
 
-    mounted() {
-        this.getForestArea = this.forest_area
+    // mounted() {
+    //     this.getForestArea = this.forest_area
+    //
+    //     if (JSON.parse(localStorage.getItem('forestArea'))) {
+    //         this.$store.dispatch('setForestArea', this.getForestArea)
+    //     } else {
+    //         this.$store.dispatch('setForestArea', this.forest_area)
+    //     }
+    // }
 
-        if (JSON.parse(localStorage.getItem('forestArea', JSON.stringify(this.forest_area)))) {
-            this.$store.dispatch('setForestArea', this.getForestArea)
+    mounted() {
+        if (localStorage.getItem('forestArea')) {
+            this.$store.dispatch('setForestArea', JSON.parse(localStorage.getItem('forestArea')))
         } else {
             this.$store.dispatch('setForestArea', this.forest_area)
         }
-
-        // this.$store.dispatch('setForestArea', this.forest_area)
     }
 }
 </script>
