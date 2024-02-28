@@ -12,7 +12,7 @@
                     <h1 class="modal-title fs-5" id="addNewLiterLabel">
                         ახალი ლიტერის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="close-btn" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -88,6 +88,8 @@ export default {
             this.$store.dispatch('setForestArea', this.getForestArea)
 
             this.new_liter = ''
+
+            document.querySelector('#close-btn').click()
         }
     },
 

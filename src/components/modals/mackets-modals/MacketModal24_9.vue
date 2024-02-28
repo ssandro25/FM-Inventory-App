@@ -12,7 +12,7 @@
                     <h1 class="modal-title fs-5" id="macket24_9Label">
                         ახალი ლიტერის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" id="close-btn24" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
 
@@ -212,6 +212,8 @@ export default {
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
+
+            document.querySelector('#close-btn24').click()
         },
     },
 

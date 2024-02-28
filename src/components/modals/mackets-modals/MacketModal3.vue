@@ -12,7 +12,7 @@
                     <h1 class="modal-title fs-5" id="macket3Label">
                         ახალი ლიტერის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" id="close-btn3" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
 
@@ -212,40 +212,9 @@ export default {
             }
 
             this.$store.dispatch('setForestArea', this.getForestArea)
-        }
 
-        // add() {
-        //     const { forestAreaID, quarterID, literID, macketID } = this.params;
-        //     const id = parseInt(macketID);
-        //
-        //     const forestArea = this.getForestArea.find(item => item.id === parseInt(forestAreaID));
-        //     const forestry = forestArea?.forestry.find(item => item.id === parseInt(quarterID));
-        //     const quarters = forestry?.quarters.find(item => item.id === parseInt(literID));
-        //     const liters = quarters?.liters.find(item => item.id === id);
-        //
-        //     if (!liters) return;
-        //
-        //     let macketObj = {
-        //         id: 3,
-        //         dominant_species: this.dominant_species,
-        //         site_index: this.site_index,
-        //         site_index_type: this.site_index_type,
-        //         forest_type: this.forest_type,
-        //         location_type: this.location_type,
-        //         cutting_year: this.cutting_year
-        //     };
-        //
-        //     // if (!liters.mackets || liters.mackets.length < 3) {
-        //     //     liters.mackets = [[], [], []];
-        //     // }
-        //     if (!liters.mackets) {
-        //         liters.mackets = [];
-        //     }
-        //
-        //     liters.mackets[2] = macketObj;
-        //
-        //     this.$store.dispatch('setForestArea', this.getForestArea);
-        // }
+            document.querySelector('#close-btn3').click()
+        }
     },
 
 }
