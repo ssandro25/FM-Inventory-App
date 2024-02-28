@@ -31,7 +31,7 @@
             </div>
         </div>
 
-        <div class="d-flex gap-5 mb-5">
+        <div class="d-flex flex-md-row flex-column gap-5 mb-5">
             <button
                 :disabled="!dataCSV.length"
                 class="btn btn-primary btn-lg"
