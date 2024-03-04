@@ -7,7 +7,7 @@
                         for="forester_name"
                         class="form-label modal__label"
                     >
-                        მეტყევეს სახელი და გვარი
+                        მეტყევის სახელი და გვარი
                     </label>
 
                     <input
@@ -42,7 +42,10 @@ import ClearCache from "@/components/ClearCache.vue";
 
 export default {
     name: "FMOptions",
-    components: {ClearCache},
+
+    components: {
+        ClearCache
+    },
 
     data() {
         return {

@@ -191,6 +191,34 @@ export default {
         }
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[1]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[1]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].activity1 !== '' ||
+            currentArr[0].activity2 !== '' ||
+            currentArr[0].activity3 !== '' ||
+            currentArr[0].activity_percent !== null ||
+            currentArr[0].target_species !== ''
+        ))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 

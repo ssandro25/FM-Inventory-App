@@ -160,7 +160,7 @@ export default {
     mounted() {
         this.$store.dispatch('setLiterID', this.$route.params.id)
 
-        console.log(Array.isArray(this.liters), this.liters)
+        // console.log(Array.isArray(this.liters), this.liters)
 
         // this.liters = this.getForestArea
         //     .find(item => item.id === parseInt(this.params.forestAreaID)).forestry

@@ -167,7 +167,7 @@ export default {
             site_index_type: '',
             forest_type: '',
             location_type: '',
-            cutting_year: null
+            cutting_year: ''
         }
     },
 
@@ -216,6 +216,37 @@ export default {
             document.querySelector('#close-btn3').click()
         }
     },
+
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[2]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[2]
+
+        console.log(currentArr)
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].dominant_species !== '' ||
+            currentArr[0].site_index !== '' ||
+            currentArr[0].site_index_type !== '' ||
+            currentArr[0].forest_type !== '' ||
+            currentArr[0].location_type !== '' ||
+            currentArr[0].cutting_year !== null
+        ))) {
+            this.add()
+        }
+    }
 
 }
 </script>

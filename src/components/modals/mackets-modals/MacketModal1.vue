@@ -248,9 +248,6 @@ export default {
     },
 
     methods: {
-        test() {
-            alert('mushaobs!')
-        },
         add() {
             this.arr = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
@@ -283,6 +280,38 @@ export default {
             document.querySelector('#close-btn1').click()
         },
     },
+
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[0]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[0]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].soil_category !== '' ||
+            currentArr[0].long_term_use_lease !== '' ||
+            currentArr[0].gfdu !== '' ||
+            currentArr[0].exposition !== '' ||
+            currentArr[0].inclination !== '' ||
+            currentArr[0].elevation !== '' ||
+            currentArr[0].erosion_type !== '' ||
+            currentArr[0].erosion_degree !== '' ||
+            currentArr[0].area !== ''
+        ))) {
+            this.add()
+        }
+    }
 
 }
 </script>

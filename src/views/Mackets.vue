@@ -189,8 +189,6 @@ import Macket16_15 from "@/components/mackets/Macket16_15.vue";
 import Macket14_16 from "@/components/mackets/Macket14_16.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 
-
-
 export default {
     name: "FMMackets",
 
