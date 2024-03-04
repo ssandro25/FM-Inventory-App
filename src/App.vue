@@ -14,6 +14,16 @@
                     </router-link>
 
                     <router-link
+                        :to="{ name: 'work-space' }"
+                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                        'active' :  $route.name === 'work-space'
+                    }"
+                    >
+                        <img src="@/assets/images/pen-ruler-solid.svg" width="14" alt="">
+                    </router-link>
+
+                    <router-link
                         :to="{ name: 'forest-district' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                         :class="{

@@ -8,6 +8,8 @@ import Mackets from "@/views/Mackets.vue";
 import Options from "@/views/Options.vue";
 import Profile from "@/views/Profile.vue";
 import Book from "@/views/Book.vue";
+import WorkSpace from "@/views/WorkSpace.vue";
+import Folder from "@/views/Folder.vue";
 
 const routes = [
     {
@@ -61,6 +63,18 @@ const routes = [
         path: '/book',
         name: 'book',
         component: Book
+    },
+
+    {
+        path: '/work-space',
+        name: 'work-space',
+        component: WorkSpace
+    },
+
+    {
+        path: '/folder/:id',
+        name: 'folder',
+        component: Folder
     },
 ]
 

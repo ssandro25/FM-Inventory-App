@@ -1,6 +1,7 @@
 export default {
     getForesterName: state => state.foresterName,
     getForestArea: state => state.forestArea,
+    getWorkSpace: state => state.workSpace,
     getForestAreaID: state => state.forestAreaID,
     getQuarterID: state => state.quarterID,
     getLiterID: state => state.literID,

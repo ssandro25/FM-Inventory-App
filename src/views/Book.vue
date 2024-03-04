@@ -12,9 +12,12 @@
                 v-for="item in bookmarks"
                 :key="item.id"
                 class="d-flex align-items-start gap-2"
-                @click="removeFromBookmarks(index)"
             >
-                <button class="btn p-0 border-0">
+                <button
+                    type="button"
+                    class="btn p-0 border-0"
+                    @click="removeFromBookmarks(index)"
+                >
                     <img src="@/assets/images/trash-solid.svg" width="15" alt="">
                 </button>
 
@@ -30,9 +33,12 @@
                 v-for="item in filteredBook"
                 :key="item.id"
                 class="d-flex align-items-start gap-2"
-                @click="addToBookmark(item)"
             >
-                <button class="btn p-0 border-0">
+                <button
+                    type="button"
+                    class="btn p-0 border-0"
+                    @click="addToBookmark(item)"
+                >
                     <img v-if="!isBookmarked(item)" src="@/assets/images/fav-icon.svg" width="18" alt="">
                     <img v-else src="@/assets/images/fav-icon-choosen.svg" width="18" alt="">
                 </button>
@@ -51,8 +57,6 @@
 </template>
 
 <script>
-import button from "bootstrap/js/src/button";
-
 export default {
     name: "FMBook",
 
@@ -92,9 +96,6 @@ export default {
     },
 
     computed: {
-        button() {
-            return button
-        },
         filteredBook() {
             return [...this.data].filter(item => item.label_ge.toLowerCase().includes(this.searchWord.toLowerCase()) || item.label_lat.toLowerCase().includes(this.searchWord.toLowerCase()))
         },

@@ -3,6 +3,8 @@ export default {
 
     forestArea: localStorage.getItem('forestArea') ? JSON.parse(localStorage.getItem('forestArea')) : [],
 
+    workSpace: localStorage.getItem('workSpace') ? JSON.parse(localStorage.getItem('workSpace')) : [],
+
     forestAreaID: null,
 
     quarterID: null,
@@ -611,5 +613,4 @@ export default {
         {id: '51', name: '51 - ჩიტიბუდა'},
         {id: '52', name: '52 - რეზერვი'},
     ]
-
 }
