@@ -285,7 +285,8 @@ export default {
             // Create a temporary anchor element
             const a = document.createElement('a');
             a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            a.download = 'data.csv';
+            a.download = `${this.macketTitle}.csv`;
+            // a.download = 'data.csv';
 
             // Append anchor to body and click it to trigger download
             document.body.appendChild(a);
@@ -318,7 +319,8 @@ export default {
             // Create a temporary anchor element
             const a = document.createElement('a');
             a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            a.download = 'data.csv';
+            a.download = `${this.macketTitle}.csv`;
+            // a.download = 'data.csv';
 
             // Append anchor to body and click it to trigger download
             document.body.appendChild(a);

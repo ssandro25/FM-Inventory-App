@@ -4,8 +4,11 @@
             <div class="d-flex flex-column justify-content-between h-100">
                 <div class="d-flex flex-column justify-content-between gap-3">
                     <router-link
-                        :to="{ name: 'forest-district' }"
+                        :to="{ name: 'index' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                            'active' : $route.name === 'index'
+                        }"
                     >
                         <img src="@/assets/images/house-solid.svg" width="15" alt="">
                     </router-link>
@@ -31,12 +34,12 @@
                         <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
                     </router-link>
 
-                    <router-link
-                        to="/"
-                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"
-                    >
-                        <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
-                    </router-link>
+<!--                    <router-link-->
+<!--                        to="/"-->
+<!--                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"-->
+<!--                    >-->
+<!--                        <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">-->
+<!--                    </router-link>-->
                 </div>
 
                 <div class="d-flex flex-column justify-content-between gap-3">

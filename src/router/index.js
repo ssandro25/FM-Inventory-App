@@ -1,4 +1,5 @@
 import {createRouter, createWebHistory} from 'vue-router'
+import Index from "@/views/Index.vue"
 import ForestArea from "@/views/ForestArea.vue"
 import Forestry from "@/views/Forestry.vue";
 import Quarter from "@/views/Quarter.vue";
@@ -10,6 +11,11 @@ import Profile from "@/views/Profile.vue";
 const routes = [
     {
         path: '/',
+        name: 'index',
+        component: Index
+    },
+    {
+        path: '/forest-district',
         name: 'forest-district',
         component: ForestArea
     },
