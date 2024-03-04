@@ -224,6 +224,36 @@ export default {
         },
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[14]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[14]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].raw_material_category !== '' ||
+            currentArr[0].woody_species !== '' ||
+            currentArr[0].year !== null ||
+            currentArr[0].height !== null ||
+            currentArr[0].unit !== '' ||
+            currentArr[0].yield_accuracy !== null ||
+            currentArr[0].accessible !== ''
+        ))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 

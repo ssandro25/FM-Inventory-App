@@ -97,6 +97,28 @@ export default {
         },
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[7]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[7]
+
+        if (!(currentArr && currentArr[0] && (currentArr[0].comment !== ''))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 

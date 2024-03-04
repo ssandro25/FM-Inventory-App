@@ -224,6 +224,35 @@ export default {
         },
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[6]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[6]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].distribution !== '' ||
+            currentArr[0].distribution_percent !== '' ||
+            currentArr[0].tree_type1 !== '' ||
+            currentArr[0].tree_type2 !== '' ||
+            currentArr[0].tree_type3 !== '' ||
+            currentArr[0].tree_height !== ''
+        ))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 

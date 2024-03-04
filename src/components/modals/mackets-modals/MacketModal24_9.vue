@@ -217,6 +217,35 @@ export default {
         },
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[8]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[8]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].soil_character !== '' ||
+            currentArr[0].soil_mechanical_composition !== '' ||
+            currentArr[0].moisture_degree !== '' ||
+            currentArr[0].chords_quality !== '' ||
+            currentArr[0].soil_density !== '' ||
+            currentArr[0].mother_rock_coverage !== ''
+        ))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 

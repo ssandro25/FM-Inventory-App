@@ -145,6 +145,32 @@ export default {
         },
     },
 
+    mounted() {
+        this.arr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID))
+
+        if (!this.arr.mackets || !this.arr.mackets[15]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        }
+
+        let currentArr = this.getForestArea
+            .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
+            .find(item => item.id === parseInt(this.params.quarterID)).quarters
+            .find(item => item.id === parseInt(this.params.literID)).liters
+            .find(item => item.id === parseInt(this.params.macketID)).mackets[15]
+
+        if (!(currentArr && currentArr[0] && (
+            currentArr[0].accounting_category !== '' ||
+            currentArr[0].plants_type !== '' ||
+            currentArr[0].coverage_percent !== null
+        ))) {
+            this.add()
+        }
+    }
+
 }
 </script>
 
