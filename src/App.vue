@@ -28,18 +28,15 @@
                     </router-link>
 
                     <router-link
-                        to="/"
+                        :to="{ name: 'book' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
+                        :class="{
+                            'active' : $route.name === 'book'
+                        }"
                     >
-                        <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">
+                        <img src="@/assets/images/book-solid.svg" width="12" alt="">
                     </router-link>
 
-<!--                    <router-link-->
-<!--                        to="/"-->
-<!--                        class="side__bar_btn rounded d-flex align-items-center justify-content-center"-->
-<!--                    >-->
-<!--                        <img src="@/assets/images/clipboard-solid.svg" width="12" alt="">-->
-<!--                    </router-link>-->
                 </div>
 
                 <div class="d-flex flex-column justify-content-between gap-3">

@@ -7,6 +7,7 @@ import Liter from "@/views/Liter.vue";
 import Mackets from "@/views/Mackets.vue";
 import Options from "@/views/Options.vue";
 import Profile from "@/views/Profile.vue";
+import Book from "@/views/Book.vue";
 
 const routes = [
     {
@@ -54,6 +55,12 @@ const routes = [
         path: '/profile',
         name: 'profile',
         component: Profile
+    },
+
+    {
+        path: '/book',
+        name: 'book',
+        component: Book
     },
 ]
 
