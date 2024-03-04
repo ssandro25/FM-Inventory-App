@@ -94,6 +94,10 @@ export default {
     },
 
     // mounted() {
+    //     this.$refs.MacketModal1.test()
+    // }
+
+    // mounted() {
     //     let checkMacket = this.getForestArea
     //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
     //         .find(item => item.id === parseInt(this.params.quarterID)).quarters

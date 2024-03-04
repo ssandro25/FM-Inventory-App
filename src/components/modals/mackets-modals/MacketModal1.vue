@@ -248,6 +248,9 @@ export default {
     },
 
     methods: {
+        test() {
+            alert('mushaobs!')
+        },
         add() {
             this.arr = this.getForestArea
                 .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
