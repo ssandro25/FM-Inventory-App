@@ -311,14 +311,16 @@ export default {
             // Flatten the dataArray into a single array
             const flattenedArray = this.dataCSV.reduce((acc, curr) => acc.concat(curr), []);
 
-            // Convert flattened array to CSV format
-            const csvContent = this.convertToCSV1(flattenedArray);
+            // Get all unique keys from objects in the flattened array
+            const allKeys = [...new Set(flattenedArray.flatMap(obj => Object.keys(obj)))];
+
+            // Convert flattened array to CSV format with all keys
+            const csvContent = this.convertToCSV1(flattenedArray, allKeys);
 
             // Create a temporary anchor element
             const a = document.createElement('a');
             a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
             a.download = `${this.macketTitle}.csv`;
-            // a.download = 'data.csv';
 
             // Append anchor to body and click it to trigger download
             document.body.appendChild(a);
@@ -327,10 +329,10 @@ export default {
             // Cleanup
             document.body.removeChild(a);
         },
-        convertToCSV1(dataArray) {
-            const header = Object.keys(dataArray[0]).join(',') + '\n';
-            const rows = dataArray.map(obj => Object.values(obj).join(','));
-            return header + rows.join(',');
+        convertToCSV1(dataArray, keys) {
+            const header = keys.join(',') + '\n';
+            const rows = dataArray.map(obj => keys.map(key => obj[key] || '').join(','));
+            return header + rows.join(',')
         }
     },
 
