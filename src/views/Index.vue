@@ -28,6 +28,16 @@
     <div class="mt-3">
         <img src="@/assets/images/flag_of_georgia.png" width="70" alt="">
     </div>
+
+    <div class="mt-3">
+        <p class="d-flex align-items-center justify-content-center gap-1 mb-0" style="font-size: 12px;">
+            Created by
+            <a href="https://www.linkedin.com/in/ssandro25/" class="d-flex align-items-center gap-1 text-white text-decoration-none" target="_blank">
+                <img src="@/assets/images/linkedin.svg" width="12" alt="">
+                ssandro25
+            </a>
+        </p>
+    </div>
 </div>
 </template>
 

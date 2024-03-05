@@ -232,7 +232,13 @@ body {
 
     .content__container {
         width: 100%;
-        height: calc(100vh - 49px);
+        min-height: 100vh;
+        margin-bottom: 56px;
+    }
+
+    .side__bar_btn {
+        width: 40px;
+        height: 40px;
     }
 }
 
