@@ -5,6 +5,7 @@ export default {
     getForestAreaID: state => state.forestAreaID,
     getQuarterID: state => state.quarterID,
     getLiterID: state => state.literID,
+    getBook: state => state.book,
 
     // 1 Macket
     getSoilCategory: state => state.soilCategory,

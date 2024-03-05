@@ -1,16 +1,14 @@
 <template>
-<div>
-    {{ this.$route.params.id }}
-</div>
+    <div>
+        {{ this.$route.params.id }}
+    </div>
 </template>
 
 <script>
 export default {
-    name: "FMFolder"
+    name: "FMFolder",
 }
 </script>
-
-
 
 <style scoped lang="scss">
 

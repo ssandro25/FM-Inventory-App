@@ -1,8 +1,8 @@
 <template>
-    <div class="d-flex">
-        <div class="side__bar border-end p-2" style="border-color: #5e6873 !important">
-            <div class="d-flex flex-column justify-content-between h-100">
-                <div class="d-flex flex-column justify-content-between gap-3">
+    <div class="d-md-flex">
+        <div class="side__bar p-2">
+            <div class="d-flex flex-md-column justify-content-between h-100">
+                <div class="d-flex flex-md-column justify-content-between gap-3">
                     <router-link
                         :to="{ name: 'index' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
@@ -49,7 +49,7 @@
 
                 </div>
 
-                <div class="d-flex flex-column justify-content-between gap-3">
+                <div class="d-flex flex-md-column justify-content-between gap-3">
                     <router-link
                         :to="{ name: 'profile' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
@@ -173,6 +173,7 @@ body {
     width: 50px;
     height: 100vh;
     background: linear-gradient(78deg, rgba(16, 20, 43, 1) 15%, rgba(22, 48, 39, 1) 78%);
+    border-right: 1px solid #5e6873;
     position: sticky;
     top: 0;
     z-index: 10;
@@ -218,5 +219,21 @@ body {
     }
 }
 
+@media screen and (max-width: 760px){
+    .side__bar {
+        width: 100%;
+        height: auto;
+        position: fixed;
+        bottom: 0;
+        top: auto;
+        z-index: 10;
+        border-right: unset !important;
+    }
+
+    .content__container {
+        width: 100%;
+        height: calc(100vh - 49px);
+    }
+}
 
 </style>

@@ -33,6 +33,7 @@ export default {
         state.forestArea = value
 
         localStorage.setItem('forestArea', JSON.stringify(state.forestArea))
-    }
+    },
+
 
 }
