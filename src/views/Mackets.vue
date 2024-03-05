@@ -311,11 +311,8 @@ export default {
             // Flatten the dataArray into a single array
             const flattenedArray = this.dataCSV.reduce((acc, curr) => acc.concat(curr), []);
 
-            // Get all unique keys from objects in the flattened array
-            const allKeys = [...new Set(flattenedArray.flatMap(obj => Object.keys(obj)))];
-
-            // Convert flattened array to CSV format with all keys
-            const csvContent = this.convertToCSV1(flattenedArray, allKeys);
+            // Convert flattened array to CSV format
+            const csvContent = this.convertToCSV1(flattenedArray);
 
             // Create a temporary anchor element
             const a = document.createElement('a');
@@ -329,10 +326,9 @@ export default {
             // Cleanup
             document.body.removeChild(a);
         },
-        convertToCSV1(dataArray, keys) {
-            const header = keys.join(',') + '\n';
-            const rows = dataArray.map(obj => keys.map(key => obj[key] || '').join(','));
-            return header + rows.join(',')
+        convertToCSV1(dataArray) {
+            const row = dataArray.map(obj => Object.values(obj).join(',')).join(',');
+            return row;
         }
     },
 
