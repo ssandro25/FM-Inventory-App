@@ -17,9 +17,10 @@
                         :to="{ name: 'work-space' }"
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                         :class="{
-                        'active' :  $route.name === 'work-space' ||
-                                    $route.name === 'forestry_ws'
-                    }"
+                            'active' :  $route.name === 'work-space' ||
+                                        $route.name === 'forestry_ws' ||
+                                        $route.name === 'quarter_ws'
+                        }"
                     >
                         <img src="@/assets/images/pen-ruler-solid.svg" width="14" alt="">
                     </router-link>

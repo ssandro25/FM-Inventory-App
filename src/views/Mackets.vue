@@ -6,7 +6,7 @@
                     <div class="d-flex align-items-center gap-3 ">
                         <GoBackBtn />
 
-                        <h1 class="text-white mb-0 fs-4"> {{ macketTitle }}</h1>
+                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4"> {{ macketTitle }}</h1>
                     </div>
 
                     <div
@@ -133,7 +133,7 @@
             </div>
             
             <div class="col-lg-3 border-sm-top border-start border-start-sm-0 mt-lg-0 mt-4 pt-lg-0 pt-4">
-                <div class="d-flex flex-column justify-content-between gap-4 h-100">
+                <div class="d-flex flex-column justify-content-between gap-4 right__side_bar">
                     <div>
                         <p class="text-forest mb-0">
                             <strong>მეტყევე : </strong>
@@ -344,7 +344,14 @@ export default {
 .text-forest {
     color: rgb(57 145 112);
 }
-
+@media screen and (min-width: 992px){
+    .right__side_bar {
+        position: sticky;
+        top: 16px;
+        z-index: 1000;
+        height: calc(100vh - 30px);
+    }
+}
 @media screen and (max-width: 991px){
     .border-start-sm-0 {
         border-left: unset !important;

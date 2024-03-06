@@ -1,7 +1,4 @@
 <template>
-
-
-
     <div class="container-fluid p-md-5 p-3">
         <input
             v-model="searchWord"
@@ -14,7 +11,7 @@
             <div
                 v-for="item in bookmarks"
                 :key="item.id"
-                class="d-flex align-items-start gap-2"
+                class="d-flex flex-md-row flex-column align-items-start gap-md-2 gap-3"
             >
                 <div
                     class="modal fade"
@@ -76,7 +73,7 @@
             <div
                 v-for="item in filteredBook"
                 :key="item.id"
-                class="d-flex align-items-start gap-2"
+                class="d-flex flex-md-row flex-column align-items-start gap-md-2 gap-3"
             >
                 <div
                     class="modal fade"

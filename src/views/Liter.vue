@@ -5,7 +5,7 @@
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white mb-0">ლიტერები</h1>
+            <h1 class="text-white pt-md-0 pt-5 mb-0">ლიტერები</h1>
         </div>
 
         <button

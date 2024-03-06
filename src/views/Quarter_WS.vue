@@ -5,7 +5,7 @@
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white mb-0">კვარტლები</h1>
+            <h1 class="text-white pt-md-0 pt-5 mb-0">კვარტლები</h1>
         </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">

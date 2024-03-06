@@ -1,6 +1,6 @@
 <template>
     <div class="container-fluid">
-        <div class="container mt-5">
+        <div class="container pt-5">
             <div class="col-lg-3 col-12 mx-auto">
                 <div class="d-flex flex-column gap-2">
                     <img src="@/assets/images/64px.png" alt="">
