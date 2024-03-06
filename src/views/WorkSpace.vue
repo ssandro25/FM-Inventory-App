@@ -27,10 +27,10 @@
                 class="col"
             >
                 <router-link
-                    :to="/folder/+item.id"
+                    :to="/work-space/+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
-                    {{ item.title }}
+                    {{ item.date }} - {{ item.title }}
                 </router-link>
             </div>
         </div>

@@ -1,12 +1,18 @@
 <template>
+    <AddNewForestryWS :params="params"/>
+
     <div class="container-fluid p-md-5 p-3">
-        <h1 class="text-white mb-3">საქაღალდეები</h1>
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <GoBackBtn />
+
+            <h1 class="text-white mb-0">საქაღალდეები</h1>
+        </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewForesrtyWS"
+                    data-bs-target="#addNewForestryWS"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -20,7 +26,7 @@
             </div>
 
             <div
-                v-for="item in folders"
+                v-for="item in forestryWS"
                 :key="item.id"
                 class="col"
             >
@@ -36,19 +42,45 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
+import AddNewForestryWS from "@/components/modals/add-new-modals/AddNewForestryWS.vue";
+import GoBackBtn from "@/components/GoBackBtn.vue";
 
 export default {
     name: "FMFolder",
 
+    components: {
+        GoBackBtn,
+        AddNewForestryWS
+    },
+
     computed: {
         ...mapGetters([
             'getWorkSpace'
-        ])
+        ]),
+
+        forestryWS() {
+            const workSpaceID = parseInt(this.params.workSpaceID);
+
+            const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
+            const forestryWS = workSpace ? workSpace.forestryWS : [];
+
+
+            return forestryWS ? forestryWS : [];
+
+            // return this.getWorkSpace.find(item => item.id === this.$route.params.id)
+        },
+
+        params() {
+            return {
+                workSpaceID: this.$route.params.id
+            }
+        }
     },
 
     mounted() {
-        this.$route.params.id
+        console.log(this.forestryWS)
+        // this.$store.dispatch('setWorkSpaceID', this.$route.params.id)
     }
 }
 </script>

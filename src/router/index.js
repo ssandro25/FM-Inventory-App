@@ -72,7 +72,7 @@ const routes = [
     },
 
     {
-        path: '/folder/:id',
+        path: '/work-space/:id',
         name: 'folder',
         component: Folder
     },

@@ -9,13 +9,16 @@ export default {
 
     forestArea: localStorage.getItem('forestArea') ? JSON.parse(localStorage.getItem('forestArea')) : [],
 
-    workSpace: localStorage.getItem('workSpace') ? JSON.parse(localStorage.getItem('workSpace')) : [],
-
     forestAreaID: null,
 
     quarterID: null,
 
     literID: null,
+
+    // Work Space
+    workSpace: localStorage.getItem('workSpace') ? JSON.parse(localStorage.getItem('workSpace')) : [],
+
+    // workSpaceID: null,
 
     book: [
         { id: 1, label_ge: 'აღმოსავლური წიფელი', label_lat: 'Fagus Orientalis', description: '20-40 მ სიმაღლის ხეა. გლუვი, რუხი ან თეთრი ფერის ქერქით. ფოთლები რიგ-რიგად ორ მწკრივად არის განლაგებული. ფორმით ელიფსურიდან უკუკვერცხისებურამდე. კიდეებზე ოდნავ ტალღისებური ან ოდნავ დაკბილულია. ზედა მხრიდან მუქი მწვანე ფერისაა, პრიალა, შიშველი. ქვედა მხარე ღია მწვანეა, ძარღვების გაყოლებაზე შებუსული. იზრდება დაბლობიდან სუბალპურ სარტყლამდე. გავრცელებულია მთელ საქართველოში, გარდა თუშეთისა და აღმოსავლეთ საქართველოს ჭალის ტყეებისა. გავრცელების საერთო არეალი მოიცავს კავკასიას, სამხრეთ ევროპას, მცირე აზიასა და ირანს.', image: Pic1 },

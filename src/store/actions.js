@@ -11,11 +11,12 @@ export default {
         // localStorage.setItem('ForestArea', JSON.stringify(state.forestArea))
     },
 
-    setNewWorkSpace({state}, value) {
-        state.workSpace.push(value)
+    setForestArea({state}, value) {
+        state.forestArea = value
 
-        localStorage.setItem('workSpace', JSON.stringify(state.workSpace))
+        localStorage.setItem('forestArea', JSON.stringify(state.forestArea))
     },
+
 
     setForestAreaID({state}, id) {
         state.forestAreaID = id
@@ -29,11 +30,20 @@ export default {
         state.literID = id
     },
 
-    setForestArea({state}, value) {
-        state.forestArea = value
+    // Work Space
+    setNewWorkSpace({state}, value) {
+        state.workSpace.push(value)
 
-        localStorage.setItem('forestArea', JSON.stringify(state.forestArea))
+        localStorage.setItem('workSpace', JSON.stringify(state.workSpace))
     },
 
+    setWorkSpace({state}, value) {
+        state.workSpace = value
 
+        localStorage.setItem('workSpace', JSON.stringify(state.workSpace))
+    },
+
+    // setWorkSpaceID({state}, id) {
+    //     state.workSpaceID = id
+    // },
 }
