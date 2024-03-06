@@ -17,7 +17,6 @@ export default {
         localStorage.setItem('forestArea', JSON.stringify(state.forestArea))
     },
 
-
     setForestAreaID({state}, id) {
         state.forestAreaID = id
     },
@@ -43,7 +42,11 @@ export default {
         localStorage.setItem('workSpace', JSON.stringify(state.workSpace))
     },
 
-    // setWorkSpaceID({state}, id) {
-    //     state.workSpaceID = id
-    // },
+    setWorkSpaceID({state}, id) {
+        state.workSpaceID = id
+    },
+
+    setForestryWS_ID({state}, id) {
+        state.forestryWS_ID = id
+    },
 }

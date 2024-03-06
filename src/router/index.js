@@ -9,7 +9,8 @@ import Options from "@/views/Options.vue";
 import Profile from "@/views/Profile.vue";
 import Book from "@/views/Book.vue";
 import WorkSpace from "@/views/WorkSpace.vue";
-import Folder from "@/views/Folder.vue";
+import Forestry_WS from "@/views/Forestry_WS.vue";
+import Quarter_WS from "@/views/Quarter_WS.vue";
 
 const routes = [
     {
@@ -73,8 +74,14 @@ const routes = [
 
     {
         path: '/work-space/:id',
-        name: 'folder',
-        component: Folder
+        name: 'forestry_ws',
+        component: Forestry_WS
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id',
+        name: 'quarter_ws',
+        component: Quarter_WS
     },
 ]
 

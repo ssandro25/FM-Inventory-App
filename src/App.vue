@@ -18,7 +18,7 @@
                         class="side__bar_btn rounded d-flex align-items-center justify-content-center"
                         :class="{
                         'active' :  $route.name === 'work-space' ||
-                                    $route.name === 'folder'
+                                    $route.name === 'forestry_ws'
                     }"
                     >
                         <img src="@/assets/images/pen-ruler-solid.svg" width="14" alt="">

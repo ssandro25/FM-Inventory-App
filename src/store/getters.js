@@ -8,7 +8,8 @@ export default {
 
     // Work Space
     getWorkSpace: state => state.workSpace,
-    // getWorkSpaceID: state => state.workSpaceID,
+    getWorkSpaceID: state => state.workSpaceID,
+    getForestryWS_ID: state => state.forestryWS_ID,
 
     // 1 Macket
     getSoilCategory: state => state.soilCategory,

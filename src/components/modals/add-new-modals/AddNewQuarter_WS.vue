@@ -1,18 +1,18 @@
 <template>
     <div
         class="modal fade"
-        id="addNewForestryWS"
+        id="addNewQuarter_WS"
         tabindex="-1"
-        aria-labelledby="addNewForestryWSLabel"
+        aria-labelledby="addNewQuarter_WSLabel"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="addNewForestryWSLabel">
+                    <h1 class="modal-title fs-5" id="addNewQuarter_WSLabel">
                         სატყეოს დამატება
                     </h1>
-                    <button type="button" id="add_forestry_wc" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="add_quarter_wc" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -25,7 +25,7 @@
                         </label>
 
                         <input
-                            v-model="new_forestry_wc"
+                            v-model="new_quarter_ws"
                             type="text"
                             class="form-control"
                             id="new_folder"
@@ -35,7 +35,7 @@
 
                 <div class="modal-footer border-0 justify-content-center">
                     <button
-                        :disabled="!new_forestry_wc"
+                        :disabled="!new_quarter_ws"
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
                         @click="add"
@@ -52,12 +52,12 @@
 import { mapGetters } from "vuex";
 
 export default {
-    name: "AddNewForestryWS",
+    name: "AddNewQuarter_WS",
 
     data() {
         return {
-            new_forestry_wc: '',
             arr: null,
+            new_quarter_ws: '',
         }
     },
 
@@ -68,25 +68,24 @@ export default {
     methods: {
         add() {
             this.arr = this.getWorkSpace
-                .find(item => item.id === parseInt(this.params.workSpaceID))
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID))
 
-            let forestryWS_Obj = {
+            let quarterWS_Obj = {
                 id: this.arr.forestryWS && this.arr.forestryWS.length ? this.arr.forestryWS.length + 1 : 1,
-                title: this.new_forestry_wc
+                title: this.new_quarter_ws
             }
 
-            if (!this.arr.forestryWS) {
-                this.arr.forestryWS = [forestryWS_Obj];
+            if (!this.arr.quarterWS) {
+                this.arr.quarterWS = [quarterWS_Obj];
             } else {
-                this.arr.forestryWS.push(forestryWS_Obj)
+                this.arr.quarterWS.push(quarterWS_Obj)
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-            this.new_forestry_wc = ''
+            this.new_quarter_ws = ''
 
-            document.querySelector('#add_forestry_wc').click()
-
-            // console.log(typeof this.arr, this.arr.forestryWS)
+            document.querySelector('#add_quarter_wc').click()
         }
     },
 

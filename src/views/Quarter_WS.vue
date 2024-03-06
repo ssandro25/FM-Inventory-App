@@ -1,18 +1,18 @@
 <template>
-    <AddNewForestryWS :params="params"/>
+    <AddNewQuarter_WS :params="params"/>
 
     <div class="container-fluid p-md-5 p-3">
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white mb-0">საქაღალდეები</h1>
+            <h1 class="text-white mb-0">კვარტლები</h1>
         </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewForestryWS"
+                    data-bs-target="#addNewQuarter_WS"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -26,7 +26,7 @@
             </div>
 
             <div
-                v-for="item in forestryWS"
+                v-for="item in quarterWS"
                 :key="item.id"
                 class="col"
             >
@@ -43,44 +43,44 @@
 
 <script>
 import {mapGetters} from "vuex";
-import AddNewForestryWS from "@/components/modals/add-new-modals/AddNewForestryWS.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
+import AddNewQuarter_WS from "@/components/modals/add-new-modals/AddNewQuarter_WS.vue";
 
 export default {
-    name: "FMFolder",
+    name: "Quarter_WS",
 
     components: {
+        AddNewQuarter_WS,
         GoBackBtn,
-        AddNewForestryWS
     },
 
     computed: {
         ...mapGetters([
-            'getWorkSpace'
+            'getWorkSpace',
+            'getWorkSpaceID'
         ]),
 
-        forestryWS() {
+        quarterWS() {
             const workSpaceID = parseInt(this.params.workSpaceID);
+            const forestryWS_ID = parseInt(this.params.forestryWS_ID);
 
             const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
-            const forestryWS = workSpace ? workSpace.forestryWS : [];
+            const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === forestryWS_ID) : [];
+            const quarterWS = forestryWS ? forestryWS.quarterWS : [];
 
-
-            return forestryWS ? forestryWS : [];
-
-            // return this.getWorkSpace.find(item => item.id === this.$route.params.id)
+            return quarterWS ? quarterWS : [];
         },
 
         params() {
             return {
-                workSpaceID: this.$route.params.id
+                workSpaceID: this.getWorkSpaceID,
+                forestryWS_ID: this.$route.params.id
             }
         }
     },
 
     mounted() {
-        console.log(this.forestryWS)
-        // this.$store.dispatch('setWorkSpaceID', this.$route.params.id)
+        this.$store.dispatch('setForestryWS_ID', this.$route.params.id)
     }
 }
 </script>
