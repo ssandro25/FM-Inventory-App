@@ -1,18 +1,18 @@
 <template>
-    <AddNewLiter_WS :params="params"/>
+    <AddNewForestry_WS :params="params"/>
 
     <div class="container-fluid p-md-5 p-3">
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white pt-md-0 pt-5 mb-0">ლიტერები</h1>
+            <h1 class="text-white pt-md-0 pt-5 mb-0">სატყეოები</h1>
         </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewLiter_WS"
+                    data-bs-target="#addNewForestryWS"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
@@ -26,12 +26,12 @@
             </div>
 
             <div
-                v-for="item in literWS"
+                v-for="item in forestryWS"
                 :key="item.id"
                 class="col"
             >
                 <router-link
-                    :to="/folder/+item.id"
+                    :to="'/work-space/'+this.$route.params.id+/forestry/ + item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}
@@ -43,48 +43,43 @@
 
 <script>
 import {mapGetters} from "vuex";
+import AddNewForestry_WS from "@/components/modals/add-new-modals/AddNewForestry_WS.vue";
 import GoBackBtn from "@/components/GoBackBtn.vue";
-import AddNewLiter_WS from "@/components/modals/add-new-modals/AddNewLiter_WS.vue";
 
 export default {
-    name: "Quarter_WS",
+    name: "FMFolder",
 
     components: {
-        AddNewLiter_WS,
         GoBackBtn,
+        AddNewForestry_WS
     },
 
     computed: {
         ...mapGetters([
-            'getWorkSpace',
-            'getWorkSpaceID',
-            'getForestryWS_ID'
+            'getWorkSpace'
         ]),
 
-        literWS() {
+        forestryWS() {
             const workSpaceID = parseInt(this.params.workSpaceID);
-            const forestryWS_ID = parseInt(this.params.forestryWS_ID);
-            const quarterWS_ID = parseInt(this.params.quarterWS_ID);
 
             const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
-            const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === forestryWS_ID) : [];
-            const quarterWS = forestryWS ? forestryWS.quarterWS.find(item => item.id === quarterWS_ID) : [];
-            const literWS = quarterWS ? quarterWS.literWS : [];
+            const forestryWS = workSpace ? workSpace.forestryWS : [];
 
-            return literWS ? literWS : [];
+
+            return forestryWS ? forestryWS : [];
+
+            // return this.getWorkSpace.find(item => item.id === this.$route.params.id)
         },
 
         params() {
             return {
-                workSpaceID: this.getWorkSpaceID,
-                forestryWS_ID: this.getForestryWS_ID,
-                quarterWS_ID: this.$route.params.id
+                workSpaceID: this.$route.params.id
             }
         }
     },
 
     mounted() {
-        this.$store.dispatch('setQuarterWS_ID', this.$route.params.id)
+        this.$store.dispatch('setWorkSpaceID', this.$route.params.id)
     }
 }
 </script>

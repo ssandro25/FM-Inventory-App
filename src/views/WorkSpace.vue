@@ -2,7 +2,7 @@
     <AddNewFolder />
 
     <div class="container-fluid p-md-5 p-3">
-        <h1 class="text-white mb-3">სამუშაო სივრცე</h1>
+        <h1 class="text-white mb-3">საქაღალდეები</h1>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">

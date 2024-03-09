@@ -10,6 +10,7 @@ export default {
     getWorkSpace: state => state.workSpace,
     getWorkSpaceID: state => state.workSpaceID,
     getForestryWS_ID: state => state.forestryWS_ID,
+    getQuarterWS_ID: state => state.quarterWS_ID,
 
     // 1 Macket
     getSoilCategory: state => state.soilCategory,

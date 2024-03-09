@@ -1,0 +1,527 @@
+{
+  "version": "6.0",
+  "nxVersion": "18.0.8",
+  "deps": {
+    "bootstrap": "^5.3.2",
+    "core-js": "^3.8.3",
+    "register-service-worker": "^1.7.2",
+    "vue": "^3.2.13",
+    "vue-router": "^4.0.3",
+    "vuex": "^4.0.0",
+    "@babel/core": "^7.12.16",
+    "@babel/eslint-parser": "^7.12.16",
+    "@vue/cli-plugin-babel": "~5.0.0",
+    "@vue/cli-plugin-eslint": "~5.0.0",
+    "@vue/cli-plugin-pwa": "~5.0.0",
+    "@vue/cli-plugin-router": "~5.0.0",
+    "@vue/cli-plugin-vuex": "~5.0.0",
+    "@vue/cli-service": "~5.0.0",
+    "eslint": "^7.32.0",
+    "eslint-plugin-vue": "^8.0.3",
+    "sass": "^1.32.7",
+    "sass-loader": "^12.0.0"
+  },
+  "pathMappings": {},
+  "nxJsonPlugins": [],
+  "fileMap": {
+    "projectFileMap": {},
+    "nonProjectFiles": [
+      {
+        "file": ".browserslistrc",
+        "hash": "8458577875134188254"
+      },
+      {
+        "file": ".eslintrc.js",
+        "hash": "16853805269872179257"
+      },
+      {
+        "file": ".gitignore",
+        "hash": "4767525457852752269"
+      },
+      {
+        "file": "README.md",
+        "hash": "4763377986558421564"
+      },
+      {
+        "file": "babel.config.js",
+        "hash": "8238727556092535180"
+      },
+      {
+        "file": "jsconfig.json",
+        "hash": "14600726147484760282"
+      },
+      {
+        "file": "package-lock.json",
+        "hash": "6533846247727802403"
+      },
+      {
+        "file": "package.json",
+        "hash": "5575239964170331774"
+      },
+      {
+        "file": "public/favicon.ico",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/android-chrome-192x192.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/android-chrome-512x512.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/android-chrome-maskable-192x192.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/android-chrome-maskable-512x512.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/apple-touch-icon-152x152.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/apple-touch-icon-180x180.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/apple-touch-icon-60x60.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/apple-touch-icon-76x76.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/apple-touch-icon.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/favicon-16x16.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/favicon-32x32.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/msapplication-icon-144x144.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons/mstile-150x150.png",
+        "hash": "2028357591993277023"
+      },
+      {
+        "file": "public/img/icons1/android-chrome-192x192.png",
+        "hash": "8649389173892155956"
+      },
+      {
+        "file": "public/img/icons1/android-chrome-512x512.png",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "public/img/icons1/android-chrome-maskable-192x192.png",
+        "hash": "1674583287874229364"
+      },
+      {
+        "file": "public/img/icons1/android-chrome-maskable-512x512.png",
+        "hash": "15914115660431099100"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon-120x120.png",
+        "hash": "6473028486614302889"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon-152x152.png",
+        "hash": "974674820771079197"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon-180x180.png",
+        "hash": "15269876141752379907"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon-60x60.png",
+        "hash": "3244421341483603138"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon-76x76.png",
+        "hash": "9296357990548996162"
+      },
+      {
+        "file": "public/img/icons1/apple-touch-icon.png",
+        "hash": "7668336023660023199"
+      },
+      {
+        "file": "public/img/icons1/favicon-16x16.png",
+        "hash": "10660980610695102177"
+      },
+      {
+        "file": "public/img/icons1/favicon-32x32.png",
+        "hash": "10350905487040784720"
+      },
+      {
+        "file": "public/img/icons1/msapplication-icon-144x144.png",
+        "hash": "3657733326963040821"
+      },
+      {
+        "file": "public/img/icons1/mstile-150x150.png",
+        "hash": "15073045351643407089"
+      },
+      {
+        "file": "public/img/icons1/safari-pinned-tab.svg",
+        "hash": "777125388540977993"
+      },
+      {
+        "file": "public/index.html",
+        "hash": "6328539241702438682"
+      },
+      {
+        "file": "public/robots.txt",
+        "hash": "8128781345255320682"
+      },
+      {
+        "file": "src/App.vue",
+        "hash": "5360608185643799298"
+      },
+      {
+        "file": "src/assets/images/64px.png",
+        "hash": "3798114147209157542"
+      },
+      {
+        "file": "src/assets/images/book-solid.svg",
+        "hash": "10292656549277683233"
+      },
+      {
+        "file": "src/assets/images/book/1.png",
+        "hash": "17333284522034618246"
+      },
+      {
+        "file": "src/assets/images/book/2.png",
+        "hash": "1693865007411069598"
+      },
+      {
+        "file": "src/assets/images/book/3.png",
+        "hash": "13446036107118490240"
+      },
+      {
+        "file": "src/assets/images/book/4.png",
+        "hash": "3073927455061689315"
+      },
+      {
+        "file": "src/assets/images/book/5.png",
+        "hash": "8747981493200655993"
+      },
+      {
+        "file": "src/assets/images/broom-solid.svg",
+        "hash": "8016321737681362113"
+      },
+      {
+        "file": "src/assets/images/clipboard-solid.svg",
+        "hash": "9741493968890230250"
+      },
+      {
+        "file": "src/assets/images/fav-icon-choosen.svg",
+        "hash": "7135957382335137584"
+      },
+      {
+        "file": "src/assets/images/fav-icon.svg",
+        "hash": "10038229140416343626"
+      },
+      {
+        "file": "src/assets/images/flag_of_georgia.png",
+        "hash": "845925682517572005"
+      },
+      {
+        "file": "src/assets/images/forestjpg.jpg",
+        "hash": "17207467042917258006"
+      },
+      {
+        "file": "src/assets/images/house-solid.svg",
+        "hash": "16597364990655884012"
+      },
+      {
+        "file": "src/assets/images/linkedin.svg",
+        "hash": "9546615037084182992"
+      },
+      {
+        "file": "src/assets/images/pen-ruler-solid.svg",
+        "hash": "17555731713131032924"
+      },
+      {
+        "file": "src/assets/images/plus-solid.svg",
+        "hash": "12445374168122904482"
+      },
+      {
+        "file": "src/assets/images/pngtree-blue-bird.jpg",
+        "hash": "3982661553949970455"
+      },
+      {
+        "file": "src/assets/images/settings.svg",
+        "hash": "3927574703253047791"
+      },
+      {
+        "file": "src/assets/images/trash-solid.svg",
+        "hash": "15680235566252755886"
+      },
+      {
+        "file": "src/assets/images/user.svg",
+        "hash": "8024976681234264461"
+      },
+      {
+        "file": "src/assets/logo.png",
+        "hash": "6600670850494142607"
+      },
+      {
+        "file": "src/components/ClearCache.vue",
+        "hash": "14888080538624890224"
+      },
+      {
+        "file": "src/components/GoBackBtn.vue",
+        "hash": "1478533061643888770"
+      },
+      {
+        "file": "src/components/mackets/Macket1.vue",
+        "hash": "5069042160720380194"
+      },
+      {
+        "file": "src/components/mackets/Macket14_16.vue",
+        "hash": "6523820222915911104"
+      },
+      {
+        "file": "src/components/mackets/Macket16_15.vue",
+        "hash": "16930537429713010732"
+      },
+      {
+        "file": "src/components/mackets/Macket2.vue",
+        "hash": "15896073633860560095"
+      },
+      {
+        "file": "src/components/mackets/Macket23_8.vue",
+        "hash": "4110867457146781858"
+      },
+      {
+        "file": "src/components/mackets/Macket24_9.vue",
+        "hash": "14731809640556721991"
+      },
+      {
+        "file": "src/components/mackets/Macket28_12.vue",
+        "hash": "4763700291602477570"
+      },
+      {
+        "file": "src/components/mackets/Macket3.vue",
+        "hash": "4718638620263582822"
+      },
+      {
+        "file": "src/components/mackets/Macket31_6.vue",
+        "hash": "15757456959474132013"
+      },
+      {
+        "file": "src/components/mackets/Macket32_7.vue",
+        "hash": "13293572744465413609"
+      },
+      {
+        "file": "src/components/mackets/Macket35_10.vue",
+        "hash": "15965963529500613242"
+      },
+      {
+        "file": "src/components/mackets/Macket37_11.vue",
+        "hash": "7549624305644389132"
+      },
+      {
+        "file": "src/components/mackets/Macket4.vue",
+        "hash": "16777964269017750701"
+      },
+      {
+        "file": "src/components/mackets/Macket40_13.vue",
+        "hash": "4270803337089592754"
+      },
+      {
+        "file": "src/components/mackets/Macket42_14.vue",
+        "hash": "11606294026448845542"
+      },
+      {
+        "file": "src/components/mackets/Macket5.vue",
+        "hash": "16633708649131238405"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewFolder.vue",
+        "hash": "11239331954877204979"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewForestArea.vue",
+        "hash": "16510771789576107171"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewForestry.vue",
+        "hash": "12349108384330407955"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewForestry_WS.vue",
+        "hash": "8510160706669767441"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewLiter.vue",
+        "hash": "16349532033940774016"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewQuarter.vue",
+        "hash": "2506707850493782432"
+      },
+      {
+        "file": "src/components/modals/add-new-modals/AddNewQuarter_WS.vue",
+        "hash": "1777692066324174128"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal1.vue",
+        "hash": "7558482663188388749"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal14_16.vue",
+        "hash": "14911295232580865634"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal16_15.vue",
+        "hash": "3998703204589452904"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal2.vue",
+        "hash": "1374877525972842738"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal23_8.vue",
+        "hash": "14310517662096242454"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal24_9.vue",
+        "hash": "9168712558554435155"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal28_12.vue",
+        "hash": "718111099320391219"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal3.vue",
+        "hash": "1884394341740403744"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal31_6.vue",
+        "hash": "8803451819041186176"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal32_7.vue",
+        "hash": "5277673620801825885"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal35_10.vue",
+        "hash": "10179598030110371741"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal37_11.vue",
+        "hash": "15925225369225524885"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal4.vue",
+        "hash": "18092281635223904742"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal40_13.vue",
+        "hash": "16684297545734065871"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal42_14.vue",
+        "hash": "1924327873521717995"
+      },
+      {
+        "file": "src/components/modals/mackets-modals/MacketModal5.vue",
+        "hash": "3340319759963405402"
+      },
+      {
+        "file": "src/main.js",
+        "hash": "9736896717526796636"
+      },
+      {
+        "file": "src/registerServiceWorker.js",
+        "hash": "12476842193023990374"
+      },
+      {
+        "file": "src/router/index.js",
+        "hash": "9893117206666306079"
+      },
+      {
+        "file": "src/store/actions.js",
+        "hash": "15063816934697500230"
+      },
+      {
+        "file": "src/store/getters.js",
+        "hash": "5155206869964040035"
+      },
+      {
+        "file": "src/store/index.js",
+        "hash": "16997332630615534632"
+      },
+      {
+        "file": "src/store/state.js",
+        "hash": "17794085334391371984"
+      },
+      {
+        "file": "src/views/Book.vue",
+        "hash": "14551107452241430328"
+      },
+      {
+        "file": "src/views/Folder.vue",
+        "hash": "17722282397802681344"
+      },
+      {
+        "file": "src/views/ForestArea.vue",
+        "hash": "9908267796398117636"
+      },
+      {
+        "file": "src/views/Forestry.vue",
+        "hash": "2959495850955080094"
+      },
+      {
+        "file": "src/views/Forestry_WS.vue",
+        "hash": "9801887155649205587"
+      },
+      {
+        "file": "src/views/Index.vue",
+        "hash": "16757986569768894163"
+      },
+      {
+        "file": "src/views/Liter.vue",
+        "hash": "6693222460975829140"
+      },
+      {
+        "file": "src/views/Mackets.vue",
+        "hash": "9940799960924694534"
+      },
+      {
+        "file": "src/views/Options.vue",
+        "hash": "3520976721885422021"
+      },
+      {
+        "file": "src/views/Profile.vue",
+        "hash": "2962219705465061521"
+      },
+      {
+        "file": "src/views/Quarter.vue",
+        "hash": "1280087810269433065"
+      },
+      {
+        "file": "src/views/Quarter_WS.vue",
+        "hash": "14709118288234191489"
+      },
+      {
+        "file": "src/views/WorkSpace.vue",
+        "hash": "10163882210941195511"
+      },
+      {
+        "file": "vue.config.js",
+        "hash": "1503844876585520685"
+      }
+    ]
+  }
+}

@@ -49,4 +49,8 @@ export default {
     setForestryWS_ID({state}, id) {
         state.forestryWS_ID = id
     },
+
+    setQuarterWS_ID({state}, id) {
+        state.quarterWS_ID = id
+    },
 }

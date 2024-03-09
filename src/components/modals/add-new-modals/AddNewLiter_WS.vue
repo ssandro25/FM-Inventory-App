@@ -1,18 +1,18 @@
 <template>
     <div
         class="modal fade"
-        id="addNewQuarter_WS"
+        id="addNewLiter_WS"
         tabindex="-1"
-        aria-labelledby="addNewQuarter_WSLabel"
+        aria-labelledby="addNewLiter_WSLabel"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen-sm-down">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="addNewQuarter_WSLabel">
+                    <h1 class="modal-title fs-5" id="addNewLiter_WSLabel">
                         სატყეოს დამატება
                     </h1>
-                    <button type="button" id="add_quarter_wc" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="add_liter_wc" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -25,7 +25,7 @@
                         </label>
 
                         <input
-                            v-model="new_quarter_ws"
+                            v-model="new_liter_ws"
                             type="text"
                             class="form-control"
                             id="new_folder"
@@ -35,7 +35,7 @@
 
                 <div class="modal-footer border-0 justify-content-center">
                     <button
-                        :disabled="!new_quarter_ws"
+                        :disabled="!new_liter_ws"
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
                         @click="add"
@@ -52,12 +52,12 @@
 import { mapGetters } from "vuex";
 
 export default {
-    name: "AddNewQuarter_WS",
+    name: "AddNewLiter_WS",
 
     data() {
         return {
             arr: null,
-            new_quarter_ws: '',
+            new_liter_ws: '',
         }
     },
 
@@ -69,23 +69,24 @@ export default {
         add() {
             this.arr = this.getWorkSpace
                 .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
-                .find(item => item.id === parseInt(this.params.forestryWS_ID))
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID))
 
-            let quarterWS_Obj = {
-                id: this.arr.quarterWS && this.arr.quarterWS.length ? this.arr.quarterWS.length + 1 : 1,
-                title: this.new_quarter_ws
+            let literWS_Obj = {
+                id: this.arr.literWS && this.arr.literWS.length ? this.arr.literWS.length + 1 : 1,
+                title: this.new_liter_ws
             }
 
-            if (!this.arr.quarterWS) {
-                this.arr.quarterWS = [quarterWS_Obj];
+            if (!this.arr.literWS) {
+                this.arr.literWS = [literWS_Obj];
             } else {
-                this.arr.quarterWS.push(quarterWS_Obj)
+                this.arr.literWS.push(literWS_Obj)
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-            this.new_quarter_ws = ''
+            this.new_liter_ws = ''
 
-            document.querySelector('#add_quarter_wc').click()
+            document.querySelector('#add_liter_wc').click()
         }
     },
 
