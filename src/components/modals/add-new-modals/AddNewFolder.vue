@@ -12,7 +12,7 @@
                     <h1 class="modal-title fs-5" id="addNewFolderLabel">
                         ახალი საქაღალდის დამატება
                     </h1>
-                    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" id="add_new_folder" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
@@ -75,6 +75,8 @@ export default {
                 date: this.currentDate
             }
             this.$store.dispatch('setNewWorkSpace', obj)
+
+            document.querySelector('#add_new_folder').click()
         }
     },
 

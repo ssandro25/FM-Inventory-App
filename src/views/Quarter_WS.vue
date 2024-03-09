@@ -31,7 +31,7 @@
                 class="col"
             >
                 <router-link
-                    :to="/folder/+item.id"
+                    :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}

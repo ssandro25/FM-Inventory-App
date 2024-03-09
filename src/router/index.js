@@ -12,6 +12,7 @@ import WorkSpace from "@/views/WorkSpace.vue";
 import Folder from "@/views/Folder.vue";
 import Forestry_WS from "@/views/Forestry_WS.vue";
 import Quarter_WS from "@/views/Quarter_WS.vue";
+import Liter_WS from "@/views/Liter_WS.vue";
 
 const routes = [
     {
@@ -89,6 +90,12 @@ const routes = [
         path: '/work-space/:id/forestry/:id/quarter/:id',
         name: 'quarter_WS',
         component: Quarter_WS
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id',
+        name: 'liter_WS',
+        component: Liter_WS
     },
 ]
 
