@@ -19,7 +19,12 @@
                         :class="{
                             'active' :  $route.name === 'work-space' ||
                                         $route.name === 'folder' ||
-                                        $route.name === 'forestry_ws'
+                                        $route.name === 'forestry-ws' ||
+                                        $route.name === 'quarter-ws' ||
+                                        $route.name === 'liter-ws' ||
+                                        $route.name === 'sample-area' ||
+                                        $route.name === 'gao-trees-account' ||
+                                        $route.name === 'lying-dead-account'
                         }"
                     >
                         <img src="@/assets/images/pen-ruler-solid.svg" width="14" alt="">

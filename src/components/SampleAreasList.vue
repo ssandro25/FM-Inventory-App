@@ -111,6 +111,10 @@ export default {
                 literWS_ID: this.$route.params.id,
             }
         }
+    },
+
+    mounted() {
+        this.$store.dispatch('setSampleAreaID', this.$route.params.id)
     }
 }
 </script>

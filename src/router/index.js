@@ -14,6 +14,8 @@ import Forestry_WS from "@/views/sample-area/Forestry_WS.vue";
 import Quarter_WS from "@/views/sample-area/Quarter_WS.vue";
 import Liter_WS from "@/views/sample-area/Liter_WS.vue";
 import SampleArea from "@/views/sample-area/SampleArea.vue";
+import GaoTreesAccount from "@/views/sample-area/GaoTreesAccount.vue";
+import LyingDeadAccount from "@/views/sample-area/LyingDeadAccount.vue";
 
 const routes = [
     {
@@ -83,19 +85,19 @@ const routes = [
 
     {
         path: '/work-space/:id/forestry/:id',
-        name: 'forestry_ws',
+        name: 'forestry-ws',
         component: Forestry_WS
     },
 
     {
         path: '/work-space/:id/forestry/:id/quarter/:id',
-        name: 'quarter_WS',
+        name: 'quarter-ws',
         component: Quarter_WS
     },
 
     {
         path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id',
-        name: 'liter_WS',
+        name: 'liter-ws',
         component: Liter_WS
     },
 
@@ -103,6 +105,18 @@ const routes = [
         path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/sample-area/:id',
         name: 'sample-area',
         component: SampleArea
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/sample-area/:id/gao-trees-account/:id',
+        name: 'gao-trees-account',
+        component: GaoTreesAccount
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/sample-area/:id/lying-dead-account/:id',
+        name: 'lying-dead-account',
+        component: LyingDeadAccount
     },
 ]
 

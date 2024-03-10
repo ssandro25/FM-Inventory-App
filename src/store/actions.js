@@ -57,4 +57,8 @@ export default {
     setLiterWS_ID({state}, id) {
         state.literWS_ID = id
     },
+
+    setSampleAreaID({state}, id) {
+        state.sampleAreaID = id
+    },
 }
