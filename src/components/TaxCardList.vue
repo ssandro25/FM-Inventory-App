@@ -1,7 +1,9 @@
 <template>
+    <AddNewTaxCard :params="params"/>
+
     <div
         data-bs-toggle="modal"
-        data-bs-target="#addNewLiter_WS"
+        data-bs-target="#addNewTaxCard"
         class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 mt-4"
     >
         <div class="d-flex align-items-center gap-2">
@@ -29,9 +31,14 @@
 
 <script>
 import { mapGetters } from "vuex";
+import AddNewTaxCard from "@/components/modals/add-new-modals/AddNewTaxCard.vue";
 
 export default {
     name: "TaxCardList",
+
+    components: {
+        AddNewTaxCard
+    },
 
     computed: {
         ...mapGetters([

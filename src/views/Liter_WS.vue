@@ -1,6 +1,4 @@
 <template>
-    <AddNewLiter_WS :params="params"/>
-
     <div class="container-fluid p-md-5 p-3">
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn/>
@@ -33,7 +31,6 @@
 <script>
 import { mapGetters } from "vuex";
 import GoBackBtn from "@/components/GoBackBtn.vue";
-import AddNewLiter_WS from "@/components/modals/add-new-modals/AddNewLiter_WS.vue";
 import TaxCardList from "@/components/TaxCardList.vue";
 import SampleAreasList from "@/components/SampleAreasList.vue";
 
@@ -43,7 +40,6 @@ export default {
     components: {
         SampleAreasList,
         TaxCardList,
-        AddNewLiter_WS,
         GoBackBtn,
     },
 
@@ -75,15 +71,6 @@ export default {
 
             return workSpace + ' / ' + forestry + ' / ' + quarter + ' / ' + liter
         },
-
-        params() {
-            return {
-                workSpaceID: this.getWorkSpaceID,
-                forestryWS_ID: this.getForestryWS_ID,
-                quarterWS_ID: this.getQuarterWS_ID,
-                literWS_ID: this.$route.params.id,
-            }
-        }
     },
 }
 </script>

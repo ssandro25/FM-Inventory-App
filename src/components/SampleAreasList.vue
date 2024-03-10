@@ -17,7 +17,15 @@
         :key="item.id"
         class="mt-4"
     >
+        <div
+            v-if="item.without_sample_area"
+            class="item rounded text-center text-white p-3 without_sample_area"
+        >
+            {{ item.title }}
+        </div>
+
         <router-link
+            v-else
             to="/"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
         >
@@ -108,5 +116,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.item.without_sample_area {
+    background: #cc7d7d !important;
+    color: #10142b !important;
+    font-weight: bold;
+}
 </style>
