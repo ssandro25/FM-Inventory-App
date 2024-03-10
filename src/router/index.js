@@ -8,11 +8,12 @@ import Mackets from "@/views/Mackets.vue";
 import Options from "@/views/Options.vue";
 import Profile from "@/views/Profile.vue";
 import Book from "@/views/Book.vue";
-import WorkSpace from "@/views/WorkSpace.vue";
-import Folder from "@/views/Folder.vue";
-import Forestry_WS from "@/views/Forestry_WS.vue";
-import Quarter_WS from "@/views/Quarter_WS.vue";
-import Liter_WS from "@/views/Liter_WS.vue";
+import WorkSpace from "@/views/sample-area/WorkSpace.vue";
+import Folder from "@/views/sample-area/Folder.vue";
+import Forestry_WS from "@/views/sample-area/Forestry_WS.vue";
+import Quarter_WS from "@/views/sample-area/Quarter_WS.vue";
+import Liter_WS from "@/views/sample-area/Liter_WS.vue";
+import SampleArea from "@/views/sample-area/SampleArea.vue";
 
 const routes = [
     {
@@ -96,6 +97,12 @@ const routes = [
         path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id',
         name: 'liter_WS',
         component: Liter_WS
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/sample-area/:id',
+        name: 'sample-area',
+        component: SampleArea
     },
 ]
 

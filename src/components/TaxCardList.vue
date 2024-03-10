@@ -1,5 +1,5 @@
 <template>
-    <AddNewTaxCard :params="params"/>
+    <AddNewTaxCard />
 
     <div
         data-bs-toggle="modal"

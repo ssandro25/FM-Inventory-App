@@ -53,4 +53,8 @@ export default {
     setQuarterWS_ID({state}, id) {
         state.quarterWS_ID = id
     },
+
+    setLiterWS_ID({state}, id) {
+        state.literWS_ID = id
+    },
 }

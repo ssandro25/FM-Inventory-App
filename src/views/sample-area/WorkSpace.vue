@@ -12,7 +12,7 @@
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
-                        <img src="@/assets/images/plus-solid.svg" width="20" alt="">
+                        <img src="../../assets/images/plus-solid.svg" width="20" alt="">
 
                         <span>
                             დაამატე ახალი

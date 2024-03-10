@@ -1,6 +1,6 @@
 <template>
     <div class="d-md-flex">
-        <div class="side__bar p-2">
+        <div class="side__bar p-2 pb-md-2 pb-5">
             <div class="d-flex flex-md-column justify-content-between h-100">
                 <div class="d-flex flex-md-column justify-content-between gap-3">
                     <router-link
@@ -235,7 +235,7 @@ body {
     .content__container {
         width: 100%;
         min-height: 100vh;
-        margin-bottom: 56px;
+        margin-bottom: 96px;
     }
 
     .side__bar_btn {

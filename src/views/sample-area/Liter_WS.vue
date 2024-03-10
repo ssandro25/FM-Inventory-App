@@ -17,7 +17,7 @@
                 <TaxCardList />
             </div>
 
-            <div class="col-lg-6">
+            <div class="col-lg-6 mt-lg-0 mt-4">
                 <p class="fs-3 mb-0">
                     სანიმუშო ფართობი
                 </p>
@@ -72,6 +72,10 @@ export default {
             return workSpace + ' / ' + forestry + ' / ' + quarter + ' / ' + liter
         },
     },
+
+    mounted() {
+        this.$store.dispatch('setLiterWS_ID', this.$route.params.id)
+    }
 }
 </script>
 

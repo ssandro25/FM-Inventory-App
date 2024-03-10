@@ -32,6 +32,8 @@ export default {
 
     quarterWS_ID: null,
 
+    literWS_ID: null,
+
     // 1 Macket
     soilCategory: [
         {id: '3', name: '3 - კორომი ბუნებრივი წარმოშობის'},

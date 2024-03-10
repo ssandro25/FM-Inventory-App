@@ -3,13 +3,13 @@
         class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 mt-4"
         @click="addNewSampleArea()"
     >
-                    <span class="d-flex align-items-center gap-2">
-                        <img src="@/assets/images/plus-solid.svg" width="20" alt="">
+        <span class="d-flex align-items-center gap-2">
+            <img src="@/assets/images/plus-solid.svg" width="20" alt="">
 
-                        <span>
-                            დაამატე ახალი
-                        </span>
-                    </span>
+            <span>
+                დაამატე ახალი
+            </span>
+        </span>
     </div>
 
     <div
@@ -26,7 +26,7 @@
 
         <router-link
             v-else
-            to="/"
+            :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/sample-area/+item.id"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
         >
             {{ item.title }} {{ item.id }}

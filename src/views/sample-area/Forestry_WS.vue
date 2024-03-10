@@ -1,22 +1,22 @@
 <template>
-    <AddNewLiter_WS :params="params"/>
+    <AddNewQuarter_WS :params="params"/>
 
     <div class="container-fluid p-md-5 p-3">
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn />
 
-            <h1 class="text-white pt-md-0 pt-5 mb-0">ლიტერები</h1>
+            <h1 class="text-white pt-md-0 pt-5 mb-0">კვარტლები</h1>
         </div>
 
         <div class="row row-cols-md-3 row-cols-1 gy-4">
             <div class="col">
                 <div
                     data-bs-toggle="modal"
-                    data-bs-target="#addNewLiter_WS"
+                    data-bs-target="#addNewQuarter_WS"
                     class="add_new__btn rounded d-flex align-items-center justify-content-center p-3"
                 >
                     <div class="d-flex align-items-center gap-2">
-                        <img src="@/assets/images/plus-solid.svg" width="20" alt="">
+                        <img src="../../assets/images/plus-solid.svg" width="20" alt="">
 
                         <span>
                             დაამატე ახალი
@@ -26,12 +26,12 @@
             </div>
 
             <div
-                v-for="item in literWS"
+                v-for="item in quarterWS"
                 :key="item.id"
                 class="col"
             >
                 <router-link
-                    :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
+                    :to="/work-space/+this.getWorkSpaceID+/forestry/+this.$route.params.id+/quarter/+item.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
                 >
                     {{ item.title }}
@@ -44,47 +44,43 @@
 <script>
 import {mapGetters} from "vuex";
 import GoBackBtn from "@/components/GoBackBtn.vue";
-import AddNewLiter_WS from "@/components/modals/add-new-modals/AddNewLiter_WS.vue";
+import AddNewQuarter_WS from "@/components/modals/add-new-modals/AddNewQuarter_WS.vue";
 
 export default {
-    name: "Quarter_WS",
+    name: "Forestry_WS",
 
     components: {
-        AddNewLiter_WS,
+        AddNewQuarter_WS,
         GoBackBtn,
     },
 
     computed: {
         ...mapGetters([
             'getWorkSpace',
-            'getWorkSpaceID',
-            'getForestryWS_ID'
+            'getWorkSpaceID'
         ]),
 
-        literWS() {
+        quarterWS() {
             const workSpaceID = parseInt(this.params.workSpaceID);
             const forestryWS_ID = parseInt(this.params.forestryWS_ID);
-            const quarterWS_ID = parseInt(this.params.quarterWS_ID);
 
             const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
             const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === forestryWS_ID) : [];
-            const quarterWS = forestryWS ? forestryWS.quarterWS.find(item => item.id === quarterWS_ID) : [];
-            const literWS = quarterWS ? quarterWS.literWS : [];
+            const quarterWS = forestryWS ? forestryWS.quarterWS : [];
 
-            return literWS ? literWS : [];
+            return quarterWS ? quarterWS : [];
         },
 
         params() {
             return {
                 workSpaceID: this.getWorkSpaceID,
-                forestryWS_ID: this.getForestryWS_ID,
-                quarterWS_ID: this.$route.params.id
+                forestryWS_ID: this.$route.params.id
             }
         }
     },
 
     mounted() {
-        this.$store.dispatch('setQuarterWS_ID', this.$route.params.id)
+        this.$store.dispatch('setForestryWS_ID', this.$route.params.id)
     }
 }
 </script>
