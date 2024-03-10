@@ -39,7 +39,6 @@
                                 <div>
                                     <img :src="item.image" width="200" alt="">
                                 </div>
-
                             </div>
                         </div>
                     </div>

@@ -23,6 +23,9 @@
         <router-link
             to="/"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
+            :class="{
+                'mb-5' : item.without_sample_area
+            }"
         >
             {{ item.title }} {{ item.id }}
         </router-link>

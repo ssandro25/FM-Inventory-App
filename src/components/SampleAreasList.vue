@@ -19,7 +19,7 @@
     >
         <div
             v-if="item.without_sample_area"
-            class="item rounded text-center text-white p-3 without_sample_area"
+            class="item rounded text-center text-white p-3 without_sample_area mb-5"
         >
             {{ item.title }}
         </div>
@@ -27,9 +27,17 @@
         <router-link
             v-else
             :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/sample-area/+item.id"
-            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
+            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 position-relative"
         >
             {{ item.title }} {{ item.id }}
+
+            <button
+                type="button"
+                class="btn p-0 position-absolute end-0 me-3"
+                @click.prevent="removeSampleArea(item)"
+            >
+                <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
+            </button>
         </router-link>
     </div>
 </template>
@@ -77,7 +85,13 @@ export default {
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-        }
+        },
+
+        removeSampleArea(index) {
+            console.log(index)
+            this.sampleAreas.splice(index, 1);
+            this.taxCard.splice(index, 1);
+        },
     },
 
     computed: {
@@ -103,6 +117,21 @@ export default {
             return sampleAreas ? sampleAreas : [];
         },
 
+        taxCard() {
+            const workSpaceID = parseInt(this.params.workSpaceID);
+            const forestryWS_ID = parseInt(this.params.forestryWS_ID);
+            const quarterWS_ID = parseInt(this.params.quarterWS_ID);
+            const literWS_ID = parseInt(this.params.literWS_ID);
+
+            const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
+            const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === forestryWS_ID) : [];
+            const quarterWS = forestryWS ? forestryWS.quarterWS.find(item => item.id === quarterWS_ID) : [];
+            const literWS = quarterWS ? quarterWS.literWS.find(item => item.id === literWS_ID) : [];
+            const taxCard = literWS ? literWS.taxCardArr : [];
+
+            return taxCard ? taxCard : [];
+        },
+
         params() {
             return {
                 workSpaceID: this.getWorkSpaceID,
@@ -124,5 +153,16 @@ export default {
     background: #cc7d7d !important;
     color: #10142b !important;
     font-weight: bold;
+    position: relative;
+}
+
+.item.without_sample_area::after {
+    content: "";
+    position: absolute;
+    width: 204%;
+    height: 2px;
+    background-color: #5e6873;
+    bottom: -25px;
+    left: -104%;
 }
 </style>

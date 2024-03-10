@@ -84,6 +84,7 @@ export default {
             let taxCard_Obj = {
                 id: this.arr.taxCardArr && this.arr.taxCardArr.length ? this.arr.taxCardArr.length + 1 : 1,
                 title: this.new_tax_card,
+                without_sample_area: true
             }
 
             if (!this.arr.taxCardArr) {
