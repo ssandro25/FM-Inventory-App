@@ -34,7 +34,7 @@
             <button
                 type="button"
                 class="btn p-0 position-absolute end-0 me-3"
-                @click.prevent="removeSampleArea(item)"
+                @click.prevent="removeSampleArea(item.id)"
             >
                 <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
             </button>
@@ -87,10 +87,15 @@ export default {
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
 
-        removeSampleArea(index) {
-            console.log(index)
-            this.sampleAreas.splice(index, 1);
-            this.taxCard.splice(index, 1);
+        removeSampleArea(id) {
+            const index = this.sampleAreas.findIndex(product => product.id === parseInt(id));
+
+            if (index !== -1) {
+                this.sampleAreas.splice(index, 1);
+                this.taxCard.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
     },
 
