@@ -1,5 +1,6 @@
 <template>
     <div class="container-fluid p-md-5 p-3">
+        <GoBackBtn />
         {{ this.$route.params }}
 
         <nav class="mt-4">
@@ -45,8 +46,14 @@
 </template>
 
 <script>
+import GoBackBtn from "@/components/GoBackBtn.vue";
+
 export default {
-    name: "LyingDeadAccount"
+    name: "LyingDeadAccount",
+
+    components: {
+        GoBackBtn
+    }
 }
 </script>
 

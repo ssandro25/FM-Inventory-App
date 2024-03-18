@@ -1,5 +1,6 @@
 <template>
     <div class="container-fluid p-md-5 p-3">
+        <GoBackBtn />
         {{ this.$route.params }}
 
         <nav class="mt-4">
@@ -45,9 +46,9 @@
             </div>
         </nav>
 
-        <div class="tab-content" id="nav-tabContent">
+        <div class="tab-content mt-5" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab" tabindex="0">
-                1.საველე აღრიცხვა
+                <GrowTreeFieldAccounting />
             </div>
 
             <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab" tabindex="0">
@@ -62,8 +63,16 @@
 </template>
 
 <script>
+import GoBackBtn from "@/components/GoBackBtn.vue";
+import GrowTreeFieldAccounting from "@/components/GrowTreeFieldAccounting.vue";
+
 export default {
-    name: "GaoTreesAccount"
+    name: "GaoTreesAccount",
+
+    components: {
+        GrowTreeFieldAccounting,
+        GoBackBtn
+    }
 }
 </script>
 
