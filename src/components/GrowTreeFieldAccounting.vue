@@ -141,14 +141,104 @@
                 </td>
 
                 <td>
-                    <button
-                        type="button"
-                        class="btn btn-danger d-flex align-items-center justify-content-center gap-2 w-100"
-                        @click="removeAddedTree(item.id)"
+                    <div
+                        class="modal fade"
+                        :id="'editAddedTreeItem'+item.id"
+                        tabindex="-1"
+                        aria-labelledby="bookLabel"
+                        aria-hidden="true"
                     >
-                        <img src="@/assets/images/trash-solid.svg" width="15" alt="">
-                        <span>წაშლა</span>
-                    </button>
+                        <div class="modal-dialog modal-fullscreen-sm-down">
+                            <div class="modal-content bg-dark">
+                                <div class="modal-header border-0">
+                                    <h1 class="modal-title fs-5" id="bookLabel">
+                                        {{ item.registered_tree }} - რედაქტირება
+                                    </h1>
+                                    <button type="button" id="edit_added_tree" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                            aria-label="Close"></button>
+                                </div>
+
+                                <div class="modal-body">
+                                    <select
+                                        v-model="registered_tree_edit"
+                                        class="form-select"
+                                        id="diameter"
+                                    >
+                                        <option>აირჩიეთ</option>
+
+                                        <option
+                                            v-for="item in registeredTreesData"
+                                            :key="item.id"
+                                        >
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+
+                                    <select
+                                        v-model="diameter_edit"
+                                        class="form-select mt-3"
+                                        id="diameter"
+                                    >
+                                        <option>აირჩიეთ</option>
+
+                                        <option
+                                            v-for="item in getDiameterData"
+                                            :key="item.id"
+                                        >
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+
+                                    <select
+                                        v-model="category_edit"
+                                        class="form-select mt-3"
+                                        id="diameter"
+                                    >
+                                        <option>აირჩიეთ</option>
+
+                                        <option
+                                            v-for="item in getCategoryData"
+                                            :key="item.id"
+                                        >
+                                            {{ item.name }}
+                                        </option>
+                                    </select>
+                                </div>
+
+                                <div class="modal-footer">
+                                    <button
+                                        type="button"
+                                        class="btn btn-success"
+                                        @click="editAddedTree(item.id)"
+                                    >
+                                        ცვლილებების შენახვა
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex gap-3">
+                        <button
+                            type="button"
+                            class="btn btn-warning d-flex align-items-center justify-content-center gap-2 w-100"
+                            data-bs-toggle="modal"
+                            :data-bs-target="'#editAddedTreeItem'+item.id"
+                        >
+                            <img src="@/assets/images/edit-icon.svg" width="15" alt="">
+                            <span>რედაქტირება</span>
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-danger d-flex align-items-center justify-content-center gap-2 w-100"
+                            @click="removeAddedTree(item.id)"
+                        >
+                            <img src="@/assets/images/trash-solid.svg" width="15" alt="">
+                            <span>წაშლა</span>
+                        </button>
+                    </div>
                 </td>
             </tr>
             </tbody>
@@ -158,7 +248,7 @@
 
 
 <script>
-import { mapGetters } from "vuex";
+import {mapGetters} from "vuex";
 
 export default {
     name: "GrowTreeFieldAccounting",
@@ -170,7 +260,10 @@ export default {
             diameter: '',
             category: '',
             arr: [],
-            addedTrees: []
+            addedTrees: [],
+            registered_tree_edit: '',
+            diameter_edit: '',
+            category_edit: '',
         }
     },
 
@@ -185,7 +278,7 @@ export default {
 
             let registerSpeciesObj = {
                 id: this.arr.registerSpeciesArr && this.arr.registerSpeciesArr.length ? this.arr.registerSpeciesArr.length + 1 : 1,
-                name : this.tree_type
+                name: this.tree_type
             }
 
             if (!this.arr.registerSpeciesArr) {
@@ -207,9 +300,9 @@ export default {
 
             let addedTreesObj = {
                 id: this.arr.gaoAddedTreesArr && this.arr.gaoAddedTreesArr.length ? this.arr.gaoAddedTreesArr.length + 1 : 1,
-                registered_tree : this.registered_tree,
-                diameter : this.diameter,
-                category : this.category,
+                registered_tree: this.registered_tree,
+                diameter: this.diameter,
+                category: this.category,
             }
 
             if (!this.arr.gaoAddedTreesArr) {
@@ -233,6 +326,22 @@ export default {
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+        },
+
+        editAddedTree(id) {
+            const item = this.addedTreesData.find(product => product.id === parseInt(id));
+
+            item.registered_tree = this.registered_tree_edit;
+            item.diameter = this.diameter_edit;
+            item.category = this.category_edit;
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace);
+
+            this.registered_tree_edit = '';
+            this.diameter_edit = '';
+            this.category_edit = '';
+
+            document.querySelector('#edit_added_tree').click()
         }
     },
 
