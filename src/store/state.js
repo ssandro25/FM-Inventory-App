@@ -639,8 +639,6 @@ export default {
     ],
 
     //GAO Trees Account
-    registeredTreesData: localStorage.getItem('registeredTreesData') ? JSON.parse(localStorage.getItem('registeredTreesData')) : [],
-
     diameterData: [
         { id: 1, name: 8 }, { id: 2, name: 10 }, { id: 3, name: 12 }, { id: 4, name: 14 },
         { id: 5, name: 16 }, { id: 6, name: 18 }, { id: 7, name: 20 }, { id: 8, name: 24 },
@@ -667,6 +665,4 @@ export default {
         {id: '7', name: 'ზეხმელი-შეშა'},
         {id: '8', name: 'ძირკვი'},
     ],
-
-    addedTreesData: localStorage.getItem('addedTreesData') ? JSON.parse(localStorage.getItem('addedTreesData')) : [],
 }

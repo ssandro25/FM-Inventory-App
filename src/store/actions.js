@@ -61,16 +61,4 @@ export default {
     setSampleAreaID({state}, id) {
         state.sampleAreaID = id
     },
-
-    setRegisteredTreesData({state}, value) {
-        state.registeredTreesData.push(value)
-
-        localStorage.setItem('registeredTreesData', JSON.stringify(state.registeredTreesData))
-    },
-
-    setAddedTreesData({state}, value) {
-        state.addedTreesData.push(value)
-
-        localStorage.setItem('addedTreesData', JSON.stringify(state.addedTreesData))
-    }
 }

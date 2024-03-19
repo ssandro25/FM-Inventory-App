@@ -1,7 +1,12 @@
 <template>
     <div class="container-fluid p-md-5 p-3">
-        <GoBackBtn />
-        {{ this.$route.params }}
+        <div class="d-flex align-items-center gap-3 mb-4">
+            <GoBackBtn/>
+
+            <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4">
+                {{ sampleAreaTitle }} | ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისი
+            </h1>
+        </div>
 
         <nav class="mt-4">
             <div class="nav nav-tabs gap-1 border-0" id="nav-tab" role="tablist">
@@ -63,8 +68,10 @@
 </template>
 
 <script>
+import { mapGetters } from "vuex";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 import GrowTreeFieldAccounting from "@/components/GrowTreeFieldAccounting.vue";
+
 
 export default {
     name: "GaoTreesAccount",
@@ -72,7 +79,36 @@ export default {
     components: {
         GrowTreeFieldAccounting,
         GoBackBtn
-    }
+    },
+
+    computed: {
+        ...mapGetters([
+            'getWorkSpace',
+            'getWorkSpaceID',
+            'getForestryWS_ID',
+            'getQuarterWS_ID',
+            'getLiterWS_ID',
+            'getSampleAreaID'
+        ]),
+
+        sampleAreaTitle() {
+            let sampleAreaName = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).title
+
+            let sampleAreaID = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).id
+
+            return sampleAreaName + sampleAreaID
+        },
+    },
 }
 </script>
 

@@ -56,7 +56,7 @@
                         <option>აირჩიეთ</option>
 
                         <option
-                            v-for="item in getRegisteredTreesData"
+                            v-for="item in registeredTreesData"
                             :key="item.id"
                         >
                             {{ item.name }}
@@ -111,7 +111,7 @@
             </button>
         </div>
 
-        <table v-if="getAddedTreesData.length" class="table table-bordered table-dark mt-3">
+        <table v-if="addedTreesData" class="table table-bordered table-dark mt-3">
             <thead>
             <tr>
                 <th>#</th>
@@ -123,10 +123,10 @@
             </thead>
             <tbody>
             <tr
-                v-for="(item, index) in getAddedTreesData"
-                :key="index"
+                v-for="item in addedTreesData"
+                :key="item.id"
             >
-                <th>{{ index + 1 }}</th>
+                <th>{{ item.id }}</th>
 
                 <td>
                     {{ item.registered_tree }}
@@ -143,9 +143,11 @@
                 <td>
                     <button
                         type="button"
-                        class="btn btn-danger"
+                        class="btn btn-danger d-flex align-items-center justify-content-center gap-2 w-100"
+                        @click="removeAddedTree(item.id)"
                     >
-                        წაშლა
+                        <img src="@/assets/images/trash-solid.svg" width="15" alt="">
+                        <span>წაშლა</span>
                     </button>
                 </td>
             </tr>
@@ -167,43 +169,107 @@ export default {
             registered_tree: '',
             diameter: '',
             category: '',
+            arr: [],
             addedTrees: []
         }
     },
 
     methods: {
         registerSpecies() {
+            this.arr = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id))
+
             let registerSpeciesObj = {
-                'id' : this.getRegisteredTreesData.length + 1,
-                'name' : this.tree_type,
+                id: this.arr.registerSpeciesArr && this.arr.registerSpeciesArr.length ? this.arr.registerSpeciesArr.length + 1 : 1,
+                name : this.tree_type
             }
 
-            this.$store.dispatch('setRegisteredTreesData', registerSpeciesObj)
+            if (!this.arr.registerSpeciesArr) {
+                this.arr.registerSpeciesArr = [registerSpeciesObj];
+            } else {
+                this.arr.registerSpeciesArr.push(registerSpeciesObj)
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
 
         addTree() {
+            this.arr = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id))
+
             let addedTreesObj = {
-                'registered_tree' : this.registered_tree,
-                'diameter' : this.diameter,
-                'category' : this.category,
+                id: this.arr.gaoAddedTreesArr && this.arr.gaoAddedTreesArr.length ? this.arr.gaoAddedTreesArr.length + 1 : 1,
+                registered_tree : this.registered_tree,
+                diameter : this.diameter,
+                category : this.category,
             }
 
-            this.$store.dispatch('setAddedTreesData', addedTreesObj)
+            if (!this.arr.gaoAddedTreesArr) {
+                this.arr.gaoAddedTreesArr = [addedTreesObj];
+            } else {
+                this.arr.gaoAddedTreesArr.push(addedTreesObj)
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+
+            this.registered_tree = ''
+            this.diameter = ''
+            this.category = ''
+        },
+
+        removeAddedTree(id) {
+            const index = this.addedTreesData.findIndex(product => product.id === parseInt(id));
+
+            if (index !== -1) {
+                this.addedTreesData.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         }
     },
 
     computed: {
         ...mapGetters([
+            'getWorkSpace',
+            'getWorkSpaceID',
+            'getForestryWS_ID',
+            'getQuarterWS_ID',
+            'getLiterWS_ID',
+            'getSampleAreaID',
             'getTreeType',
-            'getRegisteredTreesData',
             'getDiameterData',
             'getCategoryData',
-            'getAddedTreesData'
-        ])
+        ]),
+
+        registeredTreesData() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).registerSpeciesArr
+        },
+
+        addedTreesData() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
+        }
     },
 
     mounted() {
-
+        console.log(this.arr)
     }
 }
 </script>
