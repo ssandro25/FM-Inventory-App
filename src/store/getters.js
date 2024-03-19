@@ -74,4 +74,10 @@ export default {
     // 14_16 Macket
     getAccountingCategory: state => state.accountingCategory,
     getPlantsType: state => state.plantsType,
+
+    //GAO Trees Account
+    getRegisteredTreesData: state => state.registeredTreesData,
+    getDiameterData: state => state.diameterData,
+    getCategoryData: state => state.categoryData,
+    getAddedTreesData: state => state.addedTreesData,
 }

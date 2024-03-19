@@ -1,35 +1,37 @@
 <template>
     <div class="col-lg-6 col-12 p-0 table-responsive">
         <div>
-            <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#registerSpecies"
+            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#registerSpecies"
                     aria-expanded="false" aria-controls="registerSpecies">
                 სახეობების რეესტრი (რეგისტრაცია)
             </button>
         </div>
 
         <div class="collapse mt-3" id="registerSpecies">
-            <select
-                v-model="tree_type"
-                class="form-select"
-                id="tree_type"
-            >
-                <option>აირჩიეთ</option>
-
-                <option
-                    v-for="item in getTreeType"
-                    :key="item.id"
+            <div class="d-flex flex-md-row flex-column gap-3 ">
+                <select
+                    v-model="tree_type"
+                    class="form-select"
+                    id="tree_type"
                 >
-                    {{ item.name }}
-                </option>
-            </select>
+                    <option>აირჩიეთ</option>
 
-            <button
-                type="button"
-                class="btn btn-success"
-                @click="registerSpecies"
-            >
-                დამატება
-            </button>
+                    <option
+                        v-for="item in getTreeType"
+                        :key="item.id"
+                    >
+                        {{ item.name }}
+                    </option>
+                </select>
+
+                <button
+                    type="button"
+                    class="btn btn-success"
+                    @click="registerSpecies"
+                >
+                    დამატება
+                </button>
+            </div>
         </div>
 
         <table class="table table-bordered table-dark mt-3">
@@ -47,17 +49,17 @@
 
                 <td>
                     <select
-                        v-model="registeredTrees"
+                        v-model="registered_tree"
                         class="form-select"
                         id="test"
                     >
                         <option>აირჩიეთ</option>
 
                         <option
-                            v-for="item in registeredTreesData"
+                            v-for="item in getRegisteredTreesData"
                             :key="item.id"
                         >
-                            {{ item }}
+                            {{ item.name }}
                         </option>
                     </select>
                 </td>
@@ -71,10 +73,10 @@
                         <option>აირჩიეთ</option>
 
                         <option
-                            v-for="item in diameterData"
+                            v-for="item in getDiameterData"
                             :key="item.id"
                         >
-                            {{ item }}
+                            {{ item.name }}
                         </option>
                     </select>
                 </td>
@@ -88,10 +90,10 @@
                         <option>აირჩიეთ</option>
 
                         <option
-                            v-for="item in categoryData"
+                            v-for="item in getCategoryData"
                             :key="item.id"
                         >
-                            {{ item }}
+                            {{ item.name }}
                         </option>
                     </select>
                 </td>
@@ -99,7 +101,7 @@
             </tbody>
         </table>
 
-        <div class="btn btn-success">
+        <div>
             <button
                 type="button"
                 class="btn btn-success btn-sm"
@@ -109,7 +111,7 @@
             </button>
         </div>
 
-        <table v-if="addedTrees.length" class="table table-bordered table-dark mt-3">
+        <table v-if="getAddedTreesData.length" class="table table-bordered table-dark mt-3">
             <thead>
             <tr>
                 <th>#</th>
@@ -121,13 +123,13 @@
             </thead>
             <tbody>
             <tr
-                v-for="(item, index) in addedTrees"
+                v-for="(item, index) in getAddedTreesData"
                 :key="index"
             >
-                <th>{{ index+1 }}</th>
+                <th>{{ index + 1 }}</th>
 
                 <td>
-                    {{ item.registered_trees }}
+                    {{ item.registered_tree }}
                 </td>
 
                 <td>
@@ -162,40 +164,41 @@ export default {
     data() {
         return {
             tree_type: '',
-            registeredTrees: '',
-            registeredTreesData: [],
+            registered_tree: '',
             diameter: '',
-            diameterData: [
-                8, 10, 12, 14, 16, 18, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56,
-                60, 64, 68, 72, 76, 80, 84, 88, 92, 96,
-                100, 104, 108, 112, 116, 120, 124, 128, 132, 136,
-                140, 144, 148, 152, 156, 160, 164, 168, 172, 176,
-                180, 184, 188, 192, 196, 200
-            ],
             category: '',
-            categoryData: ['სამასალე', 'ნახევრად სამასალე', 'საშეშე', 'ზეხმელი-სამასალე', 'ზეხმელი-შეშა', 'ძირკვი'],
             addedTrees: []
         }
     },
 
     methods: {
         registerSpecies() {
-            this.registeredTreesData.push(this.tree_type)
+            let registerSpeciesObj = {
+                'id' : this.getRegisteredTreesData.length + 1,
+                'name' : this.tree_type,
+            }
+
+            this.$store.dispatch('setRegisteredTreesData', registerSpeciesObj)
         },
 
         addTree() {
             let addedTreesObj = {
-                'registered_trees' : this.registeredTrees,
+                'registered_tree' : this.registered_tree,
                 'diameter' : this.diameter,
                 'category' : this.category,
             }
-            this.addedTrees.push(addedTreesObj)
+
+            this.$store.dispatch('setAddedTreesData', addedTreesObj)
         }
     },
 
     computed: {
         ...mapGetters([
-            'getTreeType'
+            'getTreeType',
+            'getRegisteredTreesData',
+            'getDiameterData',
+            'getCategoryData',
+            'getAddedTreesData'
         ])
     },
 
