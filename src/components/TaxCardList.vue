@@ -18,13 +18,20 @@
     <div
         v-for="item in taxCard"
         :key="item.id"
-        class="mt-4"
+        class="d-flex align-items-center gap-2 mt-4"
+        :class="{
+                'mb-5' : item.without_sample_area
+            }"
     >
+        <div class="form-check">
+            <input class="form-check-input" type="checkbox">
+        </div>
+
         <router-link
             to="/"
-            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
+            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 flex-grow-1"
             :class="{
-                'mb-5 position-relative' : item.without_sample_area
+                'position-relative' : item.without_sample_area
             }"
         >
             {{ item.title }} {{ item.id }}
