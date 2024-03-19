@@ -48,7 +48,7 @@
                     <button
                         type="button"
                         class="btn p-0 border-0"
-                        @click="removeFromBookmarks(item)"
+                        @click="removeFromBookmarks(item.id)"
                     >
                         <img src="@/assets/images/trash-solid.svg" width="15" alt="">
                     </button>
@@ -175,8 +175,12 @@ export default {
             return this.bookmarks.some(bookmark => bookmark.id === item.id);
         },
 
-        removeFromBookmarks(index) {
-            this.bookmarks.splice(index, 1);
+        removeFromBookmarks(id) {
+            const index = this.bookmarks.findIndex(product => product.id === parseInt(id));
+
+            if (index !== -1) {
+                this.bookmarks.splice(index, 1);
+            }
 
             localStorage.setItem('bookmarks', JSON.stringify(this.bookmarks));
         },
