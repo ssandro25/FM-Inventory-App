@@ -57,7 +57,7 @@
             </div>
 
             <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab" tabindex="0">
-                2.ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისი
+                <GaoTreesAccountingTab />
             </div>
 
             <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab" tabindex="0">
@@ -71,12 +71,14 @@
 import { mapGetters } from "vuex";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 import GrowTreeFieldAccounting from "@/components/GrowTreeFieldAccounting.vue";
+import GaoTreesAccountingTab from "@/components/GaoTreesAccountingTab.vue";
 
 
 export default {
     name: "GaoTreesAccount",
 
     components: {
+        GaoTreesAccountingTab,
         GrowTreeFieldAccounting,
         GoBackBtn
     },
