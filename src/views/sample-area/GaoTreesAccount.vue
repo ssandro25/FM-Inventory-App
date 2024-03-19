@@ -61,7 +61,7 @@
             </div>
 
             <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab" tabindex="0">
-                3. ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისის კამერალური დამუშავება
+                <GaoTreesAccountProcessing />
             </div>
         </div>
     </div>
@@ -72,12 +72,14 @@ import { mapGetters } from "vuex";
 import GoBackBtn from "@/components/GoBackBtn.vue";
 import GrowTreeFieldAccounting from "@/components/GrowTreeFieldAccounting.vue";
 import GaoTreesAccountingTab from "@/components/GaoTreesAccountingTab.vue";
+import GaoTreesAccountProcessing from "@/components/GaoTreesAccountProcessing.vue";
 
 
 export default {
     name: "GaoTreesAccount",
 
     components: {
+        GaoTreesAccountProcessing,
         GaoTreesAccountingTab,
         GrowTreeFieldAccounting,
         GoBackBtn
