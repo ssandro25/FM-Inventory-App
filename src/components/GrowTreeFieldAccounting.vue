@@ -111,7 +111,7 @@
             </button>
         </div>
 
-        <table v-if="addedTreesData" class="table table-bordered table-dark mt-3">
+        <table v-if="addedTreesData" class="table table-bordered table-dark table-striped mt-3">
             <thead>
             <tr>
                 <th>#</th>

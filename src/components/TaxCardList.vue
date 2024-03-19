@@ -24,10 +24,19 @@
             to="/"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3"
             :class="{
-                'mb-5' : item.without_sample_area
+                'mb-5 position-relative' : item.without_sample_area
             }"
         >
             {{ item.title }} {{ item.id }}
+
+            <button
+                v-if="item.without_sample_area"
+                type="button"
+                class="btn p-0 position-absolute end-0 me-3"
+                @click.prevent="removeTaxCard(item.id)"
+            >
+                <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
+            </button>
         </router-link>
     </div>
 </template>
@@ -41,6 +50,19 @@ export default {
 
     components: {
         AddNewTaxCard
+    },
+
+    methods: {
+        removeTaxCard(id) {
+            const index = this.taxCard.findIndex(product => product.id === parseInt(id));
+
+            if (index !== -1) {
+                this.sampleAreas.splice(index, 1);
+                this.taxCard.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+        },
     },
 
     computed: {
@@ -64,6 +86,21 @@ export default {
             const taxCard = literWS ? literWS.taxCardArr : [];
 
             return taxCard ? taxCard : [];
+        },
+
+        sampleAreas() {
+            const workSpaceID = parseInt(this.params.workSpaceID);
+            const forestryWS_ID = parseInt(this.params.forestryWS_ID);
+            const quarterWS_ID = parseInt(this.params.quarterWS_ID);
+            const literWS_ID = parseInt(this.params.literWS_ID);
+
+            const workSpace = this.getWorkSpace.find(item => item.id === workSpaceID);
+            const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === forestryWS_ID) : [];
+            const quarterWS = forestryWS ? forestryWS.quarterWS.find(item => item.id === quarterWS_ID) : [];
+            const literWS = quarterWS ? quarterWS.literWS.find(item => item.id === literWS_ID) : [];
+            const sampleAreas = literWS ? literWS.sampleAreaArr : [];
+
+            return sampleAreas ? sampleAreas : [];
         },
 
         params() {
