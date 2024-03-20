@@ -141,83 +141,7 @@
                 </td>
 
                 <td>
-                    <div
-                        class="modal fade"
-                        :id="'editAddedTreeItem'+item.id"
-                        tabindex="-1"
-                        aria-labelledby="bookLabel"
-                        aria-hidden="true"
-                    >
-                        <div class="modal-dialog modal-fullscreen-sm-down">
-                            <div class="modal-content bg-dark">
-                                <div class="modal-header border-0">
-                                    <h1 class="modal-title fs-5" id="bookLabel">
-                                        {{ item.registered_tree }} - რედაქტირება
-                                    </h1>
-                                    <button type="button" id="edit_added_tree" class="btn-close btn-close-white" data-bs-dismiss="modal"
-                                            aria-label="Close"></button>
-                                </div>
-
-                                <div class="modal-body">
-                                    <select
-                                        v-model="registered_tree_edit"
-                                        class="form-select"
-                                        id="diameter"
-                                    >
-                                        <option>აირჩიეთ</option>
-
-                                        <option
-                                            v-for="item in registeredTreesData"
-                                            :key="item.id"
-                                        >
-                                            {{ item.name }}
-                                        </option>
-                                    </select>
-
-                                    <select
-                                        v-model="diameter_edit"
-                                        class="form-select mt-3"
-                                        id="diameter"
-                                    >
-                                        <option>აირჩიეთ</option>
-
-                                        <option
-                                            v-for="item in getDiameterData"
-                                            :key="item.id"
-                                        >
-                                            {{ item.name }}
-                                        </option>
-                                    </select>
-
-                                    <select
-                                        v-model="category_edit"
-                                        class="form-select mt-3"
-                                        id="diameter"
-                                    >
-                                        <option>აირჩიეთ</option>
-
-                                        <option
-                                            v-for="item in getCategoryData"
-                                            :key="item.id"
-                                        >
-                                            {{ item.name }}
-                                        </option>
-                                    </select>
-                                </div>
-
-                                <div class="modal-footer">
-                                    <button
-                                        type="button"
-                                        class="btn btn-success"
-                                        @click="editAddedTree(item.id)"
-                                    >
-                                        ცვლილებების შენახვა
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
+                    <EditAddedTreeModal :item="item" />
 
                     <div class="d-flex gap-3">
                         <button
@@ -249,9 +173,14 @@
 
 <script>
 import {mapGetters} from "vuex";
+import EditAddedTreeModal from "@/components/modals/EditAddedTreeModal.vue";
 
 export default {
     name: "GrowTreeFieldAccounting",
+
+    components: {
+        EditAddedTreeModal
+    },
 
     data() {
         return {
@@ -261,9 +190,6 @@ export default {
             category: '',
             arr: [],
             addedTrees: [],
-            registered_tree_edit: '',
-            diameter_edit: '',
-            category_edit: '',
         }
     },
 
@@ -327,22 +253,6 @@ export default {
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
-
-        editAddedTree(id) {
-            const item = this.addedTreesData.find(product => product.id === parseInt(id));
-
-            item.registered_tree = this.registered_tree_edit;
-            item.diameter = this.diameter_edit;
-            item.category = this.category_edit;
-
-            this.$store.dispatch('setWorkSpace', this.getWorkSpace);
-
-            this.registered_tree_edit = '';
-            this.diameter_edit = '';
-            this.category_edit = '';
-
-            document.querySelector('#edit_added_tree').click()
-        }
     },
 
     computed: {
@@ -376,10 +286,6 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
         }
     },
-
-    mounted() {
-        console.log(this.arr)
-    }
 }
 </script>
 
