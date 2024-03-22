@@ -286,93 +286,97 @@ export default {
     },
 
     mounted() {
-        // Группировка по registered_tree
-        const groupedByTree = this.addedTreesData.reduce((acc, tree) => {
-            const key = tree.registered_tree;
-            if (!acc[key]) {
-                acc[key] = [];
-            }
-            acc[key].push(tree);
-            return acc;
-        }, {});
-
-        // Группировка по диаметру внутри каждой группы по имени
-        for (const treeName in groupedByTree) {
-            groupedByTree[treeName] = groupedByTree[treeName].reduce((acc, tree) => {
-                const key = tree.diameter;
+        if (this.addedTreesData) {
+            // Группировка по registered_tree
+            const groupedByTree = this.addedTreesData.reduce((acc, tree) => {
+                const key = tree.registered_tree;
                 if (!acc[key]) {
                     acc[key] = [];
                 }
                 acc[key].push(tree);
                 return acc;
             }, {});
-        }
 
-        // Подсчет категорий внутри каждой группы по имени и диаметру
-        for (const treeName in groupedByTree) {
-            for (const diameter in groupedByTree[treeName]) {
-                const categoriesCount = groupedByTree[treeName][diameter].reduce((acc, tree) => {
-                    const category = tree.category;
-                    acc[category] = (acc[category] || 0) + 1;
+            // Группировка по диаметру внутри каждой группы по имени
+            for (const treeName in groupedByTree) {
+                groupedByTree[treeName] = groupedByTree[treeName].reduce((acc, tree) => {
+                    const key = tree.diameter;
+                    if (!acc[key]) {
+                        acc[key] = [];
+                    }
+                    acc[key].push(tree);
                     return acc;
                 }, {});
-                groupedByTree[treeName][diameter] = categoriesCount;
             }
-        }
 
-        // Функция для замены грузинских символов на латинские и замены пробелов на "_"
-        function normalizeString(str) {
-            return str.replace(/ა/g, "a")
-                .replace(/ბ/g, "b")
-                .replace(/გ/g, "g")
-                .replace(/დ/g, "d")
-                .replace(/ე/g, "e")
-                .replace(/ვ/g, "v")
-                .replace(/ზ/g, "z")
-                .replace(/თ/g, "t")
-                .replace(/ი/g, "i")
-                .replace(/კ/g, "k")
-                .replace(/ლ/g, "l")
-                .replace(/მ/g, "m")
-                .replace(/ნ/g, "n")
-                .replace(/ო/g, "o")
-                .replace(/პ/g, "p")
-                .replace(/ჟ/g, "zh")
-                .replace(/რ/g, "r")
-                .replace(/ს/g, "s")
-                .replace(/ტ/g, "t")
-                .replace(/უ/g, "u")
-                .replace(/ფ/g, "p")
-                .replace(/ქ/g, "k")
-                .replace(/ღ/g, "gh")
-                .replace(/ყ/g, "q")
-                .replace(/შ/g, "sh")
-                .replace(/ჩ/g, "ch")
-                .replace(/ც/g, "ts")
-                .replace(/ძ/g, "dz")
-                .replace(/წ/g, "ts")
-                .replace(/ჭ/g, "ch")
-                .replace(/ხ/g, "kh")
-                .replace(/ჯ/g, "j")
-                .replace(/ჰ/g, "h")
-                .replace(/ /g, "_")
-                .replace(/-/g, "_");
-        }
+            // Подсчет категорий внутри каждой группы по имени и диаметру
+            for (const treeName in groupedByTree) {
+                for (const diameter in groupedByTree[treeName]) {
+                    const categoriesCount = groupedByTree[treeName][diameter].reduce((acc, tree) => {
+                        const category = tree.category;
+                        acc[category] = (acc[category] || 0) + 1;
+                        return acc;
+                    }, {});
+                    groupedByTree[treeName][diameter] = categoriesCount;
+                }
+            }
 
-        // Преобразование объекта groupedByTree в массив объектов key: option
+            // Функция для замены грузинских символов на латинские и замены пробелов на "_"
 
-        this.gaoTable = Object.entries(groupedByTree).map(([treeName, treeOptions]) => {
-            const optionsArray = Object.entries(treeOptions).map(([diameter, categories]) => {
-                const normalizedCategories = Object.keys(categories).reduce((acc, category) => {
-                    acc[normalizeString(category)] = categories[category];
-                    return acc;
-                }, {});
-                return { diameter: diameter, categories: normalizedCategories };
+            const normalizeString =(str) => {
+                return str.replace(/ა/g, "a")
+                    .replace(/ბ/g, "b")
+                    .replace(/გ/g, "g")
+                    .replace(/დ/g, "d")
+                    .replace(/ე/g, "e")
+                    .replace(/ვ/g, "v")
+                    .replace(/ზ/g, "z")
+                    .replace(/თ/g, "t")
+                    .replace(/ი/g, "i")
+                    .replace(/კ/g, "k")
+                    .replace(/ლ/g, "l")
+                    .replace(/მ/g, "m")
+                    .replace(/ნ/g, "n")
+                    .replace(/ო/g, "o")
+                    .replace(/პ/g, "p")
+                    .replace(/ჟ/g, "zh")
+                    .replace(/რ/g, "r")
+                    .replace(/ს/g, "s")
+                    .replace(/ტ/g, "t")
+                    .replace(/უ/g, "u")
+                    .replace(/ფ/g, "p")
+                    .replace(/ქ/g, "k")
+                    .replace(/ღ/g, "gh")
+                    .replace(/ყ/g, "q")
+                    .replace(/შ/g, "sh")
+                    .replace(/ჩ/g, "ch")
+                    .replace(/ც/g, "ts")
+                    .replace(/ძ/g, "dz")
+                    .replace(/წ/g, "ts")
+                    .replace(/ჭ/g, "ch")
+                    .replace(/ხ/g, "kh")
+                    .replace(/ჯ/g, "j")
+                    .replace(/ჰ/g, "h")
+                    .replace(/ /g, "_")
+                    .replace(/-/g, "_");
+            }
+
+            // Преобразование объекта groupedByTree в массив объектов key: option
+
+            this.gaoTable = Object.entries(groupedByTree).map(([treeName, treeOptions]) => {
+                const optionsArray = Object.entries(treeOptions).map(([diameter, categories]) => {
+                    const normalizedCategories = Object.keys(categories).reduce((acc, category) => {
+                        acc[normalizeString(category)] = categories[category];
+                        return acc;
+                    }, {});
+                    return { diameter: diameter, categories: normalizedCategories };
+                });
+                return { key: treeName, option: optionsArray };
             });
-            return { key: treeName, option: optionsArray };
-        });
 
-        console.log(typeof this.gaoTable[0].option[0].categories, this.gaoTable[0].option[0].categories);
+            console.log(typeof this.gaoTable[0].option[0].categories, this.gaoTable[0].option[0].categories);
+
+        }
 
     }
 
