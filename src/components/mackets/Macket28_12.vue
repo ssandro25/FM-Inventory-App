@@ -13,18 +13,18 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            28.1. მისადგომლობის კატეგორია - {{ item.accessibility_category }}
+            28.1. - {{ item.accessibility_category }}
         </p>
 
         <p class="mb-0">
-            28.2. ტრანსპორტის სახე - {{ item.transport_type }}
+            28.2. - {{ item.transport_type }}
         </p>
 
         <p class="mb-0">
-            28.3. გზიდან დაშორება - {{ item.road_away }}
+            28.3. - {{ item.road_away }}
         </p>
     </div>
 

@@ -13,12 +13,11 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            5.1 გამოსავლიანობის პროცენტი - {{ item.yield_percent }}
+            5.1 - {{ item.yield_percent }}
         </p>
-
     </div>
 
 </template>

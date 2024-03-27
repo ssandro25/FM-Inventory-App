@@ -13,14 +13,14 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            35.1. გრძედი (X) - {{ item.latitude_x }}
+            35.1. - {{ item.latitude_x }}
         </p>
 
         <p class="mb-0">
-            35.2. განედი (Y) - {{ item.latitude_y }}
+            35.2. - {{ item.latitude_y }}
         </p>
     </div>
 

@@ -13,22 +13,22 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            42.1. ბუდეები - {{ item.nests }}
+            42.1. - {{ item.nests }}
         </p>
 
         <p class="mb-0">
-            42.2. გადაბერებული ხეები ფუღუროთი - {{ item.overgrown_trees }}
+            42.2. - {{ item.overgrown_trees }}
         </p>
 
         <p class="mb-0">
-            42.3. ჭიანჭველების ბუდეები - {{ item.ant_nests }}
+            42.3. - {{ item.ant_nests }}
         </p>
 
         <p class="mb-0">
-            42.4. ადგილსამყოფელი - {{ item.location }}
+            42.4. - {{ item.location }}
         </p>
     </div>
 

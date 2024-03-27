@@ -10,28 +10,21 @@
         31. მოზარდი
     </button>
 
-<!--    <button-->
-<!--        class="btn btn-primary btn-lg"-->
-<!--        @click="downloadCSV"-->
-<!--    >-->
-<!--        გადმოწერა-->
-<!--    </button>-->
-
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            31.1 რაოდენობა - {{ item.quantity }}
+            31.1 - {{ item.quantity }}
         </p>
 
         <p class="mb-0">
-            31.2 სიმაღლე - {{ item.height }}
+            31.2 - {{ item.height }}
         </p>
 
         <p class="mb-0">
-            31.3 ასაკი - {{ item.age }}
+            31.3 - {{ item.age }}
         </p>
 
         <p class="mb-0">

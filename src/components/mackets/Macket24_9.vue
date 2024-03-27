@@ -13,31 +13,30 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            24.1. ნიადაგის ჯგუფი - {{ item.soil_character }}
+            24.1. - {{ item.soil_character }}
         </p>
 
         <p class="mb-0">
-            24.2. ნიადაგის მექანიკური შემადგენლობა - {{ item.soil_mechanical_composition }}
+            24.2. - {{ item.soil_mechanical_composition }}
         </p>
 
         <p class="mb-0">
-            24.3. სინესტის ხარისხი - {{ item.moisture_degree }}
+            24.3. - {{ item.moisture_degree }}
         </p>
 
         <p class="mb-0">
-            24.4. დაკორდების ხარისხი - {{ item.chords_quality }}
+            24.4. - {{ item.chords_quality }}
         </p>
 
         <p class="mb-0">
-            24.5. ნიადაგის სიმკვრივე - {{ item.soil_density }}
+            24.5. - {{ item.soil_density }}
         </p>
 
-
         <p class="mb-0">
-            24.6. დედაქანის დაფარულობის % (ეროზირებული და ჩამორეცხილი ნიადაგის აღწერის დროს 5-100%) - {{ item.mother_rock_coverage }}
+            24.6. - {{ item.mother_rock_coverage }}
         </p>
 
     </div>

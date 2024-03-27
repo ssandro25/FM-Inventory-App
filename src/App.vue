@@ -172,6 +172,12 @@ export default {
 </script>
 
 <style lang="scss">
+.fs-12 {
+    font-size: 12px !important;
+}
+.macket__item {
+    height: 170px;
+}
 body {
     color: #fff !important;
 }

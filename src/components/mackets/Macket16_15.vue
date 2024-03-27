@@ -13,34 +13,34 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            ნედლეულის კატეგორია - {{ item.raw_material_category }}
+            {{ item.raw_material_category }}
         </p>
 
         <p class="mb-0">
-            მერქნიანი სახეობა - {{ item.woody_species }}
+            {{ item.woody_species }}
         </p>
 
         <p class="mb-0">
-            ხნოვანება, წელი - {{ item.year }}
+           {{ item.year }}
         </p>
 
         <p class="mb-0">
-            სიმაღლე, 0,1მ სიზუსტით - {{ item.height }}
+            {{ item.height }}
         </p>
 
         <p class="mb-0">
-            ზომის ერთეული - {{ item.unit }}
+            {{ item.unit }}
         </p>
 
         <p class="mb-0">
-            მოსავლიანობა 1 ჰა-ზე სიზუსტით 0,1-მდე - {{ item.yield_accuracy }}
+            {{ item.yield_accuracy }}
         </p>
 
         <p class="mb-0">
-            მისადგომი შეგროვებისათვის - {{ item.accessible }}
+            {{ item.accessible }}
         </p>
     </div>
 

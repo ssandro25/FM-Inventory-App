@@ -12,18 +12,18 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            4.1 ჩახერგილობა საერთოა - {{ item.deed_wood }}
+            4.1 - {{ item.deed_wood }}
         </p>
 
         <p class="mb-0">
-            4.2 ჩახერგილობა ლიკვიდი - {{ item.deed_wood_liquid }}
+            4.2 - {{ item.deed_wood_liquid }}
         </p>
 
         <p class="mb-0">
-            4.3 ძველი ზეხმელის ჩახერგილობა - {{ item.old_deadwood }}
+            4.3 - {{ item.old_deadwood }}
         </p>
     </div>
 

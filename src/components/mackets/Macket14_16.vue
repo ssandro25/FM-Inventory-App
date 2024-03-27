@@ -13,18 +13,18 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
         <p class="mb-0">
-            აღრიცხვის კატეგორია - {{ item.accounting_category }}
+            {{ item.accounting_category }}
         </p>
 
         <p class="mb-0">
-            მცენარეთა სახეობა - {{ item.plants_type }}
+            {{ item.plants_type }}
         </p>
 
         <p class="mb-0">
-            დაფარვის % - {{ item.coverage_percent }}
+            {{ item.coverage_percent }}
         </p>
     </div>
 

@@ -13,31 +13,37 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0"
+        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            3.1 გაბატონებული სახეობა - {{ item.dominant_species }}
-        </p>
+        <div class="row m-0">
+            <div class="col-md-6 d-flex flex-column gap-2">
+                <p class="mb-0">
+                    3.1 - {{ item.dominant_species }}
+                </p>
 
-        <p class="mb-0">
-            3.2 ბონიტეტი - {{ item.site_index }}
-        </p>
+                <p class="mb-0">
+                    3.2 - {{ item.site_index }}
+                </p>
 
-        <p class="mb-0">
-            3.3 ბონიტეტის სახეობა - {{ item.site_index_type }}
-        </p>
+                <p class="mb-0">
+                    3.3 - {{ item.site_index_type }}
+                </p>
+            </div>
 
-        <p class="mb-0">
-            3.4 ტყის ტიპი - {{ item.forest_type }}
-        </p>
+            <div class="col-md-6 d-flex flex-column gap-2">
+                <p class="mb-0">
+                    3.4 - {{ item.forest_type }}
+                </p>
 
-        <p class="mb-0">
-            3.5 ადგილსამყოფელის ტიპი - {{ item.location_type }}
-        </p>
+                <p class="mb-0">
+                    3.5 - {{ item.location_type }}
+                </p>
 
-        <p class="mb-0">
-            3.6 ჭრის წელი - {{ item.cutting_year }}
-        </p>
+                <p class="mb-0">
+                    3.6 - {{ item.cutting_year }}
+                </p>
+            </div>
+        </div>
     </div>
 
 </template>
