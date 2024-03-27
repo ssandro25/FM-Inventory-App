@@ -79,4 +79,8 @@ export default {
     getDiameterData: state => state.diameterData,
     getCategoryData: state => state.categoryData,
     getTreeTypeGao: state => state.treeTypeGao,
+
+
+    getRightSideBar: state => state.rightSideBar,
+    getMacketID: state => state.macketID,
 }

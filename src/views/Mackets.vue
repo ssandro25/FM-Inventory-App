@@ -145,6 +145,37 @@
                         </p>
                     </div>
 
+                    <div v-if="getRightSideBar.length" class="d-flex flex-column gap-2">
+                        <p
+                            v-for="(item, index) in getRightSideBar"
+                            :key="index"
+                            class="fs-12  mb-0"
+                        >
+                            <span v-if="item" class="d-block border-bottom pb-2">
+                                {{ item }}
+                            </span>
+                        </p>
+
+                        <div class="d-flex gap-2 mt-3">
+                            <button
+                                type="button"
+                                class="btn btn-warning flex-grow-1"
+                                data-bs-toggle="modal"
+                                :data-bs-target="getMacketID"
+                            >
+                                რედაქტირება
+                            </button>
+
+
+                            <button
+                                type="button"
+                                class="btn btn-danger flex-grow-1"
+                            >
+                                გასუფთავება
+                            </button>
+                        </div>
+                    </div>
+
                     <div class="d-flex flex-column gap-3 w-100">
                         <button
                             :disabled="!dataCSV.length"
@@ -152,14 +183,6 @@
                             @click="downloadCSV"
                         >
                             გადმოწერა
-                        </button>
-
-                        <button
-                            :disabled="!dataCSV.length"
-                            class="btn btn-primary w-100"
-                            @click="downloadCSV1"
-                        >
-                            გადმოწერა (ერთ ხაზზში)
                         </button>
                     </div>
                 </div>
@@ -224,7 +247,10 @@ export default {
             'getQuarterID',
             'getForestArea',
             'getLiterID',
-            'getForesterName'
+            'getForesterName',
+
+            'getRightSideBar',
+            'getMacketID'
         ]),
 
         macketTitle() {
@@ -277,14 +303,16 @@ export default {
 
     methods: {
         downloadCSV() {
-            // Convert data to CSV format
-            const csvContent = this.convertToCSV(this.dataCSV);
+            // Flatten the dataArray into a single array
+            const flattenedArray = this.dataCSV.reduce((acc, curr) => acc.concat(curr), []);
+
+            // Convert flattened array to CSV format
+            const csvContent = this.convertToCSV(flattenedArray);
 
             // Create a temporary anchor element
             const a = document.createElement('a');
             a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
             a.download = `${this.macketTitle}.csv`;
-            // a.download = 'data.csv';
 
             // Append anchor to body and click it to trigger download
             document.body.appendChild(a);
@@ -294,39 +322,6 @@ export default {
             document.body.removeChild(a);
         },
         convertToCSV(dataArray) {
-            let csvContent = '';
-
-            // Loop through the dataArray
-            dataArray.forEach(innerArray => {
-                // Convert each inner array of objects to CSV format
-                const rows = innerArray.map(obj => Object.values(obj).join(','));
-                // Add the rows to the CSV content
-                csvContent += rows.join('\n') + '\n';
-            });
-
-            return csvContent;
-        },
-
-        downloadCSV1() {
-            // Flatten the dataArray into a single array
-            const flattenedArray = this.dataCSV.reduce((acc, curr) => acc.concat(curr), []);
-
-            // Convert flattened array to CSV format
-            const csvContent = this.convertToCSV1(flattenedArray);
-
-            // Create a temporary anchor element
-            const a = document.createElement('a');
-            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            a.download = `${this.macketTitle}.csv`;
-
-            // Append anchor to body and click it to trigger download
-            document.body.appendChild(a);
-            a.click();
-
-            // Cleanup
-            document.body.removeChild(a);
-        },
-        convertToCSV1(dataArray) {
             const row = dataArray.map(obj => Object.values(obj).join(',')).join(',');
             return row;
         }

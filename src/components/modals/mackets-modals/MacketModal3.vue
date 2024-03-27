@@ -234,8 +234,6 @@ export default {
             .find(item => item.id === parseInt(this.params.literID)).liters
             .find(item => item.id === parseInt(this.params.macketID)).mackets[2]
 
-        console.log(currentArr)
-
         if (!(currentArr && currentArr[0] && (
             currentArr[0].dominant_species !== '' ||
             currentArr[0].site_index !== '' ||

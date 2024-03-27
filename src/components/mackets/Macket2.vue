@@ -1,11 +1,19 @@
 <template>
     <MacketModal2 :params="params"/>
 
+<!--    <button-->
+<!--        type="button"-->
+<!--        class="btn rounded-0 rounded-top btn-light w-100"-->
+<!--        data-bs-toggle="modal"-->
+<!--        data-bs-target="#macket2"-->
+<!--    >-->
+<!--        2. დაპროექტებული ღონისძიებები-->
+<!--    </button>-->
+
     <button
         type="button"
         class="btn rounded-0 rounded-top btn-light w-100"
-        data-bs-toggle="modal"
-        data-bs-target="#macket2"
+        @click="setInfo"
     >
         2. დაპროექტებული ღონისძიებები
     </button>
@@ -75,6 +83,14 @@ export default {
             }
         }
     },
+
+    methods: {
+        setInfo() {
+            let arr = [this.macket[0].activity1, this.macket[0].activity2, this.macket[0].activity3, this.macket[0].activity_percent, this.macket[0].target_species]
+            this.$store.dispatch('setInfoOnRightSideBar', arr)
+            this.$store.dispatch('setMacketID', '#macket2')
+        }
+    }
 }
 </script>
 

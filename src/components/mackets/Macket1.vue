@@ -1,11 +1,19 @@
 <template>
     <MacketModal1 :params="params"/>
 
+<!--    <button-->
+<!--        type="button"-->
+<!--        class="btn rounded-0 rounded-top btn-light w-100"-->
+<!--        data-bs-toggle="modal"-->
+<!--        data-bs-target="#macket1"-->
+<!--    >-->
+<!--        1. მიწის ზოგადი-->
+<!--    </button>-->
+
     <button
         type="button"
         class="btn rounded-0 rounded-top btn-light w-100"
-        data-bs-toggle="modal"
-        data-bs-target="#macket1"
+        @click="setInfo"
     >
         1. მიწის ზოგადი
     </button>
@@ -32,13 +40,13 @@
                 <p class="mb-0">
                     1.4 - {{ item.exposition }}
                 </p>
-            </div>
 
-            <div class="col-md-6 d-flex flex-column gap-2">
                 <p class="mb-0">
                     1.5 - {{ item.inclination }}
                 </p>
+            </div>
 
+            <div class="col-md-6 d-flex flex-column gap-2">
                 <p class="mb-0">
                     1.6 - {{ item.elevation }}
                 </p>
@@ -96,6 +104,14 @@ export default {
             }
         }
     },
+
+    methods: {
+        setInfo() {
+            let arr = [this.macket[0].soil_category, this.macket[0].long_term_use_lease, this.macket[0].gfdu, this.macket[0].exposition, this.macket[0].inclination, this.macket[0].elevation, this.macket[0].erosion_type, this.macket[0].erosion_degree, this.macket[0].area]
+            this.$store.dispatch('setInfoOnRightSideBar', arr)
+            this.$store.dispatch('setMacketID', '#macket1')
+        }
+    }
 }
 </script>
 

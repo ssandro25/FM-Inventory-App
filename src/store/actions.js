@@ -61,4 +61,12 @@ export default {
     setSampleAreaID({state}, id) {
         state.sampleAreaID = id
     },
+
+    setInfoOnRightSideBar({state}, value) {
+        state.rightSideBar = value
+    },
+
+    setMacketID({state}, value) {
+        state.macketID = value
+    }
 }

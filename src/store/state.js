@@ -727,5 +727,7 @@ export default {
         'სურო კოლხური',
     ],
 
+    rightSideBar: [],
 
+    macketID: ''
 }
