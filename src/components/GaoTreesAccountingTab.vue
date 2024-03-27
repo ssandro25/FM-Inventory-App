@@ -322,7 +322,6 @@ export default {
             }
 
             // Функция для замены грузинских символов на латинские и замены пробелов на "_"
-
             const normalizeString =(str) => {
                 return str.replace(/ა/g, "a")
                     .replace(/ბ/g, "b")
@@ -362,7 +361,6 @@ export default {
             }
 
             // Преобразование объекта groupedByTree в массив объектов key: option
-
             this.gaoTable = Object.entries(groupedByTree).map(([treeName, treeOptions]) => {
                 const optionsArray = Object.entries(treeOptions).map(([diameter, categories]) => {
                     const normalizedCategories = Object.keys(categories).reduce((acc, category) => {
@@ -373,9 +371,6 @@ export default {
                 });
                 return { key: treeName, option: optionsArray };
             });
-
-            console.log(typeof this.gaoTable[0].option[0].categories, this.gaoTable[0].option[0].categories);
-
         }
 
     }

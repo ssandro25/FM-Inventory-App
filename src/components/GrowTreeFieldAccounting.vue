@@ -1,4 +1,6 @@
 <template>
+
+
     <div class="col-lg-6 col-12 p-0 table-responsive">
         <div>
             <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#registerSpecies"
@@ -7,32 +9,49 @@
             </button>
         </div>
 
-        <div class="collapse mt-3" id="registerSpecies">
-            <div class="d-flex flex-md-row flex-column gap-3 ">
-                <select
-                    v-model="tree_type"
-                    class="form-select"
-                    id="tree_type"
-                >
-                    <option>აირჩიეთ</option>
+        <Multiselect
+            v-model="tree_type"
+            :options="getTreeTypeGao"
+            mode="tags"
+            :searchable="true"
+            :closeOnSelect="false"
+            noResultsText="ხე არ მოიძებნა"
+        />
 
-                    <option
-                        v-for="item in getTreeType"
-                        :key="item.id"
-                    >
-                        {{ item.name }}
-                    </option>
-                </select>
+        <button
+            type="button"
+            class="btn btn-success"
+            @click="registerSpecies"
+        >
+            დამატება
+        </button>
 
-                <button
-                    type="button"
-                    class="btn btn-success"
-                    @click="registerSpecies"
-                >
-                    დამატება
-                </button>
-            </div>
-        </div>
+<!--        <div class="collapse mt-3" id="registerSpecies">-->
+<!--            <div class="d-flex flex-md-row flex-column gap-3 ">-->
+<!--                <select-->
+<!--                    v-model="tree_type"-->
+<!--                    class="form-select"-->
+<!--                    id="tree_type"-->
+<!--                >-->
+<!--                    <option>აირჩიეთ</option>-->
+
+<!--                    <option-->
+<!--                        v-for="item in getTreeType"-->
+<!--                        :key="item.id"-->
+<!--                    >-->
+<!--                        {{ item.name }}-->
+<!--                    </option>-->
+<!--                </select>-->
+
+<!--                <button-->
+<!--                    type="button"-->
+<!--                    class="btn btn-success"-->
+<!--                    @click="registerSpecies"-->
+<!--                >-->
+<!--                    დამატება-->
+<!--                </button>-->
+<!--            </div>-->
+<!--        </div>-->
 
         <table class="table table-bordered table-dark mt-3">
             <thead>
@@ -174,17 +193,19 @@
 <script>
 import {mapGetters} from "vuex";
 import EditAddedTreeModal from "@/components/modals/EditAddedTreeModal.vue";
+import Multiselect from '@vueform/multiselect'
 
 export default {
     name: "GrowTreeFieldAccounting",
 
     components: {
-        EditAddedTreeModal
+        EditAddedTreeModal,
+        Multiselect
     },
 
     data() {
         return {
-            tree_type: '',
+            tree_type: null,
             registered_tree: '',
             diameter: '',
             category: '',
@@ -214,6 +235,7 @@ export default {
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+            console.log(this.tree_type)
         },
 
         addTree() {
@@ -266,6 +288,8 @@ export default {
             'getTreeType',
             'getDiameterData',
             'getCategoryData',
+
+            'getTreeTypeGao'
         ]),
 
         registeredTreesData() {
@@ -289,7 +313,9 @@ export default {
 }
 </script>
 
-
-<style scoped lang="scss">
-
+<style src="@vueform/multiselect/themes/default.css"></style>
+<style lang="scss">
+.multiselect-option {
+    color: #000 !important;
+}
 </style>

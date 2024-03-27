@@ -6,7 +6,7 @@
         aria-labelledby="macket37_11Label"
         aria-hidden="true"
     >
-        <div class="modal-dialog modal-fullscreen-sm-down">
+        <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket37_11Label">

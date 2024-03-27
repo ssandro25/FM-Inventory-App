@@ -78,4 +78,5 @@ export default {
     //GAO Trees Account
     getDiameterData: state => state.diameterData,
     getCategoryData: state => state.categoryData,
+    getTreeTypeGao: state => state.treeTypeGao,
 }
