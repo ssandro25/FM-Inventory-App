@@ -20,9 +20,9 @@
                             <div class="d-flex align-items-center gap-2">
                                 <img src="../../assets/images/plus-solid.svg" width="20" alt="">
 
-                                <span>
-                            დაამატე ახალი
-                        </span>
+                                    <span>
+                                დაამატე სატყეო
+                            </span>
                             </div>
                         </div>
                     </div>

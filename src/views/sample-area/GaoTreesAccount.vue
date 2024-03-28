@@ -33,7 +33,7 @@
                     aria-controls="nav-two"
                     aria-selected="false"
                 >
-                    2.ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისი
+                    2. აღრიცხვის უწყისი
                 </button>
 
                 <button
@@ -46,7 +46,20 @@
                     aria-controls="nav-three"
                     aria-selected="false"
                 >
-                    3. ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისის კამერალური დამუშავება
+                    3. კამერალური დამუშავება
+                </button>
+
+                <button
+                    class="nav-link"
+                    id="nav-four-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-four"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-four"
+                    aria-selected="false"
+                >
+                    4. შედეგები
                 </button>
             </div>
         </nav>
@@ -62,6 +75,10 @@
 
             <div class="tab-pane fade" id="nav-three" role="tabpanel" aria-labelledby="nav-three-tab" tabindex="0">
                 <GaoTreesAccountProcessing />
+            </div>
+
+            <div class="tab-pane fade" id="nav-four" role="tabpanel" aria-labelledby="nav-four-tab" tabindex="0">
+                4. შედეგები
             </div>
         </div>
     </div>

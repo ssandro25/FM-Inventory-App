@@ -21,7 +21,7 @@
                                 <img src="../../assets/images/plus-solid.svg" width="20" alt="">
 
                                 <span>
-                            დაამატე ახალი
+                            დაამატე ლიტერი
                         </span>
                             </div>
                         </div>

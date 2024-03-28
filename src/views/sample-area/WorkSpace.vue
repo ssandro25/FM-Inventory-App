@@ -17,8 +17,8 @@
                                 <img src="../../assets/images/plus-solid.svg" width="20" alt="">
 
                                 <span>
-                            დაამატე ახალი
-                        </span>
+                                    დაამატე საქაღალდე
+                                </span>
                             </div>
                         </div>
                     </div>
