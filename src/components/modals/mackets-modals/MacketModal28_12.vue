@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket28_12Label">
-                        ახალი ლიტერის დამატება
+                        28. გზით უზრუნველყოფა
                     </h1>
                     <button type="button" id="close-btn28" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>

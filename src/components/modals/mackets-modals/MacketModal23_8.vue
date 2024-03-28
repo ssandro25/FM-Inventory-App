@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket23_8Label">
-                        ახალი ლიტერის დამატება
+                        23. უბნის თავისებურება (დამატებითი ინფორმაცია)
                     </h1>
                     <button type="button" id="close-btn23" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>

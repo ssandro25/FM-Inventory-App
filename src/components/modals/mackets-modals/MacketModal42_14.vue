@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket42_14Label">
-                        ახალი ლიტერის დამატება
+                        42. ცხოველთა სამყარო
                     </h1>
                     <button type="button" id="close-btn42" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>

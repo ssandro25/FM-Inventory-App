@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket35_10Label">
-                        ახალი ლიტერის დამატება
+                        35. კოორდინატები
                     </h1>
                     <button type="button" id="close-btn35" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>

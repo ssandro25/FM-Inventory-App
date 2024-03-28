@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="macket3Label">
-                        ახალი ლიტერის დამატება
+                        3. ტყის ზოგადი მახასიათებლები
                     </h1>
                     <button type="button" id="close-btn3" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
