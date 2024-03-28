@@ -21,28 +21,30 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            2.1 ღონისძიება I - {{ item.activity1 }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+               {{ item.activity1 }} /
+            </p>
 
-        <p class="mb-0">
-            2.2 % - {{ item.activity_percent }} %
-        </p>
+            <p class="mb-0">
+                {{ item.activity_percent }} % /
+            </p>
 
-        <p class="mb-0">
-            2.3 ღონისძიება II - {{ item.activity2 }}
-        </p>
+            <p class="mb-0">
+                {{ item.activity2 }} /
+            </p>
 
-        <p class="mb-0">
-            2.3 ღონისძიება III - {{ item.activity3 }}
-        </p>
+            <p class="mb-0">
+                {{ item.activity3 }} /
+            </p>
 
-        <p class="mb-0">
-            2.5 მიზნობრივი სახეობა - {{ item.target_species }}
-        </p>
+            <p class="mb-0">
+                {{ item.target_species }} /
+            </p>
 
+        </div>
     </div>
 
 </template>

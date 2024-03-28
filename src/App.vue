@@ -176,7 +176,7 @@ export default {
     font-size: 12px !important;
 }
 .macket__item {
-    height: 170px;
+    height: 75px;
 }
 body {
     color: #fff !important;
@@ -219,6 +219,13 @@ body {
         transition: .3s;
     }
 
+    .items__list_row {
+        .col {
+            .item, .add_new__btn {
+                height: 170px;
+            }
+        }
+    }
     .item {
         background: radial-gradient(circle, rgb(21 24 45) 5%, rgb(26 37 55) 36%, rgb(28 56 63) 100%);
         border: 1px solid #5e6873;
@@ -230,6 +237,8 @@ body {
             background: radial-gradient(circle, #15182d 5%, #1a2537 80%, #1c383f 100%);
         }
     }
+
+
 }
 
 @media screen and (max-width: 760px){

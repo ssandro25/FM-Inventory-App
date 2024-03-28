@@ -23,46 +23,42 @@
         :key="index"
         class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <div class="row m-0">
-            <div class="col-md-6 d-flex flex-column gap-2">
-                <p class="mb-0">
-                    1.1 - {{ item.soil_category }}
-                </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.soil_category }} /
+            </p>
 
-                <p class="mb-0">
-                    1.2 - {{ item.long_term_use_lease }}
-                </p>
+            <p class="mb-0">
+                {{ item.long_term_use_lease }} /
+            </p>
 
-                <p class="mb-0">
-                    1.3 - {{ item.gfdu }}
-                </p>
+            <p class="mb-0">
+                {{ item.gfdu }} /
+            </p>
 
-                <p class="mb-0">
-                    1.4 - {{ item.exposition }}
-                </p>
+            <p class="mb-0">
+                {{ item.exposition }} /
+            </p>
 
-                <p class="mb-0">
-                    1.5 - {{ item.inclination }}
-                </p>
-            </div>
+            <p class="mb-0">
+                {{ item.inclination }} /
+            </p>
 
-            <div class="col-md-6 d-flex flex-column gap-2">
-                <p class="mb-0">
-                    1.6 - {{ item.elevation }}
-                </p>
+            <p class="mb-0">
+                {{ item.elevation }} /
+            </p>
 
-                <p class="mb-0">
-                    1.7  - {{ item.erosion_type }}
-                </p>
+            <p class="mb-0">
+                {{ item.erosion_type }} /
+            </p>
 
-                <p class="mb-0">
-                    1.8 - {{ item.erosion_degree }}
-                </p>
+            <p class="mb-0">
+                {{ item.erosion_degree }} /
+            </p>
 
-                <p class="mb-0">
-                    1.9 - {{ item.area }} ჰა
-                </p>
-            </div>
+            <p class="mb-0">
+                {{ item.area }} ჰა
+            </p>
         </div>
     </div>
 

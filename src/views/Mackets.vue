@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid  p-3 h-100">
+    <div class="container-fluid p-3 h-100">
         <div class="row h-100">
             <div class="col-lg-9">
                 <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
