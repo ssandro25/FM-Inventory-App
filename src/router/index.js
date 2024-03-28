@@ -16,6 +16,7 @@ import Liter_WS from "@/views/sample-area/Liter_WS.vue";
 import SampleArea from "@/views/sample-area/SampleArea.vue";
 import GaoTreesAccount from "@/views/sample-area/GaoTreesAccount.vue";
 import LyingDeadAccount from "@/views/sample-area/LyingDeadAccount.vue";
+import Mackets_WS from "@/views/sample-area/Mackets_WS.vue";
 
 const routes = [
     {
@@ -105,6 +106,12 @@ const routes = [
         path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/sample-area/:id',
         name: 'sample-area',
         component: SampleArea
+    },
+
+    {
+        path: '/work-space/:id/forestry/:id/quarter/:id/liter/:id/macket/:id',
+        name: 'mackets-ws',
+        component: Mackets_WS
     },
 
     {

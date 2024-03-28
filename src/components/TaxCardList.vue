@@ -28,7 +28,7 @@
         </div>
 
         <router-link
-            to="/"
+            :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/macket/+item.id"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 flex-grow-1"
             :class="{
                 'position-relative' : item.without_sample_area
