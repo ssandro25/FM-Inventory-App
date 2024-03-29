@@ -84,7 +84,7 @@
                     </div>
 
                     <div class="col">
-                        <Macket28_12_WS />
+                        <Macket37_11_WS />
                     </div>
 
                     <div class="col">
@@ -100,11 +100,11 @@
                     </div>
 
                     <div class="col">
-<!--                        <Macket28_12 />-->
+                        <Macket28_12_WS/>
                     </div>
 
                     <div class="col">
-<!--                        <Macket40_13 />-->
+                        <Macket40_13_WS />
                     </div>
 
                     <div class="col">
@@ -208,11 +208,15 @@ import Macket23_8_WS from "@/components/mackets-work-space/Macket23_8_WS.vue";
 import Macket24_9_WS from "@/components/mackets-work-space/Macket24_9_WS.vue";
 import Macket35_10_WS from "@/components/mackets-work-space/Macket35_10_WS.vue";
 import Macket28_12_WS from "@/components/mackets-work-space/Macket28_12_WS.vue";
+import Macket37_11_WS from "@/components/mackets-work-space/Macket37_11_WS.vue";
+import Macket40_13_WS from "@/components/mackets-work-space/Macket40_13_WS.vue";
 
 export default {
     name: "FMMackets",
 
     components: {
+        Macket40_13_WS,
+        Macket37_11_WS,
         Macket28_12_WS,
         Macket35_10_WS,
         Macket24_9_WS,
