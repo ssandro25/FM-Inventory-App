@@ -5,6 +5,20 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
+            <div class="text-white" v-if="registeredTreesData">
+                <p class="mb-3">დამატებულია შემდეგი სახეობები:</p>
+                <ul
+                    v-for="(item, index) in registeredTreesData"
+                    :key="index"
+                >
+                    <li>{{ item.name }}</li>
+                </ul>
+            </div>
+
+            <div class="text-white mb-3" v-else>
+                არც ერთი სახოება არ არის რეგისტრირებული. აირჩიეთ ქვემოდან.
+            </div>
+
             <Multiselect
                 v-model="tree_type"
                 :options="getTreeTypeGao"
