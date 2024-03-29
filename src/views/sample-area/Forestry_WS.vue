@@ -34,21 +34,21 @@
                     >
                         <router-link
                             :to="/work-space/+this.getWorkSpaceID+/forestry/+this.$route.params.id+/quarter/+item.id"
-                            class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3"
+                            class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
                         >
-                            <p class="mb-0">{{ item.title }}</p>
+                            <p class="fw-bold fs-6 text-success mb-0">{{ item.title }}</p>
 
                             <p class="mb-0">
                                 ლიტერები:
                             </p>
 
-                            <p class="mb-0">
-                                სანიმუშო ფართობები:
-                            </p>
-
-                            <p class="mb-0">
-                                სატაქსაციო ბარათები:
-                            </p>
+<!--                            <button -->
+<!--                                type="button"-->
+<!--                                class="btn p-0 border-0 position-absolute top-0 end-0 lh-1 m-2"-->
+<!--                                @click.prevent="showQuarterInfo(item.id)"-->
+<!--                            >-->
+<!--                                <img src="@/assets/images/circle-info-solid.svg" width="15" alt="">-->
+<!--                            </button>-->
                         </router-link>
                     </div>
                 </div>
@@ -77,6 +77,12 @@ export default {
         GoBackBtn,
     },
 
+    data() {
+        return {
+            quarter: ''
+        }
+    },
+
     computed: {
         ...mapGetters([
             'getWorkSpace',
@@ -101,6 +107,12 @@ export default {
             }
         }
     },
+
+    // methods: {
+    //     showQuarterInfo(id) {
+    //         this.quarter = this.quarterWS.find(item => item.id === id).literWS
+    //     }
+    // },
 
     mounted() {
         this.$store.dispatch('setForestryWS_ID', this.$route.params.id)

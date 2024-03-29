@@ -201,7 +201,7 @@
 
             <tbody>
             <tr
-                v-for="(item, index) in gaoTable"
+                v-for="(item, index) in newGaoTable"
                 :key="index"
             >
                 <td class="text-center p-0" colspan="12">
@@ -262,8 +262,15 @@ export default {
 
     data() {
         return {
-            gaoTable: []
+            gaoTable: [],
+            newGaoTable: []
         }
+    },
+
+    watch: {
+        gaoTable(newValue) {
+            this.newGaoTable = newValue;
+        },
     },
 
     computed: {

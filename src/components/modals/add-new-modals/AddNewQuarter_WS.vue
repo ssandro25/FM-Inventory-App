@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="addNewQuarter_WSLabel">
-                        სატყეოს დამატება
+                        კვარტლის დამატება
                     </h1>
                     <button type="button" id="add_quarter_wc" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

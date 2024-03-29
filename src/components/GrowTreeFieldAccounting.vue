@@ -1,57 +1,48 @@
 <template>
+    <div class="offcanvas offcanvas-end bg-dark" tabindex="-1" id="speciesRegister" aria-labelledby="speciesRegisterLabel">
+        <div class="offcanvas-header">
+            <h5 class="offcanvas-title text-white" id="speciesRegisterLabel"> სახეობების რეესტრი</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+            <Multiselect
+                v-model="tree_type"
+                :options="getTreeTypeGao"
+                mode="tags"
+                :searchable="true"
+                :closeOnSelect="false"
+                noResultsText="ხე არ მოიძებნა"
+            />
 
+            <button
+                type="button"
+                class="btn btn-success w-100 mt-3"
+                @click="registerSpecies"
+            >
+                დამატება
+            </button>
+        </div>
+    </div>
 
     <div class="col-lg-6 col-12 p-0 table-responsive">
         <div>
-            <button class="btn btn-warning" type="button" data-bs-toggle="collapse" data-bs-target="#registerSpecies"
-                    aria-expanded="false" aria-controls="registerSpecies">
-                სახეობების რეესტრი (რეგისტრაცია)
+            <button
+                type="button"
+                class="btn btn-warning species__register_btn"
+                data-bs-toggle="offcanvas"
+                data-bs-target="#speciesRegister"
+                aria-controls="speciesRegister"
+            >
+                <span class="d-none d-lg-block">სახეობების რეესტრი (რეგისტრაცია)</span>
+
+                <img
+                    src="@/assets/images/options.svg"
+                    width="16"
+                    alt=""
+                    class="d-block d-lg-none"
+                >
             </button>
         </div>
-
-        <Multiselect
-            v-model="tree_type"
-            :options="getTreeTypeGao"
-            mode="tags"
-            :searchable="true"
-            :closeOnSelect="false"
-            noResultsText="ხე არ მოიძებნა"
-        />
-
-        <button
-            type="button"
-            class="btn btn-success"
-            @click="registerSpecies"
-        >
-            დამატება
-        </button>
-
-<!--        <div class="collapse mt-3" id="registerSpecies">-->
-<!--            <div class="d-flex flex-md-row flex-column gap-3 ">-->
-<!--                <select-->
-<!--                    v-model="tree_type"-->
-<!--                    class="form-select"-->
-<!--                    id="tree_type"-->
-<!--                >-->
-<!--                    <option>აირჩიეთ</option>-->
-
-<!--                    <option-->
-<!--                        v-for="item in getTreeType"-->
-<!--                        :key="item.id"-->
-<!--                    >-->
-<!--                        {{ item.name }}-->
-<!--                    </option>-->
-<!--                </select>-->
-
-<!--                <button-->
-<!--                    type="button"-->
-<!--                    class="btn btn-success"-->
-<!--                    @click="registerSpecies"-->
-<!--                >-->
-<!--                    დამატება-->
-<!--                </button>-->
-<!--            </div>-->
-<!--        </div>-->
 
         <table class="table table-bordered table-dark mt-3">
             <thead>
@@ -223,15 +214,29 @@ export default {
                 .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
                 .find(item => item.id === parseInt(this.$route.params.id))
 
-            let registerSpeciesObj = {
-                id: this.arr.registerSpeciesArr && this.arr.registerSpeciesArr.length ? this.arr.registerSpeciesArr.length + 1 : 1,
-                name: this.tree_type
-            }
+            // let registerSpeciesObj = {
+            //     id: this.arr.registerSpeciesArr && this.arr.registerSpeciesArr.length ? this.arr.registerSpeciesArr.length + 1 : 1,
+            //     name: this.tree_type
+            // }
+            //
+            //
+            // if (!this.arr.registerSpeciesArr) {
+            //     this.arr.registerSpeciesArr = [registerSpeciesObj];
+            // } else {
+            //     this.arr.registerSpeciesArr.push(registerSpeciesObj)
+            // }
+
+            let registerSpeciesArr = this.tree_type.map((item, index) => {
+                return {
+                    id: index + 1,
+                    name: item
+                };
+            })
 
             if (!this.arr.registerSpeciesArr) {
-                this.arr.registerSpeciesArr = [registerSpeciesObj];
+                this.arr.registerSpeciesArr = registerSpeciesArr;
             } else {
-                this.arr.registerSpeciesArr.push(registerSpeciesObj)
+                this.arr.registerSpeciesArr.push(...registerSpeciesArr);
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
@@ -318,4 +323,19 @@ export default {
 .multiselect-option {
     color: #000 !important;
 }
+
+@media screen and (max-width: 991px){
+    .species__register_btn {
+        position: fixed;
+        top: 10px;
+        right: 20px;
+        width: 50px;
+        height: 50px;
+        border-radius: 50% !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
 </style>
