@@ -32,7 +32,7 @@
                             :to="/work-space/+item.id"
                             class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3"
                         >
-                            <p class="mb-0">{{ item.title }}</p>
+                            <p class="fw-bold fs-6 text-success mb-0">{{ item.title }}</p>
 
                             <p class="mb-0">
                                 სატყეოები:

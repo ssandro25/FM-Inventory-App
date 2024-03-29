@@ -56,9 +56,7 @@
                     </div>
 
                     <div class="col-md-12">
-                        <button class="btn btn-light w-100">
-                            10. ტაქსაციური დახასიათება
-                        </button>
+                       <Macket10_17_WS />
                     </div>
 
                     <div class="col-md-6">
@@ -213,11 +211,13 @@ import Macket40_13_WS from "@/components/mackets-work-space/Macket40_13_WS.vue";
 import Macket42_14_WS from "@/components/mackets-work-space/Macket42_14_WS.vue";
 import Macket16_15_WS from "@/components/mackets-work-space/Macket16_15_WS.vue";
 import Macket14_16_WS from "@/components/mackets-work-space/Macket14_16_WS.vue";
+import Macket10_17_WS from "@/components/mackets-work-space/Macket10_17_WS.vue";
 
 export default {
     name: "FMMackets",
 
     components: {
+        Macket10_17_WS,
         Macket14_16_WS,
         Macket16_15_WS,
         Macket42_14_WS,
