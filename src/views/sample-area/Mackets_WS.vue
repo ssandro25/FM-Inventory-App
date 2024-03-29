@@ -6,8 +6,8 @@
                     <div class="d-flex align-items-center gap-3 ">
                         <GoBackBtn />
 
-<!--                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4"> {{ macketTitle }}</h1>-->
-                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4">{{ this.$route.params }}</h1>
+                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4"> {{ macketTitle }}</h1>
+<!--                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4">{{ this.$route.params }}</h1>-->
                     </div>
 
 <!--                    <div-->
@@ -249,29 +249,44 @@ export default {
             'getWorkSpace',
             'getWorkSpaceID',
             'getForestryWS_ID',
-            'getQuarterWS_ID'
+            'getQuarterWS_ID',
+            'getLiterWS_ID'
         ]),
 
-        // macketTitle() {
-        //     let forestArea = this.getForestArea.find(item => item.id === parseInt(this.params.forestAreaID)).title
-        //
-        //     let forestry = this.getForestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID)).title
-        //
-        //     let quarter = this.getForestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
-        //         .find(item => item.id === parseInt(this.params.literID)).title
-        //
-        //     let macket = this.getForestArea
-        //         .find(item => item.id === parseInt(this.params.forestAreaID)).forestry
-        //         .find(item => item.id === parseInt(this.params.quarterID)).quarters
-        //         .find(item => item.id === parseInt(this.params.literID)).liters
-        //         .find(item => item.id === parseInt(this.$route.params.id)).title
-        //
-        //     return forestArea + ' / ' + forestry + ' / ' + quarter + ' / ' + macket
-        // },
+        macketTitle() {
+            let workSpace = this.getWorkSpace.find(item => item.id === parseInt(this.getWorkSpaceID)).title
+
+            let forestry = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).title
+
+            let quarter = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).title
+
+            let liter = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).title
+
+            let taxCardTitle = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id)).title
+
+            let taxCardID = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id)).id
+
+            return workSpace + ' / ' + forestry + ' / ' + quarter + ' / ' + liter + ' / ' + taxCardTitle + ' ' + taxCardID
+        },
 
         // macket() {
         //     return this.getForestArea

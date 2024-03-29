@@ -179,7 +179,7 @@ export default {
                 this.arr.mackets[5] = [macketObj]
             }
 
-            this.$store.dispatch('setForestArea', this.getForestArea)
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
 
             document.querySelector('#close-btn31').click()
         },

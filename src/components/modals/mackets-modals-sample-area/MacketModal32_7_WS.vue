@@ -219,7 +219,7 @@ export default {
                 this.arr.mackets[6] = [macketObj]
             }
 
-            this.$store.dispatch('setForestArea', this.getForestArea)
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
 
             document.querySelector('#close-btn32').click()
         },
