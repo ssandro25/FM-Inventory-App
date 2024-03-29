@@ -114,9 +114,7 @@
                     </div>
 
                     <div class="col">
-                        <button class="btn btn-light w-100 text-truncate">
-                            17. სასოფლო-სამეურნეო სავარგულები
-                        </button>
+                        <Macket17_21_WS />
                     </div>
 
                     <div class="col">
@@ -209,11 +207,13 @@ import Macket10_17_WS from "@/components/mackets-work-space/Macket10_17_WS.vue";
 import Macket22_18_WS from "@/components/mackets-work-space/Macket22_18_WS.vue";
 import Macket36_19_WS from "@/components/mackets-work-space/Macket36_19_WS.vue";
 import Macket33_20_WS from "@/components/mackets-work-space/Macket33_20_WS.vue";
+import Macket17_21_WS from "@/components/mackets-work-space/Macket17_21_WS.vue";
 
 export default {
     name: "FMMackets",
 
     components: {
+        Macket17_21_WS,
         Macket33_20_WS,
         Macket36_19_WS,
         Macket22_18_WS,
