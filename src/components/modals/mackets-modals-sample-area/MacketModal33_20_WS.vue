@@ -1,59 +1,33 @@
 <template>
     <div
         class="modal fade"
-        id="macket4_WS"
+        id="macket33_20_WS"
         tabindex="-1"
-        aria-labelledby="macket4_WSLabel"
+        aria-labelledby="macket33_20_WSLabel"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket4_WSLabel">
-                        4. ჩახერგილობა
+                    <h1 class="modal-title fs-5" id="macket33_20_WSLabel">
+                        33. ბიომრავალფეროვნება
                     </h1>
-                    <button type="button" id="close-btn4" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" id="close-btn33" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
 
                 <div class="modal-body">
                     <div class="d-flex flex-column gap-3">
                         <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="deed_wood">
-                                4.1 ჩახერგილობა საერთო
+                            <label class="form-label text-truncate w-100 mb-0" for="coverage_percent">
+                                ტესტ
                             </label>
 
                             <input
-                                v-model="deed_wood"
+                                v-model="test"
                                 type="number"
                                 class="form-control"
-                                id="deed_wood"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="deed_wood_liquid">
-                                4.2 ჩახერგილობა ლიკვიდი
-                            </label>
-
-                            <input
-                                v-model="deed_wood_liquid"
-                                type="number"
-                                class="form-control"
-                                id="deed_wood_liquid"
-                            >
-                        </div>
-
-                        <div class="d-flex align-items-center gap-2">
-                            <label class="form-label text-truncate w-100 mb-0" for="old_deadwood">
-                                4.3 ძველი ზეხმელის ჩახერგილობა
-                            </label>
-
-                            <input
-                                v-model="old_deadwood"
-                                type="number"
-                                class="form-control"
-                                id="old_deadwood"
+                                id="coverage_percent"
                             >
                         </div>
                     </div>
@@ -78,14 +52,12 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal4_WS",
+    name: "MacketModal33_20_WS",
 
     data() {
         return {
             arr: null,
-            deed_wood: null,
-            deed_wood_liquid: null,
-            old_deadwood: null
+            test: '',
         }
     },
 
@@ -109,22 +81,20 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id))
 
             let macketObj = {
-                id: 4,
-                deed_wood: this.deed_wood,
-                deed_wood_liquid: this.deed_wood_liquid,
-                old_deadwood: this.old_deadwood
+                id: 33,
+                test: this.test,
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[3]) {
+            if (!this.arr.mackets || !this.arr.mackets[19]) {
                 this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[3] = [macketObj]
+                this.arr.mackets[19] = [macketObj]
             } else {
-                this.arr.mackets[3] = [macketObj]
+                this.arr.mackets[19] = [macketObj]
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
 
-            document.querySelector('#close-btn4').click()
+            document.querySelector('#close-btn33').click()
         },
     },
 
@@ -136,7 +106,7 @@ export default {
             .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
             .find(item => item.id === parseInt(this.$route.params.id))
 
-        if (!this.arr.mackets || !this.arr.mackets[3]) {
+        if (!this.arr.mackets || !this.arr.mackets[19]) {
             this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
         }
 
@@ -145,12 +115,10 @@ export default {
             .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
             .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
             .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
-            .find(item => item.id === parseInt(this.$route.params.id)).mackets[3]
+            .find(item => item.id === parseInt(this.$route.params.id)).mackets[19]
 
         if (!(currentArr && currentArr[0] && (
-            currentArr[0].deed_wood !== null ||
-            currentArr[0].deed_wood_liquid !== null ||
-            currentArr[0].old_deadwood !== null
+            currentArr[0].test !== ''
         ))) {
             this.add()
         }
