@@ -1,13 +1,13 @@
 <template>
-    <MacketModal10_17_WS :params="params"/>
+    <MacketModal22_18_WS :params="params"/>
 
     <button
         type="button"
         class="btn rounded-0 rounded-top btn-light w-100 text-truncate"
         data-bs-toggle="modal"
-        data-bs-target="#macket10_17_WS"
+        data-bs-target="#macket22_18_WS"
     >
-        10. ტაქსაციური დახასიათება
+        22. ბაღები,პლანტაციები
     </button>
 
     <div
@@ -24,12 +24,12 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MacketModal10_17_WS from "@/components/modals/mackets-modals-sample-area/MacketModal10_17_WS.vue";
+import MacketModal22_18_WS from "@/components/modals/mackets-modals-sample-area/MacketModal22_18_WS.vue";
 export default {
-    name: "Macket10_17_WS",
+    name: "Macket22_18_WS",
 
     components: {
-        MacketModal10_17_WS,
+        MacketModal22_18_WS,
     },
 
     computed: {
@@ -47,7 +47,7 @@ export default {
                 .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
                 .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.getLiterWS_ID)).taxCardArr
-                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[16] || []
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[17] || []
         },
 
         params() {

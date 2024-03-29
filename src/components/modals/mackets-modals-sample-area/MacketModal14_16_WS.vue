@@ -134,7 +134,7 @@ export default {
             }
 
             if (!this.arr.mackets || !this.arr.mackets[15]) {
-                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
                 this.arr.mackets[15] = [macketObj]
             } else {
                 this.arr.mackets[15] = [macketObj]
@@ -155,7 +155,7 @@ export default {
             .find(item => item.id === parseInt(this.$route.params.id))
 
         if (!this.arr.mackets || !this.arr.mackets[15]) {
-            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
         }
 
         let currentArr = this.getWorkSpace

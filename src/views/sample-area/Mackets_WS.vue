@@ -86,9 +86,7 @@
                     </div>
 
                     <div class="col">
-                        <button class="btn btn-light w-100 text-truncate">
-                            22. ბაღები,პლანტაციები
-                        </button>
+                        <Macket22_18_WS />
                     </div>
 
                     <div class="col">
@@ -212,11 +210,13 @@ import Macket42_14_WS from "@/components/mackets-work-space/Macket42_14_WS.vue";
 import Macket16_15_WS from "@/components/mackets-work-space/Macket16_15_WS.vue";
 import Macket14_16_WS from "@/components/mackets-work-space/Macket14_16_WS.vue";
 import Macket10_17_WS from "@/components/mackets-work-space/Macket10_17_WS.vue";
+import Macket22_18_WS from "@/components/mackets-work-space/Macket22_18_WS.vue";
 
 export default {
     name: "FMMackets",
 
     components: {
+        Macket22_18_WS,
         Macket10_17_WS,
         Macket14_16_WS,
         Macket16_15_WS,

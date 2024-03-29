@@ -1,18 +1,18 @@
 <template>
     <div
         class="modal fade"
-        id="macket10_17_WS"
+        id="macket22_18_WS"
         tabindex="-1"
-        aria-labelledby="macket10_17_WSLabel"
+        aria-labelledby="macket22_18_WSLabel"
         aria-hidden="true"
     >
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
-                    <h1 class="modal-title fs-5" id="macket10_17_WSLabel">
-                        10. ტაქსაციური დახასიათება
+                    <h1 class="modal-title fs-5" id="macket22_18_WSLabel">
+                        22. ბაღები,პლანტაციები
                     </h1>
-                    <button type="button" id="close-btn14" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                    <button type="button" id="close-btn22" class="btn-close btn-close-white" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                 </div>
 
@@ -52,7 +52,7 @@
 import {mapGetters} from "vuex";
 
 export default {
-    name: "MacketModal10_17_WS",
+    name: "MacketModal22_18_WS",
 
     data() {
         return {
@@ -81,20 +81,20 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id))
 
             let macketObj = {
-                id: 10,
+                id: 22,
                 test: this.test,
             }
 
-            if (!this.arr.mackets || !this.arr.mackets[16]) {
-                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
-                this.arr.mackets[16] = [macketObj]
+            if (!this.arr.mackets || !this.arr.mackets[17]) {
+                this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+                this.arr.mackets[17] = [macketObj]
             } else {
-                this.arr.mackets[16] = [macketObj]
+                this.arr.mackets[17] = [macketObj]
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
 
-            document.querySelector('#close-btn14').click()
+            document.querySelector('#close-btn22').click()
         },
     },
 
@@ -106,8 +106,8 @@ export default {
             .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
             .find(item => item.id === parseInt(this.$route.params.id))
 
-        if (!this.arr.mackets || !this.arr.mackets[16]) {
-            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
+        if (!this.arr.mackets || !this.arr.mackets[17]) {
+            this.arr.mackets = [[], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], [], []]
         }
 
         let currentArr = this.getWorkSpace
@@ -115,12 +115,10 @@ export default {
             .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
             .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
             .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
-            .find(item => item.id === parseInt(this.$route.params.id)).mackets[16]
+            .find(item => item.id === parseInt(this.$route.params.id)).mackets[17]
 
         if (!(currentArr && currentArr[0] && (
-            currentArr[0].accounting_category !== '' ||
-            currentArr[0].plants_type !== '' ||
-            currentArr[0].coverage_percent !== null
+            currentArr[0].test !== ''
         ))) {
             this.add()
         }
