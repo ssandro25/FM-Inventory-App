@@ -24,7 +24,7 @@
         </div>
     </div>
 
-    <div class="col-lg-6 col-12 p-0 table-responsive">
+    <div class="col-lg-7 col-12 p-0 table-responsive">
         <div>
             <button
                 type="button"
@@ -113,6 +113,7 @@
 
         <div>
             <button
+                :disabled="!registered_tree && !diameter && !category"
                 type="button"
                 class="btn btn-success btn-sm"
                 @click="addTree"
@@ -315,6 +316,10 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
         }
     },
+
+    mounted() {
+        console.log(this.registered_tree)
+    }
 }
 </script>
 

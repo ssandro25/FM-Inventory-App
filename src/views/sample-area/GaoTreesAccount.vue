@@ -1,5 +1,5 @@
 <template>
-    <div class="container-fluid p-md-5 p-3">
+    <div class="container-fluid p-lg-5 p-3">
         <div class="d-flex align-items-center gap-3 mb-4">
             <GoBackBtn/>
 
