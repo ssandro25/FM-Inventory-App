@@ -44,12 +44,11 @@
                     </div>
 
                     <div class="col-md-4">
-<!--                        <Macket3 />-->
                         <Macket3_WS />
                     </div>
 
                     <div class="col-md-4">
-<!--                        <Macket4 />-->
+                        <Macket4_WS />
                     </div>
 
                     <div class="col-md-4">
@@ -198,14 +197,16 @@
 import { mapGetters } from "vuex";
 
 import GoBackBtn from "@/components/GoBackBtn.vue";
-import Macket1_WS from "@/components/mackets-sample-area/Macket1_WS.vue";
-import Macket2_WS from "@/components/mackets-sample-area/Macket2_WS.vue";
-import Macket3_WS from "@/components/mackets-sample-area/Macket3_WS.vue";
+import Macket1_WS from "@/components/mackets-work-space/Macket1_WS.vue";
+import Macket2_WS from "@/components/mackets-work-space/Macket2_WS.vue";
+import Macket3_WS from "@/components/mackets-work-space/Macket3_WS.vue";
+import Macket4_WS from "@/components/mackets-work-space/Macket4_WS.vue";
 
 export default {
     name: "FMMackets",
 
     components: {
+        Macket4_WS,
         Macket3_WS,
         Macket2_WS,
         Macket1_WS,
