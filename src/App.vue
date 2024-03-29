@@ -24,7 +24,8 @@
                                         $route.name === 'liter-ws' ||
                                         $route.name === 'sample-area' ||
                                         $route.name === 'gao-trees-account' ||
-                                        $route.name === 'lying-dead-account'
+                                        $route.name === 'lying-dead-account' ||
+                                        $route.name === 'mackets-ws'
                         }"
                     >
                         <img src="@/assets/images/pen-ruler-solid.svg" width="14" alt="">
