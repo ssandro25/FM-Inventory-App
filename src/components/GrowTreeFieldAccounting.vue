@@ -362,10 +362,6 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
         }
     },
-
-    mounted() {
-        console.log(typeof this.registeredTreesData, this.registeredTreesData)
-    }
 }
 </script>
 
