@@ -179,6 +179,9 @@ export default {
 .fs-12 {
     font-size: 12px !important;
 }
+.cursor-pointer {
+    cursor: pointer;
+}
 .macket__item {
     height: 75px;
 }

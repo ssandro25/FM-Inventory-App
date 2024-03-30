@@ -62,8 +62,17 @@
             </div>
         </div>
 
-        <p v-else class="mb-0 text-center fs-4">
+        <p v-else class="d-flex align-items-center justify-content-center gap-2 mb-0 text-center fs-4">
             ლიტერი არ მოიძებნა...
+
+            <span
+                v-if="!literWS.length"
+                class="cursor-pointer text-success text-decoration-underline"
+                data-bs-toggle="modal"
+                data-bs-target="#addNewLiter_WS"
+            >
+                დაამატე ლიტერი
+            </span>
         </p>
     </div>
 </template>

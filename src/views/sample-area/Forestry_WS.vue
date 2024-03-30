@@ -66,8 +66,17 @@
             </div>
         </div>
 
-        <p v-else class="mb-0 text-center fs-4">
-            კვარტალი არ მოიძებნა...
+        <p v-else class="d-flex align-items-center justify-content-center gap-2 mb-0 text-center fs-4">
+            <span>კვარტალი არ მოიძებნა...</span>
+
+            <span
+                v-if="!quarterWS.length"
+                class="cursor-pointer text-success text-decoration-underline"
+                data-bs-toggle="modal"
+                data-bs-target="#addNewQuarter_WS"
+            >
+                დაამატე კვარტალი
+            </span>
         </p>
     </div>
 </template>
