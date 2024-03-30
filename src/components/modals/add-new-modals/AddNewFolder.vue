@@ -10,7 +10,7 @@
             <div class="modal-content bg-dark">
                 <div class="modal-header border-0">
                     <h1 class="modal-title fs-5" id="addNewFolderLabel">
-                        ახალი საქაღალდის დამატება
+                        საქაღალდის დამატება
                     </h1>
                     <button type="button" id="add_new_folder" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>

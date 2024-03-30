@@ -173,6 +173,9 @@ export default {
 </script>
 
 <style lang="scss">
+:focus {
+    box-shadow: unset !important;
+}
 .fs-12 {
     font-size: 12px !important;
 }
@@ -238,8 +241,6 @@ body {
             background: radial-gradient(circle, #15182d 5%, #1a2537 80%, #1c383f 100%);
         }
     }
-
-
 }
 
 @media screen and (max-width: 760px){
