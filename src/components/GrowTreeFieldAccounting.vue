@@ -384,6 +384,7 @@ export default {
         display: flex !important;
         align-items: center;
         justify-content: center;
+        z-index: 10;
     }
 }
 
@@ -394,6 +395,7 @@ export default {
         bottom: 72px;
         width: 100%;
         background-color: #1e393f;
+        z-index: 10;
 
         table td, table th {
             background-color: #1e393f !important;
