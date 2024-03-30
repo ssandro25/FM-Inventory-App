@@ -7,11 +7,22 @@
         <div class="offcanvas-body">
             <div class="text-white" v-if="registeredTreesData">
                 <p class="mb-3">დამატებულია შემდეგი სახეობები:</p>
-                <ul
-                    v-for="(item, index) in registeredTreesData"
-                    :key="index"
-                >
-                    <li>{{ item.name }}</li>
+                <ul class="d-flex flex-column gap-3 p-0">
+                    <li
+                        v-for="item in registeredTreesData"
+                        :key="item.id"
+                        class="d-flex align-items-center justify-content-between gap-2"
+                    >
+                        <span>{{ item.name }}</span>
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-sm d-flex align-items-center justify-content-center gap-2"
+                            @click="removeRegisteredData(item.id)"
+                        >
+                            <img src="@/assets/images/trash-solid.svg" width="15" alt="">
+                            <span>წაშლა</span>
+                        </button>
+                    </li>
                 </ul>
             </div>
 
@@ -33,7 +44,7 @@
                 class="btn btn-success w-100 mt-3"
                 @click="registerSpecies"
             >
-                დამატება
+                რეგისტრაცია
             </button>
         </div>
     </div>
@@ -58,85 +69,90 @@
             </button>
         </div>
 
-        <table class="table table-bordered table-dark mt-3">
-            <thead>
-            <tr>
-                <th>#</th>
-                <th>სახეობა</th>
-                <th>დიამეტრი</th>
-                <th>კატეგორია</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <th></th>
+        <div class="add_tree__block mt-lg-3">
+            <table class="table table-bordered table-dark mb-0">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>სახეობა</th>
+                    <th>დიამეტრი</th>
+                    <th>კატეგორია</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th></th>
 
-                <td>
-                    <select
-                        v-model="registered_tree"
-                        class="form-select"
-                        id="test"
-                    >
-                        <option>აირჩიეთ</option>
-
-                        <option
-                            v-for="item in registeredTreesData"
-                            :key="item.id"
+                    <td>
+                        <select
+                            v-model="registered_tree"
+                            class="form-select"
+                            id="test"
                         >
-                            {{ item.name }}
-                        </option>
-                    </select>
-                </td>
+                            <option>აირჩიეთ</option>
 
-                <td>
-                    <select
-                        v-model="diameter"
-                        class="form-select"
-                        id="diameter"
-                    >
-                        <option>აირჩიეთ</option>
+                            <option
+                                v-for="item in registeredTreesData"
+                                :key="item.id"
+                            >
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </td>
 
-                        <option
-                            v-for="item in getDiameterData"
-                            :key="item.id"
+                    <td>
+                        <select
+                            v-model="diameter"
+                            class="form-select"
+                            id="diameter"
                         >
-                            {{ item.name }}
-                        </option>
-                    </select>
-                </td>
+                            <option>აირჩიეთ</option>
 
-                <td>
-                    <select
-                        v-model="category"
-                        class="form-select"
-                        id="diameter"
-                    >
-                        <option>აირჩიეთ</option>
+                            <option
+                                v-for="item in getDiameterData"
+                                :key="item.id"
+                            >
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </td>
 
-                        <option
-                            v-for="item in getCategoryData"
-                            :key="item.id"
+                    <td>
+                        <select
+                            v-model="category"
+                            class="form-select"
+                            id="diameter"
                         >
-                            {{ item.name }}
-                        </option>
-                    </select>
-                </td>
-            </tr>
-            </tbody>
-        </table>
+                            <option>აირჩიეთ</option>
 
-        <div>
-            <button
-                :disabled="!registered_tree && !diameter && !category"
-                type="button"
-                class="btn btn-success btn-sm"
-                @click="addTree"
-            >
-                დამატება
-            </button>
+                            <option
+                                v-for="item in getCategoryData"
+                                :key="item.id"
+                            >
+                                {{ item.name }}
+                            </option>
+                        </select>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+
+            <div class="mt-lg-3 text-center py-lg-0 py-2">
+                <p v-if="disabledAddTree" class="text-danger fs-12 my-lg-3 mb-2">
+                    შეიყვანეთ ყველა მონაცემი
+                </p>
+
+                <button
+                    type="button"
+                    class="btn btn-success w-75"
+                    @click="addTree"
+                >
+                    დამატება
+                </button>
+            </div>
         </div>
 
-        <table v-if="addedTreesData" class="table table-bordered table-dark table-striped mt-3">
+        <table v-if="addedTreesData" class="table table-bordered table-dark table-striped mt-lg-3 added_trees__list">
             <thead>
             <tr>
                 <th>#</th>
@@ -217,6 +233,7 @@ export default {
             category: '',
             arr: [],
             addedTrees: [],
+            disabledAddTree: false
         }
     },
 
@@ -255,35 +272,40 @@ export default {
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-            console.log(this.tree_type)
         },
 
         addTree() {
-            this.arr = this.getWorkSpace
-                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
-                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
-                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id))
-
-            let addedTreesObj = {
-                id: this.arr.gaoAddedTreesArr && this.arr.gaoAddedTreesArr.length ? this.arr.gaoAddedTreesArr.length + 1 : 1,
-                registered_tree: this.registered_tree,
-                diameter: this.diameter,
-                category: this.category,
-            }
-
-            if (!this.arr.gaoAddedTreesArr) {
-                this.arr.gaoAddedTreesArr = [addedTreesObj];
+            if (!this.registered_tree || !this.diameter || !this.category) {
+                this.disabledAddTree = true
             } else {
-                this.arr.gaoAddedTreesArr.push(addedTreesObj)
+                this.arr = this.getWorkSpace
+                    .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                    .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                    .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                    .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                    .find(item => item.id === parseInt(this.$route.params.id))
+
+                let addedTreesObj = {
+                    id: this.arr.gaoAddedTreesArr && this.arr.gaoAddedTreesArr.length ? this.arr.gaoAddedTreesArr.length + 1 : 1,
+                    registered_tree: this.registered_tree,
+                    diameter: this.diameter,
+                    category: this.category,
+                }
+
+                if (!this.arr.gaoAddedTreesArr) {
+                    this.arr.gaoAddedTreesArr = [addedTreesObj];
+                } else {
+                    this.arr.gaoAddedTreesArr.push(addedTreesObj)
+                }
+
+                this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+
+                this.registered_tree = ''
+                this.diameter = ''
+                this.category = ''
+                this.disabledAddTree = false
             }
 
-            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-
-            this.registered_tree = ''
-            this.diameter = ''
-            this.category = ''
         },
 
         removeAddedTree(id) {
@@ -295,6 +317,16 @@ export default {
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
+
+        removeRegisteredData(id) {
+            const index = this.registeredTreesData.findIndex(product => product.id === parseInt(id));
+
+            if (index !== -1) {
+                this.registeredTreesData.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+        }
     },
 
     computed: {
@@ -332,7 +364,7 @@ export default {
     },
 
     mounted() {
-        console.log(this.registered_tree)
+        console.log(typeof this.registeredTreesData, this.registeredTreesData)
     }
 }
 </script>
@@ -342,7 +374,9 @@ export default {
 .multiselect-option {
     color: #000 !important;
 }
-
+.added_trees__list {
+    min-width: 800px;
+}
 @media screen and (max-width: 991px){
     .species__register_btn {
         position: fixed;
@@ -355,6 +389,28 @@ export default {
         align-items: center;
         justify-content: center;
     }
+}
+
+@media screen and (max-width: 760px){
+    .add_tree__block {
+        position: fixed;
+        left: 0;
+        bottom: 72px;
+        width: 100%;
+        background-color: #1e393f;
+
+        table td, table th {
+            background-color: #1e393f !important;
+        }
+
+        button {
+            background-color: #399170 !important;
+        }
+    }
+
+   .added_trees__list {
+       margin-bottom: 145px !important;
+   }
 }
 
 </style>

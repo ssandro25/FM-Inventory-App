@@ -9,7 +9,7 @@
         </div>
 
         <nav class="mt-4">
-            <div class="nav nav-tabs gap-1 border-0" id="nav-tab" role="tablist">
+            <div class="nav nav-tabs gap-lg-1 gap-3 border-0 flex-nowrap overflow-x-auto overflow-y-hidden" id="nav-tab" role="tablist">
                 <button
                     class="nav-link active"
                     id="nav-one-tab"
@@ -64,7 +64,7 @@
             </div>
         </nav>
 
-        <div class="tab-content mt-5" id="nav-tabContent">
+        <div class="tab-content mt-lg-5 mt-3" id="nav-tabContent">
             <div class="tab-pane fade show active" id="nav-one" role="tabpanel" aria-labelledby="nav-one-tab" tabindex="0">
                 <GrowTreeFieldAccounting />
             </div>
