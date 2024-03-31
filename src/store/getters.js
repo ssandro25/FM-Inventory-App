@@ -83,4 +83,7 @@ export default {
 
     getRightSideBar: state => state.rightSideBar,
     getMacketID: state => state.macketID,
+
+
+    getBasalAreaCalculate: state => state.basalAreaCalculate,
 }

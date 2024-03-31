@@ -378,8 +378,6 @@ export default {
 
     mounted() {
         this.groupTreedData()
-
-        console.log(this.gaoTable)
     }
 
 }
