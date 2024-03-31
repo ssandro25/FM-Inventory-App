@@ -1,5 +1,6 @@
 <template>
-    <div class="col-lg-6 col-12 p-0 table-responsive">
+<!--    <div class="col-lg-6 col-12 p-0 table-responsive">-->
+    <div class="table-responsive">
         <table class="table table-bordered table-dark table-striped mt-3">
             <thead>
             <tr>
@@ -140,7 +141,76 @@
                 </th>
             </tr>
             </thead>
+            <tbody>
+            <tr>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+            </tr>
+
+            <tr>
+                <td>სულ</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>1 ჰა-ზე</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო დიამეტრი, სმ</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო სიმაღლე, მ</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">ფართობი სიხშირე</td>
+                <td colspan="11"></td>
+            </tr>
+            </tbody>
         </table>
+
 
     </div>
 </template>
@@ -152,9 +222,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.text-rotate {
-    writing-mode: vertical-rl;
-    text-orientation: mixed;
-    transform: rotate(-180deg)
-}
+//.text-rotate {
+//    writing-mode: vertical-rl;
+//    text-orientation: mixed;
+//    transform: rotate(-180deg)
+//}
 </style>
