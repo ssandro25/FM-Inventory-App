@@ -179,6 +179,9 @@ export default {
 .fs-12 {
     font-size: 12px !important;
 }
+.fs-14 {
+    font-size: 14px !important;
+}
 .cursor-pointer {
     cursor: pointer;
 }

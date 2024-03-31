@@ -155,11 +155,11 @@
         <table v-if="addedTreesData" class="table table-bordered table-dark table-striped mt-lg-3 added_trees__list">
             <thead>
             <tr>
-                <th>#</th>
-                <th>სახეობა</th>
-                <th>დიამეტრი</th>
-                <th>კატეგორია</th>
-                <th style="width: 115px;">მოქმ.</th>
+                <th class="fs-12" style="width: 50px;">#</th>
+                <th class="fs-12">სახეობა</th>
+                <th class="fs-12 d-none d-md-table-cell">დიამეტრი</th>
+                <th class="fs-12 d-none d-md-table-cell">კატეგორია</th>
+                <th class="fs-12" style="width: 115px;">მოქმედებები</th>
             </tr>
             </thead>
             <tbody>
@@ -170,24 +170,24 @@
                 <th>{{ index + 1 }}</th>
 
                 <td>
-                    {{ item.registered_tree }}
+                    <div class="fs-14">
+                        <p class="mb-0">{{ item.registered_tree }} <span class="d-inline d-md-none">- {{ item.diameter }}</span></p>
+                        <p class="d-block d-md-none mt-3 mb-0">{{ item.category }}</p>
+                    </div>
+
                 </td>
 
-                <td>
-                    {{ item.diameter }}
-                </td>
+                <td class="d-none d-md-table-cell">{{ item.diameter }}</td>
 
-                <td>
-                    {{ item.category }}
-                </td>
+                <td class="d-none d-md-table-cell">{{ item.category }}</td>
 
-                <td>
+                <td class="align-content-center">
                     <EditAddedTreeModal :item="item" />
 
-                    <div class="d-flex gap-3">
+                    <div class="d-flex justify-content-center gap-3">
                         <button
                             type="button"
-                            class="btn btn-warning"
+                            class="btn btn-warning btn-sm"
                             data-bs-toggle="modal"
                             :data-bs-target="'#editAddedTreeItem'+item.id"
                         >
@@ -196,7 +196,7 @@
 
                         <button
                             type="button"
-                            class="btn btn-danger"
+                            class="btn btn-danger btn-sm"
                             @click="removeAddedTree(item.id)"
                         >
                             <img src="@/assets/images/trash-solid.svg" width="15" alt="">
@@ -369,8 +369,9 @@ export default {
     color: #000 !important;
 }
 .added_trees__list {
-    min-width: 800px;
+    width: max-content !important;
 }
+
 @media screen and (max-width: 991px){
     .species__register_btn {
         position: fixed;
@@ -387,6 +388,9 @@ export default {
 }
 
 @media screen and (max-width: 760px){
+    .added_trees__list {
+        max-width: 100%;
+    }
     .add_tree__block {
         position: fixed;
         left: 0;

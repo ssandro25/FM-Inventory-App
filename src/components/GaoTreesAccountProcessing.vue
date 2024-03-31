@@ -162,13 +162,13 @@
                 <td>13</td>
                 <td>14</td>
             </tr>
-            <tr v-for="(item, index) in item.option"
+            <tr v-for="(itemOption, index) in item.option"
                 :key="index"
             >
-                <td>{{ item.diameter }}</td>
-                <td>{{ item.count }}</td>
+                <td>{{ itemOption.diameter }}</td>
+                <td>{{ itemOption.count }}</td>
                 <td></td>
-                <td>{{ calc(item.count, item.diameter) }}</td>
+                <td>{{ calc(itemOption.count, itemOption.diameter) }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -196,7 +196,7 @@
                     }}
                 </td>
                 <td></td>
-                <td>teeeeeest</td>
+                <td></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -407,8 +407,7 @@ export default {
                     return treesAmount * defaultObject.basalArea;
                 }
             }
-        }
-
+        },
     },
 
     mounted() {
