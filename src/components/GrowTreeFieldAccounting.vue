@@ -164,10 +164,10 @@
             </thead>
             <tbody>
             <tr
-                v-for="item in addedTreesData"
+                v-for="(item, index) in addedTreesData"
                 :key="item.id"
             >
-                <th>{{ item.id }}</th>
+                <th>{{ index + 1 }}</th>
 
                 <td>
                     {{ item.registered_tree }}
