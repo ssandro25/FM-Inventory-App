@@ -404,7 +404,7 @@ export default {
                 const defaultObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === 1 && parseInt(obj.diameter) === diameter)
 
                 if (defaultObject) {
-                    return diameter * defaultObject.basalArea;
+                    return treesAmount * defaultObject.basalArea;
                 }
             }
         }
