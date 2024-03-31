@@ -159,7 +159,7 @@
                 <th>სახეობა</th>
                 <th>დიამეტრი</th>
                 <th>კატეგორია</th>
-                <th>მოქმედებები</th>
+                <th style="width: 115px;">მოქმ.</th>
             </tr>
             </thead>
             <tbody>
@@ -187,21 +187,19 @@
                     <div class="d-flex gap-3">
                         <button
                             type="button"
-                            class="btn btn-warning d-flex align-items-center justify-content-center gap-2 w-100"
+                            class="btn btn-warning"
                             data-bs-toggle="modal"
                             :data-bs-target="'#editAddedTreeItem'+item.id"
                         >
                             <img src="@/assets/images/edit-icon.svg" width="15" alt="">
-                            <span>რედაქტირება</span>
                         </button>
 
                         <button
                             type="button"
-                            class="btn btn-danger d-flex align-items-center justify-content-center gap-2 w-100"
+                            class="btn btn-danger"
                             @click="removeAddedTree(item.id)"
                         >
                             <img src="@/assets/images/trash-solid.svg" width="15" alt="">
-                            <span>წაშლა</span>
                         </button>
                     </div>
                 </td>

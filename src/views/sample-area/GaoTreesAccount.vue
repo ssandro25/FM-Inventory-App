@@ -4,7 +4,7 @@
             <GoBackBtn/>
 
             <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4">
-                {{ sampleAreaTitle }} | ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისი
+                {{ sampleAreaTitle }} | ზრდადი და ზეხმელი ხეების აღრიცხვა
             </h1>
         </div>
 

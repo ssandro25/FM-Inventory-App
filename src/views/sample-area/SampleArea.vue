@@ -15,7 +15,7 @@
                     :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.getLiterWS_ID+/sample-area/+this.getSampleAreaID+/gao-trees-account/+this.$route.params.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 fs-5 text-center"
                 >
-                    ზრდადი და ზეხმელი ხეების აღრიცხვის უწყისი
+                    ზრდადი და ზეხმელი ხეების აღრიცხვა
                 </router-link>
             </div>
 
@@ -24,7 +24,7 @@
                     :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.getLiterWS_ID+/sample-area/+this.getSampleAreaID+/lying-dead-account/+this.$route.params.id"
                     class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 fs-5 text-center"
                 >
-                    ძირნაყარის აღრიცხვის უწყისი
+                    ძირნაყარის აღრიცხვა
                 </router-link>
             </div>
         </div>
