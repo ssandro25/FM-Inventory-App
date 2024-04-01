@@ -172,7 +172,7 @@
                 <td>{{ itemOption.diameter }}</td>
                 <td>{{ itemOption.count }}</td>
                 <td></td>
-                <td>{{ calc(itemOption.count, itemOption.diameter) }}</td>
+                <td>{{ itemOption.calcBasalArea }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -200,7 +200,7 @@
                     }}
                 </td>
                 <td></td>
-                <td></td>
+                <td>{{ item.totalBasalAreaSmall }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -276,7 +276,7 @@
                 <td>{{ itemOption.diameter }}</td>
                 <td>{{ itemOption.count }}</td>
                 <td></td>
-                <td>{{ calc(itemOption.count, itemOption.diameter) }}</td>
+                <td>{{ itemOption.calcBasalArea }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -304,7 +304,7 @@
                     }}
                 </td>
                 <td></td>
-                <td></td>
+                <td>{{ item.totalBasalAreaLarge }}</td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -384,22 +384,22 @@ export default {
     },
 
     methods: {
-        calc(treesAmount, diameter) {
-            treesAmount = parseInt(treesAmount);
-            diameter = parseInt(diameter);
-
-            const matchingObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === treesAmount && parseInt(obj.diameter) === diameter)
-
-            if (matchingObject) {
-                return matchingObject.basalArea;
-            } else {
-                const defaultObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === 1 && parseInt(obj.diameter) === diameter)
-
-                if (defaultObject) {
-                    return treesAmount * defaultObject.basalArea;
-                }
-            }
-        },
+        // calc(treesAmount, diameter) {
+        //     treesAmount = parseInt(treesAmount);
+        //     diameter = parseInt(diameter);
+        //
+        //     const matchingObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === treesAmount && parseInt(obj.diameter) === diameter)
+        //
+        //     if (matchingObject) {
+        //         return matchingObject.basalArea;
+        //     } else {
+        //         const defaultObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === 1 && parseInt(obj.diameter) === diameter)
+        //
+        //         if (defaultObject) {
+        //             return treesAmount * defaultObject.basalArea;
+        //         }
+        //     }
+        // },
     },
 
 }

@@ -238,6 +238,41 @@ export default {
         }
     },
 
+    computed: {
+        ...mapGetters([
+            'getWorkSpace',
+            'getWorkSpaceID',
+            'getForestryWS_ID',
+            'getQuarterWS_ID',
+            'getLiterWS_ID',
+            'getSampleAreaID',
+            'getTreeType',
+            'getDiameterData',
+            'getCategoryData',
+
+            'getTreeTypeGao',
+            'getBasalAreaCalculate'
+        ]),
+
+        registeredTreesData() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).registerSpeciesArr
+        },
+
+        addedTreesData() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
+        }
+    },
+
     methods: {
         registerSpecies() {
             this.arr = this.getWorkSpace
@@ -299,134 +334,71 @@ export default {
                     this.arr.gaoAddedTreesArr.push(addedTreesObj)
                 }
 
+
+                // Функция для замены грузинских символов на латинские и замены пробелов на "_"
+                const normalizeString = (str) => {
+                    return str.replace(/ა/g, "a")
+                        .replace(/ბ/g, "b")
+                        .replace(/გ/g, "g")
+                        .replace(/დ/g, "d")
+                        .replace(/ე/g, "e")
+                        .replace(/ვ/g, "v")
+                        .replace(/ზ/g, "z")
+                        .replace(/თ/g, "t")
+                        .replace(/ი/g, "i")
+                        .replace(/კ/g, "k")
+                        .replace(/ლ/g, "l")
+                        .replace(/მ/g, "m")
+                        .replace(/ნ/g, "n")
+                        .replace(/ო/g, "o")
+                        .replace(/პ/g, "p")
+                        .replace(/ჟ/g, "zh")
+                        .replace(/რ/g, "r")
+                        .replace(/ს/g, "s")
+                        .replace(/ტ/g, "t")
+                        .replace(/უ/g, "u")
+                        .replace(/ფ/g, "p")
+                        .replace(/ქ/g, "k")
+                        .replace(/ღ/g, "gh")
+                        .replace(/ყ/g, "q")
+                        .replace(/შ/g, "sh")
+                        .replace(/ჩ/g, "ch")
+                        .replace(/ც/g, "ts")
+                        .replace(/ძ/g, "dz")
+                        .replace(/წ/g, "ts")
+                        .replace(/ჭ/g, "ch")
+                        .replace(/ხ/g, "kh")
+                        .replace(/ჯ/g, "j")
+                        .replace(/ჰ/g, "h")
+                        .replace(/ /g, "_")
+                        .replace(/-/g, "_");
+                }
+
                 // groupTreesData start
-                // if (this.addedTreesData) {
-                //     // Группировка по registered_tree
-                //     const groupedByTree = this.addedTreesData.reduce((acc, tree) => {
-                //         const key = tree.registered_tree;
-                //         if (!acc[key]) {
-                //             acc[key] = [];
-                //         }
-                //         acc[key].push(tree);
-                //         return acc;
-                //     }, {});
-                //
-                //     // Группировка по диаметру внутри каждой группы по имени
-                //     for (const treeName in groupedByTree) {
-                //         groupedByTree[treeName] = groupedByTree[treeName].reduce((acc, tree) => {
-                //             const key = tree.diameter;
-                //             if (!acc[key]) {
-                //                 acc[key] = {count: 0, trees: []};
-                //             }
-                //             acc[key].count++; // Увеличиваем счетчик количества деревьев с данным диаметром
-                //             acc[key].trees.push(tree);
-                //             return acc;
-                //         }, {});
-                //     }
-                //
-                //
-                //     // Подсчет категорий внутри каждой группы по имени и диаметру
-                //     for (const treeName in groupedByTree) {
-                //         for (const diameter in groupedByTree[treeName]) {
-                //             const categoriesCount = groupedByTree[treeName][diameter].trees.reduce((acc, tree) => {
-                //                 const category = tree.category;
-                //                 acc[category] = (acc[category] || 0) + 1;
-                //                 return acc;
-                //             }, {});
-                //             groupedByTree[treeName][diameter].categories = categoriesCount;
-                //         }
-                //     }
-                //
-                //     // Функция для замены грузинских символов на латинские и замены пробелов на "_"
-                //     const normalizeString = (str) => {
-                //         return str.replace(/ა/g, "a")
-                //             .replace(/ბ/g, "b")
-                //             .replace(/გ/g, "g")
-                //             .replace(/დ/g, "d")
-                //             .replace(/ე/g, "e")
-                //             .replace(/ვ/g, "v")
-                //             .replace(/ზ/g, "z")
-                //             .replace(/თ/g, "t")
-                //             .replace(/ი/g, "i")
-                //             .replace(/კ/g, "k")
-                //             .replace(/ლ/g, "l")
-                //             .replace(/მ/g, "m")
-                //             .replace(/ნ/g, "n")
-                //             .replace(/ო/g, "o")
-                //             .replace(/პ/g, "p")
-                //             .replace(/ჟ/g, "zh")
-                //             .replace(/რ/g, "r")
-                //             .replace(/ს/g, "s")
-                //             .replace(/ტ/g, "t")
-                //             .replace(/უ/g, "u")
-                //             .replace(/ფ/g, "p")
-                //             .replace(/ქ/g, "k")
-                //             .replace(/ღ/g, "gh")
-                //             .replace(/ყ/g, "q")
-                //             .replace(/შ/g, "sh")
-                //             .replace(/ჩ/g, "ch")
-                //             .replace(/ც/g, "ts")
-                //             .replace(/ძ/g, "dz")
-                //             .replace(/წ/g, "ts")
-                //             .replace(/ჭ/g, "ch")
-                //             .replace(/ხ/g, "kh")
-                //             .replace(/ჯ/g, "j")
-                //             .replace(/ჰ/g, "h")
-                //             .replace(/ /g, "_")
-                //             .replace(/-/g, "_");
-                //     }
-                //
-                //     // Преобразование объекта groupedByTree в массив объектов key: option
-                //     this.gaoTable = Object.entries(groupedByTree).map(([treeName, treeOptions]) => {
-                //         const optionsArray = Object.entries(treeOptions).map(([diameter, data]) => {
-                //             const normalizedCategories = Object.keys(data.categories).reduce((acc, category) => {
-                //                 acc[normalizeString(category)] = data.categories[category];
-                //                 return acc;
-                //             }, {});
-                //             return {diameter: diameter, count: data.count, categories: normalizedCategories};
-                //         });
-                //         return {key: treeName, option: optionsArray};
-                //     });
-                //
-                //     this.gaoTable.forEach(item => {
-                //         const categoryCountMap = {};
-                //         item.option.forEach(option => {
-                //             Object.entries(option.categories).forEach(([category, count]) => {
-                //                 categoryCountMap[category] = (categoryCountMap[category] || 0) + count;
-                //             });
-                //         });
-                //         item.categoryCountMap = categoryCountMap;
-                //     });
-                //
-                //     this.arr.groupTreesData = this.gaoTable
-                // }
-                // groupTreesData end
-
-                // groupTreesDataWithTier start
                 if (this.addedTreesData) {
-                    const groupedByTree = {};
-
-                    // Группировка по registered_tree и диаметру
-                    this.addedTreesData.forEach(tree => {
+                    // Группировка по registered_tree
+                    const groupedByTree = this.addedTreesData.reduce((acc, tree) => {
                         const key = tree.registered_tree;
-                        if (!groupedByTree[key]) {
-                            groupedByTree[key] = [];
+                        if (!acc[key]) {
+                            acc[key] = [];
                         }
-                        groupedByTree[key].push(tree);
-                    });
+                        acc[key].push(tree);
+                        return acc;
+                    }, {});
 
                     // Группировка по диаметру внутри каждой группы по имени
                     for (const treeName in groupedByTree) {
                         groupedByTree[treeName] = groupedByTree[treeName].reduce((acc, tree) => {
                             const key = tree.diameter;
                             if (!acc[key]) {
-                                acc[key] = { count: 0, trees: [] };
+                                acc[key] = {count: 0, trees: []};
                             }
                             acc[key].count++; // Увеличиваем счетчик количества деревьев с данным диаметром
                             acc[key].trees.push(tree);
                             return acc;
                         }, {});
                     }
+
 
                     // Подсчет категорий внутри каждой группы по имени и диаметру
                     for (const treeName in groupedByTree) {
@@ -440,47 +412,72 @@ export default {
                         }
                     }
 
-                    // Функция для замены грузинских символов на латинские и замены пробелов на "_"
-                    const normalizeString = (str) => {
-                        return str.replace(/ა/g, "a")
-                            .replace(/ბ/g, "b")
-                            .replace(/გ/g, "g")
-                            .replace(/დ/g, "d")
-                            .replace(/ე/g, "e")
-                            .replace(/ვ/g, "v")
-                            .replace(/ზ/g, "z")
-                            .replace(/თ/g, "t")
-                            .replace(/ი/g, "i")
-                            .replace(/კ/g, "k")
-                            .replace(/ლ/g, "l")
-                            .replace(/მ/g, "m")
-                            .replace(/ნ/g, "n")
-                            .replace(/ო/g, "o")
-                            .replace(/პ/g, "p")
-                            .replace(/ჟ/g, "zh")
-                            .replace(/რ/g, "r")
-                            .replace(/ს/g, "s")
-                            .replace(/ტ/g, "t")
-                            .replace(/უ/g, "u")
-                            .replace(/ფ/g, "p")
-                            .replace(/ქ/g, "k")
-                            .replace(/ღ/g, "gh")
-                            .replace(/ყ/g, "q")
-                            .replace(/შ/g, "sh")
-                            .replace(/ჩ/g, "ch")
-                            .replace(/ც/g, "ts")
-                            .replace(/ძ/g, "dz")
-                            .replace(/წ/g, "ts")
-                            .replace(/ჭ/g, "ch")
-                            .replace(/ხ/g, "kh")
-                            .replace(/ჯ/g, "j")
-                            .replace(/ჰ/g, "h")
-                            .replace(/ /g, "_")
-                            .replace(/-/g, "_");
+                    // Преобразование объекта groupedByTree в массив объектов key: option
+                    this.gaoTable = Object.entries(groupedByTree).map(([treeName, treeOptions]) => {
+                        const optionsArray = Object.entries(treeOptions).map(([diameter, data]) => {
+                            const normalizedCategories = Object.keys(data.categories).reduce((acc, category) => {
+                                acc[normalizeString(category)] = data.categories[category];
+                                return acc;
+                            }, {});
+                            return {diameter: diameter, count: data.count, categories: normalizedCategories};
+                        });
+                        return {key: treeName, option: optionsArray};
+                    });
+
+                    this.gaoTable.forEach(item => {
+                        const categoryCountMap = {};
+                        item.option.forEach(option => {
+                            Object.entries(option.categories).forEach(([category, count]) => {
+                                categoryCountMap[category] = (categoryCountMap[category] || 0) + count;
+                            });
+                        });
+                        item.categoryCountMap = categoryCountMap;
+                    });
+
+                    this.arr.groupTreesData = this.gaoTable
+                }
+                // groupTreesData end
+
+                // groupTreesDataWithTier start
+                if (this.addedTreesData) {
+                    const groupedByTreeWithTier = {};
+
+                    // Группировка по registered_tree и диаметру
+                    this.addedTreesData.forEach(tree => {
+                        const key = tree.registered_tree;
+                        if (!groupedByTreeWithTier[key]) {
+                            groupedByTreeWithTier[key] = [];
+                        }
+                        groupedByTreeWithTier[key].push(tree);
+                    });
+
+                    // Группировка по диаметру внутри каждой группы по имени
+                    for (const treeName in groupedByTreeWithTier) {
+                        groupedByTreeWithTier[treeName] = groupedByTreeWithTier[treeName].reduce((acc, tree) => {
+                            const key = tree.diameter;
+                            if (!acc[key]) {
+                                acc[key] = { count: 0, trees: [] };
+                            }
+                            acc[key].count++; // Увеличиваем счетчик количества деревьев с данным диаметром
+                            acc[key].trees.push(tree);
+                            return acc;
+                        }, {});
                     }
 
-                    // Преобразование объекта groupedByTree в массив объектов key: option
-                    this.gaoTableWithTier = Object.entries(groupedByTree).map(([treeName, trees]) => {
+                    // Подсчет категорий внутри каждой группы по имени и диаметру
+                    for (const treeName in groupedByTreeWithTier) {
+                        for (const diameter in groupedByTreeWithTier[treeName]) {
+                            const categoriesCount = groupedByTreeWithTier[treeName][diameter].trees.reduce((acc, tree) => {
+                                const category = tree.category;
+                                acc[category] = (acc[category] || 0) + 1;
+                                return acc;
+                            }, {});
+                            groupedByTreeWithTier[treeName][diameter].categories = categoriesCount;
+                        }
+                    }
+
+                    // Преобразование объекта groupedByTreeWithTier в массив объектов key: option
+                    this.gaoTableWithTier = Object.entries(groupedByTreeWithTier).map(([treeName, trees]) => {
                         const options = Object.entries(trees).map(([diameter, data]) => {
                             const normalizedCategories = data.categories ? Object.keys(data.categories).reduce((acc, category) => {
                                 acc[normalizeString(category)] = data.categories[category];
@@ -518,6 +515,52 @@ export default {
                         item.categoryCountMapLarge = categoryCountMapLarge;
                     });
 
+                    // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для small
+                    this.gaoTableWithTier.forEach(item => {
+                        item.option.small.forEach(option => {
+                            option.calcBasalArea = this.calc(option.count, option.diameter);
+                        });
+                    });
+
+                    // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для large
+                    this.gaoTableWithTier.forEach(item => {
+                        item.option.large.forEach(option => {
+                            option.calcBasalArea = this.calc(option.count, option.diameter);
+                        });
+                    });
+
+                    // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
+                    this.gaoTableWithTier.forEach(item => {
+                        const categoryCountMapSmall = {};
+                        let totalBasalAreaSmall = 0; // Общая сумма calcBasalArea для small
+
+                        item.option.small.forEach(option => {
+                            Object.entries(option.categories).forEach(([category, count]) => {
+                                categoryCountMapSmall[category] = (categoryCountMapSmall[category] || 0) + count;
+                            });
+                            totalBasalAreaSmall += option.calcBasalArea; // Добавляем calcBasalArea к общей сумме для small
+                        });
+
+                        item.categoryCountMapSmall = categoryCountMapSmall;
+                        item.totalBasalAreaSmall = totalBasalAreaSmall; // Добавляем общую сумму calcBasalArea для small
+                    });
+
+                    // Подсчет категорий для каждого элемента в this.gaoTableWithTier для large
+                    this.gaoTableWithTier.forEach(item => {
+                        const categoryCountMapLarge = {};
+                        let totalBasalAreaLarge = 0; // Общая сумма calcBasalArea для large
+
+                        item.option.large.forEach(option => {
+                            Object.entries(option.categories).forEach(([category, count]) => {
+                                categoryCountMapLarge[category] = (categoryCountMapLarge[category] || 0) + count;
+                            });
+                            totalBasalAreaLarge += option.calcBasalArea; // Добавляем calcBasalArea к общей сумме для large
+                        });
+
+                        item.categoryCountMapLarge = categoryCountMapLarge;
+                        item.totalBasalAreaLarge = totalBasalAreaLarge; // Добавляем общую сумму calcBasalArea для large
+                    });
+
                     // Пример присваивания переменной this.arr.groupTreesData
                     this.arr.groupTreesDataWithTier = this.gaoTableWithTier;
                 }
@@ -530,7 +573,23 @@ export default {
                 this.category = ''
                 this.disabledAddTree = false
             }
+        },
 
+        calc(treesAmount, diameter) {
+            treesAmount = parseInt(treesAmount);
+            diameter = parseInt(diameter);
+
+            const matchingObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === treesAmount && parseInt(obj.diameter) === diameter)
+
+            if (matchingObject) {
+                return matchingObject.basalArea;
+            } else {
+                const defaultObject = this.getBasalAreaCalculate.find(obj => parseInt(obj.treesAmount) === 1 && parseInt(obj.diameter) === diameter)
+
+                if (defaultObject) {
+                    return treesAmount * defaultObject.basalArea;
+                }
+            }
         },
 
         removeAddedTree(id) {
@@ -551,40 +610,6 @@ export default {
             }
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-        }
-    },
-
-    computed: {
-        ...mapGetters([
-            'getWorkSpace',
-            'getWorkSpaceID',
-            'getForestryWS_ID',
-            'getQuarterWS_ID',
-            'getLiterWS_ID',
-            'getSampleAreaID',
-            'getTreeType',
-            'getDiameterData',
-            'getCategoryData',
-
-            'getTreeTypeGao'
-        ]),
-
-        registeredTreesData() {
-            return this.getWorkSpace
-                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
-                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
-                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id)).registerSpeciesArr
-        },
-
-        addedTreesData() {
-            return this.getWorkSpace
-                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
-                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
-                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id)).gaoAddedTreesArr
         }
     },
 }

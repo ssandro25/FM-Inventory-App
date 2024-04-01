@@ -160,20 +160,15 @@ export default {
             'getLiterWS_ID',
         ]),
 
-        // groupTreesData() {
-        //     return this.getWorkSpace
-        //         .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
-        //         .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
-        //         .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-        //         .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-        //         .find(item => item.id === parseInt(this.$route.params.id)).groupTreesData
-        // },
+        groupTreesData() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
+                .find(item => item.id === parseInt(this.$route.params.id)).groupTreesData
+        },
     },
-
-    mounted() {
-        console.log(this.groupTreesData)
-    }
-
 }
 </script>
 
