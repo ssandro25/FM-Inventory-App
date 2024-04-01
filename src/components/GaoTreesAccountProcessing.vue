@@ -231,7 +231,7 @@
             </tr>
             <tr>
                 <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageBasalAreaSmall }}</td>
             </tr>
             <tr>
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>
@@ -335,7 +335,7 @@
             </tr>
             <tr>
                 <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageBasalAreaLarge }}</td>
             </tr>
             <tr>
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>

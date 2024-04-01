@@ -490,7 +490,29 @@ export default {
                         const smallDiameterTrees = options.filter(option => option.diameter <= 40);
                         const largeDiameterTrees = options.filter(option => option.diameter > 40);
 
-                        return { key: treeName, option: { small: smallDiameterTrees, large: largeDiameterTrees } };
+                        const totalBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
+                        const totalBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
+                        const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? totalBasalAreaSmall / smallDiameterTrees.length : 0;
+                        const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? totalBasalAreaLarge / largeDiameterTrees.length : 0;
+
+                        // Округления
+                        // const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? (totalBasalAreaSmall / smallDiameterTrees.length).toFixed(3) : 0;
+                        // const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? (totalBasalAreaLarge / largeDiameterTrees.length).toFixed(3) : 0;
+
+                        // const averageCalcBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / smallDiameterTrees.length;
+                        // const averageCalcBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / largeDiameterTrees.length;
+
+                        return {
+                            key: treeName,
+                            averageBasalAreaSmall: averageBasalAreaSmall,
+                            averageBasalAreaLarge: averageBasalAreaLarge,
+                            option: {
+                                small: smallDiameterTrees,
+                                large: largeDiameterTrees,
+                                totalBasalAreaSmall: totalBasalAreaSmall,
+                                totalBasalAreaLarge: totalBasalAreaLarge
+                            }
+                        };
                     });
 
                     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
@@ -514,6 +536,7 @@ export default {
                         });
                         item.categoryCountMapLarge = categoryCountMapLarge;
                     });
+
 
                     // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для small
                     this.gaoTableWithTier.forEach(item => {
