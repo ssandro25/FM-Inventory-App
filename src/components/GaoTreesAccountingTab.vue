@@ -169,6 +169,11 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id)).groupTreesData
         },
     },
+
+    mounted() {
+        console.log(this.groupTreesData)
+    }
+
 }
 </script>
 

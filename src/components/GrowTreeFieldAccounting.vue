@@ -397,9 +397,6 @@ export default {
                         item.categoryCountMap = categoryCountMap;
                     });
 
-                    console.log('this.gaoTable', this.gaoTable)
-                    console.log('this.arr', this.arr)
-
                     this.arr.groupTreesData = this.gaoTable
                 }
                 // groupTreesData end

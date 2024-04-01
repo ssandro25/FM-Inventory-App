@@ -165,7 +165,7 @@
             <tr>
                 <td colspan="14" class="text-center" >{{ item.key }}</td>
             </tr>
-            <tr v-for="(itemOption, index) in item.option"
+            <tr v-for="(itemOption, index) in item.option[0]"
                 :key="index"
             >
                 <td>{{ itemOption.diameter }}</td>
@@ -187,16 +187,16 @@
             <tr>
                 <td>სულ</td>
                 <td>
-                    {{
-                        (Number(item.categoryCountMap.samasale) || 0) +
-                        (Number(item.categoryCountMap.nakhevrad_samasale) || 0) +
-                        (Number(item.categoryCountMap.sasheshe) || 0) +
-                        (Number(item.categoryCountMap.zrdadi_khmobadi) || 0) +
-                        (Number(item.categoryCountMap.zrdadi_pauti) || 0) +
-                        (Number(item.categoryCountMap.zekhmeli_samasale) || 0) +
-                        (Number(item.categoryCountMap.zekhmeli_shesha) || 0) +
-                        (Number(item.categoryCountMap.dzirkvi) || 0)
-                    }}
+<!--                    {{-->
+<!--                        (Number(item.categoryCountMap.samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMap.nakhevrad_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMap.sasheshe) || 0) +-->
+<!--                        (Number(item.categoryCountMap.zrdadi_khmobadi) || 0) +-->
+<!--                        (Number(item.categoryCountMap.zrdadi_pauti) || 0) +-->
+<!--                        (Number(item.categoryCountMap.zekhmeli_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMap.zekhmeli_shesha) || 0) +-->
+<!--                        (Number(item.categoryCountMap.dzirkvi) || 0)-->
+<!--                    }}-->
                 </td>
                 <td></td>
                 <td></td>
@@ -296,6 +296,7 @@ export default {
             }
         },
     },
+
 }
 </script>
 
