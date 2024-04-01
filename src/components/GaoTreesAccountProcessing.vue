@@ -235,7 +235,7 @@
             </tr>
             <tr>
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageDiameterSmall }}</td>
             </tr>
             <tr>
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
@@ -339,7 +339,7 @@
             </tr>
             <tr>
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageDiameterLarge }}</td>
             </tr>
             <tr>
                 <td colspan="3">საშუალო სიმაღლე, მ</td>

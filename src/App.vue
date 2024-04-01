@@ -161,6 +161,15 @@ export default {
     //         this.$store.dispatch('setForestArea', this.forest_area)
     //     }
     // }
+    methods: {
+      test(number) {
+          if (number !== 0) {
+              console.log(true)
+          } else {
+              console.log(false)
+          }
+      }
+    },
 
     mounted() {
         if (localStorage.getItem('forestArea')) {
@@ -168,6 +177,8 @@ export default {
         } else {
             this.$store.dispatch('setForestArea', this.forest_area)
         }
+
+        this.test(0.03)
     }
 }
 </script>

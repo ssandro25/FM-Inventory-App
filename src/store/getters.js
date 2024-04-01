@@ -86,4 +86,5 @@ export default {
 
 
     getBasalAreaCalculate: state => state.basalAreaCalculate,
+    getBasalAreaCalculateAverageDiameter: state => state.basalAreaCalculateAverageDiameter
 }

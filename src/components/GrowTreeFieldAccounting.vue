@@ -251,7 +251,8 @@ export default {
             'getCategoryData',
 
             'getTreeTypeGao',
-            'getBasalAreaCalculate'
+            'getBasalAreaCalculate',
+            'getBasalAreaCalculateAverageDiameter'
         ]),
 
         registeredTreesData() {
@@ -540,17 +541,23 @@ export default {
 
                     // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для small
                     this.gaoTableWithTier.forEach(item => {
-                        item.option.small.forEach(option => {
-                            option.calcBasalArea = this.calc(option.count, option.diameter);
-                        });
+                        item.option.small.forEach(option => option.calcBasalArea = this.calc(option.count, option.diameter));
                     });
 
                     // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для large
                     this.gaoTableWithTier.forEach(item => {
-                        item.option.large.forEach(option => {
-                            option.calcBasalArea = this.calc(option.count, option.diameter);
-                        });
+                        item.option.large.forEach(option => option.calcBasalArea = this.calc(option.count, option.diameter));
                     });
+
+                    // Вычисление среднего диаметра для small
+                    this.gaoTableWithTier.forEach(item => {
+                        item.averageDiameterSmall = this.calculateAverageDiameter(item.averageBasalAreaSmall);
+                    });
+                    // Вычисление среднего диаметра для large
+                    this.gaoTableWithTier.forEach(item => {
+                        item.averageDiameterLarge = this.calculateAverageDiameter(item.averageBasalAreaLarge);
+                    });
+
 
                     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
                     this.gaoTableWithTier.forEach(item => {
@@ -612,6 +619,20 @@ export default {
                 if (defaultObject) {
                     return treesAmount * defaultObject.basalArea;
                 }
+            }
+        },
+
+        calculateAverageDiameter(averageBasalArea) {
+            if (averageBasalArea >= 0.001) {
+                // Находим объект с ближайшим значением basalArea к averageBasalArea
+                const closestObject = this.getBasalAreaCalculateAverageDiameter.reduce((closest, current) => {
+                    const currentDiff = Math.abs(current.basalArea - averageBasalArea);
+                    const closestDiff = Math.abs(closest.basalArea - averageBasalArea);
+                    return currentDiff < closestDiff ? current : closest;
+                });
+
+                // Возвращаем значение свойства diameter найденного объекта
+                return closestObject.diameter;
             }
         },
 
