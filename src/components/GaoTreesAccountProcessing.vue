@@ -2,8 +2,6 @@
     <!--    <div class="col-lg-6 col-12 p-0 table-responsive">-->
     <div class="table-responsive">
         <table
-            v-for="(item, index) in groupTreesData"
-            :key="index"
             class="table table-bordered table-dark table-striped mt-3"
         >
             <thead>
@@ -15,7 +13,7 @@
                 </th>
 
                 <th colspan="13">
-                    ტყის ელემენტი ({{ item.key }})
+                    ტყის ელემენტი
                 </th>
             </tr>
 
@@ -145,7 +143,10 @@
                 </th>
             </tr>
             </thead>
-            <tbody>
+            <tbody
+                v-for="(item, index) in groupTreesDataWithTier"
+                :key="index"
+            >
             <tr class="table-info text-center fst-italic">
                 <td>1</td>
                 <td>2</td>
@@ -163,9 +164,9 @@
                 <td>14</td>
             </tr>
             <tr>
-                <td colspan="14" class="text-center" >{{ item.key }}</td>
+                <td colspan="14" class="text-center" >{{ item.key }} (ll იარუსი)</td>
             </tr>
-            <tr v-for="(itemOption, index) in item.option[0]"
+            <tr v-for="(itemOption, index) in item.option.small"
                 :key="index"
             >
                 <td>{{ itemOption.diameter }}</td>
@@ -187,16 +188,120 @@
             <tr>
                 <td>სულ</td>
                 <td>
-<!--                    {{-->
-<!--                        (Number(item.categoryCountMap.samasale) || 0) +-->
-<!--                        (Number(item.categoryCountMap.nakhevrad_samasale) || 0) +-->
-<!--                        (Number(item.categoryCountMap.sasheshe) || 0) +-->
-<!--                        (Number(item.categoryCountMap.zrdadi_khmobadi) || 0) +-->
-<!--                        (Number(item.categoryCountMap.zrdadi_pauti) || 0) +-->
-<!--                        (Number(item.categoryCountMap.zekhmeli_samasale) || 0) +-->
-<!--                        (Number(item.categoryCountMap.zekhmeli_shesha) || 0) +-->
-<!--                        (Number(item.categoryCountMap.dzirkvi) || 0)-->
-<!--                    }}-->
+                    {{
+                        (Number(item.categoryCountMapSmall.samasale) || 0) +
+                        (Number(item.categoryCountMapSmall.nakhevrad_samasale) || 0) +
+                        (Number(item.categoryCountMapSmall.sasheshe) || 0) +
+                        (Number(item.categoryCountMapSmall.zrdadi_khmobadi) || 0) +
+                        (Number(item.categoryCountMapSmall.zrdadi_pauti) || 0) +
+                        (Number(item.categoryCountMapSmall.zekhmeli_samasale) || 0) +
+                        (Number(item.categoryCountMapSmall.zekhmeli_shesha) || 0) +
+                        (Number(item.categoryCountMapSmall.dzirkvi) || 0)
+                    }}
+                </td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>1 ჰა-ზე</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო დიამეტრი, სმ</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">საშუალო სიმაღლე, მ</td>
+                <td colspan="11"></td>
+            </tr>
+            <tr>
+                <td colspan="3">ფართობი სიხშირე</td>
+                <td colspan="11"></td>
+            </tr>
+            </tbody>
+
+            <tbody
+                v-for="(item, index) in groupTreesDataWithTier"
+                :key="index"
+            >
+            <tr class="table-info text-center fst-italic">
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+                <td>10</td>
+                <td>11</td>
+                <td>12</td>
+                <td>13</td>
+                <td>14</td>
+            </tr>
+            <tr>
+                <td colspan="14" class="text-center" >{{ item.key }} (l იარუსი)</td>
+            </tr>
+            <tr v-for="(itemOption, index) in item.option.large"
+                :key="index"
+            >
+                <td>{{ itemOption.diameter }}</td>
+                <td>{{ itemOption.count }}</td>
+                <td></td>
+                <td>{{ calc(itemOption.count, itemOption.diameter) }}</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+
+            <tr>
+                <td>სულ</td>
+                <td>
+                    {{
+                        (Number(item.categoryCountMapLarge.samasale) || 0) +
+                        (Number(item.categoryCountMapLarge.nakhevrad_samasale) || 0) +
+                        (Number(item.categoryCountMapLarge.sasheshe) || 0) +
+                        (Number(item.categoryCountMapLarge.zrdadi_khmobadi) || 0) +
+                        (Number(item.categoryCountMapLarge.zrdadi_pauti) || 0) +
+                        (Number(item.categoryCountMapLarge.zekhmeli_samasale) || 0) +
+                        (Number(item.categoryCountMapLarge.zekhmeli_shesha) || 0) +
+                        (Number(item.categoryCountMapLarge.dzirkvi) || 0)
+                    }}
                 </td>
                 <td></td>
                 <td></td>
@@ -268,13 +373,13 @@ export default {
             'getBasalAreaCalculate'
         ]),
 
-        groupTreesData() {
+        groupTreesDataWithTier() {
             return this.getWorkSpace
                 .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
                 .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
                 .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id)).groupTreesData
+                .find(item => item.id === parseInt(this.$route.params.id)).groupTreesDataWithTier
         },
     },
 
