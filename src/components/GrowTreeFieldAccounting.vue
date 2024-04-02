@@ -213,6 +213,7 @@
         </table>
 
         <button
+            v-if="addedTreesData"
             type="button"
             class="btn btn-success btn-sm mt-3"
             @click="render()"
@@ -249,7 +250,8 @@ export default {
             disabledAddTree: false,
 
             gaoTable: [],
-            gaoTableWithTier: []
+            gaoTableWithTier: [],
+            gaoTableWithHeight: []
         }
     },
 
@@ -629,6 +631,60 @@ export default {
                 this.arr.groupTreesDataWithTier = this.gaoTableWithTier;
             }
             // groupTreesDataWithTier end
+
+
+
+            // Проходим по каждому элементу в gaoTableWithTier
+            this.gaoTableWithTier.forEach(item => {
+                // Поиск дерева с точным диаметром для option.small
+                let treeSmall = item.option.small.find(tree => tree.diameter === item.averageDiameterSmall);
+
+                // Если не найдено дерево с точным диаметром, ищем ближайшее дерево, независимо от того, больше оно или меньше
+                if (!treeSmall && item.option.small.length > 0) {
+                    treeSmall = item.option.small.reduce((closest, current) => {
+                        const currentDiff = Math.abs(current.diameter - item.averageDiameterSmall);
+                        const closestDiff = Math.abs(closest.diameter - item.averageDiameterSmall);
+                        return currentDiff < closestDiff ? current : closest;
+                    });
+                }
+
+                // Добавление уникального id и height для treeSmall
+                if (treeSmall) {
+                    treeSmall.id = generateUniqueId(); // Генерируем уникальный id для дерева
+                    treeSmall.height = 0; // Устанавливаем высоту по умолчанию
+                }
+
+                // Поиск дерева с точным диаметром для option.large
+                let treeLarge = item.option.large.find(tree => tree.diameter === item.averageDiameterLarge);
+
+                // Если не найдено дерево с точным диаметром, ищем ближайшее дерево, независимо от того, больше оно или меньше
+                if (!treeLarge && item.option.large.length > 0) {
+                    treeLarge = item.option.large.reduce((closest, current) => {
+                        const currentDiff = Math.abs(current.diameter - item.averageDiameterLarge);
+                        const closestDiff = Math.abs(closest.diameter - item.averageDiameterLarge);
+                        return currentDiff < closestDiff ? current : closest;
+                    });
+                }
+
+                // Добавление уникального id и height для treeLarge
+                if (treeLarge) {
+                    treeLarge.id = generateUniqueId(); // Генерируем уникальный id для дерева
+                    treeLarge.height = 0; // Устанавливаем высоту по умолчанию
+                }
+
+                // Функция для генерации уникального id
+                function generateUniqueId() {
+                    // Возвращаем случайное число с плавающей точкой между 0 и 1, умноженное на максимальное значение integer
+                    return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
+                }
+
+                // Добавляем найденные деревья в сгенерированный массив
+                this.gaoTableWithHeight.push({ key: item.key, treeSmall, treeLarge });
+            });
+
+            console.log(this.gaoTableWithHeight)
+            // Теперь в переменной gaoTableWithHeight содержатся результаты поиска
+            this.arr.groupTreesDataWithHeight = this.gaoTableWithHeight;
 
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
