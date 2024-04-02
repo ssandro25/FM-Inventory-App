@@ -143,11 +143,12 @@
                 </th>
             </tr>
             </thead>
+
             <tbody
                 v-for="(item, index) in groupTreesDataWithTier"
                 :key="index"
             >
-            <tr class="table-info text-center fst-italic">
+            <tr v-if="item.option.small.length" class="table-info text-center fst-italic">
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -163,7 +164,7 @@
                 <td>13</td>
                 <td>14</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td colspan="14" class="text-center" >{{ item.key }} (ll იარუსი)</td>
             </tr>
             <tr v-for="(itemOption, index) in item.option.small"
@@ -185,7 +186,7 @@
                 <td></td>
             </tr>
 
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td>სულ</td>
                 <td>
                     {{
@@ -213,7 +214,7 @@
                 <td></td>
             </tr>
 
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td>1 ჰა-ზე</td>
                 <td></td>
                 <td></td>
@@ -229,19 +230,19 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
                 <td colspan="11">{{ item.averageBasalAreaSmall }}</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>
                 <td colspan="11">{{ item.averageDiameterSmall }}</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
                 <td colspan="11"></td>
             </tr>
-            <tr>
+            <tr v-if="item.option.small.length">
                 <td colspan="3">ფართობი სიხშირე</td>
                 <td colspan="11"></td>
             </tr>
@@ -251,7 +252,7 @@
                 v-for="(item, index) in groupTreesDataWithTier"
                 :key="index"
             >
-            <tr class="table-info text-center fst-italic">
+            <tr v-if="item.option.large.length" class="table-info text-center fst-italic">
                 <td>1</td>
                 <td>2</td>
                 <td>3</td>
@@ -267,7 +268,7 @@
                 <td>13</td>
                 <td>14</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td colspan="14" class="text-center" >{{ item.key }} (l იარუსი)</td>
             </tr>
             <tr v-for="(itemOption, index) in item.option.large"
@@ -289,7 +290,7 @@
                 <td></td>
             </tr>
 
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td>სულ</td>
                 <td>
                     {{
@@ -317,7 +318,7 @@
                 <td></td>
             </tr>
 
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td>1 ჰა-ზე</td>
                 <td></td>
                 <td></td>
@@ -333,19 +334,19 @@
                 <td></td>
                 <td></td>
             </tr>
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td colspan="3">საშუალო ხის კვეთის ფართობი, მ2</td>
                 <td colspan="11">{{ item.averageBasalAreaLarge }}</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td colspan="3">საშუალო დიამეტრი, სმ</td>
                 <td colspan="11">{{ item.averageDiameterLarge }}</td>
             </tr>
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
                 <td colspan="11"></td>
             </tr>
-            <tr>
+            <tr v-if="item.option.large.length">
                 <td colspan="3">ფართობი სიხშირე</td>
                 <td colspan="11"></td>
             </tr>

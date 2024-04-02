@@ -25,6 +25,19 @@
 
                 <button
                     class="nav-link"
+                    id="nav-one-two-tab"
+                    data-bs-toggle="tab"
+                    data-bs-target="#nav-one-two"
+                    type="button"
+                    role="tab"
+                    aria-controls="nav-one-two"
+                    aria-selected="true"
+                >
+                    1.2 სიმაღლეების შეტანა
+                </button>
+
+                <button
+                    class="nav-link"
                     id="nav-two-tab"
                     data-bs-toggle="tab"
                     data-bs-target="#nav-two"
@@ -69,6 +82,10 @@
                 <GrowTreeFieldAccounting />
             </div>
 
+            <div class="tab-pane fade" id="nav-one-two" role="tabpanel" aria-labelledby="nav-one-two-tab" tabindex="0">
+                <GaoTreesSetHeightTab />
+            </div>
+
             <div class="tab-pane fade" id="nav-two" role="tabpanel" aria-labelledby="nav-two-tab" tabindex="0">
                 <GaoTreesAccountingTab />
             </div>
@@ -90,12 +107,14 @@ import GoBackBtn from "@/components/GoBackBtn.vue";
 import GrowTreeFieldAccounting from "@/components/GrowTreeFieldAccounting.vue";
 import GaoTreesAccountingTab from "@/components/GaoTreesAccountingTab.vue";
 import GaoTreesAccountProcessing from "@/components/GaoTreesAccountProcessing.vue";
+import GaoTreesSetHeightTab from "@/components/GaoTreesSetHeightTab.vue";
 
 
 export default {
     name: "GaoTreesAccount",
 
     components: {
+        GaoTreesSetHeightTab,
         GaoTreesAccountProcessing,
         GaoTreesAccountingTab,
         GrowTreeFieldAccounting,
