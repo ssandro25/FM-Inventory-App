@@ -240,7 +240,7 @@
             </tr>
             <tr v-if="item.option.small.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageHeightSmall }}</td>
             </tr>
             <tr v-if="item.option.small.length">
                 <td colspan="3">ფართობი სიხშირე</td>
@@ -344,7 +344,7 @@
             </tr>
             <tr v-if="item.option.large.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
-                <td colspan="11"></td>
+                <td colspan="11">{{ item.averageHeightLarge }}</td>
             </tr>
             <tr v-if="item.option.large.length">
                 <td colspan="3">ფართობი სიხშირე</td>

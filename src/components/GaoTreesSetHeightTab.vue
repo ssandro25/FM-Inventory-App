@@ -14,7 +14,7 @@
             :key="item.id"
         >
         <tr v-if="item.treeSmall">
-            <td>{{ item.key }}</td>
+            <td>{{ item.key }} {{ item.treeSmall.id }}</td>
             <td>{{ item.treeSmall.diameter }}</td>
             <td>
                 <input
@@ -27,7 +27,7 @@
                 <button
                     type="button"
                     class="btn btn-success btn-sm"
-                    @click="saveTree(item.key, item.treeSmall.diameter, item.treeSmall.height)"
+                    @click="saveTreeHeight(item.treeSmall.id, item.treeSmall.height )"
                 >
                     შენახვა
                 </button>
@@ -40,7 +40,7 @@
             :key="item.id"
         >
         <tr v-if="item.treeLarge">
-            <td>{{ item.key }}</td>
+            <td>{{ item.key }} {{ item.treeLarge.id }}</td>
             <td>{{ item.treeLarge.diameter }}</td>
             <td>
                 <input
@@ -53,7 +53,7 @@
                 <button
                     type="button"
                     class="btn btn-success btn-sm"
-                    @click="saveTree(item.key, item.treeLarge.diameter, item.treeLarge.height)"
+                    @click="saveTreeHeight(item.treeLarge.id, item.treeLarge.height)"
                 >
                     შენახვა
                 </button>
@@ -61,28 +61,6 @@
         </tr>
         </tbody>
     </table>
-
-    <table v-if="groupTreesDataWithGivenHeight" class="table table-bordered table-dark table-striped mt-lg-3 mb-0" style="width: max-content;">
-        <thead>
-        <tr>
-            <th>სახეობა</th>
-            <th>დიამეტრი</th>
-            <th>სიმაღლე</th>
-        </tr>
-        </thead>
-
-        <tbody>
-        <tr
-            v-for="(item, index) in groupTreesDataWithGivenHeight"
-             :key="index"
-        >
-            <td>{{ item.name }}</td>
-            <td>{{ item.diameter }}</td>
-            <td>{{ item.height }}</td>
-        </tr>
-        </tbody>
-    </table>
-
 </template>
 
 <script>
@@ -90,17 +68,6 @@ import { mapGetters } from "vuex";
 
 export default {
     name: "GaoTreesSetHeightTab",
-
-    data() {
-        return {
-            groupTreesDataWithGivenHeightArr: [],
-            test: [
-                {name: 'sandro', age: 27, color: 'blue'},
-                {name: 'irakli', age: 25, color: 'green'},
-                {name: 'giorgi', age: 28, color: 'black'},
-            ]
-        }
-    },
 
     computed: {
         ...mapGetters([
@@ -121,37 +88,57 @@ export default {
                 .find(item => item.id === parseInt(this.$route.params.id)).groupTreesDataWithHeight
         },
 
-        groupTreesDataWithGivenHeight() {
+        groupTreesDataWithTier() {
             return this.getWorkSpace
                 .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
                 .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
                 .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id)).groupTreesDataWithGivenHeight
+                .find(item => item.id === parseInt(this.$route.params.id)).groupTreesDataWithTier
         },
+
     },
 
     methods: {
-        saveTree(name, diameter, height) {
-            this.arr = this.getWorkSpace
-                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
-                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
-                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-                .find(item => item.id === parseInt(this.getLiterWS_ID)).sampleAreaArr
-                .find(item => item.id === parseInt(this.$route.params.id))
+        saveTreeHeight(treeId, height) {
+            // Преобразуем treeId в число
+            treeId = parseInt(treeId);
 
-            let obj = {
-                name: name,
-                diameter: diameter,
-                height: height,
+            let updated = false;
+
+            // Поиск дерева по его id в массиве groupTreesDataWithTier
+            for (const item of this.groupTreesDataWithTier) {
+                // Проверяем наличие опций и внутри них ищем дерево по ID
+                if (item.option?.small) {
+                    const treeToUpdate = item.option.small.find(tree => tree.id === treeId);
+                    if (treeToUpdate) {
+                        // Обновляем высоту дерева
+                        item.averageHeightSmall = parseFloat(height);
+                        updated = true;
+                        break; // Прерываем цикл, если дерево найдено
+                    }
+                }
+                if (item.option?.large) {
+                    const treeToUpdate = item.option.large.find(tree => tree.id === treeId);
+                    if (treeToUpdate) {
+                        // Обновляем высоту дерева
+                        item.averageHeightLarge = parseFloat(height);
+                        updated = true;
+                        break; // Прерываем цикл, если дерево найдено
+                    }
+                }
             }
 
-            this.groupTreesDataWithGivenHeightArr.push(obj)
+            // Если дерево не было найдено, можно сделать какие-то дополнительные действия
+            if (!updated) {
+                console.warn(`Дерево с ID ${treeId} не найдено`);
+                return;
+            }
 
-            this.arr.groupTreesDataWithGivenHeight = this.groupTreesDataWithGivenHeightArr
+            // Диспетчеризация только если дерево было обновлено
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace);
+        }
 
-            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
-        },
     }
 }
 </script>

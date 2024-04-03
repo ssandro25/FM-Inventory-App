@@ -627,11 +627,16 @@ export default {
                     item.totalBasalAreaLarge = totalBasalAreaLarge; // Добавляем общую сумму calcBasalArea для large
                 });
 
+                // Добавление уникального id для каждого элемента в this.gaoTableWithTier для small
+                this.gaoTableWithTier.forEach(item => item.option.small.forEach(option => option.id = this.generateUniqueId()))
+
+                // Добавление уникального id для каждого элемента в this.gaoTableWithTier для large
+                this.gaoTableWithTier.forEach(item => item.option.large.forEach(option => option.id = this.generateUniqueId()))
+
                 // Пример присваивания переменной this.arr.groupTreesData
                 this.arr.groupTreesDataWithTier = this.gaoTableWithTier;
             }
             // groupTreesDataWithTier end
-
 
 
             // Проходим по каждому элементу в gaoTableWithTier
@@ -648,9 +653,8 @@ export default {
                     });
                 }
 
-                // Добавление уникального id и height для treeSmall
+                // Добавление height для treeSmall
                 if (treeSmall) {
-                    treeSmall.id = generateUniqueId(); // Генерируем уникальный id для дерева
                     treeSmall.height = 0; // Устанавливаем высоту по умолчанию
                 }
 
@@ -666,23 +670,15 @@ export default {
                     });
                 }
 
-                // Добавление уникального id и height для treeLarge
+                // Добавление height для treeLarge
                 if (treeLarge) {
-                    treeLarge.id = generateUniqueId(); // Генерируем уникальный id для дерева
                     treeLarge.height = 0; // Устанавливаем высоту по умолчанию
-                }
-
-                // Функция для генерации уникального id
-                function generateUniqueId() {
-                    // Возвращаем случайное число с плавающей точкой между 0 и 1, умноженное на максимальное значение integer
-                    return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
                 }
 
                 // Добавляем найденные деревья в сгенерированный массив
                 this.gaoTableWithHeight.push({ key: item.key, treeSmall, treeLarge });
             });
 
-            console.log(this.gaoTableWithHeight)
             // Теперь в переменной gaoTableWithHeight содержатся результаты поиска
             this.arr.groupTreesDataWithHeight = this.gaoTableWithHeight;
 
@@ -718,6 +714,11 @@ export default {
                 // Возвращаем значение свойства diameter найденного объекта
                 return closestObject.diameter;
             }
+        },
+
+         generateUniqueId() {
+            // Возвращаем случайное число с плавающей точкой между 0 и 1, умноженное на максимальное значение integer
+            return Math.floor(Math.random() * Number.MAX_SAFE_INTEGER);
         },
 
         removeAddedTree(id) {
