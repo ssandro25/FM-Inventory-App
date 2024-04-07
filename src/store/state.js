@@ -1430,7 +1430,6 @@ export default {
 
     ],
 
-
     basalAreaCalculateAverageDiameter: [
         {diameter: 4, basalArea: 0.001},
         {diameter: 5, basalArea: 0.002},
@@ -1499,5 +1498,12 @@ export default {
         {diameter: 172, basalArea: 2.32},
         {diameter: 176, basalArea: 2.43},
         {diameter: 180, basalArea: 2.54}
+    ],
+
+    heightOrder: [
+        { treeName: 'სოჭი კავკასიური', ratio: 1, diameter: 8, height: 16.5, mShSamasale: 0.33, total: 0.042 },
+        { treeName: 'სოჭი კავკასიური', ratio: 1, diameter: 10, height: 17.5, mShSamasale: 0.54, total: 0.068 },
+        { treeName: 'სოჭი კავკასიური', ratio: 2, diameter: 10, height: 17.5, mShSamasale: 0.24, total: 0.082 },
     ]
+
 }

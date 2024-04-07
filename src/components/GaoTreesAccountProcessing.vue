@@ -12,16 +12,16 @@
                     </div>
                 </th>
 
-                <th colspan="13">
-                    ტყის ელემენტი
-                </th>
+<!--                <th colspan="13">-->
+<!--                    ტყის ელემენტი-->
+<!--                </th>-->
             </tr>
 
-            <tr>
-                <th colspan="13">
-                    სიმაღლის თანრიგი
-                </th>
-            </tr>
+<!--            <tr>-->
+<!--                <th colspan="13">-->
+<!--                    სიმაღლის თანრიგი-->
+<!--                </th>-->
+<!--            </tr>-->
 
             <tr>
                 <th colspan="2">
@@ -189,16 +189,18 @@
             <tr v-if="item.option.small.length">
                 <td>სულ</td>
                 <td>
-                    {{
-                        (Number(item.categoryCountMapSmall.samasale) || 0) +
-                        (Number(item.categoryCountMapSmall.nakhevrad_samasale) || 0) +
-                        (Number(item.categoryCountMapSmall.sasheshe) || 0) +
-                        (Number(item.categoryCountMapSmall.zrdadi_khmobadi) || 0) +
-                        (Number(item.categoryCountMapSmall.zrdadi_pauti) || 0) +
-                        (Number(item.categoryCountMapSmall.zekhmeli_samasale) || 0) +
-                        (Number(item.categoryCountMapSmall.zekhmeli_shesha) || 0) +
-                        (Number(item.categoryCountMapSmall.dzirkvi) || 0)
-                    }}
+                    {{ item.categoryCountMapSmallCount }}
+<!--                    -&#45;&#45;-->
+<!--                    {{-->
+<!--                        (Number(item.categoryCountMapSmall.samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.nakhevrad_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.sasheshe) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.zrdadi_khmobadi) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.zrdadi_pauti) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.zekhmeli_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.zekhmeli_shesha) || 0) +-->
+<!--                        (Number(item.categoryCountMapSmall.dzirkvi) || 0)-->
+<!--                    }}-->
                 </td>
                 <td></td>
                 <td>{{ item.totalBasalAreaSmall }}</td>
@@ -241,6 +243,10 @@
             <tr v-if="item.option.small.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
                 <td colspan="11">{{ item.averageHeightSmall }}</td>
+            </tr>
+            <tr v-if="item.option.small.length">
+                <td colspan="3">სიმაღლის თანრიგი</td>
+                <td colspan="11"></td>
             </tr>
             <tr v-if="item.option.small.length">
                 <td colspan="3">ფართობი სიხშირე</td>
@@ -293,16 +299,18 @@
             <tr v-if="item.option.large.length">
                 <td>სულ</td>
                 <td>
-                    {{
-                        (Number(item.categoryCountMapLarge.samasale) || 0) +
-                        (Number(item.categoryCountMapLarge.nakhevrad_samasale) || 0) +
-                        (Number(item.categoryCountMapLarge.sasheshe) || 0) +
-                        (Number(item.categoryCountMapLarge.zrdadi_khmobadi) || 0) +
-                        (Number(item.categoryCountMapLarge.zrdadi_pauti) || 0) +
-                        (Number(item.categoryCountMapLarge.zekhmeli_samasale) || 0) +
-                        (Number(item.categoryCountMapLarge.zekhmeli_shesha) || 0) +
-                        (Number(item.categoryCountMapLarge.dzirkvi) || 0)
-                    }}
+                    {{ item.categoryCountMapLargeCount }}
+<!--                    -&#45;&#45;-->
+<!--                    {{-->
+<!--                        (Number(item.categoryCountMapLarge.samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.nakhevrad_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.sasheshe) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.zrdadi_khmobadi) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.zrdadi_pauti) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.zekhmeli_samasale) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.zekhmeli_shesha) || 0) +-->
+<!--                        (Number(item.categoryCountMapLarge.dzirkvi) || 0)-->
+<!--                    }}-->
                 </td>
                 <td></td>
                 <td>{{ item.totalBasalAreaLarge }}</td>
@@ -345,6 +353,10 @@
             <tr v-if="item.option.large.length">
                 <td colspan="3">საშუალო სიმაღლე, მ</td>
                 <td colspan="11">{{ item.averageHeightLarge }}</td>
+            </tr>
+            <tr v-if="item.option.large.length">
+                <td colspan="3">სიმაღლის თანრიგი</td>
+                <td colspan="11"></td>
             </tr>
             <tr v-if="item.option.large.length">
                 <td colspan="3">ფართობი სიხშირე</td>
@@ -402,6 +414,10 @@ export default {
         //     }
         // },
     },
+
+    mounted() {
+        console.log(this.groupTreesDataWithTier)
+    }
 
 }
 </script>

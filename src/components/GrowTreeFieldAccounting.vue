@@ -475,6 +475,187 @@ export default {
             }
             // groupTreesData end
 
+
+
+            // groupTreesDataWithTier start
+            // if (this.addedTreesData) {
+            //     const groupedByTreeWithTier = {};
+            //
+            //     let categoryCountMapSmallCount;
+            //     let categoryCountMapLargeCount;
+            //
+            //     // Группировка по registered_tree и диаметру
+            //     this.addedTreesData.forEach(tree => {
+            //         const key = tree.registered_tree;
+            //         if (!groupedByTreeWithTier[key]) {
+            //             groupedByTreeWithTier[key] = [];
+            //         }
+            //         groupedByTreeWithTier[key].push(tree);
+            //     });
+            //
+            //     // Группировка по диаметру внутри каждой группы по имени
+            //     for (const treeName in groupedByTreeWithTier) {
+            //         groupedByTreeWithTier[treeName] = groupedByTreeWithTier[treeName].reduce((acc, tree) => {
+            //             const key = tree.diameter;
+            //             if (!acc[key]) {
+            //                 acc[key] = { count: 0, trees: [] };
+            //             }
+            //             acc[key].count++; // Увеличиваем счетчик количества деревьев с данным диаметром
+            //             acc[key].trees.push(tree);
+            //             return acc;
+            //         }, {});
+            //     }
+            //
+            //     // Подсчет категорий внутри каждой группы по имени и диаметру
+            //     for (const treeName in groupedByTreeWithTier) {
+            //         for (const diameter in groupedByTreeWithTier[treeName]) {
+            //             const categoriesCount = groupedByTreeWithTier[treeName][diameter].trees.reduce((acc, tree) => {
+            //                 const category = tree.category;
+            //                 acc[category] = (acc[category] || 0) + 1;
+            //                 return acc;
+            //             }, {});
+            //             groupedByTreeWithTier[treeName][diameter].categories = categoriesCount;
+            //         }
+            //     }
+            //
+            //     // Преобразование объекта groupedByTreeWithTier в массив объектов key: option
+            //     this.gaoTableWithTier = Object.entries(groupedByTreeWithTier).map(([treeName, trees]) => {
+            //         const options = Object.entries(trees).map(([diameter, data]) => {
+            //             const normalizedCategories = data.categories ? Object.keys(data.categories).reduce((acc, category) => {
+            //                 acc[normalizeString(category)] = data.categories[category];
+            //                 return acc;
+            //             }, {}) : {};
+            //
+            //             return { diameter: diameter, count: data.count, categories: normalizedCategories };
+            //         });
+            //
+            //         const smallDiameterTrees = options.filter(option => option.diameter <= 40);
+            //         const largeDiameterTrees = options.filter(option => option.diameter > 40);
+            //
+            //         const totalBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
+            //         const totalBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
+            //         const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? totalBasalAreaSmall / smallDiameterTrees.length : 0;
+            //         const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? totalBasalAreaLarge / largeDiameterTrees.length : 0;
+            //
+            //         // const averageBasalAreaSmall = categoryCountMapSmallCount > 0 ? totalBasalAreaSmall / categoryCountMapSmallCount : 0;
+            //         // const averageBasalAreaLarge = categoryCountMapLargeCount > 0 ? totalBasalAreaLarge / categoryCountMapLargeCount : 0;
+            //
+            //         // Округления
+            //         // const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? (totalBasalAreaSmall / smallDiameterTrees.length).toFixed(3) : 0;
+            //         // const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? (totalBasalAreaLarge / largeDiameterTrees.length).toFixed(3) : 0;
+            //
+            //         // const averageCalcBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / smallDiameterTrees.length;
+            //         // const averageCalcBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / largeDiameterTrees.length;
+            //
+            //         return {
+            //             key: treeName,
+            //             averageBasalAreaSmall: averageBasalAreaSmall,
+            //             averageBasalAreaLarge: averageBasalAreaLarge,
+            //             option: {
+            //                 small: smallDiameterTrees,
+            //                 large: largeDiameterTrees,
+            //                 totalBasalAreaSmall: totalBasalAreaSmall,
+            //                 totalBasalAreaLarge: totalBasalAreaLarge
+            //             }
+            //         };
+            //     });
+            //
+            //     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
+            //     this.gaoTableWithTier.forEach(item => {
+            //         const categoryCountMapSmall = {};
+            //         item.option.small.forEach(option => {
+            //             Object.entries(option.categories).forEach(([category, count]) => {
+            //                 categoryCountMapSmall[category] = (categoryCountMapSmall[category] || 0) + count;
+            //             });
+            //         });
+            //         item.categoryCountMapSmall = categoryCountMapSmall;
+            //
+            //         // Вычисление суммы значений всех свойств categoryCountMapSmall и сохранение в categoryCountMapSmallCount
+            //         categoryCountMapSmallCount = Object.values(categoryCountMapSmall).reduce((total, count) => total + count, 0);
+            //         // Сохранение суммы значений
+            //         item.categoryCountMapSmallCount = categoryCountMapSmallCount;
+            //     });
+            //
+            //     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для large
+            //     this.gaoTableWithTier.forEach(item => {
+            //         const categoryCountMapLarge = {};
+            //         item.option.large.forEach(option => {
+            //             Object.entries(option.categories).forEach(([category, count]) => {
+            //                 categoryCountMapLarge[category] = (categoryCountMapLarge[category] || 0) + count;
+            //             });
+            //         });
+            //         item.categoryCountMapLarge = categoryCountMapLarge;
+            //
+            //         // Вычисление суммы значений всех свойств categoryCountMapLarge и сохранение в categoryCountMapLargeCount
+            //         categoryCountMapLargeCount = Object.values(categoryCountMapLarge).reduce((total, count) => total + count, 0);
+            //         // Сохранение суммы значений
+            //         item.categoryCountMapLargeCount = categoryCountMapLargeCount;
+            //     });
+            //
+            //
+            //     // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для small
+            //     this.gaoTableWithTier.forEach(item => {
+            //         item.option.small.forEach(option => option.calcBasalArea = this.calc(option.count, option.diameter));
+            //     });
+            //
+            //     // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для large
+            //     this.gaoTableWithTier.forEach(item => {
+            //         item.option.large.forEach(option => option.calcBasalArea = this.calc(option.count, option.diameter));
+            //     });
+            //
+            //     // Вычисление среднего диаметра для small
+            //     this.gaoTableWithTier.forEach(item => {
+            //         item.averageDiameterSmall = this.calculateAverageDiameter(item.averageBasalAreaSmall);
+            //     });
+            //     // Вычисление среднего диаметра для large
+            //     this.gaoTableWithTier.forEach(item => {
+            //         item.averageDiameterLarge = this.calculateAverageDiameter(item.averageBasalAreaLarge);
+            //     });
+            //
+            //
+            //     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
+            //     this.gaoTableWithTier.forEach(item => {
+            //         const categoryCountMapSmall = {};
+            //         let totalBasalAreaSmall = 0; // Общая сумма calcBasalArea для small
+            //
+            //         item.option.small.forEach(option => {
+            //             Object.entries(option.categories).forEach(([category, count]) => {
+            //                 categoryCountMapSmall[category] = (categoryCountMapSmall[category] || 0) + count;
+            //             });
+            //             totalBasalAreaSmall += option.calcBasalArea; // Добавляем calcBasalArea к общей сумме для small
+            //         });
+            //
+            //         item.categoryCountMapSmall = categoryCountMapSmall;
+            //         item.totalBasalAreaSmall = totalBasalAreaSmall; // Добавляем общую сумму calcBasalArea для small
+            //     });
+            //
+            //     // Подсчет категорий для каждого элемента в this.gaoTableWithTier для large
+            //     this.gaoTableWithTier.forEach(item => {
+            //         const categoryCountMapLarge = {};
+            //         let totalBasalAreaLarge = 0; // Общая сумма calcBasalArea для large
+            //
+            //         item.option.large.forEach(option => {
+            //             Object.entries(option.categories).forEach(([category, count]) => {
+            //                 categoryCountMapLarge[category] = (categoryCountMapLarge[category] || 0) + count;
+            //             });
+            //             totalBasalAreaLarge += option.calcBasalArea; // Добавляем calcBasalArea к общей сумме для large
+            //         });
+            //
+            //         item.categoryCountMapLarge = categoryCountMapLarge;
+            //         item.totalBasalAreaLarge = totalBasalAreaLarge; // Добавляем общую сумму calcBasalArea для large
+            //     });
+            //
+            //     // Добавление уникального id для каждого элемента в this.gaoTableWithTier для small
+            //     this.gaoTableWithTier.forEach(item => item.option.small.forEach(option => option.id = this.generateUniqueId()))
+            //
+            //     // Добавление уникального id для каждого элемента в this.gaoTableWithTier для large
+            //     this.gaoTableWithTier.forEach(item => item.option.large.forEach(option => option.id = this.generateUniqueId()))
+            //
+            //     // Пример присваивания переменной this.arr.groupTreesData
+            //     this.arr.groupTreesDataWithTier = this.gaoTableWithTier;
+            // }
+            // groupTreesDataWithTier end
+
             // groupTreesDataWithTier start
             if (this.addedTreesData) {
                 const groupedByTreeWithTier = {};
@@ -527,22 +708,24 @@ export default {
                     const smallDiameterTrees = options.filter(option => option.diameter <= 40);
                     const largeDiameterTrees = options.filter(option => option.diameter > 40);
 
+                    // Вычисление суммы значений всех свойств categoryCountMapSmall и сохранение в categoryCountMapSmallCount
+                    const categoryCountMapSmallCount = smallDiameterTrees.reduce((acc, option) => acc + Object.values(option.categories).reduce((total, count) => total + count, 0), 0);
+
+                    // Вычисление суммы значений всех свойств categoryCountMapLarge и сохранение в categoryCountMapLargeCount
+                    const categoryCountMapLargeCount = largeDiameterTrees.reduce((acc, option) => acc + Object.values(option.categories).reduce((total, count) => total + count, 0), 0);
+
                     const totalBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
                     const totalBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + this.calc(option.count, option.diameter), 0);
-                    const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? totalBasalAreaSmall / smallDiameterTrees.length : 0;
-                    const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? totalBasalAreaLarge / largeDiameterTrees.length : 0;
 
-                    // Округления
-                    // const averageBasalAreaSmall = smallDiameterTrees.length > 0 ? (totalBasalAreaSmall / smallDiameterTrees.length).toFixed(3) : 0;
-                    // const averageBasalAreaLarge = largeDiameterTrees.length > 0 ? (totalBasalAreaLarge / largeDiameterTrees.length).toFixed(3) : 0;
-
-                    // const averageCalcBasalAreaSmall = smallDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / smallDiameterTrees.length;
-                    // const averageCalcBasalAreaLarge = largeDiameterTrees.reduce((acc, option) => acc + option.calcBasalArea, 0) / largeDiameterTrees.length;
+                    const averageBasalAreaSmall = categoryCountMapSmallCount > 0 ? totalBasalAreaSmall / categoryCountMapSmallCount : 0;
+                    const averageBasalAreaLarge = categoryCountMapLargeCount > 0 ? totalBasalAreaLarge / categoryCountMapLargeCount : 0;
 
                     return {
                         key: treeName,
                         averageBasalAreaSmall: averageBasalAreaSmall,
                         averageBasalAreaLarge: averageBasalAreaLarge,
+                        categoryCountMapSmallCount: categoryCountMapSmallCount,
+                        categoryCountMapLargeCount: categoryCountMapLargeCount,
                         option: {
                             small: smallDiameterTrees,
                             large: largeDiameterTrees,
@@ -552,28 +735,11 @@ export default {
                     };
                 });
 
-                // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
+                // Добавление уникального id для каждого элемента в this.gaoTableWithTier для small и large
                 this.gaoTableWithTier.forEach(item => {
-                    const categoryCountMapSmall = {};
-                    item.option.small.forEach(option => {
-                        Object.entries(option.categories).forEach(([category, count]) => {
-                            categoryCountMapSmall[category] = (categoryCountMapSmall[category] || 0) + count;
-                        });
-                    });
-                    item.categoryCountMapSmall = categoryCountMapSmall;
+                    item.option.small.forEach(option => option.id = this.generateUniqueId());
+                    item.option.large.forEach(option => option.id = this.generateUniqueId());
                 });
-
-                // Подсчет категорий для каждого элемента в this.gaoTableWithTier для large
-                this.gaoTableWithTier.forEach(item => {
-                    const categoryCountMapLarge = {};
-                    item.option.large.forEach(option => {
-                        Object.entries(option.categories).forEach(([category, count]) => {
-                            categoryCountMapLarge[category] = (categoryCountMapLarge[category] || 0) + count;
-                        });
-                    });
-                    item.categoryCountMapLarge = categoryCountMapLarge;
-                });
-
 
                 // Вычисление площади сечения для каждого элемента в this.gaoTableWithTier для small
                 this.gaoTableWithTier.forEach(item => {
@@ -589,11 +755,11 @@ export default {
                 this.gaoTableWithTier.forEach(item => {
                     item.averageDiameterSmall = this.calculateAverageDiameter(item.averageBasalAreaSmall);
                 });
+
                 // Вычисление среднего диаметра для large
                 this.gaoTableWithTier.forEach(item => {
                     item.averageDiameterLarge = this.calculateAverageDiameter(item.averageBasalAreaLarge);
                 });
-
 
                 // Подсчет категорий для каждого элемента в this.gaoTableWithTier для small
                 this.gaoTableWithTier.forEach(item => {
@@ -627,16 +793,11 @@ export default {
                     item.totalBasalAreaLarge = totalBasalAreaLarge; // Добавляем общую сумму calcBasalArea для large
                 });
 
-                // Добавление уникального id для каждого элемента в this.gaoTableWithTier для small
-                this.gaoTableWithTier.forEach(item => item.option.small.forEach(option => option.id = this.generateUniqueId()))
-
-                // Добавление уникального id для каждого элемента в this.gaoTableWithTier для large
-                this.gaoTableWithTier.forEach(item => item.option.large.forEach(option => option.id = this.generateUniqueId()))
-
                 // Пример присваивания переменной this.arr.groupTreesData
                 this.arr.groupTreesDataWithTier = this.gaoTableWithTier;
             }
             // groupTreesDataWithTier end
+
 
 
             // Проходим по каждому элементу в gaoTableWithTier
