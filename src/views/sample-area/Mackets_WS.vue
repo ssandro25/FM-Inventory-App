@@ -1,14 +1,13 @@
 <template>
-    <div class="container-fluid p-3 h-100">
-        <div class="row h-100">
-            <div class="col-lg-9">
-                <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
-                    <div class="d-flex align-items-center gap-3 ">
-                        <GoBackBtn />
+    <div class="container-fluid p-3">
+        <div class="row">
+            <div class="d-flex align-items-md-center justify-content-md-between flex-md-row flex-column gap-3 mb-4 mt-md-0 mt-5">
+                <div class="d-flex align-items-center gap-3 ">
+                    <GoBackBtn />
 
-                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4"> {{ macketTitle }}</h1>
+                    <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4"> {{ macketTitle }}</h1>
 <!--                        <h1 class="text-white pt-md-0 pt-5 mb-0 fs-4">{{ this.$route.params }}</h1>-->
-                    </div>
+                </div>
 
 <!--                    <div-->
 <!--                        v-for="(item,index) in macket"-->
@@ -32,152 +31,95 @@
 <!--                        </p>-->
 
 <!--                    </div>-->
+            </div>
+
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <Macket1_WS />
                 </div>
 
-                <div class="row gy-4">
-                    <div class="col-md-6">
-                        <Macket1_WS />
-                    </div>
-
-                    <div class="col-md-6">
-                        <Macket2_WS />
-                    </div>
-
-                    <div class="col-md-4">
-                        <Macket3_WS />
-                    </div>
-
-                    <div class="col-md-4">
-                        <Macket4_WS />
-                    </div>
-
-                    <div class="col-md-4">
-                        <Macket5_WS />
-                    </div>
-
-                    <div class="col-md-12">
-                       <Macket10_17_WS />
-                    </div>
-
-                    <div class="col-md-6">
-                        <Macket31_6_WS />
-                    </div>
-
-                    <div class="col-md-6">
-                        <Macket32_7_WS />
-                    </div>
-
-                    <div class="col-12">
-                        <Macket23_8_WS />
-                    </div>
+                <div class="col-md-6">
+                    <Macket2_WS />
                 </div>
 
-                <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
-                    <div class="col">
-                        <Macket24_9_WS />
-                    </div>
+                <div class="col-md-4">
+                    <Macket3_WS />
+                </div>
 
-                    <div class="col">
-                        <Macket35_10_WS />
-                    </div>
+                <div class="col-md-4">
+                    <Macket4_WS />
+                </div>
 
-                    <div class="col">
-                        <Macket37_11_WS />
-                    </div>
+                <div class="col-md-4">
+                    <Macket5_WS />
+                </div>
 
-                    <div class="col">
-                        <Macket22_18_WS />
-                    </div>
+                <div class="col-md-12">
+                   <Macket10_17_WS />
+                </div>
 
-                    <div class="col">
-                       <Macket36_19_WS />
-                    </div>
+                <div class="col-md-6">
+                    <Macket31_6_WS />
+                </div>
 
-                    <div class="col">
-                        <Macket28_12_WS/>
-                    </div>
+                <div class="col-md-6">
+                    <Macket32_7_WS />
+                </div>
 
-                    <div class="col">
-                        <Macket40_13_WS />
-                    </div>
-
-                    <div class="col">
-                        <Macket33_20_WS />
-                    </div>
-
-                    <div class="col">
-                        <Macket42_14_WS />
-                    </div>
-
-                    <div class="col">
-                        <Macket16_15_WS/>
-                    </div>
-
-                    <div class="col">
-                        <Macket17_21_WS />
-                    </div>
-
-                    <div class="col">
-                        <Macket14_16_WS />
-                    </div>
+                <div class="col-12">
+                    <Macket23_8_WS />
                 </div>
             </div>
 
-<!--            <div class="col-lg-3 border-sm-top border-start border-start-sm-0 mt-lg-0 mt-4 pt-lg-0 pt-4">-->
-<!--                <div class="d-flex flex-column justify-content-between gap-4 right__side_bar">-->
-<!--                    <div>-->
-<!--                        <p class="text-forest mb-0">-->
-<!--                            <strong>მეტყევე : </strong>-->
+            <div class="row row-cols-lg-6 row-cols-1 gy-4 mt-3 border-top">
+                <div class="col">
+                    <Macket24_9_WS />
+                </div>
 
-<!--                            <router-link to="/options" class="text-forest">-->
-<!--                                {{ foresterName ? foresterName : 'შეიყვანეთ სახელი' }}-->
-<!--                            </router-link>-->
+                <div class="col">
+                    <Macket35_10_WS />
+                </div>
 
-<!--                        </p>-->
-<!--                    </div>-->
+                <div class="col">
+                    <Macket37_11_WS />
+                </div>
 
-<!--                    <div v-if="getRightSideBar.length" class="d-flex flex-column gap-2">-->
-<!--                        <p-->
-<!--                            v-for="(item, index) in getRightSideBar"-->
-<!--                            :key="index"-->
-<!--                            class="fs-12  mb-0"-->
-<!--                        >-->
-<!--                            <span v-if="item" class="d-block border-bottom pb-2">-->
-<!--                                {{ item }}-->
-<!--                            </span>-->
-<!--                        </p>-->
+                <div class="col">
+                    <Macket22_18_WS />
+                </div>
 
-<!--                        <div class="d-flex gap-2 mt-3">-->
-<!--                            <button-->
-<!--                                type="button"-->
-<!--                                class="btn btn-warning flex-grow-1"-->
-<!--                                data-bs-toggle="modal"-->
-<!--                                :data-bs-target="getMacketID"-->
-<!--                            >-->
-<!--                                რედაქტირება-->
-<!--                            </button>-->
+                <div class="col">
+                   <Macket36_19_WS />
+                </div>
 
+                <div class="col">
+                    <Macket28_12_WS/>
+                </div>
 
-<!--                            <button-->
-<!--                                type="button"-->
-<!--                                class="btn btn-danger flex-grow-1"-->
-<!--                            >-->
-<!--                                გასუფთავება-->
-<!--                            </button>-->
-<!--                        </div>-->
-<!--                    </div>-->
+                <div class="col">
+                    <Macket40_13_WS />
+                </div>
 
-<!--                    <div class="d-flex flex-column gap-3 w-100">-->
-<!--                        <button-->
-<!--                            :disabled="!dataCSV.length"-->
-<!--                            class="btn btn-primary w-100"-->
-<!--                            @click="downloadCSV"-->
-<!--                        >-->
-<!--                            გადმოწერა-->
-<!--                        </button>-->
-<!--                    </div>-->
-<!--                </div>-->
-<!--            </div>-->
+                <div class="col">
+                    <Macket33_20_WS />
+                </div>
+
+                <div class="col">
+                    <Macket42_14_WS />
+                </div>
+
+                <div class="col">
+                    <Macket16_15_WS/>
+                </div>
+
+                <div class="col">
+                    <Macket17_21_WS />
+                </div>
+
+                <div class="col">
+                    <Macket14_16_WS />
+                </div>
+            </div>
         </div>
 
     </div>

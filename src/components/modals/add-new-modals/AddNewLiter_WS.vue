@@ -74,7 +74,8 @@ export default {
 
             let literWS_Obj = {
                 id: this.arr.literWS && this.arr.literWS.length ? this.arr.literWS.length + 1 : 1,
-                title: this.new_liter_ws
+                title: this.new_liter_ws,
+                dropdown: false
             }
 
             if (!this.arr.literWS) {

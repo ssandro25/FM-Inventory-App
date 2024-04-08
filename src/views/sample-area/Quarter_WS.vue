@@ -46,9 +46,47 @@
                 >
                     <router-link
                         :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
-                        class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3"
+                        class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
                     >
-                        <p class="fw-bold fs-1 text-success text-end mb-0">{{ item.title }}</p>
+<!--                        ნამდვილად გსურთ ლიტერი {{ item.title }}-ის წაშლა? წაშლილი მონაცემების აღდგენა შეუძლებელია.-->
+
+
+                        <div class="position-absolute top-0 end-0 m-3">
+                            <button
+                                type="button"
+                                class="btn border-0"
+                                @click.prevent="item.dropdown = !item.dropdown"
+                            >
+                                <img src="@/assets/images/dots-vertical.svg" width="7" alt="">
+                            </button>
+
+                            <div
+                                v-if="item.dropdown"
+                                class="position-absolute top-75 end-0"
+                            >
+                                <ul class="bg-white p-0 rounded shadow-sm overflow-hidden">
+                                    <li style="list-style-type: unset;">
+                                        <button
+                                            type="button"
+                                            class="btn btn-light rounded-0 w-100"
+                                        >
+                                            გადმოწერა
+                                        </button>
+                                    </li>
+                                    <li style="list-style-type: unset;">
+                                        <button
+                                            type="button"
+                                            class="btn btn-danger rounded-0 w-100"
+                                            @click.prevent="removeLiter(item.id)"
+                                        >
+                                            წაშლა
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <p class="fw-bold fs-1 text-success mb-0">{{ item.title }}</p>
 
                         <p class="mb-0">
                             სანიმუშო ფართობები:
@@ -92,7 +130,8 @@ export default {
 
     data() {
         return {
-            search: ''
+            search: '',
+            dropdown: false
         }
     },
 
@@ -129,6 +168,19 @@ export default {
         },
     },
 
+    methods: {
+        removeLiter(id) {
+            const index = this.literWS.findIndex(liter => liter.id === parseInt(id));
+
+            if (index !== -1) {
+                this.literWS.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+        },
+
+    },
+
     mounted() {
         this.$store.dispatch('setQuarterWS_ID', this.$route.params.id)
     }
@@ -136,5 +188,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.dropdown-toggle:after {
+    display: none;
+}
 </style>
