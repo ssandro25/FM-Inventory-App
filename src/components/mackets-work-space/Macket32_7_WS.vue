@@ -13,36 +13,32 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <div class="row m-0">
-            <div class="col-md-6 d-flex flex-column gap-2">
-                <p class="mb-0">
-                    განფენილობა - {{ item.distribution }}
-                </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.distribution }} /
+            </p>
 
-                <p class="mb-0">
-                    დაფ. % - {{ item.distribution_percent }}
-                </p>
+            <p class="mb-0">
+                {{ item.distribution_percent }} /
+            </p>
 
-                <p class="mb-0">
-                    სახეობა 1 - {{ item.tree_type1 }}
-                </p>
-            </div>
+            <p class="mb-0">
+                {{ item.tree_type1 }} /
+            </p>
 
-            <div class="col-md-6 d-flex flex-column gap-2">
-                <p class="mb-0">
-                    სახეობა 2 - {{ item.tree_type2 }}
-                </p>
+            <p class="mb-0">
+                {{ item.tree_type2 }} /
+            </p>
 
-                <p class="mb-0">
-                    სახეობა 3 - {{ item.tree_type3 }}
-                </p>
+            <p class="mb-0">
+                {{ item.tree_type3 }} /
+            </p>
 
-                <p class="mb-0">
-                    სიმაღლე - {{ item.tree_height }}
-                </p>
-            </div>
+            <p class="mb-0">
+                {{ item.tree_height }}
+            </p>
         </div>
     </div>
 

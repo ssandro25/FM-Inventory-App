@@ -13,23 +13,25 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            42.1. - {{ item.nests }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.nests }} /
+            </p>
 
-        <p class="mb-0">
-            42.2. - {{ item.overgrown_trees }}
-        </p>
+            <p class="mb-0">
+                {{ item.overgrown_trees }} /
+            </p>
 
-        <p class="mb-0">
-            42.3. - {{ item.ant_nests }}
-        </p>
+            <p class="mb-0">
+                {{ item.ant_nests }} /
+            </p>
 
-        <p class="mb-0">
-            42.4. - {{ item.location }}
-        </p>
+            <p class="mb-0">
+                {{ item.location }}
+            </p>
+        </div>
     </div>
 
 </template>

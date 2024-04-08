@@ -13,32 +13,33 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            24.1. - {{ item.soil_character }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.soil_character }} /
+            </p>
 
-        <p class="mb-0">
-            24.2. - {{ item.soil_mechanical_composition }}
-        </p>
+            <p class="mb-0">
+                {{ item.soil_mechanical_composition }} /
+            </p>
 
-        <p class="mb-0">
-            24.3. - {{ item.moisture_degree }}
-        </p>
+            <p class="mb-0">
+                {{ item.moisture_degree }} /
+            </p>
 
-        <p class="mb-0">
-            24.4. - {{ item.chords_quality }}
-        </p>
+            <p class="mb-0">
+                {{ item.chords_quality }} /
+            </p>
 
-        <p class="mb-0">
-            24.5. - {{ item.soil_density }}
-        </p>
+            <p class="mb-0">
+                {{ item.soil_density }} /
+            </p>
 
-        <p class="mb-0">
-            24.6. - {{ item.mother_rock_coverage }}
-        </p>
-
+            <p class="mb-0">
+                {{ item.mother_rock_coverage }}
+            </p>
+        </div>
     </div>
 
 </template>

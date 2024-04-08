@@ -13,19 +13,21 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            28.1. - {{ item.accessibility_category }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.accessibility_category }} /
+            </p>
 
-        <p class="mb-0">
-            28.2. - {{ item.transport_type }}
-        </p>
+            <p class="mb-0">
+                {{ item.transport_type }} /
+            </p>
 
-        <p class="mb-0">
-            28.3. - {{ item.road_away }}
-        </p>
+            <p class="mb-0">
+                {{ item.road_away }}
+            </p>
+        </div>
     </div>
 
 </template>

@@ -13,27 +13,30 @@
     <div
         v-for="(item, index) in macket"
         :key="index"
-        class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
+        class="item rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            31.1 - {{ item.quantity }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.quantity }} /
+            </p>
 
-        <p class="mb-0">
-            31.2 - {{ item.height }}
-        </p>
+            <p class="mb-0">
+                {{ item.height }} /
+            </p>
 
-        <p class="mb-0">
-            31.3 - {{ item.age }}
-        </p>
+            <p class="mb-0">
+                {{ item.age }} /
+            </p>
 
-        <p class="mb-0">
-            კოეფ. 1 - {{ item.coefficient1 }}
-        </p>
+            <p class="mb-0">
+               {{ item.coefficient1 }} /
+            </p>
 
-        <p class="mb-0">
-            სახეობა 1 - {{ item.growing_trees_species }}
-        </p>
+            <p class="mb-0">
+               {{ item.growing_trees_species }}
+            </p>
+        </div>
+
 
     </div>
 

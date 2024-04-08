@@ -15,17 +15,19 @@
         :key="index"
         class="item d-flex flex-column gap-2 rounded-bottom p-3 border-top-0 macket__item fs-12"
     >
-        <p class="mb-0">
-            4.1 - {{ item.deed_wood }}
-        </p>
+        <div class="d-flex flex-wrap gap-1">
+            <p class="mb-0">
+                {{ item.deed_wood }} /
+            </p>
 
-        <p class="mb-0">
-            4.2 - {{ item.deed_wood_liquid }}
-        </p>
+            <p class="mb-0">
+                {{ item.deed_wood_liquid }} /
+            </p>
 
-        <p class="mb-0">
-            4.3 - {{ item.old_deadwood }}
-        </p>
+            <p class="mb-0">
+                {{ item.old_deadwood }}
+            </p>
+        </div>
     </div>
 
 </template>
