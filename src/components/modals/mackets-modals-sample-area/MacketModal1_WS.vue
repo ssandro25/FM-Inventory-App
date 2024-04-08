@@ -244,7 +244,16 @@ export default {
             'getElevation',
             'getErosionType',
             'getErosionDegree'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[0][0] || []
+        },
     },
 
     methods: {
@@ -316,8 +325,14 @@ export default {
         ))) {
             this.add()
         }
-    }
 
+        // if (this.macket.soil_category) {
+        //     this.soil_category = this.macket.soil_category
+        // }
+        // if (this.macket.long_term_use_lease) {
+        //     this.long_term_use_lease = this.macket.long_term_use_lease
+        // }
+    }
 }
 </script>
 

@@ -69,6 +69,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-light rounded-0 w-100"
+                                            @click.prevent="downloadCSV(item.id)"
                                         >
                                             გადმოწერა
                                         </button>
@@ -139,7 +140,9 @@ export default {
         ...mapGetters([
             'getWorkSpace',
             'getWorkSpaceID',
-            'getForestryWS_ID'
+            'getForestryWS_ID',
+            'getQuarterWS_ID',
+            'getLiterWS_ID',
         ]),
 
         literWS() {
@@ -179,6 +182,34 @@ export default {
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
 
+        downloadCSV(id) {
+            // Flatten the dataArray into a single array
+            const flattenedArray = this.getWorkSpace
+                .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
+                .find(item => item.id === parseInt(id)).taxCardArr || []
+                .reduce((acc, curr) => acc.concat(curr), []);
+
+            // Convert flattened array to CSV format
+            const csvContent = this.convertToCSV(flattenedArray);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = `${this.macketTitle}.csv`;
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV(dataArray) {
+            const row = dataArray.map(obj => Object.values(obj).join(',')).join(',');
+            return row;
+        }
     },
 
     mounted() {
