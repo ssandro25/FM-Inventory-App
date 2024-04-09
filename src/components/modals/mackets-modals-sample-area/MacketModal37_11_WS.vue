@@ -100,7 +100,16 @@ export default {
             'getWorkSpace',
             'getAnthropogenicTransformationType',
             'getAnthropogenicTransformationQuality'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[10][0] || []
+        }
     },
 
     methods: {
@@ -155,6 +164,13 @@ export default {
             currentArr[0].anthropogenic_transformation_quality !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.anthropogenic_transformation_type) {
+            this.anthropogenic_transformation_type = this.macket.anthropogenic_transformation_type
+        }
+        if (this.macket.anthropogenic_transformation_quality) {
+            this.anthropogenic_transformation_quality = this.macket.anthropogenic_transformation_quality
         }
     }
 

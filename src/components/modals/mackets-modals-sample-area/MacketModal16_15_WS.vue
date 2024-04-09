@@ -189,7 +189,16 @@ export default {
             'getWoodySpecies',
             'getUnit',
             'getAccessible'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[14][0] || []
+        }
     },
 
     methods: {
@@ -254,6 +263,28 @@ export default {
             currentArr[0].accessible !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.raw_material_category) {
+            this.raw_material_category = this.macket.raw_material_category
+        }
+        if (this.macket.woody_species) {
+            this.woody_species = this.macket.woody_species
+        }
+        if (this.macket.year) {
+            this.year = this.macket.year
+        }
+        if (this.macket.height) {
+            this.height = this.macket.height
+        }
+        if (this.macket.unit) {
+            this.unit = this.macket.unit
+        }
+        if (this.macket.yield_accuracy) {
+            this.yield_accuracy = this.macket.yield_accuracy
+        }
+        if (this.macket.accessible) {
+            this.accessible = this.macket.accessible
         }
     }
 

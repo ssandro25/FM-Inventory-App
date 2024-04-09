@@ -110,7 +110,16 @@ export default {
     computed: {
         ...mapGetters([
             'getWorkSpace',
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[13][0] || []
+        }
     },
 
     methods: {
@@ -169,6 +178,19 @@ export default {
             currentArr[0].location !== null
         ))) {
             this.add()
+        }
+
+        if (this.macket.nests) {
+            this.nests = this.macket.nests
+        }
+        if (this.macket.overgrown_trees) {
+            this.overgrown_trees = this.macket.overgrown_trees
+        }
+        if (this.macket.ant_nests) {
+            this.ant_nests = this.macket.ant_nests
+        }
+        if (this.macket.location) {
+            this.location = this.macket.location
         }
     }
 

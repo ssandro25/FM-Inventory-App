@@ -128,7 +128,16 @@ export default {
             'getWorkSpace',
             'getDisasterType',
             'getSustainability'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[12][0] || []
+        }
     },
 
     methods: {
@@ -187,6 +196,19 @@ export default {
             currentArr[0].damage_class !== null
         ))) {
             this.add()
+        }
+
+        if (this.macket.disaster_type) {
+            this.disaster_type = this.macket.disaster_type
+        }
+        if (this.macket.sustainability) {
+            this.sustainability = this.macket.sustainability
+        }
+        if (this.macket.fire_hazard_class) {
+            this.fire_hazard_class = this.macket.fire_hazard_class
+        }
+        if (this.macket.damage_class) {
+            this.damage_class = this.macket.damage_class
         }
     }
 

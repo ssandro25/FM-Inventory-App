@@ -158,7 +158,16 @@ export default {
             'getWorkSpace',
             'getActivity',
             'getTargetSpecies'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[1][0] || []
+        }
     },
 
     methods: {
@@ -219,6 +228,22 @@ export default {
             currentArr[0].target_species !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.activity1) {
+            this.activity1 = this.macket.activity1
+        }
+        if (this.macket.activity_percent) {
+            this.activity_percent = this.macket.activity_percent
+        }
+        if (this.macket.activity2) {
+            this.activity2 = this.macket.activity2
+        }
+        if (this.macket.activity3) {
+            this.activity3 = this.macket.activity3
+        }
+        if (this.macket.target_species) {
+            this.target_species = this.macket.target_species
         }
     }
 

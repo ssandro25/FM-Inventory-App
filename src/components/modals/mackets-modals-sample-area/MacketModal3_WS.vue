@@ -183,7 +183,16 @@ export default {
             'getSiteIndexType',
             'getForestType',
             'getLocationType',
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[2][0] || []
+        }
     },
 
     methods: {
@@ -246,6 +255,25 @@ export default {
             currentArr[0].cutting_year !== null
         ))) {
             this.add()
+        }
+
+        if (this.macket.dominant_species) {
+            this.dominant_species = this.macket.dominant_species
+        }
+        if (this.macket.site_index) {
+            this.site_index = this.macket.site_index
+        }
+        if (this.macket.site_index_type) {
+            this.site_index_type = this.macket.site_index_type
+        }
+        if (this.macket.forest_type) {
+            this.forest_type = this.macket.forest_type
+        }
+        if (this.macket.location_type) {
+            this.location_type = this.macket.location_type
+        }
+        if (this.macket.cutting_year) {
+            this.cutting_year = this.macket.cutting_year
         }
     }
 

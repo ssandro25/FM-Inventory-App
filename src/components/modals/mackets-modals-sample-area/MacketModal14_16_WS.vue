@@ -114,7 +114,16 @@ export default {
             'getWorkSpace',
             'getAccountingCategory',
             'getPlantsType'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[15][0] || []
+        }
     },
 
     methods: {
@@ -171,6 +180,16 @@ export default {
             currentArr[0].coverage_percent !== null
         ))) {
             this.add()
+        }
+
+        if (this.macket.accounting_category) {
+            this.accounting_category = this.macket.accounting_category
+        }
+        if (this.macket.plants_type) {
+            this.plants_type = this.macket.plants_type
+        }
+        if (this.macket.coverage_percent) {
+            this.coverage_percent = this.macket.coverage_percent
         }
     }
 

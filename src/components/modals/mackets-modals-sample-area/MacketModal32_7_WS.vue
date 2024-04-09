@@ -190,7 +190,16 @@ export default {
             'getDistributionPercent',
             'getTreeType',
             'getTreeHeight'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[6][0] || []
+        }
     },
 
     methods: {
@@ -253,6 +262,25 @@ export default {
             currentArr[0].tree_height !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.distribution) {
+            this.distribution = this.macket.distribution
+        }
+        if (this.macket.distribution_percent) {
+            this.distribution_percent = this.macket.distribution_percent
+        }
+        if (this.macket.tree_type1) {
+            this.tree_type1 = this.macket.tree_type1
+        }
+        if (this.macket.tree_type2) {
+            this.tree_type2 = this.macket.tree_type2
+        }
+        if (this.macket.tree_type3) {
+            this.tree_type3 = this.macket.tree_type3
+        }
+        if (this.macket.tree_height) {
+            this.tree_height = this.macket.tree_height
         }
     }
 

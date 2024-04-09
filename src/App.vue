@@ -185,7 +185,7 @@ export default {
     cursor: pointer;
 }
 .macket__item {
-    height: 75px;
+    height: 100px;
 }
 body {
     color: #fff !important;

@@ -114,7 +114,16 @@ export default {
             'getWorkSpace',
             'getAccessibilityCategory',
             'getTransportType'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[11][0] || []
+        }
     },
 
     methods: {
@@ -171,6 +180,16 @@ export default {
             currentArr[0].road_away !== null
         ))) {
             this.add()
+        }
+
+        if (this.macket.accessibility_category) {
+            this.accessibility_category = this.macket.accessibility_category
+        }
+        if (this.macket.transport_type) {
+            this.transport_type = this.macket.transport_type
+        }
+        if (this.macket.road_away) {
+            this.road_away = this.macket.road_away
         }
     }
 }

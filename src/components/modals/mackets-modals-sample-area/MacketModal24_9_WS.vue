@@ -183,7 +183,16 @@ export default {
             'getMoistureDegree',
             'getChordsQuality',
             'getSoilDensity'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[8][0] || []
+        }
     },
 
     methods: {
@@ -246,6 +255,25 @@ export default {
             currentArr[0].mother_rock_coverage !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.soil_character) {
+            this.soil_character = this.macket.soil_character
+        }
+        if (this.macket.soil_mechanical_composition) {
+            this.soil_mechanical_composition = this.macket.soil_mechanical_composition
+        }
+        if (this.macket.moisture_degree) {
+            this.moisture_degree = this.macket.moisture_degree
+        }
+        if (this.macket.chords_quality) {
+            this.chords_quality = this.macket.chords_quality
+        }
+        if (this.macket.soil_density) {
+            this.soil_density = this.macket.soil_density
+        }
+        if (this.macket.mother_rock_coverage) {
+            this.mother_rock_coverage = this.macket.mother_rock_coverage
         }
     }
 

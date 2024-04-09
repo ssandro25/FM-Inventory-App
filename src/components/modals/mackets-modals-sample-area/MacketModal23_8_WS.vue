@@ -68,7 +68,16 @@ export default {
     computed: {
         ...mapGetters([
             'getWorkSpace',
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[7][0] || []
+        }
     },
 
     methods: {
@@ -119,6 +128,10 @@ export default {
 
         if (!(currentArr && currentArr[0] && (currentArr[0].comment !== ''))) {
             this.add()
+        }
+
+        if (this.macket.comment) {
+            this.comment = this.macket.comment
         }
     }
 

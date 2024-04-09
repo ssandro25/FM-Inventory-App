@@ -253,7 +253,7 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[0][0] || []
-        },
+        }
     },
 
     methods: {
@@ -326,12 +326,33 @@ export default {
             this.add()
         }
 
-        // if (this.macket.soil_category) {
-        //     this.soil_category = this.macket.soil_category
-        // }
-        // if (this.macket.long_term_use_lease) {
-        //     this.long_term_use_lease = this.macket.long_term_use_lease
-        // }
+        if (this.macket.soil_category) {
+            this.soil_category = this.macket.soil_category
+        }
+        if (this.macket.long_term_use_lease) {
+            this.long_term_use_lease = this.macket.long_term_use_lease
+        }
+        if (this.macket.gfdu) {
+            this.gfdu = this.macket.gfdu
+        }
+        if (this.macket.exposition) {
+            this.exposition = this.macket.exposition
+        }
+        if (this.macket.inclination) {
+            this.inclination = this.macket.inclination
+        }
+        if (this.macket.elevation) {
+            this.elevation = this.macket.elevation
+        }
+        if (this.macket.erosion_type) {
+            this.erosion_type = this.macket.erosion_type
+        }
+        if (this.macket.erosion_degree) {
+            this.erosion_degree = this.macket.erosion_degree
+        }
+        if (this.macket.area) {
+            this.area = this.macket.area
+        }
     }
 }
 </script>

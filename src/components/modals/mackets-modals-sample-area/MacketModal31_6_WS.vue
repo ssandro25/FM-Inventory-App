@@ -151,7 +151,16 @@ export default {
             'getHeight',
             'getAge',
             'getGrowingTreesSpecies'
-        ])
+        ]),
+
+        macket() {
+            return this.getWorkSpace
+                .find(item => item.id === parseInt(this.params.workSpaceID)).forestryWS
+                .find(item => item.id === parseInt(this.params.forestryWS_ID)).quarterWS
+                .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
+                .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
+                .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[5][0] || []
+        }
     },
 
     methods: {
@@ -212,6 +221,22 @@ export default {
             currentArr[0].growing_trees_species !== ''
         ))) {
             this.add()
+        }
+
+        if (this.macket.quantity) {
+            this.quantity = this.macket.quantity
+        }
+        if (this.macket.height) {
+            this.height = this.macket.height
+        }
+        if (this.macket.age) {
+            this.age = this.macket.age
+        }
+        if (this.macket.coefficient1) {
+            this.coefficient1 = this.macket.coefficient1
+        }
+        if (this.macket.growing_trees_species) {
+            this.growing_trees_species = this.macket.growing_trees_species
         }
     }
 

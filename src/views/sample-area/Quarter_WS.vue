@@ -69,7 +69,7 @@
                                         <button
                                             type="button"
                                             class="btn btn-light rounded-0 w-100"
-                                            @click.prevent="downloadCSV(item.id)"
+                                            @click.prevent="downloadCSV(item.id, item.title)"
                                         >
                                             გადმოწერა
                                         </button>
@@ -182,7 +182,7 @@ export default {
             this.$store.dispatch('setWorkSpace', this.getWorkSpace)
         },
 
-        downloadCSV(id) {
+        downloadCSV(id, title) {
             // Flatten the dataArray into a single array
             const flattenedArray = this.getWorkSpace
                 .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
@@ -197,7 +197,7 @@ export default {
             // Create a temporary anchor element
             const a = document.createElement('a');
             a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
-            a.download = `${this.macketTitle}.csv`;
+            a.download = `${title}.csv`;
 
             // Append anchor to body and click it to trigger download
             document.body.appendChild(a);
