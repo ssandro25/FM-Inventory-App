@@ -227,7 +227,8 @@ export default {
                 .find(item => item.id === parseInt(this.getLiterWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id)).id
 
-            return workSpace + ' / ' + forestry + ' / ' + quarter + ' / ' + liter + ' / ' + taxCardTitle + ' ' + taxCardID
+            return 'საქ. ' + workSpace + ' / ' + 'სატ. ' + forestry + ' / ' + 'კვ. ' + quarter + ' / ' + 'ლიტ. ' + liter + ' / ' + taxCardTitle + ' ' + taxCardID
+
         },
 
         // macket() {

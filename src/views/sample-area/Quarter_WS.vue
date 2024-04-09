@@ -16,7 +16,7 @@
                     v-model="search"
                     type="search"
                     class="form-control"
-                    placeholder="შეიყვანეთ კვარტლის სახელი"
+                    placeholder="მოძებნე ლიტერის ნომრით"
                 >
             </div>
         </div>
@@ -87,7 +87,10 @@
                             </div>
                         </div>
 
-                        <p class="fw-bold fs-1 text-success mb-0">{{ item.title }}</p>
+                        <p class="fw-bold fs-1 text-success mb-0">
+                            <span class="fs-5">ლიტ.</span>
+                            #{{ item.title }}
+                        </p>
 
                         <p class="mb-0">
                             სანიმუშო ფართობები:

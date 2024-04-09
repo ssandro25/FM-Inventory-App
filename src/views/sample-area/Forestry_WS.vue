@@ -16,7 +16,7 @@
                     v-model="search"
                     type="search"
                     class="form-control"
-                    placeholder="შეიყვანეთ კვარტლის სახელი"
+                    placeholder="მოძებნე კვარტლის ნომრით"
                 >
             </div>
         </div>
@@ -48,7 +48,10 @@
                         :to="/work-space/+this.getWorkSpaceID+/forestry/+this.$route.params.id+/quarter/+item.id"
                         class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
                     >
-                        <p class="fw-bold fs-1 text-success text-end mb-0">{{ item.title }}</p>
+                        <p class="fw-bold fs-1 text-success mb-0">
+                            <span class="fs-5">კვ.</span>
+                            #{{ item.title }}
+                        </p>
 
                         <p class="mb-0">
                             ლიტერები:

@@ -69,7 +69,7 @@ export default {
                 .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.$route.params.id)).title
 
-            return workSpace + ' / ' + forestry + ' / ' + quarter + ' / ' + liter
+            return 'საქ. ' +  workSpace + ' / ' + 'სატ. ' + forestry + ' / ' + 'კვ. ' + quarter + ' / ' + 'ლიტ. ' + liter
         },
     },
 
