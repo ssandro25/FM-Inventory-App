@@ -217,6 +217,8 @@ export default {
 
     mounted() {
         this.$store.dispatch('setQuarterWS_ID', this.$route.params.id)
+
+        this.filteredLiterWS.forEach(item => item.dropdown = false)
     }
 }
 </script>

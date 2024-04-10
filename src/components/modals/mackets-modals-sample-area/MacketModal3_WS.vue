@@ -177,6 +177,7 @@
                     </button>
 
                     <button
+                        :disabled="disabledClearBtn"
                         type="button"
                         class="btn btn-danger"
                         @click="acceptClear = true"
@@ -230,6 +231,17 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[2][0] || []
+        },
+
+        disabledClearBtn() {
+            return (
+                this.dominant_species === '' &&
+                this.site_index === '' &&
+                this.site_index_type === '' &&
+                this.forest_type === '' &&
+                this.location_type === '' &&
+                this.cutting_year === ''
+            );
         }
     },
 

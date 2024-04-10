@@ -232,6 +232,7 @@
                     </button>
                     
                     <button
+                        :disabled="disabledClearBtn"
                         type="button"
                         class="btn btn-danger"
                         @click="acceptClear = true"
@@ -291,6 +292,20 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[0][0] || []
+        },
+
+        disabledClearBtn() {
+            return (
+                this.soil_category === '' &&
+                this.long_term_use_lease === '' &&
+                this.gfdu === '' &&
+                this.exposition === '' &&
+                this.inclination === '' &&
+                this.elevation === '' &&
+                this.erosion_type === '' &&
+                this.erosion_degree === '' &&
+                this.area === ''
+            );
         }
     },
 
@@ -302,8 +317,6 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))
-
-            console.log(this.arr)
 
             let macketObj = {
                 id: 1,

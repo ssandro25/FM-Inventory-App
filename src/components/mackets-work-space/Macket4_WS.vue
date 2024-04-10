@@ -34,7 +34,7 @@
 
 <script>
 import { mapGetters } from "vuex";
-import MacketModal4_WS from "@/components/modals/mackets-modals-sample-area/MacketModal4_WS.vue.vue";
+import MacketModal4_WS from "@/components/modals/mackets-modals-sample-area/MacketModal4_WS.vue";
 export default {
     name: "Macket4_WS",
 

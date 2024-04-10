@@ -85,6 +85,7 @@
                     </button>
 
                     <button
+                        :disabled="disabledClearBtn"
                         type="button"
                         class="btn btn-danger"
                         @click="acceptClear = true"
@@ -129,6 +130,13 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[9][0] || []
+        },
+
+        disabledClearBtn() {
+            return (
+                this.latitude_x === null &&
+                this.latitude_y === null
+            );
         }
     },
 
@@ -160,8 +168,8 @@ export default {
         },
 
         clear() {
-            this.latitude_x = ''
-            this.latitude_y = ''
+            this.latitude_x = null
+            this.latitude_y = null
 
             this.acceptClear = false
             this.add()

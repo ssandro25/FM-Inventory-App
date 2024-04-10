@@ -156,6 +156,7 @@
                     </button>
 
                     <button
+                        :disabled="disabledClearBtn"
                         type="button"
                         class="btn btn-danger"
                         @click="acceptClear = true"
@@ -205,6 +206,16 @@ export default {
                 .find(item => item.id === parseInt(this.params.quarterWS_ID)).literWS
                 .find(item => item.id === parseInt(this.params.literWS_ID)).taxCardArr
                 .find(item => item.id === parseInt(this.$route.params.id))?.mackets?.[1][0] || []
+        },
+
+        disabledClearBtn() {
+            return (
+                this.activity1 === '' &&
+                this.activity2 === '' &&
+                this.activity3 === '' &&
+                this.activity_percent === null &&
+                this.target_species === ''
+            );
         }
     },
 
@@ -243,7 +254,7 @@ export default {
             this.activity2 = ''
             this.gfdu = ''
             this.activity3 = ''
-            this.activity_percent = ''
+            this.activity_percent = null
             this.target_species = ''
 
             this.acceptClear = false
