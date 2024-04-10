@@ -139,13 +139,49 @@
 
                 </div>
 
+                <div
+                    v-if="acceptClear"
+                    class="mx-3 ms-auto border p-2 rounded bg-secondary-subtle"
+                    style="width: max-content;"
+                >
+                    <p class="text-dark mb-0">
+                        ნამდვილად გსურთ მაკეტის გასუფთავება? მონაცემები წაიშალება!
+                    </p>
+
+                    <div class="d-flex align-content-center justify-content-center gap-2 mt-2">
+                        <button
+                            type="button"
+                            class="btn btn-secondary btn-sm"
+                            @click="acceptClear = false"
+                        >
+                            გაუქმება
+                        </button>
+
+                        <button
+                            type="button"
+                            class="btn btn-danger btn-sm"
+                            @click="clear()"
+                        >
+                            გასუფთავება
+                        </button>
+                    </div>
+                </div>
+
                 <div class="modal-footer border-0 justify-content-center">
                     <button
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
                         @click="add()"
                     >
-                        დამატება
+                        შენახვა
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn btn-danger"
+                        @click="acceptClear = true"
+                    >
+                        გასუფთავება
                     </button>
                 </div>
             </div>
@@ -167,7 +203,9 @@ export default {
             moisture_degree: '',
             chords_quality: '',
             soil_density: '',
-            mother_rock_coverage: ''
+            mother_rock_coverage: '',
+
+            acceptClear: false
         }
     },
 
@@ -225,6 +263,18 @@ export default {
 
             document.querySelector('#close-btn24').click()
         },
+
+        clear() {
+            this.soil_character = ''
+            this.soil_mechanical_composition = ''
+            this.moisture_degree = ''
+            this.chords_quality = ''
+            this.soil_density = ''
+            this.mother_rock_coverage = ''
+
+            this.acceptClear = false
+            this.add()
+        }
     },
 
     mounted() {
