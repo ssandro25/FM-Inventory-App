@@ -21,6 +21,26 @@
             </div>
         </div>
 
+        <div class="d-flex gap-3 mb-4 col-lg-5 col-12 p-0">
+            <button
+                type="button"
+                class="btn btn-light w-50"
+                @click="sortListMinMax"
+            >
+                <img src="@/assets/images/sort-min-max.svg" class="me-1" width="16" alt="">
+                ზრდადობით
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-light w-50"
+                @click="sortListMaxMin"
+            >
+                <img src="@/assets/images/sort-max-min.svg" class="me-1" width="16" alt="">
+                კლებადობით
+            </button>
+        </div>
+
         <div v-if="filteredQuarterWS.length">
             <div class="row row-cols-md-3 row-cols-1 gy-4 items__list_row">
                 <div class="col">
@@ -133,11 +153,20 @@ export default {
         },
     },
 
-    // methods: {
-    //     showQuarterInfo(id) {
-    //         this.quarter = this.quarterWS.find(item => item.id === id).literWS
-    //     }
-    // },
+    methods: {
+        sortListMinMax() {
+            this.quarterWS.sort((a, b) => {
+                return parseInt(a.title) - parseInt(b.title);
+            });
+        },
+
+        sortListMaxMin() {
+            this.quarterWS.sort((a, b) => {
+                return parseInt(b.title) - parseInt(a.title);
+            });
+        },
+    },
+
 
     mounted() {
         this.$store.dispatch('setForestryWS_ID', this.$route.params.id)

@@ -21,6 +21,26 @@
             </div>
         </div>
 
+        <div class="d-flex gap-3 mb-4 col-lg-5 col-12 p-0">
+            <button
+                type="button"
+                class="btn btn-light w-50"
+                @click="sortListMinMax"
+            >
+                <img src="@/assets/images/sort-min-max.svg" class="me-1" width="16" alt="">
+                ზრდადობით
+            </button>
+
+            <button
+                type="button"
+                class="btn btn-light w-50"
+                @click="sortListMaxMin"
+            >
+                <img src="@/assets/images/sort-max-min.svg" class="me-1" width="16" alt="">
+                კლებადობით
+            </button>
+        </div>
+
         <div v-if="filteredLiterWS.length">
             <div class="row row-cols-md-3 row-cols-1 gy-4 items__list_row">
                 <div class="col">
@@ -169,12 +189,26 @@ export default {
             }
         },
 
+
         filteredLiterWS() {
-            return [...this.literWS].filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
-        },
+            return this.literWS.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+        }
+
     },
 
     methods: {
+        sortListMinMax() {
+            this.literWS.sort((a, b) => {
+                return parseInt(a.title) - parseInt(b.title);
+            });
+        },
+
+        sortListMaxMin() {
+            this.literWS.sort((a, b) => {
+                return parseInt(b.title) - parseInt(a.title);
+            });
+        },
+
         removeLiter(id) {
             const index = this.literWS.findIndex(liter => liter.id === parseInt(id));
 
@@ -218,13 +252,10 @@ export default {
     mounted() {
         this.$store.dispatch('setQuarterWS_ID', this.$route.params.id)
 
-        this.filteredLiterWS.forEach(item => item.dropdown = false)
+        this.literWS.forEach(item => item.dropdown = false)
     }
 }
 </script>
 
 <style scoped lang="scss">
-.dropdown-toggle:after {
-    display: none;
-}
 </style>
