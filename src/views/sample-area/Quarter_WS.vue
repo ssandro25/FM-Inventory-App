@@ -68,9 +68,6 @@
                         :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
                         class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
                     >
-<!--                        ნამდვილად გსურთ ლიტერი {{ item.title }}-ის წაშლა? წაშლილი მონაცემების აღდგენა შეუძლებელია.-->
-
-
                         <div class="position-absolute top-0 end-0 m-3">
                             <button
                                 type="button"

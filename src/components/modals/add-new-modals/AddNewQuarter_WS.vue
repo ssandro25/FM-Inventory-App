@@ -73,7 +73,8 @@ export default {
 
             let quarterWS_Obj = {
                 id: this.arr.quarterWS && this.arr.quarterWS.length ? this.arr.quarterWS.length + 1 : 1,
-                title: this.new_quarter_ws
+                title: this.new_quarter_ws,
+                dropdown: false
             }
 
             if (!this.arr.quarterWS) {
