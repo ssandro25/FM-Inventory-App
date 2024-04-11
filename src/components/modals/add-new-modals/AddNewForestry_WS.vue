@@ -72,7 +72,8 @@ export default {
 
             let forestryWS_Obj = {
                 id: this.arr.forestryWS && this.arr.forestryWS.length ? this.arr.forestryWS.length + 1 : 1,
-                title: this.new_forestry_ws
+                title: this.new_forestry_ws,
+                dropdown: false
             }
 
             if (!this.arr.forestryWS) {

@@ -72,7 +72,8 @@ export default {
             let obj = {
                 id: this.getWorkSpace.length + 1,
                 title: this.currentDate + ' - ' + this.new_folder,
-                date: this.currentDate
+                date: this.currentDate,
+                dropdown: false
             }
             this.$store.dispatch('setNewWorkSpace', obj)
 

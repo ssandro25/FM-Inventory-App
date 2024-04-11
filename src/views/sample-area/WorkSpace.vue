@@ -30,8 +30,44 @@
                     >
                         <router-link
                             :to="/work-space/+item.id"
-                            class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3"
+                            class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
                         >
+                            <div class="position-absolute top-0 end-0 m-3">
+                                <button
+                                    type="button"
+                                    class="btn border-0"
+                                    @click.prevent="item.dropdown = !item.dropdown"
+                                >
+                                    <img src="@/assets/images/dots-vertical.svg" width="7" alt="">
+                                </button>
+
+                                <div
+                                    v-if="item.dropdown"
+                                    class="position-absolute top-75 end-0"
+                                >
+                                    <ul class="bg-white p-0 rounded shadow-sm overflow-hidden">
+                                        <li style="list-style-type: unset;">
+                                            <button
+                                                type="button"
+                                                class="btn btn-light rounded-0 w-100"
+                                                @click.prevent="downloadCSV(item.id, item.title)"
+                                            >
+                                                გადმოწერა
+                                            </button>
+                                        </li>
+                                        <li style="list-style-type: unset;">
+                                            <button
+                                                type="button"
+                                                class="btn btn-danger rounded-0 w-100"
+                                                @click.prevent="removeFolder(item.id)"
+                                            >
+                                                წაშლა
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+
                             <p class="fw-bold fs-6 text-success mb-0">{{ item.title }}</p>
 
                             <p class="mb-0">
@@ -85,6 +121,46 @@ export default {
         folders() {
             return this.getWorkSpace
         }
+    },
+
+    methods: {
+        removeFolder(id) {
+            const index = this.folders.findIndex(quarter => quarter.id === parseInt(id));
+
+            if (index !== -1) {
+                this.folders.splice(index, 1);
+            }
+
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
+        },
+
+        downloadCSV(id, title) {
+            // Flatten the dataArray into a single array
+            const flattenedArray = this.getWorkSpace.reduce((acc, curr) => acc.concat(curr), []);
+
+            // Convert flattened array to CSV format
+            const csvContent = this.convertToCSV(flattenedArray);
+
+            // Create a temporary anchor element
+            const a = document.createElement('a');
+            a.href = 'data:text/csv;charset=utf-8,' + encodeURIComponent(csvContent);
+            a.download = `${title}.csv`;
+
+            // Append anchor to body and click it to trigger download
+            document.body.appendChild(a);
+            a.click();
+
+            // Cleanup
+            document.body.removeChild(a);
+        },
+        convertToCSV(dataArray) {
+            const row = dataArray.map(obj => Object.values(obj).join(',')).join(',');
+            return row;
+        }
+    },
+
+    mounted() {
+        this.folders.forEach(item => item.dropdown = false)
     }
 }
 </script>
