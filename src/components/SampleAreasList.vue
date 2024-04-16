@@ -13,7 +13,7 @@
     </div>
 
     <div
-        v-for="item in sampleAreas"
+        v-for="item in filteredSampleAreas"
         :key="item.id"
         class="mt-4"
     >
@@ -28,10 +28,14 @@
             v-else
             :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/sample-area/+item.id"
             class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 position-relative"
+            :class="{
+                 'border border-5 rounded border-success' : item.chosen
+            }"
         >
             {{ item.title }} {{ item.id }}
 
             <button
+                v-if="!item.cantChose"
                 type="button"
                 class="btn p-0 position-absolute end-0 me-3"
                 @click.prevent="removeSampleArea(item.id)"
@@ -65,6 +69,7 @@ export default {
             let sampleArea_Obj = {
                 id: this.arr.sampleAreaArr && this.arr.sampleAreaArr.length ? this.arr.sampleAreaArr.length + 1 : 1,
                 title: 'სანიმუშო ფართობი #',
+                chosen: false
             }
 
             if (!this.arr.sampleAreaArr) {
@@ -76,6 +81,7 @@ export default {
             let taxCard_Obj = {
                 id: this.arr.taxCardArr && this.arr.taxCardArr.length ? this.arr.taxCardArr.length + 1 : 1,
                 title: 'ტაქსაციის ბარათი #',
+                chosen: false
             }
 
             if (!this.arr.taxCardArr) {
@@ -120,6 +126,19 @@ export default {
             const sampleAreas = literWS ? literWS.sampleAreaArr : [];
 
             return sampleAreas ? sampleAreas : [];
+        },
+
+        filteredSampleAreas() {
+            let sampleAreas = [...this.sampleAreas];
+
+            const chosenIndex = sampleAreas.findIndex(item => item.chosen === true);
+            if (chosenIndex !== -1) {
+                const chosenItem = sampleAreas[chosenIndex];
+                sampleAreas.splice(chosenIndex, 1);
+                sampleAreas.unshift(chosenItem);
+            }
+
+            return sampleAreas;
         },
 
         taxCard() {

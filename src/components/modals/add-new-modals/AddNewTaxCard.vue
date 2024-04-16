@@ -72,7 +72,8 @@ export default {
             let taxCardObj = {
                 id: this.arr.sampleAreaArr && this.arr.sampleAreaArr.length ? this.arr.sampleAreaArr.length + 1 : 1,
                 title: 'სანიმუშო ფართობის გარეშე',
-                without_sample_area: true
+                without_sample_area: true,
+                chosen: false
             }
 
             if (!this.arr.sampleAreaArr) {

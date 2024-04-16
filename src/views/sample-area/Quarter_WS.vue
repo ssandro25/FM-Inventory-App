@@ -186,7 +186,6 @@ export default {
             }
         },
 
-
         filteredLiterWS() {
             return this.literWS.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
         }
