@@ -26,7 +26,6 @@
         <button
             type="button"
             class="btn"
-            :disabled="item.cantChose"
             :class="{
                 'btn-outline-success' : !item.chosen,
                 'btn-success' : item.chosen
@@ -48,7 +47,7 @@
             {{ item.title }} {{ item.id }}
 
             <button
-                v-if="item.without_sample_area && !item.cantChose"
+                v-if="item.without_sample_area"
                 type="button"
                 class="btn p-0 position-absolute end-0 me-3"
                 @click.prevent="removeTaxCard(item.id)"
@@ -72,16 +71,18 @@ export default {
 
     methods: {
         chooseTaxCard(id) {
+            const previouslyChosenTaxCardItem = this.taxCard.find(e => e.chosen);
+            const previouslyChosenSampleAreaItem = this.sampleAreas.find(e => e.chosen);
+
+            if (previouslyChosenTaxCardItem) {
+                previouslyChosenTaxCardItem.chosen = false;
+            }
+            if (previouslyChosenSampleAreaItem) {
+                previouslyChosenSampleAreaItem.chosen = false;
+            }
+
             const taxCardItem = this.taxCard.find(e => e.id === parseInt(id));
             const sampleAreaItem = this.sampleAreas.find(e => e.id === parseInt(id));
-
-            this.taxCard.forEach(item => {
-                item.cantChose = true;
-            });
-
-            this.sampleAreas.forEach(item => {
-                item.cantChose = true;
-            });
 
             taxCardItem.chosen = true
             sampleAreaItem.chosen = true
@@ -159,7 +160,7 @@ export default {
                 literWS_ID: this.$route.params.id,
             }
         }
-    }
+    },
 }
 </script>
 

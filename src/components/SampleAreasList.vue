@@ -35,7 +35,6 @@
             {{ item.title }} {{ item.id }}
 
             <button
-                v-if="!item.cantChose"
                 type="button"
                 class="btn p-0 position-absolute end-0 me-3"
                 @click.prevent="removeSampleArea(item.id)"
