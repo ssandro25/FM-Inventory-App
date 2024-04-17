@@ -14,6 +14,9 @@ export default {
     getLiterWS_ID: state => state.literWS_ID,
     getSampleAreaID: state => state.sampleAreaID,
 
+
+    getItemsListView: state => state.itemsListView,
+
     // 1 Macket
     getSoilCategory: state => state.soilCategory,
     getLongTermUseLease: state => state.longTermUseLease,

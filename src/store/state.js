@@ -66,6 +66,8 @@ export default {
 
     sampleAreaID: null,
 
+    itemsListView: localStorage.getItem('items_list_view') ? localStorage.getItem('items_list_view') : 'grid',
+
     // 1 Macket
     soilCategory: [
         {id: '3', name: '3 - კორომი ბუნებრივი წარმოშობის'},

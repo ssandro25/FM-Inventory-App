@@ -3,7 +3,7 @@
 
     <div class="container-fluid p-lg-5 p-3">
         <div class="d-flex flex-md-row flex-column align-items-md-center gap-3 mb-4">
-            <GoBackBtn />
+            <GoBackBtn/>
 
             <h1 class="text-white pt-md-0 pt-5 mb-0">ლიტერები</h1>
 
@@ -21,11 +21,123 @@
             </div>
         </div>
 
-        <div class="d-flex gap-3 mb-4 col-lg-5 col-12 p-0">
+        <div class="d-flex flex-md-row flex-column align-items-md-center justify-content-md-between gap-3 mb-4">
+            <p class="fs-4 mb-0">
+                <span class="fw-bold fs-1">{{ filteredLiterWS.length }}</span> ჩანაწერი
+            </p>
+
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-none d-md-flex align-items-center gap-2 view__btn">
+                    <button
+                        type="button"
+                        class="btn border-0 view__btn_list"
+                        :class="{
+                        'active' : getItemsListView === 'list'
+                    }"
+                        @click="itemsListView('list')"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-list" viewBox="0 0 16 16">
+                            <path fill-rule="evenodd"
+                                  d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"/>
+                        </svg>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn border-0 view__btn_grid"
+                        :class="{
+                        'active' : getItemsListView === 'grid'
+                    }"
+                        @click="itemsListView('grid')"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-grid-3x3-gap-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1z"/>
+                        </svg>
+                    </button>
+
+                    <button
+                        type="button"
+                        class="btn border-0 view__btn_compact"
+                        :class="{
+                        'active' : getItemsListView === 'compact'
+                    }"
+                        @click="itemsListView('compact')"
+                    >
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor"
+                             class="bi bi-grid-fill" viewBox="0 0 16 16">
+                            <path
+                                d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5z"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <div>
+                    <button class="btn btn__filter" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFilter" aria-expanded="false" aria-controls="collapseFilter">
+                        ფილტრი
+                    </button>
+
+                    <div class="collapse position-absolute start-50 m-3" id="collapseFilter" style="z-index: 2;">
+                        <div class="card card-body">
+                            <div class="input-group">
+                                <input
+                                    v-model="min"
+                                    type="number"
+                                    class="form-control"
+                                    placeholder="დან"
+                                >
+                                <span class="input-group-text">-</span>
+                                <input
+                                    v-model="max"
+                                    type="number"
+                                    class="form-control"
+                                    placeholder="მდე"
+                                >
+
+                                <button
+                                    type="button"
+                                    class="btn btn-success"
+                                    @click="filterList()"
+                                >
+                                    ფილტრაცია
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dropdown">
+                    <button class="btn dropdown-toggle btn__sort border-0" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                        სორტირება
+                    </button>
+                    <ul class="dropdown-menu">
+                        <li @click="sortList('min-max')">
+                            <a class="dropdown-item" href="#">
+                                <img src="@/assets/images/sort-min-max.svg" class="me-1" width="16" alt="">
+                                ზრდადობით
+                            </a>
+                        </li>
+
+                        <li @click="sortList('max-min')">
+                            <a class="dropdown-item" href="#">
+                                <img src="@/assets/images/sort-max-min.svg" class="me-1" width="16" alt="">
+                                კლებადობით
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="d-flex gap-3 mb-4 col-lg-5 col-12 p-0 d-none">
             <button
                 type="button"
                 class="btn btn-light w-50"
-                @click="sortListMinMax"
+                @click="sortList('min-max')"
             >
                 <img src="@/assets/images/sort-min-max.svg" class="me-1" width="16" alt="">
                 ზრდადობით
@@ -34,7 +146,7 @@
             <button
                 type="button"
                 class="btn btn-light w-50"
-                @click="sortListMaxMin"
+                @click="sortList('max-min')"
             >
                 <img src="@/assets/images/sort-max-min.svg" class="me-1" width="16" alt="">
                 კლებადობით
@@ -42,7 +154,11 @@
         </div>
 
         <div v-if="filteredLiterWS.length">
-            <div class="row row-cols-md-3 row-cols-1 gy-4 items__list_row">
+            <div :class="{
+                'row row-cols-1 gy-4 items__list_row' : getItemsListView === 'list',
+                'row row-cols-md-3 row-cols-1 gy-4 items__list_row' : getItemsListView === 'grid',
+                'row row-cols-md-3 row-cols-1 gy-4 items__list_row compact' : getItemsListView === 'compact',
+            }">
                 <div class="col">
                     <div
                         data-bs-toggle="modal"
@@ -66,9 +182,12 @@
                 >
                     <router-link
                         :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
-                        class="item rounded d-flex flex-column justify-content-between gap-2 fs-12 text-decoration-none text-white p-3 position-relative"
+                        class="item rounded d-flex flex-column justify-content-between gap-2 text-decoration-none text-white p-3 position-relative"
                     >
-                        <div class="position-absolute top-0 end-0 m-3">
+                        <div :class="{
+                           'position-absolute top-0 end-0 m-3' : getItemsListView === 'list' || getItemsListView === 'grid',
+                           'position-absolute top-50 end-0 translate-middle-y' : getItemsListView === 'compact',
+                        }">
                             <button
                                 type="button"
                                 class="btn border-0"
@@ -104,16 +223,22 @@
                             </div>
                         </div>
 
-                        <p class="fw-bold fs-1 text-success mb-0">
-                            <span class="fs-5">ლიტ.</span>
+                        <p :class="{
+                            'fw-bold fs-1 text-success mb-0' : getItemsListView === 'list' || getItemsListView === 'grid',
+                            'text-center fs-16' : getItemsListView === 'compact'
+                        }">
+                            <span
+                                :class="{ 'fs-16' : getItemsListView === 'compact', 'fs-5' : getItemsListView === 'list' || getItemsListView === 'grid' }">ლიტ.</span>
                             #{{ item.title }}
                         </p>
 
-                        <p class="mb-0">
+                        <p class="mb-0"
+                           :class="{ 'd-none' : getItemsListView === 'compact', 'd-block' : getItemsListView === 'list' || getItemsListView === 'grid' }">
                             სანიმუშო ფართობები:
                         </p>
 
-                        <p class="mb-0">
+                        <p class="mb-0"
+                           :class="{ 'd-none' : getItemsListView === 'compact', 'd-block' : getItemsListView === 'list' || getItemsListView === 'grid' }">
                             სატაქსაციო ბარათები:
                         </p>
                     </router-link>
@@ -152,7 +277,9 @@ export default {
     data() {
         return {
             search: '',
-            dropdown: false
+            dropdown: false,
+            min: null,
+            max: null
         }
     },
 
@@ -163,6 +290,7 @@ export default {
             'getForestryWS_ID',
             'getQuarterWS_ID',
             'getLiterWS_ID',
+            'getItemsListView'
         ]),
 
         literWS() {
@@ -193,16 +321,30 @@ export default {
     },
 
     methods: {
-        sortListMinMax() {
-            this.literWS.sort((a, b) => {
-                return parseInt(a.title) - parseInt(b.title);
-            });
+        itemsListView(value) {
+            this.$store.dispatch('setItemsListView', value)
         },
 
-        sortListMaxMin() {
-            this.literWS.sort((a, b) => {
-                return parseInt(b.title) - parseInt(a.title);
-            });
+        filterList() {
+            this.literWS = [...this.literWS.filter(item => {
+                return parseInt(item.title) >= this.min && parseInt(item.title) <= this.max;
+            })
+            ]
+
+        },
+
+        sortList(value) {
+            if (value === 'min-max') {
+                this.literWS.sort((a, b) => {
+                    return parseInt(a.title) - parseInt(b.title);
+                });
+            }
+
+            if (value === 'max-min') {
+                this.literWS.sort((a, b) => {
+                    return parseInt(b.title) - parseInt(a.title);
+                });
+            }
         },
 
         removeLiter(id) {
@@ -254,4 +396,38 @@ export default {
 </script>
 
 <style scoped lang="scss">
+//.dropdown-toggle::after {
+//    display: none;
+//}
+.view__btn {
+    .btn {
+        width: 36px;
+        height: 36px;
+        background-color: #1e393f;
+        transition: .3s;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        color: #fff;
+    }
+
+    .btn.active {
+        background-color: rgb(57 145 112);
+    }
+
+    .btn:hover {
+        background-color: rgb(57 145 112);
+    }
+}
+
+.btn__sort, .btn__filter {
+    background-color: #1e393f;
+    color: #fff;
+
+    &:hover {
+        background-color: rgb(57 145 112);
+    }
+
+}
 </style>

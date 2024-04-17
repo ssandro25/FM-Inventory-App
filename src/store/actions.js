@@ -68,5 +68,11 @@ export default {
 
     setMacketID({state}, value) {
         state.macketID = value
+    },
+
+    setItemsListView({state}, value) {
+        state.itemsListView = value
+
+        localStorage.setItem('items_list_view', state.itemsListView)
     }
 }

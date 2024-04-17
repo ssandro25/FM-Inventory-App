@@ -181,6 +181,9 @@ export default {
 .fs-14 {
     font-size: 14px !important;
 }
+.fs-16 {
+    font-size: 16px !important;
+}
 .cursor-pointer {
     cursor: pointer;
 }
@@ -232,6 +235,13 @@ body {
         .col {
             .item, .add_new__btn {
                 height: 170px;
+            }
+        }
+    }
+    .items__list_row.compact {
+        .col {
+            .item, .add_new__btn {
+                height: 58px;
             }
         }
     }
