@@ -32,7 +32,7 @@
                         >
                     </div>
 
-                    <div v-if="new_folder" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_forestry_ws"
                             class="form-label modal__label"
@@ -48,7 +48,7 @@
                         >
                     </div>
 
-                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws1"
                             class="form-label modal__label"
@@ -64,7 +64,7 @@
                         >
                     </div>
 
-                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws2"
                             class="form-label modal__label"
@@ -80,7 +80,7 @@
                         >
                     </div>
 
-                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws3"
                             class="form-label modal__label"
@@ -96,7 +96,7 @@
                         >
                     </div>
 
-                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws4"
                             class="form-label modal__label"
@@ -112,7 +112,7 @@
                         >
                     </div>
 
-                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws5"
                             class="form-label modal__label"
@@ -190,7 +190,7 @@ export default {
                 dropdown: false,
                 quarterWS: [
                     {
-                        id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                        id: 1,
                         title: this.new_quarter_ws1,
                         dropdown: false
                     }
@@ -199,7 +199,7 @@ export default {
 
             if (this.new_quarter_ws2) {
                 forestryWS_Obj.quarterWS.push({
-                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    id: 2,
                     title: this.new_quarter_ws2,
                     dropdown: false
                 });
@@ -207,7 +207,7 @@ export default {
 
             if (this.new_quarter_ws3) {
                 forestryWS_Obj.quarterWS.push({
-                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    id: 3,
                     title: this.new_quarter_ws3,
                     dropdown: false
                 });
@@ -215,7 +215,7 @@ export default {
 
             if (this.new_quarter_ws4) {
                 forestryWS_Obj.quarterWS.push({
-                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    id: 4,
                     title: this.new_quarter_ws4,
                     dropdown: false
                 });
@@ -223,7 +223,7 @@ export default {
 
             if (this.new_quarter_ws5) {
                 forestryWS_Obj.quarterWS.push({
-                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    id: 5,
                     title: this.new_quarter_ws5,
                     dropdown: false
                 });

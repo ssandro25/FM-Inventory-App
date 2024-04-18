@@ -77,12 +77,14 @@
                         <div class="card card-body">
                             <div class="input-group">
                                 <input
+                                    v-model="min"
                                     type="number"
                                     class="form-control"
                                     placeholder="დან"
                                 >
                                 <span class="input-group-text">-</span>
                                 <input
+                                    v-model="max"
                                     type="number"
                                     class="form-control"
                                     placeholder="მდე"
@@ -90,9 +92,10 @@
 
                                 <button
                                     type="button"
-                                    class="btn btn-success"
+                                    class="btn btn-danger"
+                                    @click="clearFilter()"
                                 >
-                                    ფილტრაცია
+                                    გასუფთავება
                                 </button>
                             </div>
                         </div>
@@ -260,7 +263,9 @@ export default {
     data() {
         return {
             quarter: '',
-            search: ''
+            search: '',
+            min: 1,
+            max: 1000
         }
     },
 
@@ -290,7 +295,11 @@ export default {
         },
 
         filteredQuarterWS() {
-            return [...this.quarterWS].filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+            if (!this.search) {
+                return this.quarterWS.filter(item => parseInt(item.title) >= this.min && parseInt(item.title) <= this.max)
+            } else {
+                return this.quarterWS.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+            }
         },
     },
 
@@ -298,6 +307,13 @@ export default {
         itemsListView(value) {
             this.$store.dispatch('setItemsListView', value)
         },
+
+        clearFilter() {
+            this.search = ''
+            this.min = 1
+            this.max = 1000
+        },
+
 
         sortList(value) {
             if (value === 'min-max') {

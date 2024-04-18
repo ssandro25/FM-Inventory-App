@@ -99,10 +99,10 @@
 
                                 <button
                                     type="button"
-                                    class="btn btn-success"
-                                    @click="filterList()"
+                                    class="btn btn-danger"
+                                    @click="clearFilter()"
                                 >
-                                    ფილტრაცია
+                                    გასუფთავება
                                 </button>
                             </div>
                         </div>
@@ -278,8 +278,8 @@ export default {
         return {
             search: '',
             dropdown: false,
-            min: null,
-            max: null
+            min: 1,
+            max: 1000
         }
     },
 
@@ -315,7 +315,11 @@ export default {
         },
 
         filteredLiterWS() {
-            return this.literWS.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+            if (!this.search) {
+                return this.literWS.filter(item => parseInt(item.title) >= this.min && parseInt(item.title) <= this.max)
+            } else {
+                return this.literWS.filter(item => item.title.toLowerCase().includes(this.search.toLowerCase()))
+            }
         }
 
     },
@@ -325,12 +329,10 @@ export default {
             this.$store.dispatch('setItemsListView', value)
         },
 
-        filterList() {
-            this.literWS = [...this.literWS.filter(item => {
-                return parseInt(item.title) >= this.min && parseInt(item.title) <= this.max;
-            })
-            ]
-
+        clearFilter() {
+            this.search = ''
+            this.min = 1
+            this.max = 1000
         },
 
         sortList(value) {
