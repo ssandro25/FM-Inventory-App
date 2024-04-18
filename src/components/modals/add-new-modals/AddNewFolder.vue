@@ -21,7 +21,7 @@
                             for="new_folder"
                             class="form-label modal__label"
                         >
-                            ჩაწერეთ სახელი
+                            საქაღალდის სახელი
                         </label>
 
                         <input
@@ -31,11 +31,107 @@
                             id="new_folder"
                         >
                     </div>
+
+                    <div v-if="new_folder" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_forestry_ws"
+                            class="form-label modal__label"
+                        >
+                            სეტყეოს სახელი
+                        </label>
+
+                        <input
+                            v-model="new_forestry_ws"
+                            type="text"
+                            class="form-control"
+                            id="new_forestry_ws"
+                        >
+                    </div>
+
+                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_quarter_ws1"
+                            class="form-label modal__label"
+                        >
+                            კვარტლი 1-ის სახელი
+                        </label>
+
+                        <input
+                            v-model="new_quarter_ws1"
+                            type="text"
+                            class="form-control"
+                            id="new_quarter_ws1"
+                        >
+                    </div>
+
+                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_quarter_ws2"
+                            class="form-label modal__label"
+                        >
+                            კვარტლი 2-ის სახელი
+                        </label>
+
+                        <input
+                            v-model="new_quarter_ws2"
+                            type="text"
+                            class="form-control"
+                            id="new_quarter_ws2"
+                        >
+                    </div>
+
+                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_quarter_ws3"
+                            class="form-label modal__label"
+                        >
+                            კვარტლი 3-ის სახელი
+                        </label>
+
+                        <input
+                            v-model="new_quarter_ws3"
+                            type="text"
+                            class="form-control"
+                            id="new_quarter_ws3"
+                        >
+                    </div>
+
+                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_quarter_ws4"
+                            class="form-label modal__label"
+                        >
+                            კვარტლი 4-ის სახელი
+                        </label>
+
+                        <input
+                            v-model="new_quarter_ws4"
+                            type="text"
+                            class="form-control"
+                            id="new_quarter_ws4"
+                        >
+                    </div>
+
+                    <div v-if="new_forestry_ws" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                        <label
+                            for="new_quarter_ws5"
+                            class="form-label modal__label"
+                        >
+                            კვარტლი 5-ის სახელი
+                        </label>
+
+                        <input
+                            v-model="new_quarter_ws5"
+                            type="text"
+                            class="form-control"
+                            id="new_quarter_ws5"
+                        >
+                    </div>
                 </div>
 
                 <div class="modal-footer border-0 justify-content-center">
                     <button
-                        :disabled="!new_folder"
+                        :disabled="!new_folder || !new_forestry_ws || !new_quarter_ws1"
                         type="button"
                         class="btn btn-success col-lg-6 col-12"
                         @click="add"
@@ -57,7 +153,13 @@ export default {
     data() {
         return {
             new_folder: '',
-            currentDate: ''
+            currentDate: '',
+            new_forestry_ws: '',
+            new_quarter_ws1: '',
+            new_quarter_ws2: '',
+            new_quarter_ws3: '',
+            new_quarter_ws4: '',
+            new_quarter_ws5: ''
         }
     },
 
@@ -69,16 +171,71 @@ export default {
             const year = now.getFullYear();
             this.currentDate = `${day}/${month}/${year}`;
 
-            let obj = {
-                id: this.getWorkSpace.length + 1,
-                title: this.currentDate + ' - ' + this.new_folder,
-                date: this.currentDate,
-                dropdown: false
+            let workspaceItem = this.getWorkSpace.find(item => item.id === parseInt(this.$route.params.id));
+
+            if (!workspaceItem) {
+                workspaceItem = {
+                    id: this.getWorkSpace.length + 1,
+                    title: this.currentDate + ' - ' + this.new_folder,
+                    date: this.currentDate,
+                    dropdown: false,
+                    forestryWS: []
+                };
+                this.getWorkSpace.push(workspaceItem);
             }
-            this.$store.dispatch('setNewWorkSpace', obj)
+
+            let forestryWS_Obj = {
+                id: workspaceItem.forestryWS.length ? workspaceItem.forestryWS.length + 1 : 1,
+                title: this.new_forestry_ws,
+                dropdown: false,
+                quarterWS: [
+                    {
+                        id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                        title: this.new_quarter_ws1,
+                        dropdown: false
+                    }
+                ]
+            }
+
+            if (this.new_quarter_ws2) {
+                forestryWS_Obj.quarterWS.push({
+                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    title: this.new_quarter_ws2,
+                    dropdown: false
+                });
+            }
+
+            if (this.new_quarter_ws3) {
+                forestryWS_Obj.quarterWS.push({
+                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    title: this.new_quarter_ws3,
+                    dropdown: false
+                });
+            }
+
+            if (this.new_quarter_ws4) {
+                forestryWS_Obj.quarterWS.push({
+                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    title: this.new_quarter_ws4,
+                    dropdown: false
+                });
+            }
+
+            if (this.new_quarter_ws5) {
+                forestryWS_Obj.quarterWS.push({
+                    id: workspaceItem.forestryWS.quarterWS && workspaceItem.forestryWS.quarterWS.length ? workspaceItem.forestryWS.quarterWS.length + 1 : 1,
+                    title: this.new_quarter_ws5,
+                    dropdown: false
+                });
+            }
+
+            workspaceItem.forestryWS.push(forestryWS_Obj);
+
+            // this.$store.dispatch('setNewWorkSpace', obj)
+            this.$store.dispatch('setWorkSpace', this.getWorkSpace)
 
             document.querySelector('#add_new_folder').click()
-        }
+        },
     },
 
     computed: {

@@ -118,8 +118,6 @@ export default {
 
 
             return forestryWS ? forestryWS : [];
-
-            // return this.getWorkSpace.find(item => item.id === this.$route.params.id)
         },
 
         params() {
