@@ -330,14 +330,20 @@ export default {
         },
 
         showDropdown(id){
-            const previouslyChosenItem = this.quarterWS.find(item => item.dropdown)
+            const item = this.quarterWS.find(item => item.id === parseInt(id));
 
-            if (previouslyChosenItem) {
-                previouslyChosenItem.dropdown = false
+            if (!item) return;
+
+            if (item.dropdown) {
+                item.dropdown = false;
+            } else {
+                this.quarterWS.forEach(item => {
+                    if (item.dropdown) {
+                        item.dropdown = false;
+                    }
+                });
+                item.dropdown = true;
             }
-            const item = this.quarterWS.find(item => item.id === parseInt(id))
-
-            item.dropdown = !item.dropdown
         },
 
         removeQuarter(id) {

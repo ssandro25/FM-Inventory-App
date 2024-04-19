@@ -129,14 +129,20 @@ export default {
 
     methods: {
         showDropdown(id){
-            const previouslyChosenItem = this.forestryWS.find(item => item.dropdown)
+            const item = this.forestryWS.find(item => item.id === parseInt(id));
 
-            if (previouslyChosenItem) {
-                previouslyChosenItem.dropdown = false
+            if (!item) return;
+
+            if (item.dropdown) {
+                item.dropdown = false;
+            } else {
+                this.forestryWS.forEach(item => {
+                    if (item.dropdown) {
+                        item.dropdown = false;
+                    }
+                });
+                item.dropdown = true;
             }
-            const item = this.forestryWS.find(item => item.id === parseInt(id))
-
-            item.dropdown = !item.dropdown
         },
 
         removeForestry(id) {
