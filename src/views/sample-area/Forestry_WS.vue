@@ -179,11 +179,11 @@
                         <div :class="{
                            'position-absolute top-0 end-0 m-3' : getItemsListView === 'list' || getItemsListView === 'grid',
                            'position-absolute top-50 end-0 translate-middle-y' : getItemsListView === 'compact',
-                        }">
+                        }" style="z-index: 2;">
                             <button
                                 type="button"
                                 class="btn border-0"
-                                @click.prevent="item.dropdown = !item.dropdown"
+                                @click.prevent="showDropdown(item.id)"
                             >
                                 <img src="@/assets/images/dots-vertical.svg" width="7" alt="">
                             </button>
@@ -327,6 +327,17 @@ export default {
                     return parseInt(b.title) - parseInt(a.title);
                 });
             }
+        },
+
+        showDropdown(id){
+            const previouslyChosenItem = this.quarterWS.find(item => item.dropdown)
+
+            if (previouslyChosenItem) {
+                previouslyChosenItem.dropdown = false
+            }
+            const item = this.quarterWS.find(item => item.id === parseInt(id))
+
+            item.dropdown = !item.dropdown
         },
 
         removeQuarter(id) {

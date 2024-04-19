@@ -36,7 +36,7 @@
                                 <button
                                     type="button"
                                     class="btn border-0"
-                                    @click.prevent="item.dropdown = !item.dropdown"
+                                    @click.prevent="showDropdown(item.id)"
                                 >
                                     <img src="@/assets/images/dots-vertical.svg" width="7" alt="">
                                 </button>
@@ -124,6 +124,17 @@ export default {
     },
 
     methods: {
+        showDropdown(id){
+            const previouslyChosenItem = this.folders.find(item => item.dropdown)
+
+            if (previouslyChosenItem) {
+                previouslyChosenItem.dropdown = false
+            }
+            const item = this.folders.find(item => item.id === parseInt(id))
+
+            item.dropdown = !item.dropdown
+        },
+
         removeFolder(id) {
             const index = this.folders.findIndex(quarter => quarter.id === parseInt(id));
 

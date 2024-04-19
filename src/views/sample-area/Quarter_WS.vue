@@ -191,7 +191,7 @@
                             <button
                                 type="button"
                                 class="btn border-0"
-                                @click.prevent="item.dropdown = !item.dropdown"
+                                @click.prevent="showDropdown(item.id)"
                             >
                                 <img src="@/assets/images/dots-vertical.svg" width="7" alt="">
                             </button>
@@ -347,6 +347,17 @@ export default {
                     return parseInt(b.title) - parseInt(a.title);
                 });
             }
+        },
+
+        showDropdown(id){
+            const previouslyChosenItem = this.literWS.find(item => item.dropdown)
+
+            if (previouslyChosenItem) {
+                previouslyChosenItem.dropdown = false
+            }
+            const item = this.literWS.find(item => item.id === parseInt(id))
+
+            item.dropdown = !item.dropdown
         },
 
         removeLiter(id) {
