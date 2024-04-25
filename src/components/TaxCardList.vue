@@ -84,6 +84,12 @@ export default {
             const taxCardItem = this.taxCard.find(e => e.id === parseInt(id));
             const sampleAreaItem = this.sampleAreas.find(e => e.id === parseInt(id));
 
+            const workSpace = this.getWorkSpace.find(item => item.id ===  parseInt(this.params.workSpaceID));
+            const forestryWS = workSpace ? workSpace.forestryWS.find(item => item.id === parseInt(this.params.forestryWS_ID)) : [];
+            const quarterWS = forestryWS ? forestryWS.quarterWS.find(item => item.id === parseInt(this.params.quarterWS_ID)) : [];
+            const literWS = quarterWS ? quarterWS.literWS.find(item => item.id === parseInt(this.params.literWS_ID)) : [];
+
+            literWS.chosen = true
             taxCardItem.chosen = true
             sampleAreaItem.chosen = true
 

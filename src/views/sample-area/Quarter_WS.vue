@@ -183,6 +183,7 @@
                     <router-link
                         :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.$route.params.id+/liter/+item.id"
                         class="item rounded d-flex flex-column justify-content-between gap-2 text-decoration-none text-white p-3 position-relative"
+                        :class="{ 'border border-5 rounded border-success' : item.chosen }"
                     >
                         <div :class="{
                            'position-absolute top-0 end-0 m-3' : getItemsListView === 'list' || getItemsListView === 'grid',
@@ -382,7 +383,8 @@ export default {
                 .find(item => item.id === parseInt(this.getWorkSpaceID)).forestryWS
                 .find(item => item.id === parseInt(this.getForestryWS_ID)).quarterWS
                 .find(item => item.id === parseInt(this.getQuarterWS_ID)).literWS
-                .find(item => item.id === parseInt(id)).taxCardArr || []
+                .find(item => item.id === parseInt(id)).taxCardArr
+                .find(item => item.chosen).mackets || []
                 .reduce((acc, curr) => acc.concat(curr), []);
 
             // Convert flattened array to CSV format
