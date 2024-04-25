@@ -4,7 +4,7 @@
     <div
         data-bs-toggle="modal"
         data-bs-target="#addNewTaxCard"
-        class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 mt-4"
+        class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 my-4"
     >
         <div class="d-flex align-items-center gap-2">
             <img src="@/assets/images/plus-solid.svg" width="20" alt="">
@@ -15,46 +15,48 @@
         </div>
     </div>
 
-    <div
-        v-for="item in filteredTaxCard"
-        :key="item.id"
-        class="d-flex align-items-center gap-2 mt-4"
-        :class="{
+    <div class="tax_card__list rounded p-3">
+        <div
+            v-for="item in filteredTaxCard"
+            :key="item.id"
+            class="d-flex align-items-center gap-2 mt-4"
+            :class="{
                 'mb-5' : item.without_sample_area,
             }"
-    >
-        <button
-            type="button"
-            class="btn"
-            :class="{
+        >
+            <button
+                type="button"
+                class="btn"
+                :class="{
                 'btn-outline-success' : !item.chosen,
                 'btn-success' : item.chosen
             }"
-            @click="chooseTaxCard(item.id)"
+                @click="chooseTaxCard(item.id)"
 
-        >
-            {{ item.chosen ? 'არჩეულია' : 'არჩევა' }}
-        </button>
+            >
+                {{ item.chosen ? 'არჩეულია' : 'არჩევა' }}
+            </button>
 
-        <router-link
-            :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/macket/+item.id"
-            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 flex-grow-1"
-            :class="{
+            <router-link
+                :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/macket/+item.id"
+                class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 flex-grow-1"
+                :class="{
                 'position-relative' : item.without_sample_area,
                 'border border-5 rounded border-success' : item.chosen
             }"
-        >
-            {{ item.title }} {{ item.id }}
-
-            <button
-                v-if="item.without_sample_area"
-                type="button"
-                class="btn p-0 position-absolute end-0 me-3"
-                @click.prevent="removeTaxCard(item.id)"
             >
-                <img src="@/assets/images/trash-solid.svg" width="15" alt="">
-            </button>
-        </router-link>
+                {{ item.title }} {{ item.id }}
+
+                <button
+                    v-if="item.without_sample_area"
+                    type="button"
+                    class="btn p-0 position-absolute end-0 me-3"
+                    @click.prevent="removeTaxCard(item.id)"
+                >
+                    <img src="@/assets/images/trash-solid.svg" width="15" alt="">
+                </button>
+            </router-link>
+        </div>
     </div>
 </template>
 
@@ -171,5 +173,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.tax_card__list {
+    background-color: #222F2A;
+}
 </style>

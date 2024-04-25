@@ -33,6 +33,7 @@ export default {
     .home__btn_arrow {
         position: fixed;
         top: 20px;
+        z-index: 1;
     }
 }
 </style>

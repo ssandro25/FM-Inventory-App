@@ -1,6 +1,6 @@
 <template>
     <div
-        class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 mt-4"
+        class="add_new__btn rounded d-flex align-items-center justify-content-center p-3 my-4"
         @click="addNewSampleArea()"
     >
         <span class="d-flex align-items-center gap-2">
@@ -12,37 +12,40 @@
         </span>
     </div>
 
-    <div
-        v-for="item in filteredSampleAreas"
-        :key="item.id"
-        class="mt-4"
-    >
+    <div class="sample_area__list rounded p-3">
         <div
-            v-if="item.without_sample_area"
-            class="item rounded text-center text-white p-3 without_sample_area mb-5"
+            v-for="item in filteredSampleAreas"
+            :key="item.id"
+            class="mt-4"
         >
-            {{ item.title }}
-        </div>
+            <div
+                v-if="item.without_sample_area"
+                class="item rounded text-center text-white p-3 without_sample_area mb-5"
+            >
+                {{ item.title }}
+            </div>
 
-        <router-link
-            v-else
-            :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/sample-area/+item.id"
-            class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 position-relative"
-            :class="{
+            <router-link
+                v-else
+                :to="/work-space/+this.getWorkSpaceID+/forestry/+this.getForestryWS_ID+/quarter/+this.getQuarterWS_ID+/liter/+this.$route.params.id+/sample-area/+item.id"
+                class="item rounded d-flex align-items-center justify-content-center text-decoration-none text-white p-3 position-relative"
+                :class="{
                  'border border-5 rounded border-success' : item.chosen
             }"
-        >
-            {{ item.title }} {{ item.id }}
-
-            <button
-                type="button"
-                class="btn p-0 position-absolute end-0 me-3"
-                @click.prevent="removeSampleArea(item.id)"
             >
-                <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
-            </button>
-        </router-link>
+                {{ item.title }} {{ item.id }}
+
+                <button
+                    type="button"
+                    class="btn p-0 position-absolute end-0 me-3"
+                    @click.prevent="removeSampleArea(item.id)"
+                >
+                    <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
+                </button>
+            </router-link>
+        </div>
     </div>
+
 </template>
 
 <script>
@@ -172,6 +175,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.sample_area__list {
+    background-color: #222F2A;
+}
 .item.without_sample_area {
     background: #cc7d7d !important;
     color: #10142b !important;
@@ -182,10 +188,10 @@ export default {
 .item.without_sample_area::after {
     content: "";
     position: absolute;
-    width: 204%;
+    width: 213%;
     height: 2px;
     background-color: #5e6873;
     bottom: -25px;
-    left: -104%;
+    left: -111%;
 }
 </style>
