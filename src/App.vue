@@ -299,7 +299,6 @@ body {
 
         &:hover {
             background-color: #ffffff40;
-            outline: 1px solid #49D49C;
             //transform: scale(1.03);
             //background: radial-gradient(circle, #15182d 5%, #1a2537 80%, #1c383f 100%);
         }

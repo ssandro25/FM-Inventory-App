@@ -20,8 +20,13 @@
         >
             <div
                 v-if="item.without_sample_area"
-                class="item rounded text-center text-white p-3 without_sample_area mb-5"
+                class="item rounded text-center text-white p-3 without_sample_area mb-5 d-flex align-items-center justify-content-center gap-1"
             >
+                <svg width="14" height="14" viewBox="0 0 22 23" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path
+                        d="M3.93 4.43L18.07 18.57M21 11.5C21 17.0228 16.5228 21.5 11 21.5C5.47715 21.5 1 17.0228 1 11.5C1 5.97715 5.47715 1.5 11 1.5C16.5228 1.5 21 5.97715 21 11.5Z"
+                        stroke="#991B1B" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                </svg>
                 {{ item.title }}
             </div>
 
@@ -40,7 +45,7 @@
                     class="btn p-0 position-absolute end-0 me-3"
                     @click.prevent="removeSampleArea(item.id)"
                 >
-                    <img src="@/assets/images/trash-solid.svg"  width="15" alt="">
+                    <img src="@/assets/images/trash-solid.svg" width="15" alt="">
                 </button>
             </router-link>
         </div>
@@ -178,10 +183,11 @@ export default {
 .sample_area__list {
     background-color: #222F2A;
 }
+
 .item.without_sample_area {
-    background: #cc7d7d !important;
-    color: #10142b !important;
-    font-weight: bold;
+    background: #FEE2E2 !important;
+    color: #991B1B !important;
+    font-size: 14px;
     position: relative;
 }
 

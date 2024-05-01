@@ -8,7 +8,7 @@
             <h1 class="text-white pt-md-0 pt-5 mb-0">კვარტლები</h1>
 
             <div class="flex-grow-1 input-group">
-                <span class="input-group-text bg-white">
+                <span class="input-group-text">
                     <img src="@/assets/images/search-icon.svg" width="14" alt="">
                 </span>
 
