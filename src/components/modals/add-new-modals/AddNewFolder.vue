@@ -64,7 +64,7 @@
                         >
                     </div>
 
-                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div v-if="new_quarter_ws1" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws2"
                             class="form-label modal__label"
@@ -80,7 +80,7 @@
                         >
                     </div>
 
-                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div v-if="new_quarter_ws2" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws3"
                             class="form-label modal__label"
@@ -96,7 +96,7 @@
                         >
                     </div>
 
-                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div v-if="new_quarter_ws3" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws4"
                             class="form-label modal__label"
@@ -112,7 +112,7 @@
                         >
                     </div>
 
-                    <div class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
+                    <div v-if="new_quarter_ws4" class="d-flex align-items-lg-center flex-lg-row flex-column gap-2 mt-3">
                         <label
                             for="new_quarter_ws5"
                             class="form-label modal__label"
